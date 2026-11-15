@@ -154,3 +154,32 @@ main{max-width:1180px}
  .trace-code-full .trace-inline-annotations{flex-basis:180px;margin-left:0}
  .trace-code-full .trace-source{font-size:12px}
 }
+
+/* v0.6.6 — one shared walkthrough layout for all 80 cards:
+   navigation -> code -> output -> explanation. */
+.trace-toolbar{
+  display:flex;align-items:center;gap:16px;justify-content:space-between;
+  background:#f8faff;padding:12px 14px;border-bottom:1px solid #dfe8f5;
+}
+.trace-toolbar .trace-stepcount{margin:0;white-space:nowrap;flex-shrink:0}
+.trace-toolbar .trace-controls{padding:0;flex:1;max-width:580px;justify-content:flex-end}
+.trace-toolbar .trace-controls .btn{min-width:0}
+.trace-output-section{
+  padding:14px 15px 12px;
+  border-top:1px solid #dfe8f5;
+  border-bottom:1px solid #dfe8f5;
+  background:#f5f8fd;
+}
+.trace-output-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#5376a1;margin-bottom:8px}
+.trace-output-content{
+  margin:0;min-height:44px;padding:11px 12px;
+  background:#eaf1f8;color:#18304b;border-radius:9px;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+  font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.trace-output-section + .trace-narration{border-top:0;padding:13px 15px 4px}
+@media(max-width:700px){
+ .trace-toolbar{flex-direction:column;align-items:stretch;gap:9px}
+ .trace-toolbar .trace-controls{width:100%;max-width:none}
+ .trace-toolbar .trace-controls .btn{font-size:11px;padding:9px 7px}
+}
