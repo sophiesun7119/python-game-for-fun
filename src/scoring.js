@@ -2,6 +2,7 @@ export const POINTS = {easy:10,medium:15,hard:20};
 const LEGACY_KEY='python-quest-v1-progress';
 const PLAYERS_KEY='python-quest-v2-players';
 const ACTIVE_KEY='python-quest-v2-active';
+const QUEST_KEY='python-quest-v3-quests';
 export function normalizeUsername(name){return String(name||'').trim().toLowerCase()||'username';}
 export function displayUsername(name){return String(name||'').trim()||'username';}
 export function awardedStars(n){return n>=5?3:n===4?2:n===3?1:0;}
@@ -40,3 +41,23 @@ export function saveProgress(progress,username){
  try{localStorage.setItem(PLAYERS_KEY,JSON.stringify(players));return true;}catch{return false;}
 }
 export function playerDisplayName(username){const p=readPlayers()[normalizeUsername(username)];return p?.name||displayUsername(username);}
+
+function readQuestStore(){
+ try{const value=JSON.parse(localStorage.getItem(QUEST_KEY));if(value&&typeof value==='object'&&!Array.isArray(value))return value;}catch{}
+ return {};
+}
+function questKey(week,difficulty){return 'W'+week+'-'+difficulty;}
+export function readQuest(username,week,difficulty){
+ const user=readQuestStore()[normalizeUsername(username)];
+ const q=user?.[questKey(week,difficulty)];
+ return q&&typeof q==='object'?JSON.parse(JSON.stringify(q)):{active:null,completed:null};
+}
+export function writeQuest(username,week,difficulty,change){
+ const store=readQuestStore();const userKey=normalizeUsername(username);
+ const user=store[userKey]||{};const key=questKey(week,difficulty);
+ user[key]={...(user[key]||{}),...change};store[userKey]=user;
+ try{localStorage.setItem(QUEST_KEY,JSON.stringify(store));return true;}catch{return false;}
+}
+export function listQuestStates(username){
+ return readQuestStore()[normalizeUsername(username)]||{};
+}
