@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.5.0 — 2026-11-15
+- Extended inline Watch How the Code Works traces to every Week 2, Week 3 and Week 4 question, bringing Challenge 1 coverage to 60/60.
+- Walked through if/elif/else branch choices, for/while checks, break/continue, nested loops, calls, parameters and return values.
+- Highlighted **Explanation:** in bold red below the code/variable panels; retained readable normal text for explanations.
+- Added 45 new guided traces and `tests/validate-traces.mjs` for line index, expected outputs, and snapshot checks.
+- Preserved local usernames, autosave, review controls, XP and personal-best scoring.
+
+### Notes
+- Trace mode is static, not a general-purpose Python interpreter. One Week 2 operator-fill example shows what happens *after correcting* intentionally incomplete code.
+- Completed real-browser visual QA and classroom usability feedback are still outstanding.
+
 ## v0.4.0 — 2026-11-15
 - Added optional inline Watch How the Code Works to all 15 Week 1 questions.
 - Rendered the existing question code as highlighted executable lines with a moving arrow and numbered steps.
