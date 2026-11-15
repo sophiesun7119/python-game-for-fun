@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "description": "Guided traces for Week 2 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
+  "description": "Guided traces for Week 2 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
   "traces": {
     "W2-E-01": {
       "steps": [
@@ -16,7 +16,8 @@
           "output": [
             "True"
           ],
-          "explanation": "Compare 5 > 3. This is True, so print() displays True."
+          "explanation": "Call print() to display \"True\".",
+          "event": "print"
         }
       ]
     },
@@ -44,7 +45,8 @@
           "output": [
             "False"
           ],
-          "explanation": "Check x == 5: 4 == 5 is False."
+          "explanation": "Call print() to display \"False\".",
+          "event": "print"
         }
       ]
     },
@@ -80,7 +82,8 @@
           "output": [
             "Pass"
           ],
-          "explanation": "Print Pass. The else branch is skipped."
+          "explanation": "Call print() to display \"Pass\".",
+          "event": "print"
         }
       ]
     },
@@ -108,7 +111,8 @@
           "output": [
             "True"
           ],
-          "explanation": "not False is True. Print True."
+          "explanation": "Call print() to display \"True\".",
+          "event": "print"
         }
       ]
     },
@@ -126,7 +130,8 @@
           "output": [
             "False"
           ],
-          "explanation": "True and False is False because both parts must be True."
+          "explanation": "Call print() to display \"False\".",
+          "event": "print"
         }
       ]
     },
@@ -170,7 +175,8 @@
           "output": [
             "B"
           ],
-          "explanation": "Print B, then skip else."
+          "explanation": "Call print() to display \"B\".",
+          "event": "print"
         }
       ]
     },
@@ -206,7 +212,8 @@
           "output": [
             "Discount"
           ],
-          "explanation": "Print Discount."
+          "explanation": "Call print() to display \"Discount\".",
+          "event": "print"
         }
       ]
     },
@@ -262,7 +269,8 @@
           "output": [
             "Wait"
           ],
-          "explanation": "Print 'Wait'."
+          "explanation": "Call print() to display \"Wait\".",
+          "event": "print"
         }
       ]
     },
@@ -298,7 +306,8 @@
           "output": [
             "Small"
           ],
-          "explanation": "Print Small."
+          "explanation": "Call print() to display \"Small\".",
+          "event": "print"
         }
       ]
     },
@@ -342,7 +351,8 @@
           "output": [
             "Match"
           ],
-          "explanation": "In the corrected code, this line prints Match."
+          "explanation": "Call print() to display \"Match\".",
+          "event": "print"
         }
       ]
     },
@@ -420,10 +430,23 @@
             "member": "standard",
             "fee": 4.99
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with total = 49, fee = 4.99; the formatted result is \"53.99\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 11,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard",
+            "fee": 4.99
+          },
           "output": [
             "53.99"
           ],
-          "explanation": "Print '53.99'."
+          "explanation": "Call print() to display \"53.99\".",
+          "event": "print"
         }
       ]
     },
@@ -477,6 +500,17 @@
           "variables": {
             "kills": 8,
             "deaths": 0,
+            "assists": 4
+          },
+          "output": [],
+          "explanation": "Calculate 8 + 4 = 12.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "kills": 8,
+            "deaths": 0,
             "assists": 4,
             "kda": 12
           },
@@ -518,7 +552,8 @@
           "output": [
             "S 12.00"
           ],
-          "explanation": "Print 'S', '12.00'."
+          "explanation": "Call print() to display \"S 12.00\".",
+          "event": "print"
         }
       ]
     },
@@ -549,6 +584,15 @@
         {
           "line": 2,
           "variables": {
+            "x": 4
+          },
+          "output": [],
+          "explanation": "Calculate 7 + 3 = 10.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
             "x": 7
           },
           "output": [],
@@ -561,6 +605,15 @@
           },
           "output": [],
           "explanation": "Check x > 6: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 7
+          },
+          "output": [],
+          "explanation": "Calculate 14 * 2 = 28.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -578,7 +631,8 @@
           "output": [
             "14"
           ],
-          "explanation": "Print 14."
+          "explanation": "Call print() to display \"14\".",
+          "event": "print"
         }
       ]
     },
@@ -637,7 +691,8 @@
           "output": [
             "Go"
           ],
-          "explanation": "Print 'Go'."
+          "explanation": "Call print() to display \"Go\".",
+          "event": "print"
         }
       ]
     },
@@ -693,7 +748,8 @@
           "output": [
             "Silver"
           ],
-          "explanation": "Print 'Silver'."
+          "explanation": "Call print() to display \"Silver\".",
+          "event": "print"
         }
       ]
     },
@@ -741,6 +797,17 @@
           },
           "output": [],
           "explanation": "Check is_member: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "subtotal": 46,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Calculate 41.4 * 0.9 = 37.26.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -801,10 +868,23 @@
             "weight": 8,
             "shipping": 9.99
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with subtotal = 41.4, shipping = 9.99; the formatted result is \"51.39\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 11,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8,
+            "shipping": 9.99
+          },
           "output": [
             "51.39"
           ],
-          "explanation": "Print '51.39'."
+          "explanation": "Call print() to display \"51.39\".",
+          "event": "print"
         }
       ]
     },
@@ -845,6 +925,16 @@
         {
           "line": 3,
           "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Calculate 6 - 4 = 2.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
             "coins": 6,
             "level": 2
           },
@@ -859,6 +949,16 @@
           },
           "output": [],
           "explanation": "Check level >= 3 or coins > 5: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "coins": 6,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Calculate 4 + 2 = 6.",
+          "phase": "calculate"
         },
         {
           "line": 5,
@@ -884,10 +984,21 @@
             "coins": 6,
             "level": 4
           },
+          "output": [],
+          "explanation": "Calculate 4 * 6 = 24.",
+          "phase": "calculate"
+        },
+        {
+          "line": 9,
+          "variables": {
+            "coins": 6,
+            "level": 4
+          },
           "output": [
             "24"
           ],
-          "explanation": "Print 24."
+          "explanation": "Call print() to display \"24\".",
+          "event": "print"
         }
       ]
     },
@@ -931,6 +1042,17 @@
           "variables": {
             "kills": 9,
             "assists": 5,
+            "deaths": 2
+          },
+          "output": [],
+          "explanation": "Calculate (9 + 5) / 2 = 7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
             "deaths": 2,
             "kda": 7
           },
@@ -947,6 +1069,18 @@
           },
           "output": [],
           "explanation": "Check kda >= 5: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 7
+          },
+          "output": [],
+          "explanation": "Calculate 4.2 * 0.6 = 2.52.",
+          "phase": "calculate"
         },
         {
           "line": 5,
@@ -1005,7 +1139,8 @@
           "output": [
             "A 4.2"
           ],
-          "explanation": "Print 'A', '4.2'."
+          "explanation": "Call print() to display \"A 4.2\".",
+          "event": "print"
         }
       ]
     },
@@ -1047,6 +1182,16 @@
           "line": 3,
           "variables": {
             "a": 5,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Calculate 5 - 3 = 2.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 5,
             "b": 3
           },
           "output": [],
@@ -1067,10 +1212,21 @@
             "a": 5,
             "b": 3
           },
+          "output": [],
+          "explanation": "Calculate 5 + 3 = 8.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 5,
+            "b": 3
+          },
           "output": [
             "8"
           ],
-          "explanation": "Print 8."
+          "explanation": "Call print() to display \"8\".",
+          "event": "print"
         }
       ]
     },
@@ -1164,6 +1320,18 @@
           "line": 13,
           "variables": {
             "weight": 20,
+            "total": 49.99,
+            "premium": false,
+            "fee": 9.99
+          },
+          "output": [],
+          "explanation": "Calculate 59.980000000000004 + 9.99 = 69.97.",
+          "phase": "calculate"
+        },
+        {
+          "line": 13,
+          "variables": {
+            "weight": 20,
             "total": 59.980000000000004,
             "premium": false,
             "fee": 9.99
@@ -1182,7 +1350,8 @@
           "output": [
             "59.98"
           ],
-          "explanation": "Print '59.98'."
+          "explanation": "Call print() to display \"59.98\".",
+          "event": "print"
         }
       ]
     }
