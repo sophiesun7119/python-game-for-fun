@@ -23,14 +23,14 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - First submission correct: show confirmation, explanation, and **Next question**.
 - First submission wrong: do **not** immediately show answer. Offer **Give me a hint**, **Retry**, and **Show answer**.
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
-- Only a correct **first** submission counts toward XP/stars for that quiz attempt, whether or not the student eventually solves the question. Completing all five saves the user's best score.
+- **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
 ## What works
 
 - Choose Weeks 1–4 and any difficulty, with suggested next step but no locked levels
 - Five questions per quest; multiple choice where defined and short-answer elsewhere
 - Hints, answer feedback, explanations, next question, and result summary
-- First-try-only scoring; Easy 10, Medium 15, Hard 20 XP for each correct answer
+- Mastery-based scoring, including successful retries; Easy 10, Medium 15, Hard 20 XP per solved question
 - Best result per quest is saved per nickname in the **same browser** using localStorage
 - 3/5 = one star, 4/5 = two, 5/5 = three; all three difficulties passed earns a topic badge
 - No passwords, no email, no timers, no leaderboard
