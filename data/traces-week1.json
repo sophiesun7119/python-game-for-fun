@@ -140,7 +140,7 @@
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Evaluate 17 // 5; the result is \"3\".",
+          "explanation": "Calculate 17 // 5 = 3.",
           "phase": "calculate"
         },
         {
@@ -250,7 +250,17 @@
             "points": 8
           },
           "output": [],
-          "explanation": "Evaluate the f-string with name = \"Mia\", points = 8; the formatted result is \"Mia: 10\".",
+          "explanation": "Calculate 8 + 2 = 10.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "Mia",
+            "points": 8
+          },
+          "output": [],
+          "explanation": "Format the f-string with name = \"Mia\", points = 8; the printed/returned text is \"Mia: 10\".",
           "phase": "calculate"
         },
         {
@@ -348,7 +358,18 @@
             "juice": 3.25
           },
           "output": [],
-          "explanation": "Calculate 1.5 + 6.99 + 3.25 = 11.74.",
+          "explanation": "Calculate 1.5 + 6.99 = 8.49.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25
+          },
+          "output": [],
+          "explanation": "Calculate 8.49 + 3.25 = 11.74.",
           "phase": "calculate"
         },
         {
@@ -396,7 +417,20 @@
             "tax": 0.9392
           },
           "output": [],
-          "explanation": "Evaluate the f-string with subtotal = 11.74, tax = 0.9392; the formatted result is \"$12.68\".",
+          "explanation": "Calculate 11.74 + 0.9392 = 12.6792.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74,
+            "tax": 0.9392
+          },
+          "output": [],
+          "explanation": "Format the f-string with subtotal = 11.74, tax = 0.9392; the printed/returned text is \"$12.68\".",
           "phase": "calculate"
         },
         {
@@ -471,7 +505,19 @@
             "people": 4
           },
           "output": [],
-          "explanation": "Calculate 250 / 32 * 3.89 = 30.390625.",
+          "explanation": "Calculate 250 / 32 = 7.8125.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4
+          },
+          "output": [],
+          "explanation": "Calculate 7.8125 * 3.89 = 30.390625.",
           "phase": "calculate"
         },
         {
@@ -496,7 +542,20 @@
             "cost": 30.390625
           },
           "output": [],
-          "explanation": "Evaluate the f-string with people = 4, cost = 30.390625; the formatted result is \"7.60\".",
+          "explanation": "Calculate 30.390625 / 4 = 7.59765625.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4,
+            "cost": 30.390625
+          },
+          "output": [],
+          "explanation": "Format the f-string with people = 4, cost = 30.390625; the printed/returned text is \"7.60\".",
           "phase": "calculate"
         },
         {
@@ -703,7 +762,27 @@
             "y": 4
           },
           "output": [],
-          "explanation": "Evaluate x // y + x % y using x = 19, y = 4; the result is 7.",
+          "explanation": "Calculate 19 // 4 = 4.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 19,
+            "y": 4
+          },
+          "output": [],
+          "explanation": "Calculate 19 % 4 = 3.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 19,
+            "y": 4
+          },
+          "output": [],
+          "explanation": "Calculate 4 + 3 = 7.",
           "phase": "calculate"
         },
         {
@@ -724,7 +803,29 @@
             "z": 7
           },
           "output": [],
-          "explanation": "Evaluate the f-string with y = 4, z = 7; the formatted result is \"0010\".",
+          "explanation": "Calculate 7 * 2 = 14.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 19,
+            "y": 4,
+            "z": 7
+          },
+          "output": [],
+          "explanation": "Calculate 14 - 4 = 10.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 19,
+            "y": 4,
+            "z": 7
+          },
+          "output": [],
+          "explanation": "Format the f-string with y = 4, z = 7; the printed/returned text is \"0010\".",
           "phase": "calculate"
         },
         {
@@ -904,7 +1005,19 @@
             "subtotal": 10.24
           },
           "output": [],
-          "explanation": "Calculate 10.24 * (1 + 0.08) = 11.0592.",
+          "explanation": "Calculate 1 + 0.08 = 1.08.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24
+          },
+          "output": [],
+          "explanation": "Calculate 10.24 * 1.08 = 11.0592.",
           "phase": "calculate"
         },
         {
@@ -943,7 +1056,21 @@
             "people": 3
           },
           "output": [],
-          "explanation": "Evaluate the f-string with total = 11.0592, people = 3; the formatted result is \"3.69|11.06\".",
+          "explanation": "Calculate 11.0592 / 3 = 3.6864.",
+          "phase": "calculate"
+        },
+        {
+          "line": 6,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24,
+            "total": 11.0592,
+            "people": 3
+          },
+          "output": [],
+          "explanation": "Format the f-string with total = 11.0592, people = 3; the printed/returned text is \"3.69|11.06\".",
           "phase": "calculate"
         },
         {
@@ -1103,7 +1230,7 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Evaluate a // b using a = 27, b = 5; the result is 5.",
+          "explanation": "Calculate 27 // 5 = 5.",
           "phase": "calculate"
         },
         {
@@ -1124,7 +1251,18 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Calculate 5 + 2 * 5 = 15.",
+          "explanation": "Calculate 2 * 5 = 10.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 5,
+            "b": 5,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Calculate 5 + 10 = 15.",
           "phase": "calculate"
         },
         {
@@ -1145,7 +1283,18 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Evaluate b // (a - c) using a = 5, b = 15, c = 2; the result is 5.",
+          "explanation": "Calculate 5 - 2 = 3.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 5,
+            "b": 15,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Calculate 15 // 3 = 5.",
           "phase": "calculate"
         },
         {
@@ -1264,7 +1413,20 @@
             "tax": 1.8
           },
           "output": [],
-          "explanation": "Evaluate the f-string with name = \"Ana\", subtotal = 22.5, tax = 1.8; the formatted result is \"Ana  |$024.30\".",
+          "explanation": "Calculate 22.5 + 1.8 = 24.3.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5,
+            "tax": 1.8
+          },
+          "output": [],
+          "explanation": "Format the f-string with name = \"Ana\", subtotal = 22.5, tax = 1.8; the printed/returned text is \"Ana  |$024.30\".",
           "phase": "calculate"
         },
         {
