@@ -1,10 +1,18 @@
 # Changelog
 
+## v0.6.5 — 2026-11-15
+- Standardized `Function defined` badges using actual `def` source lines rather than brittle English-explanation punctuation.
+- Pinned printed output to the `print()` line that produced it, retaining that output across later execution steps and function returns.
+- Corrected Week 2 Medium question `W2-M-03` so the else selection is distinct from the subsequent `print('Wait')` step.
+- Audited all 80 question walkthroughs for function definitions, invocation/return messages, conditional verdicts and actual output source lines.
+- Added `tests/validate-trace-events.mjs` to the GitHub Actions validation workflow and updated documentation.
+- Program execution steps remain static; no arbitrary Python is executed in the browser.
+
 ## v0.6.4 — 2026-11-15
 - Widened the overall game and question card, and wrapped code-line badges to prevent offscreen variable values.
 - Implemented persistent variables at their most recent assignment line, with the previous value/location removed on reassignment.
 - Added function-scoped variable lifetime: parameters appear at `def`, locals persist through body/return and vanish when the function returns; outer variables survive nested calls, and globals persist.
-- Kept transient function call, condition verdict and output indicators attached to the active arrow only.
+- Kept transient function-call and condition-verdict indicators attached to the active arrow (output is now retained at its print line in v0.6.5).
 - Added `tests/validate-trace-scopes.mjs` and GitHub Actions coverage for variable lifetime and placement.
 - Updated the User Guide, README and Technical Design.
 
