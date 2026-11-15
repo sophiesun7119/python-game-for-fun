@@ -106,11 +106,15 @@ At completion, `finishQuest()` writes the latest `completed` snapshot, clears on
 
 **Privacy/security:** Nickname is only a local profile selector, not identity authentication. No database, no teacher login and no access control are implemented. Sharing a browser profile allows others to choose the same nickname. Clearing site storage or changing origin/device may lose records; `git pull` does not touch browser storage.
 
-## 7. Inline Trace design
+## 7. Walkthrough Contract — all 80 questions
 
-**Current design (v0.6.4): one wider dark code panel, no Variables/Output side column.** Trace is optional and only appears after selecting **Watch How the Code Works** on a quiz or a completed review card. It keeps the original card layout. Below the code are Step and a bold red **Explanation:** plus Previous/Next Step/Restart. Close hides the trace. It does not affect grading, progress, or XP.
+**Normative specification, version 0.6.6.** These rules apply to *every* Challenge 1 question, regardless of week or difficulty. A change to this contract must change the **shared renderer**, relevant tests and documentation; no single-card UI overrides are permitted. Earlier v0.4–v0.6.5 rendering notes in CHANGELOG are historical and do not define current behavior.
 
-Each trace lives in `data/traces-week1.json` through `data/traces-week4.json`, keyed by exact question ID. Each has an ordered array of authored/precomputed step snapshots:
+### 7.1 Source of truth and rendering architecture
+
+`data/questions.json` contains 80 questions with IDs and newline-separated `code`. Each ID has an ordered walkthrough in `data/traces-week1.json` through `data/traces-week4.json`. The browser reads these static JSON files. `src/app.js` exposes `tracePanel(q)`, which renders the same structural template for every question using the current `state.traceIndex`. `styles.css` defines presentation; no separate HTML templates are maintained for Easy, Medium, Hard or Extra Rock.
+
+Each trace step has the following fields:
 
 ```json
 {
@@ -121,54 +125,90 @@ Each trace lives in `data/traces-week1.json` through `data/traces-week4.json`, k
 }
 ```
 
-- `line` is **zero-based**, matching `question.code.split('\\n')`; `line: -1` means the initial ready state.
-- `variables` is a **full variable snapshot** for the current frame, not just the changes.
-- `output` is the **cumulative printed output** through the current step.
-- `explanation` is written for children; an optional `error` describes failure.
+- `line`: **zero-based** index into `question.code.split('\n')`; the initial step uses `-1`.
+- `variables`: snapshot of currently accessible values for that step; this is **not** the complete lifetime history.
+- `output`: complete, ordered, **cumulative** Python stdout lines *so far*, not only newly printed text.
+- `explanation`: short child-friendly explanation of the current action.
+- Optional `error`: error demonstration, where applicable.
 
-**Rendering:** `tracePanel()` maps `code` into line-numbered rows. It highlights exactly `step.line` and draws an arrow beside that row. `traceInlineDetails(step, previous, source, condition)` produces temporary event annotations **only on the highlighted row**. Persistent variable badges from `tracePersistentBindings()` may remain on earlier code rows until reassigned or out of scope.
+Every question starts with a ready step whose variables and output are empty. Trace data is curated/precomputed and is **not generated from executing untrusted student Python**.
 
-- **Variable badges** are reconstructed from all trace steps through the selected index by `tracePersistentBindings(steps, index, codeLines)`. Each live binding belongs to a function-call frame (or global frame) and is rendered at its *latest assignment* or `def` parameter-binding line, not necessarily the currently highlighted line. Reassignments move the badge to the new line. Inner-frame variables disappear on the `Return from ...` step, but remain visible on the actual `return` statement; outer/global variables remain visible during nested calls. The original snapshots still describe each step, and `traceInlineDetails()` supplies ephemeral call, print and condition tags at the active line only.
-- **Condition tags** come from `traceCondition()` and `traceInlineValues()`: ✓ green when true, ✕ red when false, alongside current values and the action (Enter/Skip Branch, Continue/Exit Loop, Next Iteration/Loop Finished). For compound conditions, the final full-expression verdict is used.
-- **Output tags** represent output added at the actual `print()` source line. Unlike call/condition hints, printed output persists on its original print line after stepping away and across function returns. Each newly printed line is retained; prior output is not erased.
-- **Call/return tags** appear on the call site, function-entry `def` line, and return-to-caller line in sequence. The initial `def` declaration displays `Function defined` based on source semantics, not on exact punctuation in the explanation.
-- **Variable badges persist** at their last binding/update line while their scope is alive. **Event annotations** (calls, returns, ✓/✕) are temporary; **printed output** stays on its print line and attach only to the current execution line. Older values and ended function locals are removed.
+### 7.2 Mandatory visual order
 
-**Important example — `W4-X-01`:** `print(message(730, 6))` (line 12) → **enter `def message(xp, level):` (line 7)** and bind `xp = 730`, `level = 6` → start executing `needed = xp_needed(level)` (line 8), which calls `xp_needed(6)` → **enter `def xp_needed(level):` (line 1)** and bind `level = 6` → execute condition on line 2 (False) and line 4 (True) → return 900 on line 5 → return to **line 8** → set `needed = 900` on line 8 → evaluate the rest of `message()` → return to the `print()` on line 12 and display `Need 170`. The def-line entry step is a pedagogical visualization of parameter binding; in Python, the `def` statement itself executes during initial program setup, while a function call transfers execution into its body. **Do not merge function entry and execution of the first body statement in one step.**
+Inside the opened `Watch How the Code Works` card, always render these areas in this order:
 
-The program's Python code is **not executed in the student's browser**. Walkthroughs are fixed JSON and must be reviewed against the exact current question source. `scripts/build-trace-runtime.js` is an offline generator for selected teacher-authored patterns; it is not a production Python interpreter and cannot be used for arbitrary student input.
-
-### How the UI chooses what to show (consistent across 80 questions)
-
-Historically, the first Easy/Medium walkthroughs were individually authored, while Hard/Extra Rock walkthroughs were mainly generated with `scripts/build-trace-runtime.js`. Their differences in narration led to inconsistent UI tags when the renderer relied on a specific English phrase. The UI now prioritizes source-code location and state changes:
-
-| Event | Determining rule | Display and lifetime |
+| Position | Section | Behavior |
 |---|---|---|
-| Function definition | Current source line begins with `def` and the trace reports a definition step | **Function defined** on that source line |
-| Function invocation | The trace call step is at the calling source line | Temporary **Call ...** tag |
-| Function entry | Trace enters a frame at its `def` line | **Enter ...**, with parameter values; parameters persist while frame exists |
-| Assignment or loop variable change | `variables` snapshot changes, with the current code statement | Persistent latest-value badge at the new assignment line |
-| `if` / `elif` / `for` / `while` | Condition / iteration trace step + code line | Temporary ✓ or ✕ at highlighted check |
-| `return` and return to caller | Return events in trace at body and caller lines | Temporary return-value tag, remove that frame's local-variable badges only on return to caller |
-| `print()` | Newly appended output in consecutive `output` snapshots, source line must be `print(...)` | **Output: ...** pinned to this print line and stays visible in subsequent steps |
+| 1 | **Title + Close** | Toggle walkthrough visibility; no effect on XP or progress |
+| 2 | **Step + Previous / Next Step / Restart** | **Always above the code**; buttons enabled/disabled at the appropriate first/last step; fixed location independent of Explanation length |
+| 3 | **Python Code · Execution Trace** | Single full-width dark panel; arrow and row highlight point to current `step.line` |
+| 4 | **Output** | Separate panel immediately **below code**, always present and **blank until a `print()` occurs**; render `step.output` joined by newlines |
+| 5 | **Explanation** | Beneath Output; bold red **Explanation:** label, then `step.explanation` |
+| 6 | **Footnote** | Optional unobtrusive learning note; never replace Output or Explanation |
 
-`traceInlineDetails()` draws temporary event tags, `tracePersistentBindings()` reconstructs scope-aware variable badges, and `tracePersistentOutputs()` accumulates printed lines at their actual `print()` source locations. Even if narration wording changes, definition display is based on the code line; print/output display is based on cumulative output changes. This is a deliberately static educational visualization, not a runtime interpreter.
+The Output panel is not a side column, and no Output badges are attached to source-code lines. With multiple prints, the box shows all results in chronological order. Pressing Previous rewinds it to the earlier snapshot; pressing Restart clears it. Showing a traceback is educational only; it must not change scores.
 
-The audit checks **all 80** question traces. Every printed-output event must occur on a `print()` line, every definition must have its label, and output remains available after the executing arrow moves. Test: `node tests/validate-trace-events.mjs`. Keep the generated Hard/Extra traces and authored older traces aligned to the same contract.
+### 7.3 Code-line event rules
 
-### Width and inline wrapping
+At any step, **exactly one source row** is marked as currently executing (except the ready step, which has no active row). The current-line arrow is authoritative: do not move the arrow to another line based only on the explanation's wording.
 
-The main content max width is **1,180px**, and the question card max width is **1,100px** on larger screens. Each code row uses wrapping flex layout: the source remains visible and any number of variable badges can wrap to another visual row **inside the same source line**. The layout does not put a separate Variables column back into the panel. For small screens, the code or badges may wrap more, while the Explain/Next controls remain beneath the code.
+| Event | Display in code | Duration |
+|---|---|---|
+| Define `def fn(...):` | **Function defined** on its `def` line during initial definition | Current step only |
+| Call `fn(...)` | **Call fn(...)** on the actual caller line | Current step only |
+| Enter function | Arrow to the callee **`def` line**; introduce its bound parameters there | Parameter badges remain as long as that call frame lives |
+| Execute function body | Arrow advances to the actual statement, *after* the separate entry step | Per source step |
+| Assignment / loop variable | Display `name = value` next to the **most recent binding or update line** | Persists until that name is reassigned or the defining scope ends; remove its old value/location |
+| `if` / `elif` | Show relevant current variable values plus green **✓ True / Enter Branch** or red **✕ False / Skip Branch** | Only for the condition-evaluation step |
+| `while` | Show value(s) and **✓ Continue Loop** or **✕ Exit Loop** | Only for the actual check |
+| `for` | **✓ Next Iteration** with the loop variable, or **✕ Loop Finished** | Only for that iteration/check step |
+| `return` | Show **↩ value** on the actual `return` statement; then return to caller and show `Return from fn() → value` | Temporary; local variable badges disappear only on return to caller |
+| `print()` | The executing print line is highlighted; **no inline Output tag** | New text appears in the dedicated Output panel |
 
-### Variable lifetime algorithm
+For compound Boolean expressions, display the **final full-expression truth value**, not an intermediate comparison value. Bindings can wrap onto a second visual row *inside the same code line*, preserving code legibility without horizontal searching.
 
-`tracePersistentBindings()` replays the static trace up to the current step into a stack of frame maps. The global frame begins empty. On `Enter fn()` it pushes a new frame and binds parameters beside that function's `def` line. Each new or changed local variable is placed at its current source line, replacing the previous location for that variable in the same frame. A return statement does **not** end the frame until the subsequent `Return from fn()` event, at which point the frame is popped and its badges disappear. The caller's frame remains on the stack during nested calls, so existing caller parameters and globals are not lost. Rendering is deterministic for Next, Previous and Restart without changing stored user progress.
+### 7.4 Function-scoped and global variable lifetimes
 
-Known bounds: the scope reconstruction uses current teacher-authored step explanations and simple assignments/loop variables. If trace formats expand to advanced Python features (`global`/`nonlocal`, closures, exception unwinding, recursion, destructuring, or mutable objects), add explicit frame/local-variable metadata to the trace schema and extend tests before relying on these heuristics.
+`tracePersistentBindings(steps, index, codeLines)` reconstructs live bindings by replaying snapshots through the selected index into a stack of call frames:
+
+1. Global bindings persist to program end unless updated; each variable occupies only its newest assignment location.
+2. A function-entry step pushes a new frame. Parameters appear on its `def` line before the first body statement runs.
+3. Nested function calls retain the outer frame's parameters/locals while also displaying the active inner frame. Same-name variables in distinct frames are distinct bindings.
+4. A `return` statement still belongs to the function, so its locals remain visible **on that return step**. They disappear when the subsequent `Return from fn()` step restores the caller.
+5. Previous, Next and Restart reconstruct the same state deterministically and never modify saved scoring or quiz attempts.
+
+The current implementation assumes the fixed introductory Python examples. More advanced Python semantics (closures, recursion, `nonlocal`, mutable object aliasing, exceptions) should be represented by explicit frame IDs / typed events in the trace data before expansion; do not infer ambiguous scope from English explanations.
+
+### 7.5 Layout and interaction
+
+The content column is up to **1,180 px** wide and a question panel up to **1,100 px**. The dark code panel fills the card. Each source row can wrap annotation badges within its own row, keeping long parameter/value groups visible without mandatory sideways scrolling. The top toolbar also wraps responsively for phones. The separate Output box has an intentional empty minimum height; it never disappears just because `step.output` is empty. Explanation text may grow to fit content, but cannot cause the **top** navigation controls to shift.
+
+Closing or opening a walkthrough, navigating its steps, or reviewing a finished card does **not** change XP, best scores, attempts or saved progress.
+
+### 7.6 Content and CI quality gates
+
+Changes to question code/answers or walkthrough data require matching trace steps. The automated suite must test **all 80 questions**, and the renderer must work identically for all difficulties:
+
+```bash
+python3 tests/validate_python.py
+node tests/validate-traces.mjs
+node tests/validate-trace-control-flow.mjs
+node tests/validate-trace-decisions.mjs
+node tests/validate-inline-trace.mjs
+node tests/validate-trace-scopes.mjs
+node tests/validate-trace-events.mjs
+node tests/validate-walkthrough-layout.mjs
+node tests/validate-walkthrough-layout.mjs
+```
+
+The last test **renders all 978 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
+
+**Representative manual regressions:** `W4-E-01` (`greet()` prints `Hi`), `W4-M-01` (`square(4)` returns 16), `W4-H-01` (nested `total_cost` calls), `W4-X-01` (nested `message` and `xp_needed`), a Week 3 `for` and `while` loop, and `W2-M-03` (`else` then `print('Wait')`). Test first, middle and final steps including Previous/Restart.
+
 
 ## 8. Styling, accessibility, and responsive behavior
 
-`styles.css` owns all visual presentation; there are no external font files or runtime CSS libraries. Cards have light borders, prominent primary buttons, simple tags and adequate whitespace. The Trace panel has a dark `#182638` code background, yellow execution arrow/highlight, and code-side tags: warm yellow variable values, blue printed output, violet calls/returns, green ✓ and red ✕ decisions. The red bold Explanation label below the code anchors the educational commentary. The Explanation paragraph has a CSS minimum height of three text lines (`line-height: 1.6; min-height: 4.8em`) so Previous/Next/Restart controls remain stationary for short descriptions; longer content expands without being clipped.
+`styles.css` owns all visual presentation; there are no external font files or runtime CSS libraries. Cards have light borders, prominent primary buttons, simple tags and adequate whitespace. The Trace panel has a dark `#182638` code background, a yellow execution arrow/highlight, and code-side tags for variables, calls/returns, and green ✓ / red ✕ decisions. Printed text is shown only in the separate Output box below the code. The red bold Explanation label appears below the Output panel. Navigation controls stay above the code, so they do not shift when Explanation text grows.
 
 The code may scroll horizontally for longer source lines (especially on phones), rather than shrinking to unreadable text. The UI uses text labels in addition to color for decisions. Interaction should remain keyboard-accessible through buttons and input controls; add live browser QA when modifying layouts, focus behavior, or screen reader announcements.
 
