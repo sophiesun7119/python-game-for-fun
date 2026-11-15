@@ -15,7 +15,9 @@ const all=Object.assign({},...[1,2,3,4].map(w=>
 const at=(id,index)=> {
  const item=bank.find(q=>q.id===id);
  const steps=all[id].steps;
- return state(steps,index,item.code.split('\n')).map(x=>JSON.parse(JSON.stringify(x)));
+ const core=steps.filter(step=>step.phase!=='calculate');
+ const physicalIndex=steps.indexOf(core[index]);
+ return state(steps,physicalIndex,item.code.split('\n')).map(x=>JSON.parse(JSON.stringify(x)));
 };
 const pick=(records,name,line)=>records.filter(x=>x.name===name&&(line===undefined||x.line+1===line));
 const w4='W4-H-01';
