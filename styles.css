@@ -83,3 +83,25 @@
 .trace-inline-decision{font:700 10px/1.4 ui-sans-serif,system-ui,sans-serif;opacity:.88}
 .trace-line{gap:7px}
 .trace-line-active{min-width:max-content}
+
+/* v0.6.3: full-width inline code trace. No Variables/Output sidebar. */
+.trace-code-full{width:100%;padding:15px 12px 18px;overflow:hidden}
+.trace-code-full .trace-panel-title{padding-left:13px}
+.trace-code-full .trace-code{overflow-x:auto;max-width:100%}
+.trace-code-full .trace-line{width:100%;min-width:max-content;display:flex;align-items:center;gap:8px}
+.trace-code-full .trace-source{white-space:pre;flex-shrink:0}
+.trace-inline-annotations{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:6px;margin-left:auto;padding-left:15px;white-space:normal;max-width:65%}
+.trace-inline-tag{display:inline-flex;align-items:center;padding:4px 8px;border-radius:7px;font:700 12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+.trace-inline-value{background:#fff0c4;color:#4a3108}
+.trace-inline-output{background:#e0edff;color:#173e82}
+.trace-inline-call{background:#ddd8ff;color:#37257c}
+.trace-inline-pass{background:#dff5e7;color:#165b34}
+.trace-inline-fail{background:#ffe1e4;color:#902033}
+.trace-inline-muted{background:#34475d;color:#d5e3f3}
+.trace-code-ready{padding:11px 14px 3px;color:#a3b8cf;font-size:12px}
+@media(max-width:600px){
+ .trace-code-full{padding:12px 7px}
+ .trace-code-full .trace-line{gap:5px;font-size:12px}
+ .trace-inline-annotations{padding-left:9px;max-width:70%}
+ .trace-inline-tag{font-size:11px;padding:3px 6px}
+}
