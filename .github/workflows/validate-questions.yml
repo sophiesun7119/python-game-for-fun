@@ -26,3 +26,5 @@ jobs:
         run: node tests/validate-inline-trace.mjs
       - name: Verify variable lifetime and latest-assignment placement
         run: node tests/validate-trace-scopes.mjs
+      - name: Verify semantic function and output event consistency
+        run: node tests/validate-trace-events.mjs
