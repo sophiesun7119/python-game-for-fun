@@ -53,3 +53,7 @@
  .trace-line{font-size:12px}
  .trace-controls .btn{min-width:120px}
 }
+
+/* Make each trace step's teaching note easy for children to find. */
+.trace-explanation-label{color:#bd273a;font-weight:850;margin-right:3px}
+.trace-narration p{line-height:1.65}
