@@ -41,6 +41,16 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
 - Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
 
+## Persistent variables and wider Trace view (v0.6.4)
+
+- The main game container is wider (up to 1,180 px), and the question/Trace panel can use up to 1,100 px on larger screens.
+- Tags on a long code line **wrap onto another row within the same highlighted source line** instead of forcing horizontal scrolling to see `weight = 5` or `rush = True`.
+- Variable badges now remain at their **latest assignment/binding line** across subsequent steps. Reassigning a variable moves its single badge to the newer line and removes the previous badge; only the newest value remains.
+- Function parameters start on the highlighted `def` line when the call enters. Local variables remain visible even while another statement in that function runs, including its final `return`. They disappear only after the function returns to its caller.
+- **Nested calls:** outer-function variables remain available while an inner function runs; the inner function's own locals disappear on return. Global variables stay until reassigned or the program ends.
+- Execution-specific call/return, output and ✓/✕ verdicts still follow the current arrow. Previous/Next reconstruct the same variable display deterministically; the traces do not execute Python in the browser.
+- CI includes `node tests/validate-trace-scopes.mjs` to check 80 questions and nested-function lifetimes.
+
 ## Function entry and stable explanation layout
 
 - A call highlights its **caller line**, then the arrow moves to the target **`def` line**, where the parameter bindings appear (for example, `xp = 730`, `level = 6`). **Only the following step** enters the first executable line inside that function.
