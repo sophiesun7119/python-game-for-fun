@@ -1,6 +1,6 @@
 # Python Quest 🐍
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.2 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.3 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
 
 ## Run locally
 
@@ -25,6 +25,17 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
+## Auto-save, Resume and Review (v0.3.0)
+
+- Each player, week and difficulty stores an **in-progress** five-card quest in browser localStorage. The app saves the question index, drafted answer, answer feedback, hints and per-card solved/revealed status as the child works.
+- Leaving a quiz and re-entering the same week/difficulty shows **Continue Quest** (restore exactly where the child was) or **Start Over** (discard only unfinished progress, never the best score).
+- The home screen surfaces unfinished quests for the current username. A different username has separate saves.
+- After completing a five-card quest, the latest completed card snapshot is retained. Open **Review cards** from difficulty selection or **My Progress**, or **Review all 5 cards** from results.
+- In Review, navigate **Previous** / **Next** to see saved answers, correct answers and explanations. **Retry this card** temporarily hides the solution and lets the child practice again, with no score changes.
+- Review practice does not change the finished result. To increase the best XP, start a **new five-card quest** and solve the questions; correct answers after hints/retries still earn full points, whereas Show Answer ends that question without XP.
+- Only the **most recent completed attempt** of each difficulty is retained for review. The all-time best score is retained separately.
+- All data remains only in the same browser/profile; no cloud sync, password or database is involved.
+
 ## What works
 
 - Choose Weeks 1–4 and any difficulty, with suggested next step but no locked levels
@@ -40,8 +51,8 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - The 60 questions are teacher-review drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
 - A public deployment is visible to anyone who knows the URL even if the GitHub repository is private. Do not put private student information in this app.
-- Clearing browser storage or using another browser/device loses progress; progress is saved after completing a five-question quest, not mid-question.
-- Challenge 2 (Weeks 6–9) is not included in v0.1.
+- Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
+- Challenge 2 (Weeks 6–9) is not included in v0.3.
 
 ## Source documents
 
