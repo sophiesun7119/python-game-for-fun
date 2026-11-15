@@ -1,4 +1,4 @@
-import { countFirstTry, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress } from './scoring.js';
+import { countFirstTry, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress, selectUsername, activeUsername, playerDisplayName } from './scoring.js';
 const app = document.getElementById('app');
 const weeks = [
  {week:1,title:'Output & Variables',emoji:'🖨️',subtitle:'print(), input(), variables and arithmetic'},
@@ -10,16 +10,20 @@ const diffs = ['easy','medium','hard'];
 const labels = {easy:'Easy',medium:'Medium',hard:'Hard'};
 const points = {easy:10,medium:15,hard:20};
 let allQuestions = [];
-let progress = loadProgress();
-let state = {view:'home',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false};
+let username = activeUsername();
+let progress = username ? loadProgress(username) : {best:{}};
+let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:''};
 const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
 const scoreKey=(w,d)=>`W${w}-${d}`;
 const best=(w,d)=>progress.best[scoreKey(w,d)] || 0;
 function render(){
  document.getElementById('total-xp').textContent=totalXP(progress.best).toLocaleString();
+ const playerEl=document.getElementById('player-switch');
+ if(playerEl){playerEl.textContent=username?'👤 '+playerDisplayName(username)+' · Switch':'👤 Choose Player';playerEl.hidden=false;}
  let content;
- if(state.view==='home')content=home();
+ if(state.view==='welcome')content=welcome();
+ else if(state.view==='home')content=home();
  else if(state.view==='levels')content=levels();
  else if(state.view==='difficulty')content=difficultyView();
  else if(state.view==='quiz')content=quiz();
@@ -27,11 +31,12 @@ function render(){
  else if(state.view==='progress')content=progressView();
  app.innerHTML=content;
 }
+function welcome(){return `<section class="welcome card"><div class="big-emoji">🐍</div><div class="eyebrow">Python Quest</div><h1>Welcome, Python Explorer!</h1><p class="muted">Enter a player name to keep your stars and scores on this browser. Leave it blank to play as <strong>username</strong>.</p><form id="player-form"><label for="player-name">Player name (optional)</label><input id="player-name" class="answer-input" type="text" maxlength="32" autocomplete="off" placeholder="e.g. CodingDragon" value="${escapeHTML(state.loginDraft||'')}"><button class="btn primary block" type="submit">Start Playing →</button></form><p class="footnote">No password or account needed. Each name has separate progress on this computer. Names are not private or secure.</p></section>`;}
 function header(){return `<button class="back" data-action="back">← Back</button>`;}
 function home(){
  const next=recommendedQuest(progress.best);
  const completed=Object.values(progress.best).filter(n=>n>=3).length;
- return `<section class="hero"><div class="eyebrow">Welcome, Python Explorer!</div><h1>Small challenges. Big discoveries. 🚀</h1><p class="muted">Practice real Python skills, earn stars and build confidence—five questions at a time.</p><div class="btn-row">${button('Continue: Week '+next.week+' · '+labels[next.difficulty],'continue','primary')}${button('My progress','progress')}</div></section>
+ return `<section class="hero"><div class="eyebrow">Welcome, ${escapeHTML(playerDisplayName(username))}!</div><h1>Small challenges. Big discoveries. 🚀</h1><p class="muted">Practice real Python skills, earn stars and build confidence—five questions at a time.</p><div class="btn-row">${button('Continue: Week '+next.week+' · '+labels[next.difficulty],'continue','primary')}${button('My progress','progress')}</div></section>
  <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/12</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3)).length}/4</b><span class="muted small">Topic badges</span></div></div>
  <h2 class="section-title">Choose your challenge</h2><div class="cards">
  <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 60 questions</span>${button('Explore levels →','levels','primary block')}</article>
@@ -51,12 +56,20 @@ function currentQuestion(){return state.attempt[state.index];}
 function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
 function quiz(){
  const item=currentQuestion(); const q=item.question;
- const opts=q.options?.length ? `<div role="group" aria-label="Answer options">${q.options.map((o,i)=>`<button class="option" data-choice="${i}" aria-pressed="${state.draft===o}" ${state.checked?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`:`<label for="answer" class="small muted">Type your answer below. For multiple lines, use the Enter key.</label><textarea id="answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" ${state.checked?'disabled':''} placeholder="Your answer...">${escapeHTML(state.draft)}</textarea>`;
+ const locked=state.checked;
+ const opts=q.options?.length ? `<div role="group" aria-label="Answer options">${q.options.map((o,i)=>`<button class="option" data-choice="${i}" aria-pressed="${state.draft===o}" ${locked?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`:`<label for="answer" class="small muted">Type your answer below. For multiple lines, use the Enter key.</label><textarea id="answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" ${locked?'disabled':''} placeholder="Your answer...">${escapeHTML(state.draft)}</textarea>`;
  const f=state.feedback;
+ const correct=state.checked&&f?.correct;
+ const revealed=state.checked&&f?.revealed;
+ const wrong=state.checked&&!correct&&!revealed;
+ let actions;
+ if(correct||revealed) actions=button(state.index===4?'See results →':'Next question →','next','primary');
+ else if(wrong)actions=button('💡 Give me a hint','hint')+button('↻ Retry','retry','primary')+button('Show answer','reveal');
+ else actions=button('💡 Give me a hint','hint')+button('Check answer','check','primary');
  return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>${opts}
- ${state.hint&&!state.checked?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
- ${state.checked?`<div class="feedback ${f.correct?'':'wrong'}" role="status"><strong>${f.correct?'✅ Correct!':'💡 Keep learning!'}</strong><p>${escapeHTML(q.explanation)}</p>${!f.correct?`<p style="margin-top:8px"><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p>`:''}</div>`:''}
- <div class="btn-row">${state.checked?button(state.index===4?'See results →':'Next question →','next','primary'):button('💡 Hint','hint')+button('Check answer','check','primary')}</div></div><p class="footnote">Only the first submitted answer earns XP. You can retry the entire quest anytime.</p></div>`;
+ ${state.hint&&!revealed&&!correct?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
+ ${state.checked?`<div class="feedback ${wrong?'wrong':''}" role="status"><strong>${correct?'✅ Correct!':revealed?'📖 Answer & explanation':'🔄 Not quite. Try again or see the answer.'}</strong>${correct||revealed?`<p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p><p style="margin-top:8px">${escapeHTML(q.explanation)}</p>`:`<p>You can ask for a hint, retry the question, or reveal the correct answer with an explanation.</p>`}</div>`:''}
+ <div class="btn-row">${actions}</div></div><p class="footnote">Only a correct first submission earns XP. Retrying or revealing the answer still helps you learn.</p></div>`;
 }
 function results(){
  const n=countFirstTry(state.attempt);const old=state.oldBest;const fresh=best(state.week,state.difficulty);const xpGain=(fresh-old)*points[state.difficulty];const stars=awardedStars(n);
@@ -77,12 +90,12 @@ function check(){
  if(state.checked||!state.draft.trim())return;
  const item=currentQuestion(); const q=item.question;
  const correct=normalize(state.draft)===normalize(q.answer);
- item.firstCorrect=correct;item.submitted=true;
- state.checked=true;state.feedback={correct};render();
+ if(!item.submitted){item.firstCorrect=correct;item.submitted=true;}
+ state.checked=true;state.feedback={correct,revealed:false};render();
 }
 function next(){
  if(state.index===4){
- const n=countFirstTry(state.attempt);progress=updateBest(progress,state.week,state.difficulty,n);saveProgress(progress);navigate('results');return;
+ const n=countFirstTry(state.attempt);progress=updateBest(progress,state.week,state.difficulty,n);saveProgress(progress,username);navigate('results');return;
  }
  state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();
 }
@@ -91,6 +104,7 @@ app.addEventListener('click',event=>{
  if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();return;}
  const btn=event.target.closest('[data-action]');if(!btn)return;
  const action=btn.dataset.action;
+ if(action==='switch'){state.loginDraft='';navigate('welcome');return;}
  if(action==='back'){navigate(state.view==='quiz'?'difficulty':state.view==='difficulty'?'levels':'home');return;}
  if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;navigate('difficulty');return;}
  if(action==='levels'){navigate('levels');return;}
@@ -98,10 +112,13 @@ app.addEventListener('click',event=>{
  if(action.startsWith('week:')){state.week=Number(action.split(':')[1]);navigate('difficulty');return;}
  if(action.startsWith('start:')){start(action.split(':')[1]);return;}
  if(action==='hint'){state.hint=true;render();return;}
+ if(action==='retry'){state.checked=false;state.draft='';state.feedback=null;render();return;}
+ if(action==='reveal'){state.checked=true;state.feedback={correct:false,revealed:true};render();return;}
  if(action==='check'){check();return;}
  if(action==='next'){next();return;}
 });
-app.addEventListener('input',event=>{if(event.target.id==='answer')state.draft=event.target.value;});
+app.addEventListener('input',event=>{if(event.target.id==='answer')state.draft=event.target.value;if(event.target.id==='player-name')state.loginDraft=event.target.value;});
+app.addEventListener('submit',event=>{if(event.target.id!=='player-form')return;event.preventDefault();username=selectUsername(state.loginDraft);progress=loadProgress(username);state.loginDraft='';navigate('home');});
 async function init(){
  try{
  const resp=await fetch('./data/questions.json',{cache:'no-cache'});
