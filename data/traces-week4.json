@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "Week 4 guided traces show function definitions, calls, parameters, returns and control moving into and out of functions. Local values shown while inside functions.",
+  "version": "2.0.0",
+  "description": "Guided traces for Week 4 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
   "traces": {
     "W4-E-01": {
       "steps": [
@@ -487,103 +487,95 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define add_one(n)."
-        },
-        {
-          "line": 2,
-          "variables": {},
-          "output": [],
-          "explanation": "Define double(n)."
+          "explanation": "Define base_rate(). Its body does not run until the function is called."
         },
         {
           "line": 4,
           "variables": {},
           "output": [],
-          "explanation": "Define process(n)."
+          "explanation": "Define rush_fee(). Its body does not run until the function is called."
         },
         {
-          "line": 6,
+          "line": 8,
           "variables": {},
           "output": [],
-          "explanation": "Call process(4)."
+          "explanation": "Define total_cost(). Its body does not run until the function is called."
         },
         {
-          "line": 4,
-          "variables": {
-            "n": 4
-          },
+          "line": 8,
+          "variables": {},
           "output": [],
-          "explanation": "In process, n = 4."
-        },
-        {
-          "line": 5,
-          "variables": {
-            "n": 4
-          },
-          "output": [],
-          "explanation": "Before calling double(...), evaluate add_one(n)."
+          "explanation": "Call total_cost(5, True). Bind parameters and enter its body."
         },
         {
           "line": 0,
           "variables": {
-            "n": 4
+            "weight": 5,
+            "rush": true
           },
           "output": [],
-          "explanation": "Call add_one(4); local n = 4."
+          "explanation": "Call base_rate(5). Bind parameters and enter its body."
         },
         {
           "line": 1,
           "variables": {
-            "n": 4
+            "weight": 5
           },
           "output": [],
-          "explanation": "Return 4 + 1 = 5."
-        },
-        {
-          "line": 5,
-          "variables": {
-            "n": 4
-          },
-          "output": [],
-          "explanation": "Now call double(5)."
+          "explanation": "Check weight <= 5: True. Enter this branch."
         },
         {
           "line": 2,
           "variables": {
-            "n": 5
+            "weight": 5
           },
           "output": [],
-          "explanation": "Inside double, n = 5."
+          "explanation": "Return 10 to the calling line."
         },
         {
-          "line": 3,
-          "variables": {
-            "n": 5
-          },
+          "line": 4,
+          "variables": {},
           "output": [],
-          "explanation": "Return 5 * 2 = 10 to process."
+          "explanation": "Call rush_fee(True). Bind parameters and enter its body."
         },
         {
           "line": 5,
           "variables": {
-            "n": 4
+            "rush": true
           },
           "output": [],
-          "explanation": "process returns 10."
+          "explanation": "Check rush: True. Enter this branch."
         },
         {
           "line": 6,
+          "variables": {
+            "rush": true
+          },
+          "output": [],
+          "explanation": "Return 15 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
+          "output": [],
+          "explanation": "Return 25 to the calling line."
+        },
+        {
+          "line": 10,
           "variables": {},
           "output": [
-            "10"
+            "25"
           ],
-          "explanation": "print() displays 10."
+          "explanation": "Print 25."
         }
       ]
     },
@@ -593,81 +585,196 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define grade(score)."
-        },
-        {
-          "line": 4,
-          "variables": {},
-          "output": [],
-          "explanation": "Define describe(score)."
-        },
-        {
-          "line": 6,
-          "variables": {},
-          "output": [],
-          "explanation": "Call describe(79)."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "score": 79
-          },
-          "output": [],
-          "explanation": "Inside describe, score = 79."
-        },
-        {
-          "line": 5,
-          "variables": {
-            "score": 79
-          },
-          "output": [],
-          "explanation": "To build the result, call grade(79)."
+          "explanation": "Define total(). Its body does not run until the function is called."
         },
         {
           "line": 0,
-          "variables": {
-            "score": 79
-          },
+          "variables": {},
           "output": [],
-          "explanation": "Inside grade, score = 79."
+          "explanation": "Call total(4). Bind parameters and enter its body."
         },
         {
           "line": 1,
           "variables": {
-            "score": 79
+            "n": 4,
+            "result": 0
           },
           "output": [],
-          "explanation": "Check score >= 80: 79 >= 80 is False."
+          "explanation": "Evaluate 0 and set result to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "result": 0,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
         },
         {
           "line": 3,
           "variables": {
-            "score": 79
+            "n": 4,
+            "result": 0,
+            "i": 1
           },
           "output": [],
-          "explanation": "Return C."
+          "explanation": "Check i % 2 == 0: False. Skip this branch."
         },
         {
           "line": 5,
           "variables": {
-            "score": 79
+            "n": 4,
+            "result": 0,
+            "i": 1
           },
           "output": [],
-          "explanation": "Back in describe, combine C + ! to make C!. Return it."
+          "explanation": "Take the else branch."
         },
         {
           "line": 6,
+          "variables": {
+            "n": 4,
+            "result": 1,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i and update result to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "result": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "result": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Check i % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "result": 5,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * 2 and update result to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "result": 5,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "for loop: i = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "result": 5,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Check i % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4,
+            "result": 5,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 4,
+            "result": 8,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Evaluate i and update result to 8."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "result": 8,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "for loop: i = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "result": 8,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Check i % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "result": 16,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Evaluate i * 2 and update result to 16."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "result": 16,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 4,
+            "result": 16,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Return 16 to the calling line."
+        },
+        {
+          "line": 8,
           "variables": {},
           "output": [
-            "C!"
+            "16"
           ],
-          "explanation": "Print C!."
+          "explanation": "Print 16."
         }
       ]
     },
@@ -677,144 +784,74 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define sum_to(n)."
+          "explanation": "Define show(). Its body does not run until the function is called."
         },
         {
-          "line": 5,
+          "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call sum_to(4)."
+          "explanation": "Define use(). Its body does not run until the function is called."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call use(2). Bind parameters and enter its body."
         },
         {
           "line": 0,
           "variables": {
-            "n": 4
+            "n": 2
           },
           "output": [],
-          "explanation": "Inside sum_to, n = 4."
+          "explanation": "Call show(3). Bind parameters and enter its body."
         },
         {
           "line": 1,
           "variables": {
-            "n": 4,
-            "total": 0
+            "n": 3
           },
-          "output": [],
-          "explanation": "Create total = 0."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 4,
-            "total": 0,
-            "i": 1
-          },
-          "output": [],
-          "explanation": "Loop: i = 1."
+          "output": [
+            "6"
+          ],
+          "explanation": "Print 6."
         },
         {
           "line": 3,
           "variables": {
-            "n": 4,
-            "total": 1,
-            "i": 1
+            "n": 2
           },
-          "output": [],
-          "explanation": "Add 1; total = 1."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 4,
-            "total": 1,
-            "i": 2
-          },
-          "output": [],
-          "explanation": "Loop: i = 2."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "n": 4,
-            "total": 3,
-            "i": 2
-          },
-          "output": [],
-          "explanation": "Add 2; total = 3."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 4,
-            "total": 3,
-            "i": 3
-          },
-          "output": [],
-          "explanation": "Loop: i = 3."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "n": 4,
-            "total": 6,
-            "i": 3
-          },
-          "output": [],
-          "explanation": "Add 3; total = 6."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 4,
-            "total": 6,
-            "i": 4
-          },
-          "output": [],
-          "explanation": "Loop: i = 4."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "n": 4,
-            "total": 10,
-            "i": 4
-          },
-          "output": [],
-          "explanation": "Add 4; total = 10."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 4,
-            "total": 10,
-            "i": 4
-          },
-          "output": [],
-          "explanation": "No more values; exit the for loop."
+          "output": [
+            "6"
+          ],
+          "explanation": "Return None to the calling line."
         },
         {
           "line": 4,
           "variables": {
-            "n": 4,
-            "total": 10,
-            "i": 4
+            "result": null
           },
-          "output": [],
-          "explanation": "Return 10."
+          "output": [
+            "6"
+          ],
+          "explanation": "Evaluate use(2) and set result to None."
         },
         {
           "line": 5,
-          "variables": {},
+          "variables": {
+            "result": null
+          },
           "output": [
-            "10"
+            "6",
+            "None"
           ],
-          "explanation": "Print the returned 10."
+          "explanation": "Print None."
         }
       ]
     },
@@ -824,78 +861,87 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define show(n)."
-        },
-        {
-          "line": 2,
-          "variables": {},
-          "output": [],
-          "explanation": "Define use(n)."
+          "explanation": "Define adjust(). Its body does not run until the function is called."
         },
         {
           "line": 4,
           "variables": {},
           "output": [],
-          "explanation": "Call use(3)."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "n": 3
-          },
-          "output": [],
-          "explanation": "In use, n = 3."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "n": 3
-          },
-          "output": [],
-          "explanation": "To return show(n), call show(3)."
+          "explanation": "Define shipping(). Its body does not run until the function is called."
         },
         {
           "line": 0,
-          "variables": {
-            "n": 3
-          },
+          "variables": {},
           "output": [],
-          "explanation": "In show, n = 3."
+          "explanation": "Call adjust(50, True). Bind parameters and enter its body."
         },
         {
           "line": 1,
           "variables": {
-            "n": 3
+            "cost": 50,
+            "member": true
           },
-          "output": [
-            "6"
-          ],
-          "explanation": "show prints 6. It has no explicit return statement."
+          "output": [],
+          "explanation": "Check member: True. Enter this branch."
         },
         {
-          "line": 3,
+          "line": 2,
           "variables": {
-            "n": 3
+            "cost": 50,
+            "member": true
           },
-          "output": [
-            "6"
-          ],
-          "explanation": "show implicitly returns None. use returns that same None."
+          "output": [],
+          "explanation": "Return 45 to the calling line."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Evaluate adjust(50, True) and set price to 45."
         },
         {
           "line": 4,
-          "variables": {},
+          "variables": {
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Call shipping(6). Bind parameters and enter its body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "weight": 6,
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "weight": 6,
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Return 10 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "price": 45
+          },
           "output": [
-            "6",
-            "None"
+            "55.0"
           ],
-          "explanation": "The final print displays None on a second line."
+          "explanation": "The final value is 55.0. Python displays the .0 because the calculation returns a floating-point number."
         }
       ]
     },
@@ -905,41 +951,25 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define bonus(x)."
+          "explanation": "Define bonus(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Define score(x)."
-        },
-        {
-          "line": 6,
-          "variables": {},
-          "output": [],
-          "explanation": "Call score(3)."
+          "explanation": "Define score(). Its body does not run until the function is called."
         },
         {
           "line": 2,
-          "variables": {
-            "x": 3
-          },
+          "variables": {},
           "output": [],
-          "explanation": "Inside score, x = 3."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "x": 3
-          },
-          "output": [],
-          "explanation": "Evaluate the condition by calling bonus(3)."
+          "explanation": "Call score(3). Bind parameters and enter its body."
         },
         {
           "line": 0,
@@ -947,7 +977,7 @@
             "x": 3
           },
           "output": [],
-          "explanation": "Inside bonus, x = 3."
+          "explanation": "Call bonus(3). Bind parameters and enter its body."
         },
         {
           "line": 1,
@@ -955,23 +985,13 @@
             "x": 3
           },
           "output": [],
-          "explanation": "Return 3 + 2 = 5."
+          "explanation": "Return 5 to the calling line."
         },
         {
           "line": 3,
-          "variables": {
-            "x": 3
-          },
+          "variables": {},
           "output": [],
-          "explanation": "Check 5 >= 5: True. Enter the if block."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "x": 3
-          },
-          "output": [],
-          "explanation": "To compute the return, call bonus(3) again."
+          "explanation": "Check bonus(x) >= 5: True. Enter this branch."
         },
         {
           "line": 0,
@@ -979,7 +999,7 @@
             "x": 3
           },
           "output": [],
-          "explanation": "Inside the second bonus call, x = 3."
+          "explanation": "Call bonus(3). Bind parameters and enter its body."
         },
         {
           "line": 1,
@@ -987,7 +1007,7 @@
             "x": 3
           },
           "output": [],
-          "explanation": "Return 5 again."
+          "explanation": "Return 5 to the calling line."
         },
         {
           "line": 4,
@@ -995,7 +1015,7 @@
             "x": 3
           },
           "output": [],
-          "explanation": "5 * 2 = 10. score returns 10."
+          "explanation": "Return 10 to the calling line."
         },
         {
           "line": 6,
@@ -1004,6 +1024,950 @@
             "10"
           ],
           "explanation": "Print 10."
+        }
+      ]
+    },
+    "W4-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define xp_needed(). Its body does not run until the function is called."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Define message(). Its body does not run until the function is called."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Call message(730, 6). Bind parameters and enter its body."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 730,
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Call xp_needed(6). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Check level <= 5: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Check level <= 10: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Return 900 to the calling line."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "xp": 730,
+            "level": 6,
+            "needed": 900
+          },
+          "output": [],
+          "explanation": "Evaluate xp_needed(level) and set needed to 900."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "xp": 730,
+            "level": 6,
+            "needed": 900
+          },
+          "output": [],
+          "explanation": "Check xp >= needed: False. Skip this branch."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "xp": 730,
+            "level": 6,
+            "needed": 900
+          },
+          "output": [],
+          "explanation": "Return 'Need 170' to the calling line."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [
+            "Need 170"
+          ],
+          "explanation": "Print 'Need 170'."
+        }
+      ]
+    },
+    "W4-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define needed(). Its body does not run until the function is called."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Define levels_gained(). Its body does not run until the function is called."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call levels_gained(650, 2). Bind parameters and enter its body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set gained to 0."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Call needed(2). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Return 200 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Check while xp >= needed(level): True. Run the body."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Call needed(2). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Return 200 to the calling line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 450,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Evaluate needed(level) and update xp to 450."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update level to 3."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update gained to 1."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Call needed(3). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
+          "explanation": "Return 300 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Check while xp >= needed(level): True. Run the body."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Call needed(3). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
+          "explanation": "Return 300 to the calling line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 150,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Evaluate needed(level) and update xp to 150."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update level to 4."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update gained to 2."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 2
+          },
+          "output": [],
+          "explanation": "Call needed(4). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 4
+          },
+          "output": [],
+          "explanation": "Return 400 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Check while xp >= needed(level): False. Exit the loop."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 2
+          },
+          "output": [],
+          "explanation": "Return 2 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {},
+          "output": [
+            "2"
+          ],
+          "explanation": "Print 2."
+        }
+      ]
+    },
+    "W4-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define base(). Its body does not run until the function is called."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Define discount(). Its body does not run until the function is called."
+        },
+        {
+          "line": 8,
+          "variables": {},
+          "output": [],
+          "explanation": "Define checkout(). Its body does not run until the function is called."
+        },
+        {
+          "line": 8,
+          "variables": {},
+          "output": [],
+          "explanation": "Call checkout(2, 7, 5, True). Bind parameters and enter its body."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Call base(2). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 2
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: True. Enter this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "weight": 2
+          },
+          "output": [],
+          "explanation": "Return 10 to the calling line."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Call base(7). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 7
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "weight": 7
+          },
+          "output": [],
+          "explanation": "Return 20 to the calling line."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Call base(5). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: True. Enter this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "Return 10 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true,
+            "total": 40
+          },
+          "output": [],
+          "explanation": "Evaluate base(a) + base(b) + base(c) and set total to 40."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true,
+            "total": 40
+          },
+          "output": [],
+          "explanation": "Call discount(40, True). Bind parameters and enter its body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 40,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Check member and total >= 20: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "total": 40,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Return 36 to the calling line."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true,
+            "total": 40
+          },
+          "output": [],
+          "explanation": "Return 36 to the calling line."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [
+            "36.0"
+          ],
+          "explanation": "The final value is 36.0. Python displays the .0 because the calculation returns a floating-point number."
+        }
+      ]
+    },
+    "W4-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define pairs(). Its body does not run until the function is called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Call pairs(4). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4,
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "count": 0,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 4,
+            "count": 1,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 1,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "count": 1,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 1,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 1,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 4,
+            "count": 2,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 2,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 2,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 4,
+            "count": 3,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 3,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "count": 3,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 3,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 3,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 4."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 4: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 4,
+            "count": 4,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Return 4 to the calling line."
+        },
+        {
+          "line": 8,
+          "variables": {},
+          "output": [
+            "4"
+          ],
+          "explanation": "Print 4."
+        }
+      ]
+    },
+    "W4-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define bump(). Its body does not run until the function is called."
+        },
+        {
+          "line": 3,
+          "variables": {},
+          "output": [],
+          "explanation": "Define process(). Its body does not run until the function is called."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 3 and set x to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Call process(3). Bind parameters and enter its body."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Call bump(3). Bind parameters and enter its body."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 5
+          },
+          "output": [],
+          "explanation": "Evaluate x + 2 and set x to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 5
+          },
+          "output": [],
+          "explanation": "Return 5 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Evaluate bump(x) and set a to 5."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "x": 6,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Evaluate x * 2 and set x to 6."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "x": 6,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Check a > x: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "x": 6,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Return 11 to the calling line."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "x": 3
+          },
+          "output": [
+            "11 3"
+          ],
+          "explanation": "Print 11, 3."
         }
       ]
     }
