@@ -805,6 +805,18 @@
             "2"
           ],
           "explanation": "Check i == 3: True — break exits the loop."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "i": 3
+          },
+          "output": [
+            "0",
+            "1",
+            "2"
+          ],
+          "explanation": "break runs when i reaches 3. Exit the for loop immediately; the print line does not run for i = 3."
         }
       ]
     },
