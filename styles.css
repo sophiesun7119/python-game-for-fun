@@ -61,3 +61,14 @@
 /* Four difficulties; keep cards readable on smaller screens. */
 .difficulty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:640px){.difficulty-grid{grid-template-columns:1fr}}
+
+/* A quiet, accessible verdict paired with each actual condition-evaluation step. */
+.trace-condition{border-radius:10px;padding:11px 12px;margin-top:14px;border:1px solid transparent}
+.trace-condition-pass{background:#e9f8ee;border-color:#b5e4c2;color:#176c39}
+.trace-condition-fail{background:#fff0f1;border-color:#f2c0c6;color:#a52238}
+.trace-condition-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:850;margin-bottom:7px}
+.trace-condition-result{display:flex;align-items:center;gap:9px;font-size:15px}
+.trace-condition-icon{width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:white;background:#25944b;font-size:18px;font-weight:900;flex-shrink:0}
+.trace-condition-fail .trace-condition-icon{background:#d13e50}
+.trace-condition-action{display:block;font-size:12px;margin-top:2px;font-weight:600}
+.trace-condition-expression{display:block;margin-top:8px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;color:inherit}
