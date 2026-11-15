@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.6.1 — 2026-11-15
+- Corrected function call tracing so the arrow moves from the actual caller source line into the function body, then returns to the caller before finishing an assignment or print.
+- Regenerated all 40 Hard and Extra Rock walkthroughs to match the corrected call/return sequencing.
+- Added a small condition verdict in the right-hand Trace panel: ✓ True / Enter Branch or ✕ False / Skip Branch; while and for loops show Continue/Exit or Next Iteration/Finished.
+- Fixed compound condition interpretation so intermediate True values cannot override the final False result.
+- Added regression tests for the Week 4 Extra Rock nested-call example, condition steps, and the full set of static trace data.
+
+### Verification
+- Validated the arrows and explanations for all generated Hard/Extra traces and tested condition indicators over all 80 Trace datasets.
+- Automated browser simulation checked the Week 4 Extra Rock condition display. Real browser/classroom visual QA remains pending.
+
 ## v0.6.0 — 2026-11-15
 - Reviewed the Weeks 1–4 lesson folders, QuickChecks, in-class practice and homework PDFs before recalibrating difficulty.
 - Rewrote 20 Hard questions and added 20 cumulative **Extra Rock** questions, yielding 80 total (5 cards per difficulty per week).
