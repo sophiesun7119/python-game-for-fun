@@ -1,0 +1,1011 @@
+{
+  "version": "1.0.0",
+  "description": "Week 4 guided traces show function definitions, calls, parameters, returns and control moving into and out of functions. Local values shown while inside functions.",
+  "traces": {
+    "W4-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define greet; the body is saved but not run yet."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call greet(). Jump to the function body."
+        },
+        {
+          "line": 1,
+          "variables": {},
+          "output": [
+            "Hi"
+          ],
+          "explanation": "Inside greet: print Hi. The function finishes and returns to the caller."
+        }
+      ]
+    },
+    "W4-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define double(n). Nothing runs inside yet."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call double(3) as the print argument."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Enter double with local parameter n = 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Return 3 * 2 = 6 to the print call."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "6"
+          ],
+          "explanation": "The call has returned; print 6."
+        }
+      ]
+    },
+    "W4-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define square(n)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call square(4)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "The local parameter n becomes 4."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Return n * n = 4 * 4 = 16."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "16"
+          ],
+          "explanation": "Print 16 after the call returns."
+        }
+      ]
+    },
+    "W4-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define add(a, b)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call add(2, 5)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 2,
+            "b": 5
+          },
+          "output": [],
+          "explanation": "Assign parameters a = 2 and b = 5."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 2,
+            "b": 5
+          },
+          "output": [],
+          "explanation": "Return 2 + 5 = 7."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "7"
+          ],
+          "explanation": "Print the returned value 7."
+        }
+      ]
+    },
+    "W4-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define hello(). Its body is not executed because hello() is never called."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "Done"
+          ],
+          "explanation": "Print Done. The Hello line is skipped entirely."
+        }
+      ]
+    },
+    "W4-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define square(n)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Prepare print(square(4) + 1): first call square(4)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Enter square with local n = 4."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Return 4 * 4 = 16."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "17"
+          ],
+          "explanation": "Add 1 to the returned 16 and print 17."
+        }
+      ]
+    },
+    "W4-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define subtract(a, b)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call subtract(3, 10)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 3,
+            "b": 10
+          },
+          "output": [],
+          "explanation": "Set local a = 3, b = 10. Argument order matters."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 3,
+            "b": 10
+          },
+          "output": [],
+          "explanation": "Return 3 - 10 = -7."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "-7"
+          ],
+          "explanation": "Print -7."
+        }
+      ]
+    },
+    "W4-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define greet(name)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Call greet('Mia') while calculating the right side of result = ..."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "name": "Mia"
+          },
+          "output": [],
+          "explanation": "Inside greet, the local parameter name is 'Mia'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "Mia"
+          },
+          "output": [
+            "Hello Mia"
+          ],
+          "explanation": "Print Hello Mia. This function has no return statement."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "result": null
+          },
+          "output": [
+            "Hello Mia"
+          ],
+          "explanation": "The function ends and implicitly returns None; assign result = None."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "result": null
+          },
+          "output": [
+            "Hello Mia",
+            "None"
+          ],
+          "explanation": "Print result. The second output line is None."
+        }
+      ]
+    },
+    "W4-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define double(n)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Define triple_double(n)."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Call triple_double(2)."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Inside triple_double, local n = 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "To calculate return double(n) * 3, call double(2)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Inside double, local n = 2."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Return 2 * 2 = 4 to triple_double."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Continue triple_double: 4 * 3 = 12. Return 12."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [
+            "12"
+          ],
+          "explanation": "Print the returned 12."
+        }
+      ]
+    },
+    "W4-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define check(n)."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Call check(5)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Inside check, n = 5."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n > 0: 5 > 0 is True."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Return Yes immediately. The later return No is skipped."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [
+            "Yes"
+          ],
+          "explanation": "Print Yes."
+        }
+      ]
+    },
+    "W4-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define add_one(n)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Define double(n)."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Define process(n)."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Call process(4)."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "In process, n = 4."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Before calling double(...), evaluate add_one(n)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Call add_one(4); local n = 4."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Return 4 + 1 = 5."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Now call double(5)."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Inside double, n = 5."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Return 5 * 2 = 10 to process."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "process returns 10."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [
+            "10"
+          ],
+          "explanation": "print() displays 10."
+        }
+      ]
+    },
+    "W4-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define grade(score)."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Define describe(score)."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Call describe(79)."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "Inside describe, score = 79."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "To build the result, call grade(79)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "Inside grade, score = 79."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "Check score >= 80: 79 >= 80 is False."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "Return C."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 79
+          },
+          "output": [],
+          "explanation": "Back in describe, combine C + ! to make C!. Return it."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [
+            "C!"
+          ],
+          "explanation": "Print C!."
+        }
+      ]
+    },
+    "W4-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define sum_to(n)."
+        },
+        {
+          "line": 5,
+          "variables": {},
+          "output": [],
+          "explanation": "Call sum_to(4)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Inside sum_to, n = 4."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Create total = 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 0,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Loop: i = 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "total": 1,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Add 1; total = 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Loop: i = 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "total": 3,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Add 2; total = 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 3,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Loop: i = 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "total": 6,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Add 3; total = 6."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 6,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Loop: i = 4."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "total": 10,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Add 4; total = 10."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 10,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "No more values; exit the for loop."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "total": 10,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Return 10."
+        },
+        {
+          "line": 5,
+          "variables": {},
+          "output": [
+            "10"
+          ],
+          "explanation": "Print the returned 10."
+        }
+      ]
+    },
+    "W4-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define show(n)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Define use(n)."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Call use(3)."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "In use, n = 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "To return show(n), call show(3)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "In show, n = 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 3
+          },
+          "output": [
+            "6"
+          ],
+          "explanation": "show prints 6. It has no explicit return statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 3
+          },
+          "output": [
+            "6"
+          ],
+          "explanation": "show implicitly returns None. use returns that same None."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [
+            "6",
+            "None"
+          ],
+          "explanation": "The final print displays None on a second line."
+        }
+      ]
+    },
+    "W4-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define bonus(x)."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Define score(x)."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Call score(3)."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Inside score, x = 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Evaluate the condition by calling bonus(3)."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Inside bonus, x = 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Return 3 + 2 = 5."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Check 5 >= 5: True. Enter the if block."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "To compute the return, call bonus(3) again."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Inside the second bonus call, x = 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Return 5 again."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "5 * 2 = 10. score returns 10."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [
+            "10"
+          ],
+          "explanation": "Print 10."
+        }
+      ]
+    }
+  }
+}
