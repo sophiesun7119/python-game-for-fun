@@ -25,6 +25,14 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
+## Inline condition indicators — v0.6.2
+
+- On the currently highlighted `if`, `elif`, `while`, or `for` source line, a small **✓ green / ✕ red** marker appears with **actual variable values at that exact step**, plus Enter Branch, Skip Branch, Continue Loop, Exit Loop, Next Iteration, or Loop Finished.
+- Example: `while i <= 3:` shows `✓ i = 1 · Continue Loop`, then `✓ i = 2 · Continue Loop`, and finally `✕ i = 4 · Exit Loop`.
+- For compound expressions, all referenced variables are shown (when available), and ✓/✕ reflects the final combined truth value. The inline marker is hidden for nondecision steps and disappears when the next source line executes.
+- The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
+- Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
+
 ## Walkthrough correctness and condition feedback (v0.6.1)
 
 - The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` highlights that print line, then line 8 `needed = xp_needed(level)` inside `message()`, then the condition lines inside `xp_needed()`. It returns to line 8 before setting `needed = 900`.
