@@ -34,8 +34,8 @@ assert.equal(pick(at(w4,15),'rush',5).length,0,'rush_fee parameter disappears wh
 assert.equal(at(w4,17).length,0,'All total_cost locals disappear after returning to global code');
 
 const global='W1-H-02';
-assert.equal(pick(at(global,1),'price').length,1,'Global remains after assignment');
-assert.equal(pick(at(global,2),'price').length,1,'Global remains while print runs');
+assert.equal(pick(at(global,3),'price').length,1,'Global remains after assignment');
+assert.equal(pick(at(global,6),'price').length,1,'Global remains while print runs');
 const reassignment='W1-H-03';
 const code=bank.find(q=>q.id===reassignment).code.split('\n');
 const trace=all[reassignment].steps;
