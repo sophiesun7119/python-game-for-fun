@@ -61,7 +61,8 @@ function enrichTrace(question, trace) {
     const values=names.map(name=>name+' = '+repr(step.variables[name]));
     explanation='Evaluate '+expr.trim()+(values.length?' using '+values.join(', '):'')+'; the result is '+repr(resultValue)+'.';
   }
-  return {...step,output:[...step.output],variables:{...step.variables},phase:'calculate',explanation};
+  const {event:discardEvent,...baseStep}=step;
+  return {...baseStep,output:[...step.output],variables:{...step.variables},phase:'calculate',explanation};
  }
  function parseReturned(note){
   const m=note.match(/^Return from (\w+)\(\).*?with value (.+?)\. Continue/);
