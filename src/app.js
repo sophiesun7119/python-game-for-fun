@@ -209,8 +209,10 @@ function traceInlineDetails(step, previous, source, condition) {
   const match=note.match(/^Return (.+?) to the calling line/);
   if(match)tags.push({kind:'call',text:'↩ '+match[1]});
  }else if(/^\s*def\s+[A-Za-z_]\w*\s*\(/.test(source)&&/^(?:Define|Function defined)/i.test(note)){
-  // Infer the display event from the actual def line, not punctuation in narration.
-  tags.push({kind:'call',text:'Function defined'});
+  // Name the exact function being defined, consistent with Call greet().
+  // Derive the name from Python source, not the wording of the explanation.
+  const functionName=source.match(/^\s*def\s+([A-Za-z_]\w*)\s*\(/)?.[1];
+  if(functionName)tags.push({kind:'call',text:'Define '+functionName+'()'});
  }
  if(step.error)tags.push({kind:'fail',text:'✕ '+step.error});
  return tags;
