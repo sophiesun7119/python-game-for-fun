@@ -1605,7 +1605,18 @@
             "needed": 900
           },
           "output": [],
-          "explanation": "Evaluate the f-string with xp = 730, needed = 900; the formatted result is \"Need 170\".",
+          "explanation": "Calculate 900 - 730 = 170.",
+          "phase": "calculate"
+        },
+        {
+          "line": 10,
+          "variables": {
+            "xp": 730,
+            "level": 6,
+            "needed": 900
+          },
+          "output": [],
+          "explanation": "Format the f-string with xp = 730, needed = 900; the printed/returned text is \"Need 170\".",
           "phase": "calculate"
         },
         {
@@ -2212,7 +2223,19 @@
             "member": true
           },
           "output": [],
-          "explanation": "Calculate 10 + 20 + 10 = 40.",
+          "explanation": "Calculate 10 + 20 = 30.",
+          "phase": "calculate"
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Calculate 30 + 10 = 40.",
           "phase": "calculate"
         },
         {
