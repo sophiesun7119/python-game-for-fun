@@ -20,7 +20,7 @@ const examples=[
   ['W4-X-01',7,'level = 6',false],
   ['W4-X-01',8,'level = 6',true],
   ['W4-X-01',12,'xp = 730 · needed = 900',false],
-  ['W2-M-03',3,'age = 13',false]
+  ['W2-M-03',3,'age = 13 · has_ticket = "no"',false]
 ];
 for(const [id,index,value,passed] of examples){
   const q=questions.find(x=>x.id===id);
