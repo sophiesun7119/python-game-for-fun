@@ -6,9 +6,10 @@ const weeks = [
  {week:3,title:'Loop Master',emoji:'🔁',subtitle:'for, range(), while and nested loops'},
  {week:4,title:'Function Builder',emoji:'🧩',subtitle:'def, parameters and return values'}
 ];
-const diffs = ['easy','medium','hard'];
-const labels = {easy:'Easy',medium:'Medium',hard:'Hard'};
-const points = {easy:10,medium:15,hard:20};
+const diffs = ['easy','medium','hard','extra'];
+const coreDiffs = ['easy','medium','hard'];
+const labels = {easy:'Easy',medium:'Medium',hard:'Hard',extra:'Extra Rock'};
+const points = {easy:10,medium:15,hard:20,extra:25};
 let allQuestions = [];
 let allTraces = {};
 let username = activeUsername();
@@ -38,13 +39,13 @@ function welcome(){return `<section class="welcome card"><div class="big-emoji">
 function header(){return `<button class="back" data-action="back">← Back</button>`;}
 function home(){
  const next=recommendedQuest(progress.best);
- const activeRuns=Object.entries(listQuestStates(username)).filter(([,v])=>v?.active);
+ const activeRuns=Object.entries(listQuestStates(username)).filter(([key,v])=>v?.active&&(!key.endsWith('-hard')||v.active.revision==='curriculum-v2'));
  const completed=Object.values(progress.best).filter(n=>n>=3).length;
  return `<section class="hero"><div class="eyebrow">Welcome, ${escapeHTML(playerDisplayName(username))}!</div><h1>Small challenges. Big discoveries. 🚀</h1><p class="muted">Practice real Python skills, earn stars and build confidence—five questions at a time.</p><div class="btn-row">${button('Continue: Week '+next.week+' · '+labels[next.difficulty],'continue','primary')}${button('My progress','progress')}</div></section>
  ${activeRuns.length?`<div class="card" style="margin-bottom:16px"><h3>📌 Unfinished quests</h3><p class="muted small">Continue from your saved question.</p>${activeRuns.map(([key,v])=>`<button class="btn" style="margin:5px" data-action="open-saved:${key}">${escapeHTML(key.replace('-', ' · '))} · Question ${v.active.index+1}/5 →</button>`).join('')}</div>`:''}
- <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/12</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3)).length}/4</b><span class="muted small">Topic badges</span></div></div>
+ <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/16</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>coreDiffs.every(d=>best(w.week,d)>=3)).length}/4</b><span class="muted small">Topic badges</span></div></div>
  <h2 class="section-title">Choose your challenge</h2><div class="cards">
- <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 60 questions</span>${button('Explore levels →','levels','primary block')}</article>
+ <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 80 questions</span>${button('Explore levels →','levels','primary block')}</article>
  <article class="card week-card"><div class="big-emoji">💎</div><h3>Challenge 2 — Data Explorer</h3><p class="muted">Weeks 6–9: lists, strings, sets and dictionaries.</p><span class="tag">Coming later</span><button class="btn block" disabled>Not available yet</button></article></div>`;
 }
 function levels(){
@@ -55,13 +56,22 @@ function levels(){
 function difficultyView(){
  const w=weeks.find(x=>x.week===state.week);
  return `${header()}<div class="eyebrow">Challenge 1 · Week ${w.week}</div><h1>${w.emoji} ${w.title}</h1><p class="muted">${w.subtitle}. Pick any difficulty.</p><div class="difficulty-grid">
- ${diffs.map(d=>{const saved=readQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':'Trace and debug harder code'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
+ ${diffs.map(d=>{const saved=getQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':d==='extra'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':d==='hard'?'Multi-step reasoning and debugging':'Ultimate cross-topic challenge'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
+}
+
+function getQuest(username,week,difficulty){
+ const record=readQuest(username,week,difficulty);
+ if(difficulty==='hard'){
+  if(record.active?.revision!=='curriculum-v2')record.active=null;
+  if(record.completed?.revision!=='curriculum-v2')record.completed=null;
+ }
+ return record;
 }
 
 function saveActive(){
  if(!username||state.view!=='quiz')return;
  const active={
-  index:state.index,draft:state.draft,checked:state.checked,feedback:state.feedback,hint:state.hint,
+  revision:'curriculum-v2',index:state.index,draft:state.draft,checked:state.checked,feedback:state.feedback,hint:state.hint,
   attempt:state.attempt.map(a=>({
    id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,
    lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
@@ -83,12 +93,12 @@ function hydrateRun(saved){
  return true;
 }
 function resumeView(){
- const saved=readQuest(username,state.week,state.difficulty);
+ const saved=getQuest(username,state.week,state.difficulty);
  return `${header()}<div class="card welcome"><div class="big-emoji">📌</div><h1>Your quest is saved!</h1><p>Week ${state.week} · ${labels[state.difficulty]}</p><p class="muted">You stopped at question ${(saved.active?.index??0)+1} of 5.</p>
  <div class="btn-row">${button('▶ Continue Quest','resume','primary')}${button('↻ Start Over','fresh')}</div><p class="footnote">Start Over discards only this unfinished run, never your personal best score.</p></div>`;
 }
 function reviewView(){
- const snap=readQuest(username,state.week,state.difficulty).completed;
+ const snap=getQuest(username,state.week,state.difficulty).completed;
  if(!snap?.attempt?.length)return `${header()}<div class="card">No completed cards to review yet.</div>`;
  const item=snap.attempt[state.index];const q=allQuestions.find(x=>x.id===item.id);
  if(!q)return `${header()}<p>This question is no longer available.</p>`;
@@ -111,7 +121,7 @@ function reviewView(){
 }
 function finishQuest(){
  const n=countCorrect(state.attempt);
- const completed={completedAt:new Date().toISOString(),score:n,attempt:state.attempt.map(a=>({
+ const completed={revision:'curriculum-v2',completedAt:new Date().toISOString(),score:n,attempt:state.attempt.map(a=>({
   id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,
   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
  }))};
@@ -181,13 +191,13 @@ function results(){
  return `<div class="result"><div class="big-emoji">${n>=3?'🏆':'🌱'}</div><h1>${n>=3?'Quest complete!':'Nice effort—keep practicing!'}</h1><p class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</p><p class="muted">Week ${state.week} · ${labels[state.difficulty]}</p><div class="kpi-row"><div class="kpi"><b>${n}/5</b><span class="small muted">Questions solved</span></div><div class="kpi"><b>${fresh}/5</b><span class="small muted">Personal best</span></div><div class="kpi"><b>+${xpGain}</b><span class="small muted">New XP earned</span></div></div><div class="card" style="text-align:left;margin-top:18px"><h3>Review these topics</h3>${state.attempt.filter(a=>!a.solved).length?'<p class="muted">'+state.attempt.filter(a=>!a.solved).map(a=>escapeHTML(a.question.concept)).join(' · ')+'</p>':'<p class="muted">All five solved! Excellent work.</p>'}</div><div class="btn-row">${button('📖 Review all 5 cards','review:'+state.difficulty)}${button('Try again','start:'+state.difficulty)}${button('Choose another level','levels','primary')}${button('My progress','progress')}</div></div>`;
 }
 function progressView(){
- const completed=weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3));
- return `${header()}<div class="eyebrow">Your journey</div><h1>My Progress 🏅</h1><div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="small muted">XP / 900</span></div><div class="kpi"><b>${Object.values(progress.best).filter(v=>v>=3).length}/12</b><span class="small muted">Quests passed</span></div><div class="kpi"><b>${completed.length}/4</b><span class="small muted">Topic badges</span></div></div><h2 class="section-title">Badges</h2><div class="cards">${weeks.map(w=>`<article class="card"><div class="big-emoji">${completed.some(x=>x.week===w.week)?'🏅':'🔒'}</div><h3>${w.title}</h3><p class="muted small">${completed.some(x=>x.week===w.week)?'Unlocked!':'Pass all 3 difficulties to unlock.'}</p></article>`).join('')}</div><h2 class="section-title">Best scores</h2><div class="card">${weeks.map(w=>`<div style="padding:10px 0;border-bottom:1px solid #eef1f6"><strong>Week ${w.week} · ${w.title}</strong><p class="muted small" style="margin:6px 0 0">${diffs.map(d=>`${labels[d]}: ${best(w.week,d)}/5`).join(' · ')}</p><div class="btn-row" style="margin-top:9px">${diffs.filter(d=>readQuest(username,w.week,d).completed).map(d=>`<button class="btn" data-action="review-from:${w.week}:${d}">📖 Review ${labels[d]}</button>`).join('')}</div></div>`).join('')}</div><div class="btn-row">${button('Choose a level','levels','primary')}</div>`;
+ const completed=weeks.filter(w=>coreDiffs.every(d=>best(w.week,d)>=3));
+ return `${header()}<div class="eyebrow">Your journey</div><h1>My Progress 🏅</h1><div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="small muted">XP / 1400</span></div><div class="kpi"><b>${Object.values(progress.best).filter(v=>v>=3).length}/16</b><span class="small muted">Quests passed</span></div><div class="kpi"><b>${completed.length}/4</b><span class="small muted">Topic badges</span></div></div><h2 class="section-title">Badges</h2><div class="cards">${weeks.map(w=>`<article class="card"><div class="big-emoji">${completed.some(x=>x.week===w.week)?'🏅':'🔒'}</div><h3>${w.title}</h3><p class="muted small">${completed.some(x=>x.week===w.week)?'Unlocked!':'Pass Easy, Medium and Hard to unlock. Extra Rock is optional.'}</p></article>`).join('')}</div><h2 class="section-title">Best scores</h2><div class="card">${weeks.map(w=>`<div style="padding:10px 0;border-bottom:1px solid #eef1f6"><strong>Week ${w.week} · ${w.title}</strong><p class="muted small" style="margin:6px 0 0">${diffs.map(d=>`${labels[d]}: ${best(w.week,d)}/5`).join(' · ')}</p><div class="btn-row" style="margin-top:9px">${diffs.filter(d=>getQuest(username,w.week,d).completed).map(d=>`<button class="btn" data-action="review-from:${w.week}:${d}">📖 Review ${labels[d]}</button>`).join('')}</div></div>`).join('')}</div><div class="btn-row">${button('Choose a level','levels','primary')}</div>`;
 }
 function navigate(view){resetTrace();state.view=view;render();window.scrollTo({top:0,behavior:'instant'});}
 function start(d){
  state.difficulty=d;
- if(readQuest(username,state.week,d).active){navigate('resume');return;}
+ if(getQuest(username,state.week,d).active){navigate('resume');return;}
  startFresh(d);
 }
 function startFresh(d){
@@ -212,26 +222,26 @@ document.getElementById('player-switch').addEventListener('click',()=>{state.log
 app.addEventListener('click',event=>{
  const choice=event.target.closest('[data-choice]');
  if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();saveActive();return;}
- const reviewChoice=event.target.closest('[data-review-choice]');if(reviewChoice&&state.view==='review'){const snapshot=readQuest(username,state.week,state.difficulty).completed;const item=snapshot.attempt[state.index];const question=allQuestions.find(x=>x.id===item.id);state.reviewDraft=question.options[Number(reviewChoice.dataset.reviewChoice)];state.reviewFeedback=null;render();return;}
+ const reviewChoice=event.target.closest('[data-review-choice]');if(reviewChoice&&state.view==='review'){const snapshot=getQuest(username,state.week,state.difficulty).completed;const item=snapshot.attempt[state.index];const question=allQuestions.find(x=>x.id===item.id);state.reviewDraft=question.options[Number(reviewChoice.dataset.reviewChoice)];state.reviewFeedback=null;render();return;}
  const btn=event.target.closest('[data-action]');if(!btn)return;
  const action=btn.dataset.action;
  if(action==='trace-open'){state.traceOpen=true;state.traceIndex=0;render();return;}
  if(action==='trace-close'){resetTrace();render();return;}
- if(action==='trace-next'){const q=state.view==='quiz'?currentQuestion()?.question:allQuestions.find(q=>q.id===readQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index]?.id);const steps=allTraces[q?.id]?.steps;if(steps){state.traceIndex=Math.min(steps.length-1,state.traceIndex+1);render();}return;}
+ if(action==='trace-next'){const q=state.view==='quiz'?currentQuestion()?.question:allQuestions.find(q=>q.id===getQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index]?.id);const steps=allTraces[q?.id]?.steps;if(steps){state.traceIndex=Math.min(steps.length-1,state.traceIndex+1);render();}return;}
  if(action==='trace-prev'){state.traceIndex=Math.max(0,state.traceIndex-1);render();return;}
  if(action==='trace-restart'){state.traceIndex=0;render();return;}
  if(action==='switch'){state.loginDraft='';navigate('welcome');return;}
  if(action==='back'){navigate(['quiz','resume','review','results'].includes(state.view)?'difficulty':state.view==='difficulty'?'levels':'home');return;}
  if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;state.difficulty=q.difficulty;start(q.difficulty);return;}
- if(action.startsWith('open-saved:')){const [,w,d]=action.match(/^open-saved:W([1-4])-(easy|medium|hard)$/)||[];if(w&&d){state.week=Number(w);state.difficulty=d;start(d);}return;}
- if(action==='resume'){const saved=readQuest(username,state.week,state.difficulty).active;if(saved&&hydrateRun(saved))navigate('quiz');else startFresh(state.difficulty);return;}
+ if(action.startsWith('open-saved:')){const [,w,d]=action.match(/^open-saved:W([1-4])-(easy|medium|hard|extra)$/)||[];if(w&&d){state.week=Number(w);state.difficulty=d;start(d);}return;}
+ if(action==='resume'){const saved=getQuest(username,state.week,state.difficulty).active;if(saved&&hydrateRun(saved))navigate('quiz');else startFresh(state.difficulty);return;}
  if(action==='fresh'){writeQuest(username,state.week,state.difficulty,{active:null});startFresh(state.difficulty);return;}
  if(action.startsWith('review-from:')){const parts=action.split(':');state.week=Number(parts[1]);state.difficulty=parts[2];state.index=0;state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;navigate('review');return;}
  if(action.startsWith('review:')){state.difficulty=action.split(':')[1];state.index=0;state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;navigate('review');return;}
  if(action==='review-next'||action==='review-prev'){resetTrace();state.index=Math.max(0,Math.min(4,state.index+(action==='review-next'?1:-1)));state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
  if(action==='review-retry'){state.reviewPractice=true;state.reviewDraft='';state.reviewFeedback=null;render();return;}
  if(action==='review-cancel'){state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
- if(action==='review-check'){const q=readQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index];const actual=allQuestions.find(x=>x.id===q?.id);if(!actual||!state.reviewDraft.trim())return;state.reviewFeedback={correct:normalize(state.reviewDraft)===normalize(actual.answer)};render();return;}
+ if(action==='review-check'){const q=getQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index];const actual=allQuestions.find(x=>x.id===q?.id);if(!actual||!state.reviewDraft.trim())return;state.reviewFeedback={correct:normalize(state.reviewDraft)===normalize(actual.answer)};render();return;}
  if(action==='review-exit'){navigate('difficulty');return;}
  if(action==='levels'){navigate('levels');return;}
  if(action==='progress'){navigate('progress');return;}
@@ -256,7 +266,7 @@ async function init(){
    if(traceResp.ok){const traceData=await traceResp.json();Object.assign(allTraces,traceData.traces||{});}
   }catch(error){console.warn('Week '+week+' trace examples unavailable',error);}
  }
- if(!Array.isArray(allQuestions)||allQuestions.length!==60)throw new Error('Expected 60 questions');
+ if(!Array.isArray(allQuestions)||allQuestions.length!==80)throw new Error('Expected 80 questions');
  render();
  }catch(err){app.innerHTML=`<div class="card empty"><h2>Could not load the questions</h2><p class="muted">${escapeHTML(err.message)}</p><p>Please serve the project through a web server, not by double-clicking index.html.</p></div>`;}
 }
