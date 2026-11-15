@@ -138,6 +138,13 @@ function traceCondition(step,codeLines){
  // This avoids treating assignments or function calls as condition checks.
  if(!Number.isInteger(step.line)||step.line<0)return null;
  const source=(codeLines[step.line]||'').trim();
+ if(source.startsWith('for ')){
+  const message=step.explanation;
+  const loopStart=/^(?:for loop:|Loop check: the next|(?:Outer|Inner) loop (?:gets|selects|gives))/i.test(message);
+  const loopEnd=/^(?:The for loop has finished|Loop check: no more|(?:Outer|Inner) loop (?:finishes|is complete))/i.test(message);
+  if(!loopStart&&!loopEnd)return null;
+  return {passed:loopStart,expression:source.slice(4).replace(/:\s*$/,''),action:loopStart?'Next Iteration':'Loop Finished'};
+ }
  if(!/^(if|elif|while)\b/.test(source))return null;
  const match=step.explanation.match(/\b(?:True|False)\b(?=[.:,;\s]|$)/);
  if(!match)return null;
