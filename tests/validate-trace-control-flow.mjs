@@ -22,7 +22,7 @@ for (const question of questions.filter(q => ['hard', 'extra'].includes(q.diffic
     assert.deepEqual(JSON.parse(JSON.stringify(step.variables)), JSON.parse(JSON.stringify(generated.variables)),
       `${question.id} step ${index}: wrong variables`);
     if (!['W4-H-04','W4-X-03'].includes(question.id) || index !== expected.length - 1) {
-      assert.deepEqual(step.output, generated.output, `${question.id} step ${index}: wrong output`);
+      assert.deepEqual(step.output, JSON.parse(JSON.stringify(generated.output)), `${question.id} step ${index}: wrong output`);
     }
   }
   verified++;
