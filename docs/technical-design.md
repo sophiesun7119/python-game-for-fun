@@ -163,11 +163,27 @@ At any step, **exactly one source row** is marked as currently executing (except
 | `while` | Show value(s) and **✓ Continue Loop** or **✕ Exit Loop** | Only for the actual check |
 | `for` | **✓ Next Iteration** with the loop variable, or **✕ Loop Finished** | Only for that iteration/check step |
 | `return` | Show **↩ value** on the actual `return` statement; then return to caller and show `Return from fn() → value` | Temporary; local variable badges disappear only on return to caller |
-| `print()` | The executing print line is highlighted; **no inline Output tag** | New text appears in the dedicated Output panel |
+| `print()` | The executing print line is highlighted with a violet **Call print()** event badge; **no inline Output result** | Only this print event adds text to the dedicated Output panel |
+| Evaluate arithmetic | Each supported binary operation appears on the actual source line with its computed operands/result and a blue calculation badge | An intermediate step that leaves variables and Output unchanged |
 
 For compound Boolean expressions, display the **final full-expression truth value**, not an intermediate comparison value. Bindings can wrap onto a second visual row *inside the same code line*, preserving code legibility without horizontal searching.
 
-### 7.4 Function-scoped and global variable lifetimes
+### 7.4 Calculation versus assignment versus printing
+
+A complex line has an **ordered sequence of teaching events**, rather than a single explanation that skips the intermediate result. This is a data rule applied to all weeks and difficulties:
+
+1. For a nested call such as `print(square(4) + 1)`, show the function call on the original source line, enter the target `def` with parameters, execute its body, and return **16** to the caller.
+2. On that same caller line, show a separate **calculate** step: **16 + 1 = 17**. It must preserve the previous `variables` and `output` snapshot.
+3. Show a separate **print** step with the violet **Call print()** badge and explanation. Only this step appends **17** to the Output panel.
+4. For an assignment such as `subtotal = subtotal * 0.9`, evaluate with the **pre-assignment value**. If the old subtotal is 46, the calculation is **46 × 0.9 = 41.4**, followed by the actual assignment to the new value; never calculate `41.4 * 0.9`.
+5. Compound numeric expressions are decomposed in Python precedence order; for example `19 // 4` → `19 % 4` → `4 + 3`. Parenthesized subexpressions are evaluated before their enclosing operation. Numeric expressions inside f-string placeholders are evaluated before the final formatting explanation.
+6. A direct `print('Hi')` still receives a purple **Call print()** badge and specific explanation; it does not need a redundant calculation step.
+
+Trace records for intermediate calculations have `phase: "calculate"` and an explicit `explanation`. Final printing records have `event: "print"`. On the calculation step, `line` matches the actual statement, but **no assignment or printing has happened yet**. `tracePersistentBindings()` deliberately ignores these calculation-only snapshots when deciding where to anchor values. `traceInlineDetails()` displays a blue calculation tag or a violet print-call tag; the dedicated Output panel still reads only the cumulative `step.output` array.
+
+**Single source of transformation:** `scripts/enrich-walkthroughs.js` enriches the fixed trusted teacher-authored trace files. It is idempotent, and the 80-question regression `tests/validate-walkthrough-detail.mjs` checks this property, correct arithmetic, unchanged state during calculation, correct source line for printing, and an explanation and visible badge for every print. The `W4-M-01` regression requires the exact order **return 16 → calculate 16 + 1 = 17 → print 17**. Complex Python syntax beyond basic numeric operations is **not** treated as a general executable trace engine; it needs explicitly authored and validated educational steps.
+
+### 7.5 Function-scoped and global variable lifetimes
 
 `tracePersistentBindings(steps, index, codeLines)` reconstructs live bindings by replaying snapshots through the selected index into a stack of call frames:
 
@@ -179,13 +195,13 @@ For compound Boolean expressions, display the **final full-expression truth valu
 
 The current implementation assumes the fixed introductory Python examples. More advanced Python semantics (closures, recursion, `nonlocal`, mutable object aliasing, exceptions) should be represented by explicit frame IDs / typed events in the trace data before expansion; do not infer ambiguous scope from English explanations.
 
-### 7.5 Layout and interaction
+### 7.6 Layout and interaction
 
 The content column is up to **1,180 px** wide and a question panel up to **1,100 px**. The dark code panel fills the card. Each source row can wrap annotation badges within its own row, keeping long parameter/value groups visible without mandatory sideways scrolling. The top toolbar also wraps responsively for phones. The separate Output box has an intentional empty minimum height; it never disappears just because `step.output` is empty. Explanation text may grow to fit content, but cannot cause the **top** navigation controls to shift.
 
 Closing or opening a walkthrough, navigating its steps, or reviewing a finished card does **not** change XP, best scores, attempts or saved progress.
 
-### 7.6 Content and CI quality gates
+### 7.7 Content and CI quality gates
 
 Changes to question code/answers or walkthrough data require matching trace steps. The automated suite must test **all 80 questions**, and the renderer must work identically for all difficulties:
 
@@ -198,10 +214,10 @@ node tests/validate-inline-trace.mjs
 node tests/validate-trace-scopes.mjs
 node tests/validate-trace-events.mjs
 node tests/validate-walkthrough-layout.mjs
-node tests/validate-walkthrough-layout.mjs
+node tests/validate-walkthrough-detail.mjs
 ```
 
-The last test **renders all 978 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
+The last test **renders all 1,103 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
 
 **Representative manual regressions:** `W4-E-01` (`greet()` prints `Hi`), `W4-M-01` (`square(4)` returns 16), `W4-H-01` (nested `total_cost` calls), `W4-X-01` (nested `message` and `xp_needed`), a Week 3 `for` and `while` loop, and `W2-M-03` (`else` then `print('Wait')`). Test first, middle and final steps including Previous/Restart.
 
