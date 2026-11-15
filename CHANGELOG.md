@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.3 — 2026-11-15
+- Redesigned Watch How the Code Works into one full-width dark code panel, removing the separate Variables, Output and condition sidebar.
+- Made variable creations/updates, function call/return messages, check/cross verdicts and print output appear beside the highlighted code line.
+- Only the current step displays inline annotations; stepping forward/backward removes older annotations rather than leaving stale values.
+- Preserved Step, Explanation, Previous/Next/Restart, existing quizzes, scoring, usernames and saved learning progress.
+- Extended inline trace regression coverage across all four weeks, especially Week 4 nested function calls and returns.
+- Browser visual QA remains pending.
+
 ## v0.6.2 — 2026-11-15
 - Added an inline green ✓ or red ✕ at the currently highlighted conditional/loop line.
 - Displays the **current values** of variables used in that check, e.g. i = 1, i = 2, i = 4 as a while loop advances or exits.
