@@ -148,7 +148,7 @@ function tracePanel(q){
     ${step.error?`<div class="trace-error"><strong>Program stopped with an error</strong><div>${escapeHTML(step.error)}</div></div>`:''}
    </div>
   </div>
-  <div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step ${index} / ${steps.length-1}</div><p>${escapeHTML(step.explanation)}</p></div>
+  <div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step ${index} / ${steps.length-1}</div><p><strong class="trace-explanation-label">Explanation:</strong> ${escapeHTML(step.explanation)}</p></div>
   <div class="trace-controls">
    <button class="btn" data-action="trace-prev" ${index===0?'disabled':''}>← Previous</button>
    <button class="btn primary" data-action="trace-next" ${index===steps.length-1?'disabled':''}>Next Step →</button>
@@ -250,7 +250,12 @@ async function init(){
  const resp=await fetch('./data/questions.json',{cache:'no-cache'});
  if(!resp.ok)throw new Error('Question data returned '+resp.status);
  const payload=await resp.json();allQuestions=payload.questions;
- try{const traceResp=await fetch('./data/traces-week1.json',{cache:'no-cache'});if(traceResp.ok){const traceData=await traceResp.json();allTraces=traceData.traces||{};}}catch(error){console.warn('Trace examples unavailable',error);}
+ for(const week of [1,2,3,4]){
+  try{
+   const traceResp=await fetch('./data/traces-week'+week+'.json',{cache:'no-cache'});
+   if(traceResp.ok){const traceData=await traceResp.json();Object.assign(allTraces,traceData.traces||{});}
+  }catch(error){console.warn('Week '+week+' trace examples unavailable',error);}
+ }
  if(!Array.isArray(allQuestions)||allQuestions.length!==60)throw new Error('Expected 60 questions');
  render();
  }catch(err){app.innerHTML=`<div class="card empty"><h2>Could not load the questions</h2><p class="muted">${escapeHTML(err.message)}</p><p>Please serve the project through a web server, not by double-clicking index.html.</p></div>`;}
