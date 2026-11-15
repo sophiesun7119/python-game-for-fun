@@ -173,23 +173,33 @@ function next(){
 document.getElementById('player-switch').addEventListener('click',()=>{state.loginDraft='';navigate('welcome');});
 app.addEventListener('click',event=>{
  const choice=event.target.closest('[data-choice]');
- if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();return;}
+ if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();saveActive();return;}
+ const reviewChoice=event.target.closest('[data-review-choice]');if(reviewChoice&&state.view==='review'){const snapshot=readQuest(username,state.week,state.difficulty).completed;const item=snapshot.attempt[state.index];const question=allQuestions.find(x=>x.id===item.id);state.reviewDraft=question.options[Number(reviewChoice.dataset.reviewChoice)];state.reviewFeedback=null;render();return;}
  const btn=event.target.closest('[data-action]');if(!btn)return;
  const action=btn.dataset.action;
  if(action==='switch'){state.loginDraft='';navigate('welcome');return;}
- if(action==='back'){navigate(state.view==='quiz'?'difficulty':state.view==='difficulty'?'levels':'home');return;}
- if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;navigate('difficulty');return;}
+ if(action==='back'){navigate(['quiz','resume','review','results'].includes(state.view)?'difficulty':state.view==='difficulty'?'levels':'home');return;}
+ if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;state.difficulty=q.difficulty;start(q.difficulty);return;}
+ if(action.startsWith('open-saved:')){const [,w,d]=action.match(/^open-saved:W([1-4])-(easy|medium|hard)$/)||[];if(w&&d){state.week=Number(w);state.difficulty=d;start(d);}return;}
+ if(action==='resume'){const saved=readQuest(username,state.week,state.difficulty).active;if(saved&&hydrateRun(saved))navigate('quiz');else startFresh(state.difficulty);return;}
+ if(action==='fresh'){writeQuest(username,state.week,state.difficulty,{active:null});startFresh(state.difficulty);return;}
+ if(action.startsWith('review:')){state.difficulty=action.split(':')[1];state.index=0;state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;navigate('review');return;}
+ if(action==='review-next'||action==='review-prev'){state.index=Math.max(0,Math.min(4,state.index+(action==='review-next'?1:-1)));state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
+ if(action==='review-retry'){state.reviewPractice=true;state.reviewDraft='';state.reviewFeedback=null;render();return;}
+ if(action==='review-cancel'){state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
+ if(action==='review-check'){const q=readQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index];const actual=allQuestions.find(x=>x.id===q?.id);if(!actual||!state.reviewDraft.trim())return;state.reviewFeedback={correct:normalize(state.reviewDraft)===normalize(actual.answer)};render();return;}
+ if(action==='review-exit'){navigate('difficulty');return;}
  if(action==='levels'){navigate('levels');return;}
  if(action==='progress'){navigate('progress');return;}
  if(action.startsWith('week:')){state.week=Number(action.split(':')[1]);navigate('difficulty');return;}
  if(action.startsWith('start:')){start(action.split(':')[1]);return;}
- if(action==='hint'){state.hint=true;render();return;}
- if(action==='retry'){state.checked=false;state.draft='';state.feedback=null;render();return;}
- if(action==='reveal'){const item=currentQuestion();item.revealed=true;state.checked=true;state.feedback={correct:false,revealed:true};render();return;}
+ if(action==='hint'){state.hint=true;if(state.view==='quiz')currentQuestion().hintUsed=true;render();saveActive();return;}
+ if(action==='retry'){state.checked=false;state.draft='';state.feedback=null;render();saveActive();return;}
+ if(action==='reveal'){const item=currentQuestion();item.revealed=true;item.lastAnswer=state.draft;state.checked=true;state.feedback={correct:false,revealed:true};render();saveActive();return;}
  if(action==='check'){check();return;}
  if(action==='next'){next();return;}
 });
-app.addEventListener('input',event=>{if(event.target.id==='answer')state.draft=event.target.value;if(event.target.id==='player-name')state.loginDraft=event.target.value;});
+app.addEventListener('input',event=>{if(event.target.id==='answer'){state.draft=event.target.value;saveActive();}if(event.target.id==='review-answer'){state.reviewDraft=event.target.value;state.reviewFeedback=null;}if(event.target.id==='player-name')state.loginDraft=event.target.value;});
 app.addEventListener('submit',event=>{if(event.target.id!=='player-form')return;event.preventDefault();username=selectUsername(state.loginDraft);progress=loadProgress(username);state.loginDraft='';navigate('home');});
 async function init(){
  try{
