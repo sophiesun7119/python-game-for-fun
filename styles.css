@@ -57,3 +57,7 @@
 /* Make each trace step's teaching note easy for children to find. */
 .trace-explanation-label{color:#bd273a;font-weight:850;margin-right:3px}
 .trace-narration p{line-height:1.65}
+
+/* Four difficulties; keep cards readable on smaller screens. */
+.difficulty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:640px){.difficulty-grid{grid-template-columns:1fr}}
