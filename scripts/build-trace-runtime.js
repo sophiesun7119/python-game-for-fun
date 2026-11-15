@@ -26,7 +26,7 @@ function buildTrace(question) {
     expr=expr.replace(/\band\b/g,"&&").replace(/\bor\b/g,"||").replace(/\bnot\b/g,"!");
     expr=expr.replace(/\b(int|str|len|range)\s*\(/g,(_,fn)=>"__"+fn+"(");
     expr=expr.replace(/([A-Za-z_]\w*|\d+)\s*\/\/\s*(\([^)]*\)|[A-Za-z_]\w*|\d+)/g,"Math.floor($1 / $2)");
-    expr=expr.replace(/([A-Za-z_]\w*|\d+)\s*\*\s*([A-Za-z_]\w*|\d+)/g,"__mul($1,$2)");
+    expr=expr.replace(/([A-Za-z_]\w*)\s*\*\s*([A-Za-z_]\w*|\d+)/g,(match,left,right)=>typeof env[left]==="string"?"__mul("+left+","+right+")":match);
     const fmt=body=>body.replace(/\{([^{}]+)\}/g,(_,inner)=>{
       const p=inner.split(/:(.+)/);const v=evalExpr(p[0],env);const spec=p[1]||"";
       if(!spec)return display(v);
@@ -42,7 +42,7 @@ function buildTrace(question) {
       if(step===0)throw Error("range() step cannot be zero");
       const vals=[];for(let i=start;step>0?i<stop:i>stop;i+=step){if(vals.length>500)throw Error("Range too long");vals.push(i);}return vals;
     };
-    const run=new Function("env","__f","__int","__str","__len","__range","__mul","with(env){return ("+expr+");}");
+    let run;try{run=new Function("env","__f","__int","__str","__len","__range","__mul","with(env){return ("+expr+");}");}catch(e){throw Error("Cannot parse "+raw+" => "+expr+" :: "+e.message);}
     return run(env,fmt,x=>Number.parseInt(x,10),display,x=>x.length,pythonRange,(a,b)=>typeof a==="string"&&Number.isInteger(b)?a.repeat(b):typeof b==="string"&&Number.isInteger(a)?b.repeat(a):a*b);
   }
   function findBlock(i,parentIndent){
