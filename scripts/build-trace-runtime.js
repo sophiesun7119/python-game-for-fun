@@ -118,12 +118,18 @@ function buildTrace(question) {
             const firstLine=first.line??first.branches?.[0]?.line;
             if(!Number.isInteger(firstLine))throw Error("Function body has no executable line: "+node.name);
             record(firstLine,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". Execute this first line of the function body.");
+            let returned,finished=false;
             try{
               const res=execute(node.body,local);
-              return res?.type==="return"?res.value:null;
+              returned=res?.type==="return"?res.value:null;
+              finished=true;
+              return returned;
             }finally{
               active=callerFrame;
               currentLine=callerLine;
+              if(finished&&Number.isInteger(callerLine)&&callerLine>=0){
+                record(callerLine,"Return from "+node.name+"() to this calling line with value "+repr(returned)+". Continue evaluating this statement.");
+              }
             }
           };
           currentLine=node.line;
