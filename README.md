@@ -33,6 +33,16 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
 - Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
 
+## Inline Trace — one full-width code panel (v0.6.3)
+
+- The Trace view now uses **one full-width dark code area**, with no separate Variables or Output sidebar.
+- The yellow arrow and highlight track the currently executed source line. Temporary annotations appear **to the right of that same line only**, then disappear when Next/Previous moves to another step.
+- New or updated variables appear as small value tags (e.g. `xp = 730`, `needed = 900`); values are not persistently repeated on earlier lines. Function entry reintroduces that function's parameter values; returning to the caller shows the returned value without falsely claiming a variable changed.
+- For `if/elif/for/while`, the active code line shows the relevant variable values and a green ✓ or red ✕ with branch/loop action.
+- `print()` results appear as `Output: ...` on the print line when they are produced. Previously printed output is not carried over as a separate sidebar.
+- **Step**, bold red **Explanation:** text, Previous/Next/Restart, and Close remain beneath/above the code as before; opening Trace never changes XP.
+- There is still horizontal scrolling when lines are unusually long, especially on phones; no animation or Python runtime is required.
+
 ## Walkthrough correctness and condition feedback (v0.6.1)
 
 - The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` highlights that print line, then line 8 `needed = xp_needed(level)` inside `message()`, then the condition lines inside `xp_needed()`. It returns to line 8 before setting `needed = 900`.
@@ -64,7 +74,7 @@ Run `python3 tests/validate_python.py` and `node tests/validate-traces.mjs` to c
 
 - All **80** Challenge 1 questions now have static guided traces in `data/traces-week1.json`, `data/traces-week2.json`, `data/traces-week3.json`, and `data/traces-week4.json`.
 - The Trace panel remains hidden unless a child selects **Watch How the Code Works** on a quiz or completed review card.
-- The inline two-column UI highlights the current source line on the left and changes to variables and output on the right. Children can use Previous / Next Step / Restart / Close.
+- The current inline single-panel UI highlights the executing source line and shows state-change tags beside it. Children can use Previous / Next Step / Restart / Close.
 - Every step emphasizes a **bold red Explanation:** label followed by a short plain-language explanation.
 - Week 2 explicitly walks through condition checks, selected branches, and skipped branches. Week 3 shows repeated loop-header checks, break/continue and variable changes. Week 4 follows calls into functions and returns to the caller, with local parameter examples.
 - Python is not executed by this UI; all steps are authored learning examples, including hypothetical corrected code for the Week 2 operator-fill question.
