@@ -105,3 +105,6 @@
  .trace-inline-annotations{padding-left:9px;max-width:70%}
  .trace-inline-tag{font-size:11px;padding:3px 6px}
 }
+
+/* Keep navigation controls stationary as short explanations change. */
+.trace-narration p{line-height:1.6;min-height:4.8em}
