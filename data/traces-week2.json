@@ -250,10 +250,19 @@
             "age": 13,
             "has_ticket": "no"
           },
+          "output": [],
+          "explanation": "The condition is False, so take the else branch; the print statement runs next."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "age": 13,
+            "has_ticket": "no"
+          },
           "output": [
             "Wait"
           ],
-          "explanation": "Take else and print Wait."
+          "explanation": "Print 'Wait'."
         }
       ]
     },
