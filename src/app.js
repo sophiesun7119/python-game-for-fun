@@ -295,27 +295,30 @@ function tracePanel(q){
  const step=steps[index],previous=steps[Math.max(0,index-1)];
  const code=q.code.split('\n'),condition=traceCondition(step,code);
  const bindings=tracePersistentBindings(steps,index,code);
- const printed=tracePersistentOutputs(steps,index,code);
  const codeLines=code.map((line,i)=>{
   const active=step.line===i;
   const persistent=bindings.filter(binding=>binding.line===i).map(binding=>({kind:'value',text:binding.name+' = '+valueDisplay(binding.value)}));
-  const outputTags=printed.filter(event=>event.line===i).map(event=>({kind:'output',text:'Output: '+event.value}));
   const events=active?traceInlineDetails(step,previous,line,condition).filter(tag=>
    (tag.kind!=='value'||Boolean(condition))&&tag.kind!=='output'):[];
-  const details=[...events,...persistent.filter(badge=>!events.some(event=>event.kind==='value'&&event.text===badge.text)),...outputTags];
+  const details=[...events,...persistent.filter(badge=>!events.some(event=>event.kind==='value'&&event.text===badge.text))];
   const tags=details.map(tag=>'<span class="trace-inline-tag trace-inline-'+tag.kind+'">'+escapeHTML(tag.text)+'</span>').join('');
   return '<div class="trace-line '+(active?'trace-line-active':'')+'"><span class="trace-arrow" aria-hidden="true">'+(active?'➜':'')+'</span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations">'+tags+'</span></div>';
  }).join('');
+ const output=(step.output||[]).map(line=>escapeHTML(String(line))).join('\n');
  return '<section class="trace-shell" aria-label="Step-by-step Python execution">'
   +'<div class="trace-titlebar"><strong>👀 Watch How the Code Works</strong><button class="btn trace-close" data-action="trace-close">✕ Close</button></div>'
+  +'<div class="trace-toolbar"><span class="trace-stepcount">Step '+index+' / '+(steps.length-1)+'</span>'
+  +'<div class="trace-controls"><button class="btn" data-action="trace-prev" '+(index===0?'disabled':'')+'>← Previous</button>'
+  +'<button class="btn primary" data-action="trace-next" '+(index===steps.length-1?'disabled':'')+'>Next Step →</button>'
+  +'<button class="btn" data-action="trace-restart" '+(index===0?'disabled':'')+'>↻ Restart</button></div></div>'
   +'<div class="trace-code-panel trace-code-full"><div class="trace-panel-title">Python Code · Execution Trace</div>'
   +'<div class="trace-code" aria-label="Current executing line: '+(step.line<0?'not started':step.line+1)+'">'+codeLines+'</div>'
   +(index===0?'<div class="trace-code-ready">No variables or output yet. Press Next Step to begin.</div>':'')
-  +'</div><div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step '+index+' / '+(steps.length-1)+'</div><p><strong class="trace-explanation-label">Explanation:</strong> '+escapeHTML(step.explanation)+'</p></div>'
-  +'<div class="trace-controls"><button class="btn" data-action="trace-prev" '+(index===0?'disabled':'')+'>← Previous</button>'
-  +'<button class="btn primary" data-action="trace-next" '+(index===steps.length-1?'disabled':'')+'>Next Step →</button>'
-  +'<button class="btn" data-action="trace-restart" '+(index===0?'disabled':'')+'>↻ Restart</button></div>'
-  +'<p class="trace-footnote">Variables remain visible while in scope; printed output stays beside its print() line. Function and condition hints follow the arrow. Tracing does not affect your score.</p></section>';
+  +'</div>'
+  +'<div class="trace-output-section"><div class="trace-output-label">Output</div>'
+  +'<pre class="trace-output-content" aria-label="Python printed output">'+output+'</pre></div>'
+  +'<div class="trace-narration" aria-live="polite"><p><strong class="trace-explanation-label">Explanation:</strong> '+escapeHTML(step.explanation)+'</p></div>'
+  +'<p class="trace-footnote">Variables remain beside their latest assignment until their function returns. The Output box shows everything printed so far. Tracing does not affect your score.</p></section>';
 }
 
 function currentQuestion(){return state.attempt[state.index];}
