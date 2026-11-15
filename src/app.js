@@ -1,4 +1,4 @@
-import { countCorrect, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress, selectUsername, activeUsername, playerDisplayName } from './scoring.js';
+import { countCorrect, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress, selectUsername, activeUsername, playerDisplayName, readQuest, writeQuest, listQuestStates } from './scoring.js';
 const app = document.getElementById('app');
 const weeks = [
  {week:1,title:'Output & Variables',emoji:'🖨️',subtitle:'print(), input(), variables and arithmetic'},
@@ -12,7 +12,7 @@ const points = {easy:10,medium:15,hard:20};
 let allQuestions = [];
 let username = activeUsername();
 let progress = username ? loadProgress(username) : {best:{}};
-let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:''};
+let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:'',reviewPractice:false,reviewDraft:'',reviewFeedback:null};
 const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
 const scoreKey=(w,d)=>`W${w}-${d}`;
@@ -27,6 +27,8 @@ function render(){
  else if(state.view==='levels')content=levels();
  else if(state.view==='difficulty')content=difficultyView();
  else if(state.view==='quiz')content=quiz();
+ else if(state.view==='resume')content=resumeView();
+ else if(state.view==='review')content=reviewView();
  else if(state.view==='results')content=results();
  else if(state.view==='progress')content=progressView();
  app.innerHTML=content;
@@ -35,8 +37,10 @@ function welcome(){return `<section class="welcome card"><div class="big-emoji">
 function header(){return `<button class="back" data-action="back">← Back</button>`;}
 function home(){
  const next=recommendedQuest(progress.best);
+ const activeRuns=Object.entries(listQuestStates(username)).filter(([,v])=>v?.active);
  const completed=Object.values(progress.best).filter(n=>n>=3).length;
  return `<section class="hero"><div class="eyebrow">Welcome, ${escapeHTML(playerDisplayName(username))}!</div><h1>Small challenges. Big discoveries. 🚀</h1><p class="muted">Practice real Python skills, earn stars and build confidence—five questions at a time.</p><div class="btn-row">${button('Continue: Week '+next.week+' · '+labels[next.difficulty],'continue','primary')}${button('My progress','progress')}</div></section>
+ ${activeRuns.length?`<div class="card" style="margin-bottom:16px"><h3>📌 Unfinished quests</h3><p class="muted small">Continue from your saved question.</p>${activeRuns.map(([key,v])=>`<button class="btn" style="margin:5px" data-action="open-saved:${key}">${escapeHTML(key.replace('-', ' · '))} · Question ${v.active.index+1}/5 →</button>`).join('')}</div>`:''}
  <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/12</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3)).length}/4</b><span class="muted small">Topic badges</span></div></div>
  <h2 class="section-title">Choose your challenge</h2><div class="cards">
  <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 60 questions</span>${button('Explore levels →','levels','primary block')}</article>
@@ -50,7 +54,7 @@ function levels(){
 function difficultyView(){
  const w=weeks.find(x=>x.week===state.week);
  return `${header()}<div class="eyebrow">Challenge 1 · Week ${w.week}</div><h1>${w.emoji} ${w.title}</h1><p class="muted">${w.subtitle}. Pick any difficulty.</p><div class="difficulty-grid">
- ${diffs.map(d=>`<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':'Trace and debug harder code'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${button('Start '+labels[d],'start:'+d,'primary block')}</article>`).join('')}</div>`;
+ ${diffs.map(d=>{const saved=readQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':'Trace and debug harder code'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
 }
 function currentQuestion(){return state.attempt[state.index];}
 function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
