@@ -1,0 +1,114 @@
+import { countFirstTry, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress } from './scoring.js';
+const app = document.getElementById('app');
+const weeks = [
+ {week:1,title:'Output & Variables',emoji:'🖨️',subtitle:'print(), input(), variables and arithmetic'},
+ {week:2,title:'Logic & Decisions',emoji:'🚦',subtitle:'if / elif / else and Boolean logic'},
+ {week:3,title:'Loop Master',emoji:'🔁',subtitle:'for, range(), while and nested loops'},
+ {week:4,title:'Function Builder',emoji:'🧩',subtitle:'def, parameters and return values'}
+];
+const diffs = ['easy','medium','hard'];
+const labels = {easy:'Easy',medium:'Medium',hard:'Hard'};
+const points = {easy:10,medium:15,hard:20};
+let allQuestions = [];
+let progress = loadProgress();
+let state = {view:'home',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false};
+const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
+const scoreKey=(w,d)=>`W${w}-${d}`;
+const best=(w,d)=>progress.best[scoreKey(w,d)] || 0;
+function render(){
+ document.getElementById('total-xp').textContent=totalXP(progress.best).toLocaleString();
+ let content;
+ if(state.view==='home')content=home();
+ else if(state.view==='levels')content=levels();
+ else if(state.view==='difficulty')content=difficultyView();
+ else if(state.view==='quiz')content=quiz();
+ else if(state.view==='results')content=results();
+ else if(state.view==='progress')content=progressView();
+ app.innerHTML=content;
+}
+function header(){return `<button class="back" data-action="back">← Back</button>`;}
+function home(){
+ const next=recommendedQuest(progress.best);
+ const completed=Object.values(progress.best).filter(n=>n>=3).length;
+ return `<section class="hero"><div class="eyebrow">Welcome, Python Explorer!</div><h1>Small challenges. Big discoveries. 🚀</h1><p class="muted">Practice real Python skills, earn stars and build confidence—five questions at a time.</p><div class="btn-row">${button('Continue: Week '+next.week+' · '+labels[next.difficulty],'continue','primary')}${button('My progress','progress')}</div></section>
+ <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/12</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3)).length}/4</b><span class="muted small">Topic badges</span></div></div>
+ <h2 class="section-title">Choose your challenge</h2><div class="cards">
+ <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 60 questions</span>${button('Explore levels →','levels','primary block')}</article>
+ <article class="card week-card"><div class="big-emoji">💎</div><h3>Challenge 2 — Data Explorer</h3><p class="muted">Weeks 6–9: lists, strings, sets and dictionaries.</p><span class="tag">Coming later</span><button class="btn block" disabled>Not available yet</button></article></div>`;
+}
+function levels(){
+ const recommended=recommendedQuest(progress.best);
+ return `${header()}<div class="eyebrow">Challenge 1</div><h1>Choose a Week</h1><p class="muted">Every level is unlocked. Follow the suggested path or jump to any topic.</p>
+ <div class="cards">${weeks.map(w=>`<article class="card week-card"><div class="split"><span class="big-emoji">${w.emoji}</span>${recommended.week===w.week?'<span class="tag">Recommended</span>':''}</div><h3>Week ${w.week} · ${w.title}</h3><p class="muted small">${w.subtitle}</p><p class="status-line">Best: ${diffs.map(d=>`${labels[d]} ${best(w.week,d)}/5`).join(' · ')}</p>${button('Choose difficulty →','week:'+w.week,'primary block')}</article>`).join('')}</div>`;
+}
+function difficultyView(){
+ const w=weeks.find(x=>x.week===state.week);
+ return `${header()}<div class="eyebrow">Challenge 1 · Week ${w.week}</div><h1>${w.emoji} ${w.title}</h1><p class="muted">${w.subtitle}. Pick any difficulty.</p><div class="difficulty-grid">
+ ${diffs.map(d=>`<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':'Trace and debug harder code'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per first-try correct</p>${button('Start '+labels[d],'start:'+d,'primary block')}</article>`).join('')}</div>`;
+}
+function currentQuestion(){return state.attempt[state.index];}
+function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
+function quiz(){
+ const item=currentQuestion(); const q=item.question;
+ const opts=q.options?.length ? `<div role="group" aria-label="Answer options">${q.options.map((o,i)=>`<button class="option" data-choice="${i}" aria-pressed="${state.draft===o}" ${state.checked?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`:`<label for="answer" class="small muted">Type your answer below. For multiple lines, use the Enter key.</label><textarea id="answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" ${state.checked?'disabled':''} placeholder="Your answer...">${escapeHTML(state.draft)}</textarea>`;
+ const f=state.feedback;
+ return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>${opts}
+ ${state.hint&&!state.checked?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
+ ${state.checked?`<div class="feedback ${f.correct?'':'wrong'}" role="status"><strong>${f.correct?'✅ Correct!':'💡 Keep learning!'}</strong><p>${escapeHTML(q.explanation)}</p>${!f.correct?`<p style="margin-top:8px"><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p>`:''}</div>`:''}
+ <div class="btn-row">${state.checked?button(state.index===4?'See results →':'Next question →','next','primary'):button('💡 Hint','hint')+button('Check answer','check','primary')}</div></div><p class="footnote">Only the first submitted answer earns XP. You can retry the entire quest anytime.</p></div>`;
+}
+function results(){
+ const n=countFirstTry(state.attempt);const old=state.oldBest;const fresh=best(state.week,state.difficulty);const xpGain=(fresh-old)*points[state.difficulty];const stars=awardedStars(n);
+ return `<div class="result"><div class="big-emoji">${n>=3?'🏆':'🌱'}</div><h1>${n>=3?'Quest complete!':'Nice effort—keep practicing!'}</h1><p class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</p><p class="muted">Week ${state.week} · ${labels[state.difficulty]}</p><div class="kpi-row"><div class="kpi"><b>${n}/5</b><span class="small muted">First-try correct</span></div><div class="kpi"><b>${fresh}/5</b><span class="small muted">Personal best</span></div><div class="kpi"><b>+${xpGain}</b><span class="small muted">New XP earned</span></div></div><div class="card" style="text-align:left;margin-top:18px"><h3>Review these topics</h3>${state.attempt.filter(a=>!a.firstCorrect).length?'<p class="muted">'+state.attempt.filter(a=>!a.firstCorrect).map(a=>escapeHTML(a.question.concept)).join(' · ')+'</p>':'<p class="muted">Perfect first try! Excellent work.</p>'}</div><div class="btn-row">${button('Try again','start:'+state.difficulty)}${button('Choose another level','levels','primary')}${button('My progress','progress')}</div></div>`;
+}
+function progressView(){
+ const completed=weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3));
+ return `${header()}<div class="eyebrow">Your journey</div><h1>My Progress 🏅</h1><div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="small muted">XP / 900</span></div><div class="kpi"><b>${Object.values(progress.best).filter(v=>v>=3).length}/12</b><span class="small muted">Quests passed</span></div><div class="kpi"><b>${completed.length}/4</b><span class="small muted">Topic badges</span></div></div><h2 class="section-title">Badges</h2><div class="cards">${weeks.map(w=>`<article class="card"><div class="big-emoji">${completed.some(x=>x.week===w.week)?'🏅':'🔒'}</div><h3>${w.title}</h3><p class="muted small">${completed.some(x=>x.week===w.week)?'Unlocked!':'Pass all 3 difficulties to unlock.'}</p></article>`).join('')}</div><h2 class="section-title">Best scores</h2><div class="card">${weeks.map(w=>`<div style="padding:10px 0;border-bottom:1px solid #eef1f6"><strong>Week ${w.week} · ${w.title}</strong><p class="muted small" style="margin:6px 0 0">${diffs.map(d=>`${labels[d]}: ${best(w.week,d)}/5`).join(' · ')}</p></div>`).join('')}</div><div class="btn-row">${button('Choose a level','levels','primary')}</div>`;
+}
+function navigate(view){state.view=view;render();window.scrollTo({top:0,behavior:'instant'});}
+function start(d){
+ const qs=allQuestions.filter(q=>q.week===state.week&&q.difficulty===d);
+ if(qs.length!==5){app.innerHTML='<div class="card empty">This quest is missing questions. Please report this to your teacher.</div>';return;}
+ state={...state,view:'quiz',difficulty:d,index:0,attempt:qs.map(question=>({question,firstCorrect:false,submitted:false})),draft:'',checked:false,feedback:null,hint:false,oldBest:best(state.week,d)};
+ render();window.scrollTo(0,0);
+}
+function check(){
+ if(state.checked||!state.draft.trim())return;
+ const item=currentQuestion(); const q=item.question;
+ const correct=normalize(state.draft)===normalize(q.answer);
+ item.firstCorrect=correct;item.submitted=true;
+ state.checked=true;state.feedback={correct};render();
+}
+function next(){
+ if(state.index===4){
+ const n=countFirstTry(state.attempt);progress=updateBest(progress,state.week,state.difficulty,n);saveProgress(progress);navigate('results');return;
+ }
+ state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();
+}
+app.addEventListener('click',event=>{
+ const choice=event.target.closest('[data-choice]');
+ if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();return;}
+ const btn=event.target.closest('[data-action]');if(!btn)return;
+ const action=btn.dataset.action;
+ if(action==='back'){navigate(state.view==='quiz'?'difficulty':state.view==='difficulty'?'levels':'home');return;}
+ if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;navigate('difficulty');return;}
+ if(action==='levels'){navigate('levels');return;}
+ if(action==='progress'){navigate('progress');return;}
+ if(action.startsWith('week:')){state.week=Number(action.split(':')[1]);navigate('difficulty');return;}
+ if(action.startsWith('start:')){start(action.split(':')[1]);return;}
+ if(action==='hint'){state.hint=true;render();return;}
+ if(action==='check'){check();return;}
+ if(action==='next'){next();return;}
+});
+app.addEventListener('input',event=>{if(event.target.id==='answer')state.draft=event.target.value;});
+async function init(){
+ try{
+ const resp=await fetch('./data/questions.json',{cache:'no-cache'});
+ if(!resp.ok)throw new Error('Question data returned '+resp.status);
+ const payload=await resp.json();allQuestions=payload.questions;
+ if(!Array.isArray(allQuestions)||allQuestions.length!==60)throw new Error('Expected 60 questions');
+ render();
+ }catch(err){app.innerHTML=`<div class="card empty"><h2>Could not load the questions</h2><p class="muted">${escapeHTML(err.message)}</p><p>Please serve the project through a web server, not by double-clicking index.html.</p></div>`;}
+}
+init();
