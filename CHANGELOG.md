@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.6 — 2026-11-15
+- Applied a single walkthrough layout to all 80 questions: Step and Previous/Next/Restart **above code**, cumulative Output **below code**, Explanation **below Output**.
+- Output area is always present and starts blank; it reads the cumulative `step.output` snapshot, including multiple print lines. Removed inline print-result tags and obsolete pinned-print rendering.
+- Retained the full-width dark code panel, current-line arrow, scoped persistent variables, condition verdicts and function call/return tags.
+- Consolidated scattered implementation notes into Technical Design §7 as the canonical Walkthrough Contract.
+- Updated legacy inline/output-event tests and added a whole-bank renderer regression covering all 978 trace steps; GitHub Actions includes the new test.
+- Classroom browser visual QA and fresh CI status still require confirmation.
+
 ## v0.6.5 — 2026-11-15
 - Standardized `Function defined` badges using actual `def` source lines rather than brittle English-explanation punctuation.
 - Pinned printed output to the `print()` line that produced it, retaining that output across later execution steps and function returns.
