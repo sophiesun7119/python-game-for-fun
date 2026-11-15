@@ -42,6 +42,18 @@ for (const question of questions.filter(q => ['hard', 'extra'].includes(q.diffic
   verified++;
 }
 
+// Every function entry step in Week 4 must point at its def declaration,
+// never at the first body line. This protects against the UI confusion where
+// parameter binding and execution of that line appeared to happen together.
+for (const question of questions.filter(q => q.week === 4)) {
+  const sourceLines = question.code.split('\n');
+  for (const [index, step] of allTraces[question.id].steps.entries()) {
+    if (!step.explanation.startsWith('Enter ')) continue;
+    assert.match(sourceLines[step.line].trim(), /^def\s+\w+\s*\(/,
+      `${question.id} step ${index}: function entry arrow must highlight def line`);
+  }
+}
+
 // Concrete regression: W4 Extra Rock Q1 — call site, function body,
 // nested call, nested return and assignment MUST be highlighted in this order.
 const item = allTraces['W4-X-01'].steps;
