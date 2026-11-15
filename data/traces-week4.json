@@ -508,19 +508,36 @@
           "explanation": "Define total_cost(). Its body does not run until the function is called."
         },
         {
-          "line": 8,
+          "line": 10,
           "variables": {},
           "output": [],
-          "explanation": "Call total_cost(5, True). Bind parameters and enter its body."
+          "explanation": "Call total_cost(5, True) from this line."
         },
         {
-          "line": 0,
+          "line": 9,
           "variables": {
             "weight": 5,
             "rush": true
           },
           "output": [],
-          "explanation": "Call base_rate(5). Bind parameters and enter its body."
+          "explanation": "Enter total_cost(): bind weight = 5, rush = True. Execute this first line of the function body."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
+          "output": [],
+          "explanation": "Call base_rate(5) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "Enter base_rate(): bind weight = 5. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -539,10 +556,30 @@
           "explanation": "Return 10 to the calling line."
         },
         {
-          "line": 4,
-          "variables": {},
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
           "output": [],
-          "explanation": "Call rush_fee(True). Bind parameters and enter its body."
+          "explanation": "Return from base_rate() to this calling line with value 10. Continue evaluating this statement."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
+          "output": [],
+          "explanation": "Call rush_fee(True) from this line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "rush": true
+          },
+          "output": [],
+          "explanation": "Enter rush_fee(): bind rush = True. Execute this first line of the function body."
         },
         {
           "line": 5,
@@ -567,7 +604,22 @@
             "rush": true
           },
           "output": [],
+          "explanation": "Return from rush_fee() to this calling line with value 15. Continue evaluating this statement."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
+          "output": [],
           "explanation": "Return 25 to the calling line."
+        },
+        {
+          "line": 10,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from total_cost() to this calling line with value 25. Continue evaluating this statement."
         },
         {
           "line": 10,
@@ -594,10 +646,18 @@
           "explanation": "Define total(). Its body does not run until the function is called."
         },
         {
-          "line": 0,
+          "line": 8,
           "variables": {},
           "output": [],
-          "explanation": "Call total(4). Bind parameters and enter its body."
+          "explanation": "Call total(4) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Enter total(): bind n = 4. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -771,6 +831,12 @@
         {
           "line": 8,
           "variables": {},
+          "output": [],
+          "explanation": "Return from total() to this calling line with value 16. Continue evaluating this statement."
+        },
+        {
+          "line": 8,
+          "variables": {},
           "output": [
             "16"
           ],
@@ -799,18 +865,34 @@
           "explanation": "Define use(). Its body does not run until the function is called."
         },
         {
-          "line": 2,
+          "line": 4,
           "variables": {},
           "output": [],
-          "explanation": "Call use(2). Bind parameters and enter its body."
+          "explanation": "Call use(2) from this line."
         },
         {
-          "line": 0,
+          "line": 3,
           "variables": {
             "n": 2
           },
           "output": [],
-          "explanation": "Call show(3). Bind parameters and enter its body."
+          "explanation": "Enter use(): bind n = 2. Execute this first line of the function body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Call show(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Enter show(): bind n = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -830,7 +912,25 @@
           "output": [
             "6"
           ],
+          "explanation": "Return from show() to this calling line with value None. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [
+            "6"
+          ],
           "explanation": "Return None to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [
+            "6"
+          ],
+          "explanation": "Return from use() to this calling line with value None. Continue evaluating this statement."
         },
         {
           "line": 4,
@@ -876,10 +976,19 @@
           "explanation": "Define shipping(). Its body does not run until the function is called."
         },
         {
-          "line": 0,
+          "line": 8,
           "variables": {},
           "output": [],
-          "explanation": "Call adjust(50, True). Bind parameters and enter its body."
+          "explanation": "Call adjust(50, True) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "cost": 50,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Enter adjust(): bind cost = 50, member = True. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -901,6 +1010,12 @@
         },
         {
           "line": 8,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from adjust() to this calling line with value 45. Continue evaluating this statement."
+        },
+        {
+          "line": 8,
           "variables": {
             "price": 45
           },
@@ -908,12 +1023,21 @@
           "explanation": "Evaluate adjust(50, True) and set price to 45."
         },
         {
-          "line": 4,
+          "line": 9,
           "variables": {
             "price": 45
           },
           "output": [],
-          "explanation": "Call shipping(6). Bind parameters and enter its body."
+          "explanation": "Call shipping(6) from this line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "weight": 6,
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Enter shipping(): bind weight = 6. Execute this first line of the function body."
         },
         {
           "line": 5,
@@ -932,6 +1056,14 @@
           },
           "output": [],
           "explanation": "Return 10 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "price": 45
+          },
+          "output": [],
+          "explanation": "Return from shipping() to this calling line with value 10. Continue evaluating this statement."
         },
         {
           "line": 9,
@@ -966,18 +1098,34 @@
           "explanation": "Define score(). Its body does not run until the function is called."
         },
         {
-          "line": 2,
+          "line": 6,
           "variables": {},
           "output": [],
-          "explanation": "Call score(3). Bind parameters and enter its body."
+          "explanation": "Call score(3) from this line."
         },
         {
-          "line": 0,
+          "line": 3,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Call bonus(3). Bind parameters and enter its body."
+          "explanation": "Enter score(): bind x = 3. Execute this first line of the function body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Call bonus(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Enter bonus(): bind x = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -989,17 +1137,35 @@
         },
         {
           "line": 3,
-          "variables": {},
-          "output": [],
-          "explanation": "Check bonus(x) >= 5: True. Enter this branch."
-        },
-        {
-          "line": 0,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Call bonus(3). Bind parameters and enter its body."
+          "explanation": "Return from bonus() to this calling line with value 5. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Check bonus(x) >= 5: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Call bonus(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Enter bonus(): bind x = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1015,7 +1181,21 @@
             "x": 3
           },
           "output": [],
+          "explanation": "Return from bonus() to this calling line with value 5. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
           "explanation": "Return 10 to the calling line."
+        },
+        {
+          "line": 6,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from score() to this calling line with value 10. Continue evaluating this statement."
         },
         {
           "line": 6,
@@ -1048,19 +1228,36 @@
           "explanation": "Define message(). Its body does not run until the function is called."
         },
         {
-          "line": 6,
+          "line": 11,
           "variables": {},
           "output": [],
-          "explanation": "Call message(730, 6). Bind parameters and enter its body."
+          "explanation": "Call message(730, 6) from this line."
         },
         {
-          "line": 0,
+          "line": 7,
           "variables": {
             "xp": 730,
             "level": 6
           },
           "output": [],
-          "explanation": "Call xp_needed(6). Bind parameters and enter its body."
+          "explanation": "Enter message(): bind xp = 730, level = 6. Execute this first line of the function body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "xp": 730,
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Call xp_needed(6) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Enter xp_needed(): bind level = 6. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1085,6 +1282,15 @@
           },
           "output": [],
           "explanation": "Return 900 to the calling line."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "xp": 730,
+            "level": 6
+          },
+          "output": [],
+          "explanation": "Return from xp_needed() to this calling line with value 900. Continue evaluating this statement."
         },
         {
           "line": 7,
@@ -1119,6 +1325,12 @@
         {
           "line": 11,
           "variables": {},
+          "output": [],
+          "explanation": "Return from message() to this calling line with value 'Need 170'. Continue evaluating this statement."
+        },
+        {
+          "line": 11,
+          "variables": {},
           "output": [
             "Need 170"
           ],
@@ -1147,10 +1359,19 @@
           "explanation": "Define levels_gained(). Its body does not run until the function is called."
         },
         {
-          "line": 2,
+          "line": 9,
           "variables": {},
           "output": [],
-          "explanation": "Call levels_gained(650, 2). Bind parameters and enter its body."
+          "explanation": "Call levels_gained(650, 2) from this line."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "xp": 650,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Enter levels_gained(): bind xp = 650, level = 2. Execute this first line of the function body."
         },
         {
           "line": 3,
@@ -1163,14 +1384,22 @@
           "explanation": "Evaluate 0 and set gained to 0."
         },
         {
-          "line": 0,
+          "line": 4,
           "variables": {
             "xp": 650,
             "level": 2,
             "gained": 0
           },
           "output": [],
-          "explanation": "Call needed(2). Bind parameters and enter its body."
+          "explanation": "Call needed(2) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Enter needed(): bind level = 2. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1182,19 +1411,41 @@
         },
         {
           "line": 4,
-          "variables": {},
-          "output": [],
-          "explanation": "Check while xp >= needed(level): True. Run the body."
-        },
-        {
-          "line": 0,
           "variables": {
             "xp": 650,
             "level": 2,
             "gained": 0
           },
           "output": [],
-          "explanation": "Call needed(2). Bind parameters and enter its body."
+          "explanation": "Return from needed() to this calling line with value 200. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Check while xp >= needed(level): True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Call needed(2) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Enter needed(): bind level = 2. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1203,6 +1454,16 @@
           },
           "output": [],
           "explanation": "Return 200 to the calling line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 650,
+            "level": 2,
+            "gained": 0
+          },
+          "output": [],
+          "explanation": "Return from needed() to this calling line with value 200. Continue evaluating this statement."
         },
         {
           "line": 5,
@@ -1235,14 +1496,22 @@
           "explanation": "Evaluate 1 and update gained to 1."
         },
         {
-          "line": 0,
+          "line": 4,
           "variables": {
             "xp": 450,
             "level": 3,
             "gained": 1
           },
           "output": [],
-          "explanation": "Call needed(3). Bind parameters and enter its body."
+          "explanation": "Call needed(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
+          "explanation": "Enter needed(): bind level = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1254,19 +1523,41 @@
         },
         {
           "line": 4,
-          "variables": {},
-          "output": [],
-          "explanation": "Check while xp >= needed(level): True. Run the body."
-        },
-        {
-          "line": 0,
           "variables": {
             "xp": 450,
             "level": 3,
             "gained": 1
           },
           "output": [],
-          "explanation": "Call needed(3). Bind parameters and enter its body."
+          "explanation": "Return from needed() to this calling line with value 300. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Check while xp >= needed(level): True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Call needed(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
+          "explanation": "Enter needed(): bind level = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1275,6 +1566,16 @@
           },
           "output": [],
           "explanation": "Return 300 to the calling line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "xp": 450,
+            "level": 3,
+            "gained": 1
+          },
+          "output": [],
+          "explanation": "Return from needed() to this calling line with value 300. Continue evaluating this statement."
         },
         {
           "line": 5,
@@ -1307,14 +1608,22 @@
           "explanation": "Evaluate 1 and update gained to 2."
         },
         {
-          "line": 0,
+          "line": 4,
           "variables": {
             "xp": 150,
             "level": 4,
             "gained": 2
           },
           "output": [],
-          "explanation": "Call needed(4). Bind parameters and enter its body."
+          "explanation": "Call needed(4) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 4
+          },
+          "output": [],
+          "explanation": "Enter needed(): bind level = 4. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1326,7 +1635,21 @@
         },
         {
           "line": 4,
-          "variables": {},
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 2
+          },
+          "output": [],
+          "explanation": "Return from needed() to this calling line with value 400. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "xp": 150,
+            "level": 4,
+            "gained": 2
+          },
           "output": [],
           "explanation": "Check while xp >= needed(level): False. Exit the loop."
         },
@@ -1339,6 +1662,12 @@
           },
           "output": [],
           "explanation": "Return 2 to the calling line."
+        },
+        {
+          "line": 9,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from levels_gained() to this calling line with value 2. Continue evaluating this statement."
         },
         {
           "line": 9,
@@ -1377,13 +1706,13 @@
           "explanation": "Define checkout(). Its body does not run until the function is called."
         },
         {
-          "line": 8,
+          "line": 11,
           "variables": {},
           "output": [],
-          "explanation": "Call checkout(2, 7, 5, True). Bind parameters and enter its body."
+          "explanation": "Call checkout(2, 7, 5, True) from this line."
         },
         {
-          "line": 0,
+          "line": 9,
           "variables": {
             "a": 2,
             "b": 7,
@@ -1391,7 +1720,26 @@
             "member": true
           },
           "output": [],
-          "explanation": "Call base(2). Bind parameters and enter its body."
+          "explanation": "Enter checkout(): bind a = 2, b = 7, c = 5, member = True. Execute this first line of the function body."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Call base(2) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 2
+          },
+          "output": [],
+          "explanation": "Enter base(): bind weight = 2. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1410,10 +1758,34 @@
           "explanation": "Return 10 to the calling line."
         },
         {
-          "line": 0,
-          "variables": {},
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
           "output": [],
-          "explanation": "Call base(7). Bind parameters and enter its body."
+          "explanation": "Return from base() to this calling line with value 10. Continue evaluating this statement."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Call base(7) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 7
+          },
+          "output": [],
+          "explanation": "Enter base(): bind weight = 7. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1432,10 +1804,34 @@
           "explanation": "Return 20 to the calling line."
         },
         {
-          "line": 0,
-          "variables": {},
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
           "output": [],
-          "explanation": "Call base(5). Bind parameters and enter its body."
+          "explanation": "Return from base() to this calling line with value 20. Continue evaluating this statement."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Call base(5) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "Enter base(): bind weight = 5. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1459,14 +1855,13 @@
             "a": 2,
             "b": 7,
             "c": 5,
-            "member": true,
-            "total": 40
+            "member": true
           },
           "output": [],
-          "explanation": "Evaluate base(a) + base(b) + base(c) and set total to 40."
+          "explanation": "Return from base() to this calling line with value 10. Continue evaluating this statement."
         },
         {
-          "line": 4,
+          "line": 9,
           "variables": {
             "a": 2,
             "b": 7,
@@ -1475,7 +1870,28 @@
             "total": 40
           },
           "output": [],
-          "explanation": "Call discount(40, True). Bind parameters and enter its body."
+          "explanation": "Evaluate base(a) + base(b) + base(c) and set total to 40."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true,
+            "total": 40
+          },
+          "output": [],
+          "explanation": "Call discount(40, True) from this line."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 40,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Enter discount(): bind total = 40, member = True. Execute this first line of the function body."
         },
         {
           "line": 5,
@@ -1505,7 +1921,25 @@
             "total": 40
           },
           "output": [],
+          "explanation": "Return from discount() to this calling line with value 36. Continue evaluating this statement."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
+            "member": true,
+            "total": 40
+          },
+          "output": [],
           "explanation": "Return 36 to the calling line."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from checkout() to this calling line with value 36. Continue evaluating this statement."
         },
         {
           "line": 11,
@@ -1532,10 +1966,18 @@
           "explanation": "Define pairs(). Its body does not run until the function is called."
         },
         {
-          "line": 0,
+          "line": 8,
           "variables": {},
           "output": [],
-          "explanation": "Call pairs(4). Bind parameters and enter its body."
+          "explanation": "Call pairs(4) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Enter pairs(): bind n = 4. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1856,6 +2298,12 @@
         {
           "line": 8,
           "variables": {},
+          "output": [],
+          "explanation": "Return from pairs() to this calling line with value 4. Continue evaluating this statement."
+        },
+        {
+          "line": 8,
+          "variables": {},
           "output": [
             "4"
           ],
@@ -1892,20 +2340,36 @@
           "explanation": "Evaluate 3 and set x to 3."
         },
         {
-          "line": 3,
+          "line": 10,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Call process(3). Bind parameters and enter its body."
+          "explanation": "Call process(3) from this line."
         },
         {
-          "line": 0,
+          "line": 4,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Call bump(3). Bind parameters and enter its body."
+          "explanation": "Enter process(): bind x = 3. Execute this first line of the function body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Call bump(3) from this line."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Enter bump(): bind x = 3. Execute this first line of the function body."
         },
         {
           "line": 1,
@@ -1922,6 +2386,14 @@
           },
           "output": [],
           "explanation": "Return 5 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Return from bump() to this calling line with value 5. Continue evaluating this statement."
         },
         {
           "line": 4,
@@ -1958,6 +2430,14 @@
           },
           "output": [],
           "explanation": "Return 11 to the calling line."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Return from process() to this calling line with value 11. Continue evaluating this statement."
         },
         {
           "line": 10,
