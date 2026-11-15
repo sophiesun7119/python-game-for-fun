@@ -114,10 +114,10 @@ function buildTrace(question) {
             const local=Object.create(globals);
             node.params.forEach((param,i)=>local[param]=args[i]);
             active=local;
-            const first=node.body[0];
-            const firstLine=first.line??first.branches?.[0]?.line;
-            if(!Number.isInteger(firstLine))throw Error("Function body has no executable line: "+node.name);
-            record(firstLine,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". Execute this first line of the function body.");
+            // Distinguish declaration, invocation, entry and body execution.
+            // On entry, highlight the def line to show parameter bindings.
+            // Only the following trace step moves into the first body statement.
+            record(node.line,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". Parameters are ready; the function body runs next.");
             let returned,finished=false;
             try{
               const res=execute(node.body,local);
