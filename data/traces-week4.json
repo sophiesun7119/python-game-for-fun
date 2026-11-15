@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "description": "Guided traces for Week 4 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
+  "description": "Guided traces for Week 4 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
   "traces": {
     "W4-E-01": {
       "steps": [
@@ -34,7 +34,8 @@
           "output": [
             "Hi"
           ],
-          "explanation": "Print 'Hi'."
+          "explanation": "Call print() to display \"Hi\".",
+          "event": "print"
         },
         {
           "line": 2,
@@ -88,6 +89,15 @@
             "n": 3
           },
           "output": [],
+          "explanation": "Calculate 3 * 2 = 6.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 3
+          },
+          "output": [],
           "explanation": "Return 6 to the calling line."
         },
         {
@@ -102,7 +112,8 @@
           "output": [
             "6"
           ],
-          "explanation": "Print 6."
+          "explanation": "Call print() to display \"6\".",
+          "event": "print"
         }
       ]
     },
@@ -140,6 +151,15 @@
             "n": 4
           },
           "output": [],
+          "explanation": "Calculate 4 * 4 = 16.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
           "explanation": "Return 16 to the calling line."
         },
         {
@@ -154,7 +174,8 @@
           "output": [
             "16"
           ],
-          "explanation": "Print 16."
+          "explanation": "Call print() to display \"16\".",
+          "event": "print"
         }
       ]
     },
@@ -194,6 +215,16 @@
             "b": 5
           },
           "output": [],
+          "explanation": "Calculate 2 + 5 = 7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 2,
+            "b": 5
+          },
+          "output": [],
           "explanation": "Return 7 to the calling line."
         },
         {
@@ -208,7 +239,8 @@
           "output": [
             "7"
           ],
-          "explanation": "Print 7."
+          "explanation": "Call print() to display \"7\".",
+          "event": "print"
         }
       ]
     },
@@ -232,7 +264,8 @@
           "output": [
             "Done"
           ],
-          "explanation": "Print 'Done'."
+          "explanation": "Call print() to display \"Done\".",
+          "event": "print"
         }
       ]
     },
@@ -270,6 +303,15 @@
             "n": 4
           },
           "output": [],
+          "explanation": "Calculate 4 * 4 = 16.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 4
+          },
+          "output": [],
           "explanation": "Return 16 to the calling line."
         },
         {
@@ -281,10 +323,18 @@
         {
           "line": 2,
           "variables": {},
+          "output": [],
+          "explanation": "Calculate 16 + 1 = 17.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {},
           "output": [
             "17"
           ],
-          "explanation": "Print 17."
+          "explanation": "Call print() to display \"17\".",
+          "event": "print"
         }
       ]
     },
@@ -324,6 +374,16 @@
             "b": 10
           },
           "output": [],
+          "explanation": "Calculate 3 - 10 = -7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 3,
+            "b": 10
+          },
+          "output": [],
           "explanation": "Return -7 to the calling line."
         },
         {
@@ -338,7 +398,8 @@
           "output": [
             "-7"
           ],
-          "explanation": "Print -7."
+          "explanation": "Call print() to display \"-7\".",
+          "event": "print"
         }
       ]
     },
@@ -375,10 +436,20 @@
           "variables": {
             "name": "Mia"
           },
+          "output": [],
+          "explanation": "Evaluate 'Hello ' + name using name = \"Mia\"; the result is \"Hello Mia\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "Mia"
+          },
           "output": [
             "Hello Mia"
           ],
-          "explanation": "Print 'Hello Mia'."
+          "explanation": "Call print() to display \"Hello Mia\".",
+          "event": "print"
         },
         {
           "line": 2,
@@ -407,7 +478,8 @@
             "Hello Mia",
             "None"
           ],
-          "explanation": "Print None."
+          "explanation": "Call print() to display \"None\".",
+          "event": "print"
         }
       ]
     },
@@ -467,6 +539,15 @@
             "n": 2
           },
           "output": [],
+          "explanation": "Calculate 2 * 2 = 4.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
           "explanation": "Return 4 to the calling line."
         },
         {
@@ -476,6 +557,15 @@
           },
           "output": [],
           "explanation": "Return from double() to this calling line with value 4. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Calculate 4 * 3 = 12.",
+          "phase": "calculate"
         },
         {
           "line": 3,
@@ -497,7 +587,8 @@
           "output": [
             "12"
           ],
-          "explanation": "Print 12."
+          "explanation": "Call print() to display \"12\".",
+          "event": "print"
         }
       ]
     },
@@ -557,7 +648,8 @@
           "output": [
             "Yes"
           ],
-          "explanation": "Print 'Yes'."
+          "explanation": "Call print() to display \"Yes\".",
+          "event": "print"
         }
       ]
     },
@@ -693,6 +785,16 @@
             "rush": true
           },
           "output": [],
+          "explanation": "Calculate 10 + 15 = 25.",
+          "phase": "calculate"
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 5,
+            "rush": true
+          },
+          "output": [],
           "explanation": "Return 25 to the calling line."
         },
         {
@@ -707,7 +809,8 @@
           "output": [
             "25"
           ],
-          "explanation": "Print 25."
+          "explanation": "Call print() to display \"25\".",
+          "event": "print"
         }
       ]
     },
@@ -812,6 +915,17 @@
           "line": 4,
           "variables": {
             "n": 4,
+            "result": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Calculate 2 * 2 = 4.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
             "result": 5,
             "i": 2
           },
@@ -882,6 +996,17 @@
           "line": 4,
           "variables": {
             "n": 4,
+            "result": 8,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Calculate 4 * 2 = 8.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
             "result": 16,
             "i": 4
           },
@@ -920,7 +1045,8 @@
           "output": [
             "16"
           ],
-          "explanation": "Print 16."
+          "explanation": "Call print() to display \"16\".",
+          "event": "print"
         }
       ]
     },
@@ -979,10 +1105,20 @@
           "variables": {
             "n": 3
           },
+          "output": [],
+          "explanation": "Calculate 3 * 2 = 6.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 3
+          },
           "output": [
             "6"
           ],
-          "explanation": "Print 6."
+          "explanation": "Call print() to display \"6\".",
+          "event": "print"
         },
         {
           "line": 3,
@@ -993,6 +1129,17 @@
             "6"
           ],
           "explanation": "Return from show() to this calling line with value None. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [
+            "6"
+          ],
+          "explanation": "Use show() → null. Then evaluate null to get \"None\".",
+          "phase": "calculate"
         },
         {
           "line": 3,
@@ -1031,7 +1178,8 @@
             "6",
             "None"
           ],
-          "explanation": "Print None."
+          "explanation": "Call print() to display \"None\".",
+          "event": "print"
         }
       ]
     },
@@ -1078,6 +1226,16 @@
           },
           "output": [],
           "explanation": "Check member: True. Enter this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "cost": 50,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Calculate 50 * 0.9 = 45.",
+          "phase": "calculate"
         },
         {
           "line": 2,
@@ -1150,10 +1308,20 @@
           "variables": {
             "price": 45
           },
+          "output": [],
+          "explanation": "Calculate 45 + 10 = 55.",
+          "phase": "calculate"
+        },
+        {
+          "line": 9,
+          "variables": {
+            "price": 45
+          },
           "output": [
             "55.0"
           ],
-          "explanation": "The final value is 55.0. Python displays the .0 because the calculation returns a floating-point number."
+          "explanation": "Call print() to display \"55.0\".",
+          "event": "print"
         }
       ]
     },
@@ -1213,6 +1381,15 @@
             "x": 3
           },
           "output": [],
+          "explanation": "Calculate 3 + 2 = 5.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
           "explanation": "Return 5 to the calling line."
         },
         {
@@ -1253,6 +1430,15 @@
             "x": 3
           },
           "output": [],
+          "explanation": "Calculate 3 + 2 = 5.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
           "explanation": "Return 5 to the calling line."
         },
         {
@@ -1262,6 +1448,15 @@
           },
           "output": [],
           "explanation": "Return from bonus() to this calling line with value 5. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Calculate 5 * 2 = 10.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -1283,7 +1478,8 @@
           "output": [
             "10"
           ],
-          "explanation": "Print 10."
+          "explanation": "Call print() to display \"10\".",
+          "event": "print"
         }
       ]
     },
@@ -1361,6 +1557,15 @@
             "level": 6
           },
           "output": [],
+          "explanation": "Calculate 6 * 150 = 900.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "level": 6
+          },
+          "output": [],
           "explanation": "Return 900 to the calling line."
         },
         {
@@ -1400,6 +1605,17 @@
             "needed": 900
           },
           "output": [],
+          "explanation": "Evaluate the f-string with xp = 730, needed = 900; the formatted result is \"'Need 170'\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 10,
+          "variables": {
+            "xp": 730,
+            "level": 6,
+            "needed": 900
+          },
+          "output": [],
           "explanation": "Return 'Need 170' to the calling line."
         },
         {
@@ -1414,7 +1630,8 @@
           "output": [
             "Need 170"
           ],
-          "explanation": "Print 'Need 170'."
+          "explanation": "Call print() to display \"Need 170\".",
+          "event": "print"
         }
       ]
     },
@@ -1487,6 +1704,15 @@
             "level": 2
           },
           "output": [],
+          "explanation": "Calculate 2 * 100 = 200.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
           "explanation": "Return 200 to the calling line."
         },
         {
@@ -1526,6 +1752,15 @@
           },
           "output": [],
           "explanation": "Enter needed(): bind level = 2. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Calculate 2 * 100 = 200.",
+          "phase": "calculate"
         },
         {
           "line": 1,
@@ -1599,6 +1834,15 @@
             "level": 3
           },
           "output": [],
+          "explanation": "Calculate 3 * 100 = 300.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
           "explanation": "Return 300 to the calling line."
         },
         {
@@ -1638,6 +1882,15 @@
           },
           "output": [],
           "explanation": "Enter needed(): bind level = 3. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 3
+          },
+          "output": [],
+          "explanation": "Calculate 3 * 100 = 300.",
+          "phase": "calculate"
         },
         {
           "line": 1,
@@ -1711,6 +1964,15 @@
             "level": 4
           },
           "output": [],
+          "explanation": "Calculate 4 * 100 = 400.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "level": 4
+          },
+          "output": [],
           "explanation": "Return 400 to the calling line."
         },
         {
@@ -1755,7 +2017,8 @@
           "output": [
             "2"
           ],
-          "explanation": "Print 2."
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
         }
       ]
     },
@@ -1946,6 +2209,18 @@
             "a": 2,
             "b": 7,
             "c": 5,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Calculate 10 + 20 + 10 = 40.",
+          "phase": "calculate"
+        },
+        {
+          "line": 9,
+          "variables": {
+            "a": 2,
+            "b": 7,
+            "c": 5,
             "member": true,
             "total": 40
           },
@@ -1981,6 +2256,16 @@
           },
           "output": [],
           "explanation": "Check member and total >= 20: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "total": 40,
+            "member": true
+          },
+          "output": [],
+          "explanation": "Calculate 40 * 0.9 = 36.",
+          "phase": "calculate"
         },
         {
           "line": 6,
@@ -2027,7 +2312,8 @@
           "output": [
             "36.0"
           ],
-          "explanation": "The final value is 36.0. Python displays the .0 because the calculation returns a floating-point number."
+          "explanation": "Call print() to display \"36.0\".",
+          "event": "print"
         }
       ]
     },
@@ -2387,7 +2673,8 @@
           "output": [
             "4"
           ],
-          "explanation": "Print 4."
+          "explanation": "Call print() to display \"4\".",
+          "event": "print"
         }
       ]
     },
@@ -2454,6 +2741,15 @@
         {
           "line": 1,
           "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Calculate 5 + 2 = 7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
             "x": 5
           },
           "output": [],
@@ -2487,6 +2783,16 @@
         {
           "line": 5,
           "variables": {
+            "x": 3,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Calculate 6 * 2 = 12.",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
             "x": 6,
             "a": 5
           },
@@ -2501,6 +2807,16 @@
           },
           "output": [],
           "explanation": "Check a > x: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "x": 6,
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Calculate 5 + 6 = 11.",
+          "phase": "calculate"
         },
         {
           "line": 8,
@@ -2527,7 +2843,8 @@
           "output": [
             "11 3"
           ],
-          "explanation": "Print 11, 3."
+          "explanation": "Call print() to display \"11 3\".",
+          "event": "print"
         }
       ]
     }
