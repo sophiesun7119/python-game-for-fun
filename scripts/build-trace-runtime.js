@@ -114,7 +114,10 @@ function buildTrace(question) {
             const local=Object.create(globals);
             node.params.forEach((param,i)=>local[param]=args[i]);
             active=local;
-            record(node.body[0].line,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". The next line runs inside this function.");
+            const first=node.body[0];
+            const firstLine=first.line??first.branches?.[0]?.line;
+            if(!Number.isInteger(firstLine))throw Error("Function body has no executable line: "+node.name);
+            record(firstLine,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". Execute this first line of the function body.");
             try{
               const res=execute(node.body,local);
               return res?.type==="return"?res.value:null;
