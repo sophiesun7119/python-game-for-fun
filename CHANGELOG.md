@@ -1,5 +1,11 @@
 # Changelog
 
+## Trace entry and explanation layout — 2026-11-15
+- When invoking a function, the arrow now highlights its `def` line to introduce bound arguments before stepping into the first executable statement.
+- Regenerated all 20 Week 4 walkthroughs to follow the updated entry sequence, including nested calls.
+- Reserved three lines of Explanation height to prevent the navigation buttons from jumping as short explanations change; longer text may expand.
+- Updated the nested-call regression test and Technical Design.
+
 ## CI correction — 2026-11-15
 
 - Corrected `tests/validate-trace-control-flow.mjs` to recognize the two intentionally curated Python floating-point output steps, `W4-H-04` (`55.0`) and `W4-X-03` (`36.0`).
