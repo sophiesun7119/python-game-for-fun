@@ -790,14 +790,14 @@
       "id": "W3-X-02",
       "week": 3,
       "difficulty": "extra",
-      "concept": "Goldbach-style pair search",
+      "concept": "Goldbach pair using two primality checks",
       "type": "short_answer",
       "prompt": "What prints?",
-      "code": "n = 20\nfor a in range(2, n):\n    prime_a = True\n    for d in range(2, a):\n        if a % d == 0:\n            prime_a = False\n            break\n    if prime_a and a == 3:\n        print(a, n - a)\n        break",
+      "code": "n = 20\nfor a in range(2, n):\n    prime_a = True\n    for d in range(2, a):\n        if a % d == 0:\n            prime_a = False\n            break\n    b = n - a\n    prime_b = True\n    for d in range(2, b):\n        if b % d == 0:\n            prime_b = False\n            break\n    if prime_a and prime_b:\n        print(a, b)\n        break",
       "options": null,
       "answer": "3 17",
-      "explanation": "a=2 does not match a==3; a=3 is prime and gives pair (3,17).",
-      "hint": "Follow outer a=2 then a=3 and their inner loops.",
+      "explanation": "2 + 18 fails because 18 is not prime; 3 + 17 succeeds because both 3 and 17 are prime.",
+      "hint": "Check both the candidate a and the matching b=n-a before printing.",
       "curriculumReference": "Week 3 Number Analysis / Prime Checker"
     },
     {
