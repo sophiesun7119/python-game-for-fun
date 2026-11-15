@@ -67,6 +67,12 @@ Tags **move with the current execution line**: old tags disappear, and a change 
 
 Below the code, use **Previous**, **Next Step**, **Restart**, and read the bold red **Explanation:** for each step. **Close** returns to the usual question card. This is an educator-prepared walkthrough, *not* a general Python runtime; `input()` examples use a stated sample input and incomplete-code questions may show a corrected example.
 
+### Variable badges stay visible while they exist
+
+The code area is wider on a desktop or laptop. Long lines can show their variable badges **under the code on that same row**, so you do not have to scroll sideways to read them.
+
+Unlike the temporary ✓/✕ and function-call hints, **variable badges stay visible** at the line where the variable was most recently created or updated. If `a` changes later, its old badge disappears and the new `a` value appears at the new assignment. Variables inside a function remain visible while that function runs, including its `return` step, and disappear after returning to the caller. Variables in an outer function remain visible during nested calls; global variables remain available throughout the program.
+
 ## 5. Leave and continue later
 
 Your in-progress work is autosaved **in the same browser** by player, week, and difficulty. The next time you open the same quest, choose:
