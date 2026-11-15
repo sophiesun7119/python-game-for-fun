@@ -198,15 +198,14 @@ function traceInlineDetails(step, previous, source, condition) {
   Object.entries(current).filter(([name,value])=>!Object.prototype.hasOwnProperty.call(old,name)||JSON.stringify(old[name])!==JSON.stringify(value));
  for(const [name,value] of changed.slice(0,5))tags.push({kind:'value',text:name+' = '+valueDisplay(value)});
  if(changed.length>5)tags.push({kind:'muted',text:'+'+(changed.length-5)+' more'});
- const newOutput=(step.output||[]).slice((previous.output||[]).length);
- for(const out of newOutput)tags.push({kind:'output',text:'Output: '+out});
+ // Printed output is rendered solely in the separate Output panel.
  if(/^(?:Call |Enter \w+\(\)|Return from )/.test(note)){
   const action=note.match(/^(?:Call [^(]+\([^)]*\)|Enter [^(]+\(\)|Return from [^(]+\(\))/)?.[0];
   if(action){
    const returned=returning?note.match(/with value (.+?)\. Continue/)?.[1]:null;
    tags.unshift({kind:'call',text:action+(returned?' → '+returned:'')});
   }
- }else if(/^Return /.test(note)&&!newOutput.length){
+ }else if(/^Return /.test(note)){
   const match=note.match(/^Return (.+?) to the calling line/);
   if(match)tags.push({kind:'call',text:'↩ '+match[1]});
  }else if(/^\s*def\s+[A-Za-z_]\w*\s*\(/.test(source)&&/^(?:Define|Function defined)/i.test(note)){
@@ -265,25 +264,6 @@ function tracePersistentBindings(steps, index, codeLines){
   frame.lastSnapshot={...current};
  }
  return frames.flatMap(frame=>[...frame.bindings.values()]);
-}
-
-// Printed output is permanent program history, independent of local variable
-// lifetime. Pin each newly printed line beside the source print() that made it.
-function tracePersistentOutputs(steps,index,codeLines){
- const outputs=[];
- for(let i=1;i<=index&&i<steps.length;i++){
-  const step=steps[i],previous=steps[i-1];
-  const added=(step.output||[]).slice((previous.output||[]).length);
-  if(!added.length)continue;
-  const src=(codeLines[step.line]||'').trim();
-  if(!/^print\s*\(/.test(src)){
-   // Existing legacy steps must be corrected in trace JSON: attaching printed
-   // output to if/else or def is pedagogically incorrect.
-   continue;
-  }
-  for(const value of added)outputs.push({line:step.line,value});
- }
- return outputs;
 }
 
 function tracePanel(q){
