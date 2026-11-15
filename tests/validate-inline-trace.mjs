@@ -28,8 +28,8 @@ for(const q of questions){
    assert(typeof tag.text==='string'&&tag.text.length>0,q.id+' empty tag');
   }
   if(condition)assert(tags.some(t=>t.kind===(condition.passed?'pass':'fail')),q.id+' missing check badge');
-  if((step.output||[]).length>(previous.output||[]).length)
-   assert(tags.some(t=>t.kind==='output'),q.id+' missing print output on active line');
+  // Output belongs exclusively in the shared Output panel, never beside code.
+  assert(!tags.some(t=>t.kind==='output'),q.id+' unexpected output tag beside source');
   counted++;
  }
 }
@@ -44,7 +44,14 @@ assert(at(8).some(x=>x.kind==='pass'),'level <= 10 should show green ✓');
 assert(at(10).some(x=>x.kind==='call'&&x.text.includes('900')),'Function return must show returned 900');
 assert(!at(10).some(x=>x.kind==='value'&&x.text.includes('xp =')),'Returning must not invent variable changes');
 assert(at(11).some(x=>x.text==='needed = 900'),'Assignment should show only after return');
-assert(at(15).some(x=>x.kind==='output'&&x.text.includes('Need 170')),'Output should appear at print line');
+assert(!at(15).some(x=>x.kind==='output'),'Output must be isolated below the code, not inline');
 const panel=app.slice(app.indexOf('function tracePanel('),app.indexOf('function currentQuestion('));
 assert(!panel.includes('trace-state-panel')&&!panel.includes('trace-layout'),'Trace must use a single full-width code panel');
+assert(panel.indexOf('trace-toolbar')<panel.indexOf('trace-code-panel'),
+  'Navigation must precede the code panel');
+assert(panel.indexOf('trace-code-panel')<panel.indexOf('trace-output-section'),
+  'Output must follow the code');
+assert(panel.indexOf('trace-output-section')<panel.indexOf('trace-narration'),
+  'Explanation must follow Output');
+
 console.log('PASS: '+counted+' inline trace steps checked across '+questions.length+' questions, including Week 4 call/return display.');
