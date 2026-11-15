@@ -37,32 +37,94 @@ function enrichTrace(question, trace) {
   }
   return{expr:substitution,uses};
  }
+ // A tiny arithmetic-only expression parser. Every binary operation gets its
+ // own teaching step, in Python's precedence order. Unsupported expressions
+ // fall back to a factual one-step explanation rather than guessed execution.
+ function arithmeticOperations(expr) {
+  const plain=expr.replace(/\s+/g,'');
+  if(!plain||!/^[\d.()+\-*/%]+$/.test(plain))return [];
+  const tokens=plain.match(/\d+(?:\.\d+)?|\/\/|[()+\-*/%]/g)||[];
+  if(tokens.join('')!==plain)return [];
+  let at=0;const ops=[];
+  const pretty=n=>String(Number(Number(n).toPrecision(12)));
+  function primary(){
+   const token=tokens[at++];
+   if(token==='('){const value=additive();if(tokens[at++]!==')')throw Error('Missing )');return value;}
+   if(token==='-')return -primary();
+   if(token==='+')return primary();
+   const n=Number(token);if(!Number.isFinite(n))throw Error('Not numeric');return n;
+  }
+  function apply(left,op,right){
+   let value;
+   if(op==='+')value=left+right;
+   else if(op==='-')value=left-right;
+   else if(op==='*')value=left*right;
+   else if(op==='/')value=left/right;
+   else if(op==='//')value=Math.floor(left/right);
+   else if(op==='%')value=left-Math.floor(left/right)*right;
+   if(!Number.isFinite(value))throw Error('Nonfinite');
+   const displayed=pretty(value);
+   ops.push('Calculate '+pretty(left)+' '+op+' '+pretty(right)+' = '+displayed+'.');
+   return value;
+  }
+  function multiplicative(){
+   let left=primary();
+   while(['*','/','//','%'].includes(tokens[at])){const op=tokens[at++],right=primary();left=apply(left,op,right);}
+   return left;
+  }
+  function additive(){
+   let left=multiplicative();
+   while(['+','-'].includes(tokens[at])){const op=tokens[at++],right=multiplicative();left=apply(left,op,right);}
+   return left;
+  }
+  try{additive();if(at!==tokens.length)return [];return ops;}catch{return [];}
+ }
+
  function calcFor(expr,step,line,resultValue){
   const {expr:substituted,uses}=embeddedReturn(line,expr);
-  const expanded=replaceVariables(substituted,step.variables||{});
-  // Arithmetic content (or an f-string with a computed expression) deserves
-  // its own step; a direct literal or variable print does not.
+  const vars=step.variables||{};
+  const expanded=replaceVariables(substituted,vars);
   const arithmetic=/[+*/%]|(?:\b\w+\s+-\s+\w+)|(?:\d\s+-\s+\d)/.test(expr);
-  if(!arithmetic)return null;
-  let explanation;
-  const direct=calculate(expanded);
-  if(direct!==null && !String(expr).includes('//')){
-    explanation='Calculate '+expanded.trim()+' = '+repr(direct)+'.';
-  }else if(uses.length){
-    explanation='Use '+uses.join(', ')+'. Then evaluate '+expanded.trim()+' to get '+repr(resultValue)+'.';
-  }else if(/^f['"]/.test(expr)){
-    const names=Object.keys(step.variables||{}).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
-    const values=names.map(name=>name+' = '+repr(step.variables[name]));
-    const formatted=typeof resultValue==='string'&&/^['"].*['"]$/.test(resultValue)
-      ?resultValue.slice(1,-1):resultValue;
-    explanation='Evaluate the f-string'+(values.length?' with '+values.join(', '):'')+'; the formatted result is '+repr(formatted)+'.';
+  if(!arithmetic)return [];
+  const {event:discardEvent,...base}=step;
+  const make=explanation=>({...base,output:[...step.output],variables:{...vars},
+   phase:'calculate',explanation});
+  const steps=[];
+  // For a numeric expression, show each operation (e.g. 19 // 4,
+  // 19 % 4, then 4 + 3), not one unexplained leap to the result.
+  if(/^f['"]/.test(expr)){
+   const expressions=[...expr.matchAll(/\{([^{}]+)\}/g)].map(x=>x[1].split(':')[0]);
+   for(const piece of expressions){
+    const substitutedPiece=replaceVariables(piece,vars);
+    for(const operation of arithmeticOperations(substitutedPiece))steps.push(make(operation));
+   }
   }else{
-    const names=Object.keys(step.variables||{}).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
-    const values=names.map(name=>name+' = '+repr(step.variables[name]));
-    explanation='Evaluate '+expr.trim()+(values.length?' using '+values.join(', '):'')+'; the result is '+repr(resultValue)+'.';
+   for(const operation of arithmeticOperations(expanded))steps.push(make(operation));
   }
-  const {event:discardEvent,...baseStep}=step;
-  return {...baseStep,output:[...step.output],variables:{...step.variables},phase:'calculate',explanation};
+  if(/^f['"]/.test(expr)){
+   const names=Object.keys(vars).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
+   const values=names.map(name=>name+' = '+repr(vars[name]));
+   const formatted=typeof resultValue==='string'&&/^['"].*['"]$/.test(resultValue)
+    ?resultValue.slice(1,-1):resultValue;
+   steps.push(make('Format the f-string'+(values.length?' with '+values.join(', '):'')+
+    '; the printed/returned text is '+repr(formatted)+'.'));
+  }else if(steps.length===0){
+   let explanation;
+   const direct=calculate(expanded);
+   if(direct!==null&&!String(expr).includes('//')){
+    explanation='Calculate '+expanded.trim()+' = '+repr(direct)+'.';
+   }else if(uses.length){
+    explanation='Use '+uses.join(', ')+'. Then evaluate '+expanded.trim()+
+     ' to get '+repr(resultValue)+'.';
+   }else{
+    const names=Object.keys(vars).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
+    const values=names.map(name=>name+' = '+repr(vars[name]));
+    explanation='Evaluate '+expr.trim()+(values.length?' using '+values.join(', '):'')+
+     '; the result is '+repr(resultValue)+'.';
+   }
+   steps.push(make(explanation));
+  }
+  return steps;
  }
  function parseReturned(note){
   const m=note.match(/^Return from (\w+)\(\).*?with value (.+?)\. Continue/);
@@ -103,10 +165,8 @@ function enrichTrace(question, trace) {
    // Assignment snapshots contain the NEW value. Expressions on the right
    // side must use the OLD variable values, prior to the assignment.
    const context=kind==='assignment'?{...step,variables:previous.variables}:step;
-   const evaluated=calcFor(expr,context,step.line,value);
-   if(evaluated){
-    // Before evaluating, preserve the prior variable/output state. For a
-    // calculation step do not yet apply this line's new assignment or print.
+   for(const evaluated of calcFor(expr,context,step.line,value)){
+    // Calculation has not updated the assigned variable or printed anything yet.
     evaluated.variables={...previous.variables};
     evaluated.output=[...previous.output];
     result.push(evaluated);
