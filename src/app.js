@@ -190,6 +190,14 @@ function traceInlineDetails(step, previous, source, condition) {
   return tags;
  }
  const note=step.explanation||'';
+ if(step.phase==='calculate'){
+  tags.push({kind:'calc',text:note.replace(/\.$/,'')});
+  return tags;
+ }
+ if(step.event==='print'){
+  tags.push({kind:'call',text:'Call print()'});
+  return tags;
+ }
  const entering=/^Enter \w+\(\)/.test(note);
  const returning=/^Return from /.test(note);
  // A new function frame introduces its parameters even if they happen to
@@ -230,6 +238,7 @@ function tracePersistentBindings(steps, index, codeLines){
  for(let i=1;i<=index&&i<steps.length;i++){
   const step=steps[i],note=step.explanation||'';
   const current=step.variables||{};
+  if(step.phase==='calculate')continue; // Do not move bindings until the statement actually assigns.
   const source=codeLines[step.line]||'';
   if(/^Enter \w+\(\)/.test(note)){
    const frame={id:nextFrameId++,bindings:new Map(),lastSnapshot:{...current}};
