@@ -156,6 +156,30 @@ function traceCondition(step,codeLines){
  return {passed,expression,action:loop?(passed?'Continue Loop':'Exit Loop'):(passed?'Enter Branch':'Skip Branch')};
 }
 
+function traceInlineValues(step,source,condition){
+ if(!condition)return '';
+ const vars=step.variables||{};
+ const kind=source.trim().split(/\s+/)[0];
+ if(kind==='for'){
+  const loopVar=source.trim().match(/^for\s+([A-Za-z_]\w*)\s+in\b/)?.[1];
+  if(!condition.passed)return 'no more values';
+  if(loopVar&&Object.prototype.hasOwnProperty.call(vars,loopVar))
+   return loopVar+' = '+valueDisplay(vars[loopVar]);
+  return 'next iteration';
+ }
+ // Show current values for variables actually named in the condition.
+ const expression=condition.expression.replace(/'[^']*'|"[^"]*"/g,'');
+ const identifiers=expression.match(/\b[A-Za-z_]\w*\b/g)||[];
+ const ignore=new Set(['True','False','None','and','or','not','in','is','range','len','int','str']);
+ const found=[];
+ for(const name of identifiers){
+  if(ignore.has(name)||found.includes(name)||!Object.prototype.hasOwnProperty.call(vars,name))continue;
+  found.push(name);
+  if(found.length===4)break;
+ }
+ return found.map(name=>name+' = '+valueDisplay(vars[name])).join(' · ');
+}
+
 function tracePanel(q){
  const trace=allTraces[q.id];
  const simpleCode=()=>`<pre class="code"><code>${escapeHTML(q.code)}</code></pre>`;
@@ -167,7 +191,12 @@ function tracePanel(q){
  const code=q.code.split('\n');
  const variables=Object.entries(step.variables||{});
  const condition=traceCondition(step,code);
- const codeLines=code.map((line,i)=>`<div class="trace-line ${step.line===i?'trace-line-active':''}"><span class="trace-arrow" aria-hidden="true">${step.line===i?'➜':''}</span><span class="trace-lineno">${i+1}</span><span class="trace-source">${escapeHTML(line)}</span></div>`).join('');
+ const codeLines=code.map((line,i)=>{
+  const visible=step.line===i&&condition;
+  const values=visible?traceInlineValues(step,line,condition):'';
+  const inline=visible?`<span class="trace-inline-check ${condition.passed?'trace-inline-pass':'trace-inline-fail'}" aria-label="${escapeHTML((values?values+', ':'')+(condition.passed?'True: '+condition.action:'False: '+condition.action))}"><span class="trace-inline-symbol" aria-hidden="true">${condition.passed?'✓':'✕'}</span>${values?`<span class="trace-inline-values">${escapeHTML(values)}</span>`:''}<span class="trace-inline-decision">${escapeHTML(condition.action)}</span></span>`:'';
+  return `<div class="trace-line ${step.line===i?'trace-line-active':''}"><span class="trace-arrow" aria-hidden="true">${step.line===i?'➜':''}</span><span class="trace-lineno">${i+1}</span><span class="trace-source">${escapeHTML(line)}</span>${inline}</div>`;
+ }).join('');
  const variableRows=variables.map(([name,value])=>{
   const isNew=!(name in (previous.variables||{}));
   const changed=isNew||JSON.stringify(previous.variables[name])!==JSON.stringify(value);
