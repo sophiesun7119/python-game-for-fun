@@ -61,6 +61,8 @@ Click **👀 Watch How the Code Works** on any question or completed review card
 
 For example, a function definition first displays a named purple label such as **Define greet()**, and a function call then highlights where it was called, then the `def` line where parameters are introduced, then the lines in its body. On `if` and `while`, **green ✓** means enter/continue; **red ✕** means skip/exit.
 
+**Longer expressions are broken into smaller actions.** For example, `print(square(4) + 1)` first enters `square()`, returns **16**, then shows **16 + 1 = 17** on the print line, and only in the following step calls `print()` so the Output box displays **17**. A direct `print('Hi')` gets a purple **Call print()** label without any unnecessary calculation. For longer arithmetic, separate steps explain each supported operation before the variable is assigned or the result is printed.
+
 The walkthrough is a prepared teaching example, not a live Python executor. Watching, going backward, or restarting does not change XP, answers or saved progress. Click **Close** to return to the normal card.
 
 ## 5. Leave and continue later
