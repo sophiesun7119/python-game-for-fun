@@ -140,7 +140,7 @@ function traceCondition(step,codeLines){
  const source=(codeLines[step.line]||'').trim();
  if(source.startsWith('for ')){
   const message=step.explanation;
-  const loopStart=/^(?:for loop:|Loop check: the next|(?:Outer|Inner) loop (?:gets|selects|gives))/i.test(message);
+  const loopStart=/^(?:for loop(?::| (?:gets|selects|gives))|Loop check: the next|(?:Outer|Inner) loop (?:gets|selects|gives))/i.test(message);
   const loopEnd=/^(?:The for loop has finished|Loop check: no more|(?:Outer|Inner) loop (?:finishes|is complete))/i.test(message);
   if(!loopStart&&!loopEnd)return null;
   return {passed:loopStart,expression:source.slice(4).replace(/:\s*$/,''),action:loopStart?'Next Iteration':'Loop Finished'};
