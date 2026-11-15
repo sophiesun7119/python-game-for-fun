@@ -72,3 +72,14 @@
 .trace-condition-fail .trace-condition-icon{background:#d13e50}
 .trace-condition-action{display:block;font-size:12px;margin-top:2px;font-weight:600}
 .trace-condition-expression{display:block;margin-top:8px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;color:inherit}
+
+/* Inline execution verdict: anchored to the exact active source line. */
+.trace-inline-check{display:inline-flex;align-items:center;gap:5px;margin-left:13px;padding:3px 8px;border-radius:7px;font:700 11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap}
+.trace-inline-pass{background:#e4f6e9;color:#146835}
+.trace-inline-fail{background:#fff0f0;color:#a52135}
+.trace-inline-symbol{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font-size:13px;color:white;background:#258e48;flex-shrink:0}
+.trace-inline-fail .trace-inline-symbol{background:#cf3e50}
+.trace-inline-values{color:inherit}
+.trace-inline-decision{font:700 10px/1.4 ui-sans-serif,system-ui,sans-serif;opacity:.88}
+.trace-line{gap:7px}
+.trace-line-active{min-width:max-content}
