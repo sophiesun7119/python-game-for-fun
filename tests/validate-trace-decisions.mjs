@@ -32,12 +32,12 @@ for(const q of questions){
       (result.passed?'Enter Branch':'Skip Branch'));
   }
 }
-const w4=traces['W4-X-01'].steps;
+const w4=traces['W4-X-01'].steps.filter(step=>step.phase!=='calculate');
 const source4=questions.find(q=>q.id==='W4-X-01').code.split('\n');
 assert.equal(traceCondition(w4[7],source4).passed,false,'level <= 5 should be a red ✕');
 assert.equal(traceCondition(w4[8],source4).passed,true,'level <= 10 should be a green ✓');
 assert.equal(traceCondition(w4[12],source4).passed,false,'xp >= needed should be a red ✕');
-const w2=traces['W2-M-03'].steps;
+const w2=traces['W2-M-03'].steps.filter(step=>step.phase!=='calculate');
 const source2=questions.find(q=>q.id==='W2-M-03').code.split('\n');
 assert.equal(traceCondition(w2[3],source2).passed,false,
   'Compound condition containing intermediate True must show final False');
