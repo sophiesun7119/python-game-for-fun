@@ -130,13 +130,31 @@ Each trace lives in `data/traces-week1.json` through `data/traces-week4.json`, k
 
 - **Variable badges** are reconstructed from all trace steps through the selected index by `tracePersistentBindings(steps, index, codeLines)`. Each live binding belongs to a function-call frame (or global frame) and is rendered at its *latest assignment* or `def` parameter-binding line, not necessarily the currently highlighted line. Reassignments move the badge to the new line. Inner-frame variables disappear on the `Return from ...` step, but remain visible on the actual `return` statement; outer/global variables remain visible during nested calls. The original snapshots still describe each step, and `traceInlineDetails()` supplies ephemeral call, print and condition tags at the active line only.
 - **Condition tags** come from `traceCondition()` and `traceInlineValues()`: ✓ green when true, ✕ red when false, alongside current values and the action (Enter/Skip Branch, Continue/Exit Loop, Next Iteration/Loop Finished). For compound conditions, the final full-expression verdict is used.
-- **Output tags** display only the newly printed lines for that step (not all cumulative output), on the actual `print()` source line.
-- **Call/return tags** appear on the call site, function-entry line, and return-to-caller line in sequence.
-- **Variable badges persist** at their last binding/update line while their scope is alive. **Event annotations** (calls, returns, printed output, ✓/✕) are temporary and attach only to the current execution line. Older values and ended function locals are removed.
+- **Output tags** represent output added at the actual `print()` source line. Unlike call/condition hints, printed output persists on its original print line after stepping away and across function returns. Each newly printed line is retained; prior output is not erased.
+- **Call/return tags** appear on the call site, function-entry `def` line, and return-to-caller line in sequence. The initial `def` declaration displays `Function defined` based on source semantics, not on exact punctuation in the explanation.
+- **Variable badges persist** at their last binding/update line while their scope is alive. **Event annotations** (calls, returns, ✓/✕) are temporary; **printed output** stays on its print line and attach only to the current execution line. Older values and ended function locals are removed.
 
 **Important example — `W4-X-01`:** `print(message(730, 6))` (line 12) → **enter `def message(xp, level):` (line 7)** and bind `xp = 730`, `level = 6` → start executing `needed = xp_needed(level)` (line 8), which calls `xp_needed(6)` → **enter `def xp_needed(level):` (line 1)** and bind `level = 6` → execute condition on line 2 (False) and line 4 (True) → return 900 on line 5 → return to **line 8** → set `needed = 900` on line 8 → evaluate the rest of `message()` → return to the `print()` on line 12 and display `Need 170`. The def-line entry step is a pedagogical visualization of parameter binding; in Python, the `def` statement itself executes during initial program setup, while a function call transfers execution into its body. **Do not merge function entry and execution of the first body statement in one step.**
 
 The program's Python code is **not executed in the student's browser**. Walkthroughs are fixed JSON and must be reviewed against the exact current question source. `scripts/build-trace-runtime.js` is an offline generator for selected teacher-authored patterns; it is not a production Python interpreter and cannot be used for arbitrary student input.
+
+### How the UI chooses what to show (consistent across 80 questions)
+
+Historically, the first Easy/Medium walkthroughs were individually authored, while Hard/Extra Rock walkthroughs were mainly generated with `scripts/build-trace-runtime.js`. Their differences in narration led to inconsistent UI tags when the renderer relied on a specific English phrase. The UI now prioritizes source-code location and state changes:
+
+| Event | Determining rule | Display and lifetime |
+|---|---|---|
+| Function definition | Current source line begins with `def` and the trace reports a definition step | **Function defined** on that source line |
+| Function invocation | The trace call step is at the calling source line | Temporary **Call ...** tag |
+| Function entry | Trace enters a frame at its `def` line | **Enter ...**, with parameter values; parameters persist while frame exists |
+| Assignment or loop variable change | `variables` snapshot changes, with the current code statement | Persistent latest-value badge at the new assignment line |
+| `if` / `elif` / `for` / `while` | Condition / iteration trace step + code line | Temporary ✓ or ✕ at highlighted check |
+| `return` and return to caller | Return events in trace at body and caller lines | Temporary return-value tag, remove that frame's local-variable badges only on return to caller |
+| `print()` | Newly appended output in consecutive `output` snapshots, source line must be `print(...)` | **Output: ...** pinned to this print line and stays visible in subsequent steps |
+
+`traceInlineDetails()` draws temporary event tags, `tracePersistentBindings()` reconstructs scope-aware variable badges, and `tracePersistentOutputs()` accumulates printed lines at their actual `print()` source locations. Even if narration wording changes, definition display is based on the code line; print/output display is based on cumulative output changes. This is a deliberately static educational visualization, not a runtime interpreter.
+
+The audit checks **all 80** question traces. Every printed-output event must occur on a `print()` line, every definition must have its label, and output remains available after the executing arrow moves. Test: `node tests/validate-trace-events.mjs`. Keep the generated Hard/Extra traces and authored older traces aligned to the same contract.
 
 ### Width and inline wrapping
 
@@ -175,6 +193,7 @@ node tests/validate-trace-control-flow.mjs
 node tests/validate-trace-decisions.mjs
 node tests/validate-inline-trace.mjs
 node tests/validate-trace-scopes.mjs
+node tests/validate-trace-events.mjs
 ```
 
 The GitHub Actions workflow `.github/workflows/validate-questions.yml` runs these validations after pushes/PRs (when enabled). These tests check static question/answer pairing, generated call/return sequencing, arrow-line compatibility, decision badges, and inline annotation behavior; they do **not** replace browser visual QA.
