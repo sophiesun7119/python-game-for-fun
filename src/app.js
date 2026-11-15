@@ -216,6 +216,56 @@ function traceInlineDetails(step, previous, source, condition) {
  return tags;
 }
 
+// Reconstruct lexical scopes from the ordered, fixed trace steps.
+// A binding belongs to its latest assignment line and remains visible until
+// it is updated or its function frame returns. Outer frames are retained.
+function tracePersistentBindings(steps, index, codeLines){
+ const frames=[{id:0,bindings:new Map(),lastSnapshot:{}}];
+ let nextFrameId=1;
+ const write=(frame,name,value,line)=>{
+  frame.bindings.set(name,{name,value,line,frameId:frame.id});
+ };
+ for(let i=1;i<=index&&i<steps.length;i++){
+  const step=steps[i],note=step.explanation||'';
+  const current=step.variables||{};
+  const source=codeLines[step.line]||'';
+  if(/^Enter \w+\(\)/.test(note)){
+   const frame={id:nextFrameId++,bindings:new Map(),lastSnapshot:{...current}};
+   const params=source.match(/^\s*def\s+\w+\(([^)]*)\)\s*:/)?.[1];
+   for(const name of (params||'').split(',').map(p=>p.trim()).filter(Boolean)){
+    if(Object.prototype.hasOwnProperty.call(current,name))write(frame,name,current[name],step.line);
+   }
+   frames.push(frame);
+   continue;
+  }
+  if(/^Return from \w+\(\)/.test(note)&&frames.length>1){
+   frames.pop(); // Local variables immediately disappear when their call ends.
+   frames[frames.length-1].lastSnapshot={...current};
+   continue;
+  }
+  const frame=frames[frames.length-1];
+  const before=frame.lastSnapshot;
+  const assignment=source.match(/^\s*([A-Za-z_]\w*)\s*(?:=|\+=|-=|\*=|\/=|\/\/=|%=)/)?.[1];
+  const loopVariable=source.match(/^\s*for\s+([A-Za-z_]\w*)\s+in\s+/)?.[1];
+  const explicitlyWritten=assignment||loopVariable;
+  for(const [name,value] of Object.entries(current)){
+   const existing=frame.bindings.get(name);
+   const previouslyPresent=Object.prototype.hasOwnProperty.call(before,name);
+   const modified=previouslyPresent&&JSON.stringify(before[name])!==JSON.stringify(value);
+   if(existing){
+    if(modified||explicitlyWritten===name&&(!/^The for loop has finished/.test(note))){
+     write(frame,name,value,step.line);
+    }
+   }else if(!previouslyPresent || (explicitlyWritten===name&&(!/^The for loop has finished/.test(note)))){
+    // Do not copy inherited globals into a called function's local scope.
+    write(frame,name,value,step.line);
+   }
+  }
+  frame.lastSnapshot={...current};
+ }
+ return frames.flatMap(frame=>[...frame.bindings.values()]);
+}
+
 function tracePanel(q){
  const trace=allTraces[q.id];
  const simpleCode=()=>'<pre class="code"><code>'+escapeHTML(q.code)+'</code></pre>';
@@ -224,9 +274,12 @@ function tracePanel(q){
  const steps=trace.steps,index=Math.min(state.traceIndex,steps.length-1);
  const step=steps[index],previous=steps[Math.max(0,index-1)];
  const code=q.code.split('\n'),condition=traceCondition(step,code);
+ const bindings=tracePersistentBindings(steps,index,code);
  const codeLines=code.map((line,i)=>{
   const active=step.line===i;
-  const details=active?traceInlineDetails(step,previous,line,condition):[];
+  const persistent=bindings.filter(binding=>binding.line===i).map(binding=>({kind:'value',text:binding.name+' = '+valueDisplay(binding.value)}));
+  const events=active?traceInlineDetails(step,previous,line,condition).filter(tag=>tag.kind!=='value'||Boolean(condition)):[];
+  const details=[...events,...persistent];
   const tags=details.map(tag=>'<span class="trace-inline-tag trace-inline-'+tag.kind+'">'+escapeHTML(tag.text)+'</span>').join('');
   return '<div class="trace-line '+(active?'trace-line-active':'')+'"><span class="trace-arrow" aria-hidden="true">'+(active?'➜':'')+'</span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations">'+tags+'</span></div>';
  }).join('');
@@ -239,7 +292,7 @@ function tracePanel(q){
   +'<div class="trace-controls"><button class="btn" data-action="trace-prev" '+(index===0?'disabled':'')+'>← Previous</button>'
   +'<button class="btn primary" data-action="trace-next" '+(index===steps.length-1?'disabled':'')+'>Next Step →</button>'
   +'<button class="btn" data-action="trace-restart" '+(index===0?'disabled':'')+'>↻ Restart</button></div>'
-  +'<p class="trace-footnote">The tags beside the highlighted line show only this step’s changes. Earlier tags disappear when execution moves. Tracing does not affect your score.</p></section>';
+  +'<p class="trace-footnote">Variable values stay beside their latest assignment until updated or their function returns. Execution hints follow the arrow. Tracing does not affect your score.</p></section>';
 }
 
 function currentQuestion(){return state.attempt[state.index];}
