@@ -325,7 +325,6 @@
           "variables": {},
           "output": [],
           "explanation": "Calculate 16 + 1 = 17.",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -439,7 +438,6 @@
           },
           "output": [],
           "explanation": "Evaluate 'Hello ' + name using name = \"Mia\"; the result is \"Hello Mia\".",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1109,7 +1107,6 @@
           },
           "output": [],
           "explanation": "Calculate 3 * 2 = 6.",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1313,7 +1310,6 @@
           },
           "output": [],
           "explanation": "Calculate 45 + 10 = 55.",
-          "event": "print",
           "phase": "calculate"
         },
         {
