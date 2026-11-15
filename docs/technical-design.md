@@ -108,7 +108,7 @@ At completion, `finishQuest()` writes the latest `completed` snapshot, clears on
 
 ## 7. Inline Trace design
 
-**Current design (v0.6.3): one dark code panel, no Variables/Output side column.** Trace is optional and only appears after selecting **Watch How the Code Works** on a quiz or a completed review card. It keeps the original card layout. Below the code are Step and a bold red **Explanation:** plus Previous/Next Step/Restart. Close hides the trace. It does not affect grading, progress, or XP.
+**Current design (v0.6.4): one wider dark code panel, no Variables/Output side column.** Trace is optional and only appears after selecting **Watch How the Code Works** on a quiz or a completed review card. It keeps the original card layout. Below the code are Step and a bold red **Explanation:** plus Previous/Next Step/Restart. Close hides the trace. It does not affect grading, progress, or XP.
 
 Each trace lives in `data/traces-week1.json` through `data/traces-week4.json`, keyed by exact question ID. Each has an ordered array of authored/precomputed step snapshots:
 
@@ -128,15 +128,25 @@ Each trace lives in `data/traces-week1.json` through `data/traces-week4.json`, k
 
 **Rendering:** `tracePanel()` maps `code` into line-numbered rows. It highlights exactly `step.line` and draws an arrow beside that row. `traceInlineDetails(step, previous, source, condition)` produces temporary annotation tags **only on the highlighted row**, then they move/disappear when the step changes.
 
-- **Variable tags** show new/changed names relative to the previous snapshot; function *entry* displays bound parameters even if names are reused in another call frame. Function *return* shows the return value and avoids incorrectly displaying parameters as mutated variables.
+- **Variable badges** are reconstructed from all trace steps through the selected index by `tracePersistentBindings(steps, index, codeLines)`. Each live binding belongs to a function-call frame (or global frame) and is rendered at its *latest assignment* or `def` parameter-binding line, not necessarily the currently highlighted line. Reassignments move the badge to the new line. Inner-frame variables disappear on the `Return from ...` step, but remain visible on the actual `return` statement; outer/global variables remain visible during nested calls. The original snapshots still describe each step, and `traceInlineDetails()` supplies ephemeral call, print and condition tags at the active line only.
 - **Condition tags** come from `traceCondition()` and `traceInlineValues()`: ✓ green when true, ✕ red when false, alongside current values and the action (Enter/Skip Branch, Continue/Exit Loop, Next Iteration/Loop Finished). For compound conditions, the final full-expression verdict is used.
 - **Output tags** display only the newly printed lines for that step (not all cumulative output), on the actual `print()` source line.
 - **Call/return tags** appear on the call site, function-entry line, and return-to-caller line in sequence.
-- Prior-line annotations are **not permanent decorations**; at each render only the current line can show them.
+- **Variable badges persist** at their last binding/update line while their scope is alive. **Event annotations** (calls, returns, printed output, ✓/✕) are temporary and attach only to the current execution line. Older values and ended function locals are removed.
 
 **Important example — `W4-X-01`:** `print(message(730, 6))` (line 12) → **enter `def message(xp, level):` (line 7)** and bind `xp = 730`, `level = 6` → start executing `needed = xp_needed(level)` (line 8), which calls `xp_needed(6)` → **enter `def xp_needed(level):` (line 1)** and bind `level = 6` → execute condition on line 2 (False) and line 4 (True) → return 900 on line 5 → return to **line 8** → set `needed = 900` on line 8 → evaluate the rest of `message()` → return to the `print()` on line 12 and display `Need 170`. The def-line entry step is a pedagogical visualization of parameter binding; in Python, the `def` statement itself executes during initial program setup, while a function call transfers execution into its body. **Do not merge function entry and execution of the first body statement in one step.**
 
 The program's Python code is **not executed in the student's browser**. Walkthroughs are fixed JSON and must be reviewed against the exact current question source. `scripts/build-trace-runtime.js` is an offline generator for selected teacher-authored patterns; it is not a production Python interpreter and cannot be used for arbitrary student input.
+
+### Width and inline wrapping
+
+The main content max width is **1,180px**, and the question card max width is **1,100px** on larger screens. Each code row uses wrapping flex layout: the source remains visible and any number of variable badges can wrap to another visual row **inside the same source line**. The layout does not put a separate Variables column back into the panel. For small screens, the code or badges may wrap more, while the Explain/Next controls remain beneath the code.
+
+### Variable lifetime algorithm
+
+`tracePersistentBindings()` replays the static trace up to the current step into a stack of frame maps. The global frame begins empty. On `Enter fn()` it pushes a new frame and binds parameters beside that function's `def` line. Each new or changed local variable is placed at its current source line, replacing the previous location for that variable in the same frame. A return statement does **not** end the frame until the subsequent `Return from fn()` event, at which point the frame is popped and its badges disappear. The caller's frame remains on the stack during nested calls, so existing caller parameters and globals are not lost. Rendering is deterministic for Next, Previous and Restart without changing stored user progress.
+
+Known bounds: the scope reconstruction uses current teacher-authored step explanations and simple assignments/loop variables. If trace formats expand to advanced Python features (`global`/`nonlocal`, closures, exception unwinding, recursion, destructuring, or mutable objects), add explicit frame/local-variable metadata to the trace schema and extend tests before relying on these heuristics.
 
 ## 8. Styling, accessibility, and responsive behavior
 
@@ -164,6 +174,7 @@ node tests/validate-traces.mjs
 node tests/validate-trace-control-flow.mjs
 node tests/validate-trace-decisions.mjs
 node tests/validate-inline-trace.mjs
+node tests/validate-trace-scopes.mjs
 ```
 
 The GitHub Actions workflow `.github/workflows/validate-questions.yml` runs these validations after pushes/PRs (when enabled). These tests check static question/answer pairing, generated call/return sequencing, arrow-line compatibility, decision badges, and inline annotation behavior; they do **not** replace browser visual QA.
