@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.4 — 2026-11-15
+- Widened the overall game and question card, and wrapped code-line badges to prevent offscreen variable values.
+- Implemented persistent variables at their most recent assignment line, with the previous value/location removed on reassignment.
+- Added function-scoped variable lifetime: parameters appear at `def`, locals persist through body/return and vanish when the function returns; outer variables survive nested calls, and globals persist.
+- Kept transient function call, condition verdict and output indicators attached to the active arrow only.
+- Added `tests/validate-trace-scopes.mjs` and GitHub Actions coverage for variable lifetime and placement.
+- Updated the User Guide, README and Technical Design.
+
 ## Trace entry and explanation layout — 2026-11-15
 - When invoking a function, the arrow now highlights its `def` line to introduce bound arguments before stepping into the first executable statement.
 - Regenerated all 20 Week 4 walkthroughs to follow the updated entry sequence, including nested calls.
