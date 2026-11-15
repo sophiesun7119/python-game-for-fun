@@ -47,7 +47,7 @@ for (const question of questions.filter(q => ['hard', 'extra'].includes(q.diffic
 const item = allTraces['W4-X-01'].steps;
 const expectedSequence = [
   ['Define xp_needed()',0], ['Define message()',6], ['Call message(',11],
-  ['Enter message()',7], ['Call xp_needed(',7], ['Enter xp_needed()',1],
+  ['Enter message()',6], ['Call xp_needed(',7], ['Enter xp_needed()',0],
   ['Check level <= 5',1], ['Check level <= 10',3], ['Return 900',4],
   ['Return from xp_needed()',7], ['Evaluate xp_needed(level)',7],
   ['Check xp >= needed',8], ["Return 'Need 170'",10],
