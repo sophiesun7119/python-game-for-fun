@@ -25,6 +25,14 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
+## Walkthrough correctness and condition feedback (v0.6.1)
+
+- The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` highlights that print line, then line 8 `needed = xp_needed(level)` inside `message()`, then the condition lines inside `xp_needed()`. It returns to line 8 before setting `needed = 900`.
+- The Variables panel now shows a small **Condition Check** verdict for conditional statements: green **✓ True / Enter Branch**, red **✕ False / Skip Branch**. `while` shows Continue Loop / Exit Loop; `for` shows Next Iteration / Loop Finished.
+- Compound conditions use their **final Boolean result**, not a single intermediate comparison. The code arrow and condition badge always refer to the same source line and step.
+- These optional guided explanations do not execute student-supplied Python and do not modify XP.
+- Tests: `node tests/validate-trace-control-flow.mjs`, `node tests/validate-trace-decisions.mjs` and `node tests/validate-traces.mjs`.
+
 ## Difficulty rebalancing — Extra Rock (v0.6.0)
 
 The original Hard questions have been redesigned after reviewing the course materials (lesson decks, QuickChecks, in-class practice and homework). Twenty new **Extra Rock** cards add a fourth, optional difficulty. All 80 cards have inline Watch How the Code Works traces.
