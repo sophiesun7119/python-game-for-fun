@@ -5,7 +5,7 @@ const ACTIVE_KEY='python-quest-v2-active';
 export function normalizeUsername(name){return String(name||'').trim().toLowerCase()||'username';}
 export function displayUsername(name){return String(name||'').trim()||'username';}
 export function awardedStars(n){return n>=5?3:n===4?2:n===3?1:0;}
-export function countFirstTry(attempt){return attempt.filter(a=>a.firstCorrect).length;}
+export function countCorrect(attempt){return attempt.filter(a=>a.solved && !a.revealed).length;}
 export function levelXP(n,d){return (POINTS[d]||0)*n;}
 export function totalXP(best){return Object.entries(best).reduce((sum,[key,n])=>sum+levelXP(n,key.split('-')[1]),0);}
 export function updateBest(progress,week,difficulty,score){const key='W'+week+'-'+difficulty;return {...progress,best:{...progress.best,[key]:Math.max(progress.best[key]||0,score)}};}
