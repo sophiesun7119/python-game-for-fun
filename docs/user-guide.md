@@ -71,7 +71,7 @@ Below the code, use **Previous**, **Next Step**, **Restart**, and read the bold 
 
 The code area is wider on a desktop or laptop. Long lines can show their variable badges **under the code on that same row**, so you do not have to scroll sideways to read them.
 
-Unlike the temporary ✓/✕ and function-call hints, **variable badges stay visible** at the line where the variable was most recently created or updated. If `a` changes later, its old badge disappears and the new `a` value appears at the new assignment. Variables inside a function remain visible while that function runs, including its `return` step, and disappear after returning to the caller. Variables in an outer function remain visible during nested calls; global variables remain available throughout the program.
+Unlike the temporary ✓/✕ and function-call hints, **variable badges stay visible** at the line where the variable was most recently created or updated. If `a` changes later, its old badge disappears and the new `a` value appears at the new assignment. Variables inside a function remain visible while that function runs, including its `return` step, and disappear after returning to the caller. Variables in an outer function remain visible during nested calls; global variables remain available throughout the program. **Output** from `print()` also stays visible at the line that printed it. The text **Function defined** appears when Python first defines a function; calling it later shows **Call** and **Enter** separately.
 
 ## 5. Leave and continue later
 
