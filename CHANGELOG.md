@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.6.2 — 2026-11-15
+- Added an inline green ✓ or red ✕ at the currently highlighted conditional/loop line.
+- Displays the **current values** of variables used in that check, e.g. i = 1, i = 2, i = 4 as a while loop advances or exits.
+- Shows Enter Branch / Skip Branch for if/elif, Continue Loop / Exit Loop for while and Next Iteration / Loop Finished for for.
+- Retains the right-hand verdict panel and Explanation text, without animated effects or changes to scoring.
+- Added inline-condition regression tests and CI workflow step to protect future changes.
+
 ## v0.6.1 — 2026-11-15
 - Corrected function call tracing so the arrow moves from the actual caller source line into the function body, then returns to the caller before finishing an assignment or print.
 - Regenerated all 40 Hard and Extra Rock walkthroughs to match the corrected call/return sequencing.
