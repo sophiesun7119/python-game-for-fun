@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.6.0 — 2026-11-15
+- Reviewed the Weeks 1–4 lesson folders, QuickChecks, in-class practice and homework PDFs before recalibrating difficulty.
+- Rewrote 20 Hard questions and added 20 cumulative **Extra Rock** questions, yielding 80 total (5 cards per difficulty per week).
+- Increased cumulative reasoning: multi-stage receipt/trip calculations, shipping/KDA edge cases, nested loop/prime/Goldbach logic, multi-function XP/checkout flows.
+- Added all 20 Extra Rock traces and regenerated Hard walkthroughs against the changed code (80 traces / 911 teaching steps).
+- Added 25 XP per correct Extra Rock card; maximum possible XP rises from 900 to 1,400. Original three-level badges stay intact.
+- Archived older Hard best scores under My Progress; unchanged Easy/Medium scores remain, and old Hard autosave/review records are not incorrectly opened for revised questions.
+- Added curriculum-aligned difficulty framework, CPython example checker, and GitHub Actions validation workflow.
+
+### Remaining verification
+- Automated trace/output structure checks and simulated quiz/progress interactions passed.
+- Real CPython CI status and browser visual QA need confirmation before broad classroom rollout.
+
 ## v0.5.0 — 2026-11-15
 - Extended inline Watch How the Code Works traces to every Week 2, Week 3 and Week 4 question, bringing Challenge 1 coverage to 60/60.
 - Walked through if/elif/else branch choices, for/while checks, break/continue, nested loops, calls, parameters and return values.
