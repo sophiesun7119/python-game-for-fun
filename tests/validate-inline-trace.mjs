@@ -24,7 +24,7 @@ for(const q of questions){
   const tags=funcs.traceInlineDetails(step,previous,source,condition);
   assert(Array.isArray(tags),q.id+' tags must be an array');
   for(const tag of tags){
-   assert(['value','pass','fail','call','output','muted'].includes(tag.kind),q.id+' bad tag');
+   assert(['value','pass','fail','call','calc','output','muted'].includes(tag.kind),q.id+' bad tag');
    assert(typeof tag.text==='string'&&tag.text.length>0,q.id+' empty tag');
   }
   if(condition)assert(tags.some(t=>t.kind===(condition.passed?'pass':'fail')),q.id+' missing check badge');
@@ -33,7 +33,7 @@ for(const q of questions){
   counted++;
  }
 }
-const sample=traces['W4-X-01'].steps,q=questions.find(x=>x.id==='W4-X-01');
+const sample=traces['W4-X-01'].steps.filter(step=>step.phase!=='calculate'),q=questions.find(x=>x.id==='W4-X-01');
 const at=i=>funcs.traceInlineDetails(sample[i],sample[i-1],q.code.split('\n')[sample[i].line],
  funcs.traceCondition(sample[i],q.code.split('\n')));
 assert(at(4).some(x=>x.text==='xp = 730'),'Function entry must show xp');
@@ -45,6 +45,7 @@ assert(at(10).some(x=>x.kind==='call'&&x.text.includes('900')),'Function return 
 assert(!at(10).some(x=>x.kind==='value'&&x.text.includes('xp =')),'Returning must not invent variable changes');
 assert(at(11).some(x=>x.text==='needed = 900'),'Assignment should show only after return');
 assert(!at(15).some(x=>x.kind==='output'),'Output must be isolated below the code, not inline');
+assert(traces['W4-M-01'].steps.some(x=>x.phase==='calculate'&&x.explanation.includes('16 + 1 = 17')),'Missing arithmetic substep');
 const panel=app.slice(app.indexOf('function tracePanel('),app.indexOf('function currentQuestion('));
 assert(!panel.includes('trace-state-panel')&&!panel.includes('trace-layout'),'Trace must use a single full-width code panel');
 assert(panel.indexOf('trace-toolbar')<panel.indexOf('trace-code-panel'),
