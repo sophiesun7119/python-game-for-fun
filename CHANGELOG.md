@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.3.0 — 2026-11-15
+- Auto-save unfinished five-question runs per local username, week and difficulty.
+- Offer Continue Quest or Start Over when reopening an unfinished quest.
+- Show unfinished quest shortcuts on the home page.
+- Save latest completed cards and answers for Previous/Next browsing.
+- Add Review cards links from results, difficulty selection and My Progress.
+- Allow free Retry within completed-card review without changing historic XP or best score.
+- Retain best scores separately; preserve previous local player profiles and question bank.
+
+### Known limitations
+- Progress stays in one browser; private/incognito browsing or clearing site data can lose it.
+- Review stores the latest completed run per difficulty, not a full history of every attempt.
+- Question bank is still an educator-review draft; student/browser QA remains recommended.
+
 ## v0.2.1 — 2026-11-15
 - Award full points for any correct submission, including after hints and retries.
 - Show Answer gives explanation and advances without XP for that question.
