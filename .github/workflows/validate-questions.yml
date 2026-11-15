@@ -18,3 +18,7 @@ jobs:
         run: python3 tests/validate_python.py
       - name: Verify all trace snapshots and answers
         run: node tests/validate-traces.mjs
+      - name: Verify walkthrough arrows follow actual function calls and returns
+        run: node tests/validate-trace-control-flow.mjs
+      - name: Verify condition badges and loop decisions
+        run: node tests/validate-trace-decisions.mjs
