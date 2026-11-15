@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.4.0 — 2026-11-15
+- Added optional inline Watch How the Code Works to all 15 Week 1 questions.
+- Rendered the existing question code as highlighted executable lines with a moving arrow and numbered steps.
+- Added variable snapshots, new/updated-value highlights, cumulative output, clear explanatory text, and TypeError example.
+- Added Previous / Next Step / Restart / Close controls, without autoplay or distracting animation.
+- Reused the trace panel on previously completed Review cards, preserving local best scores and quiz behavior.
+- Added guided trace data in `data/traces-week1.json`; no live code execution and no new backend.
+- Verified all 15 trace scripts and ran simulated UI checks for stepping, navigation, restart and resume.
+
+### Limitations
+- Trace mode is available for Week 1 only while the pilot is evaluated.
+- Example input values are shown for input() questions; user code is not executed.
+- Classroom and real browser visual review remains pending.
+
 ## v0.3.0 — 2026-11-15
 - Auto-save unfinished five-question runs per local username, week and difficulty.
 - Offer Continue Quest or Start Over when reopening an unfinished quest.
