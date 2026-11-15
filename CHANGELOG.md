@@ -1,5 +1,10 @@
 # Changelog
 
+## UI label consistency — 2026-11-15
+- Function definition events now use named violet badges such as `Define greet()`, matching existing `Call greet()` badges instead of generic `Function defined`.
+- The function name is extracted from the actual Python `def` source line; the rule applies to every question using the common Trace renderer.
+- Added a cross-question regression assertion for named function definition badges.
+
 ## v0.6.6 — 2026-11-15
 - Applied a single walkthrough layout to all 80 questions: Step and Previous/Next/Restart **above code**, cumulative Output **below code**, Explanation **below Output**.
 - Output area is always present and starts blank; it reads the cumulative `step.output` snapshot, including multiple print lines. Removed inline print-result tags and obsolete pinned-print rendering.
