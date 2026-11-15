@@ -99,11 +99,11 @@ function reviewView(){
  return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Review · Week ${state.week} · ${labels[state.difficulty]}</span><strong>Card ${state.index+1} / 5</strong></div>
  <div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:18px">
  <span class="tag ${item.solved?'green':'gold'}">${status}</span><h2 style="margin-top:12px">${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>
- <div class="review-answer"><p><strong>Your saved answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(item.lastAnswer||'No answer entered')}</span></p>
+ ${!practice?`<div class="review-answer"><p><strong>Your saved answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(item.lastAnswer||'No answer entered')}</span></p>
  <p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p>
- <p><strong>Explanation:</strong> ${escapeHTML(q.explanation)}</p></div>
+ <p><strong>Explanation:</strong> ${escapeHTML(q.explanation)}</p></div>`:''}
  ${editable}
- ${state.reviewFeedback?`<div class="feedback ${state.reviewFeedback.correct?'':'wrong'}" role="status"><strong>${state.reviewFeedback.correct?'✅ You got it!':'Try again — you can keep practicing.'}</strong><p>${escapeHTML(q.explanation)}</p></div>`:''}
+ ${state.reviewFeedback?`<div class="feedback ${state.reviewFeedback.correct?'':'wrong'}" role="status"><strong>${state.reviewFeedback.correct?'✅ You got it!':'Not yet — try again or return to the answer.'}</strong>${state.reviewFeedback.correct?`<p>${escapeHTML(q.explanation)}</p>`:''}</div>`:''}
  <div class="btn-row">${practice?button('Check retry','review-check','primary')+button('Cancel retry','review-cancel'):button('↻ Retry this card','review-retry','primary')}</div>
  </div><div class="btn-row">${button('← Previous','review-prev')}${button(state.index===4?'Back to results':'Next →',state.index===4?'review-exit':'review-next','primary')}</div>
  <p class="footnote">Review is always available after finishing. Practice retries here do not change your saved best score; to earn more XP, start a new five-card quest.</p></div>`;
