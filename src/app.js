@@ -189,15 +189,23 @@ function traceInlineDetails(step, previous, source, condition) {
   tags.push({kind:condition.passed?'pass':'fail',text:(condition.passed?'✓ ':'✕ ')+condition.action});
   return tags;
  }
- const changed=Object.entries(current).filter(([name,value])=>!Object.prototype.hasOwnProperty.call(old,name)||JSON.stringify(old[name])!==JSON.stringify(value));
+ const note=step.explanation||'';
+ const entering=/^Enter \w+\(\)/.test(note);
+ const returning=/^Return from /.test(note);
+ // A new function frame introduces its parameters even if they happen to
+ // share the same name/value with the caller. Returning is NOT a variable change.
+ const changed=returning?[]:entering?Object.entries(current):
+  Object.entries(current).filter(([name,value])=>!Object.prototype.hasOwnProperty.call(old,name)||JSON.stringify(old[name])!==JSON.stringify(value));
  for(const [name,value] of changed.slice(0,5))tags.push({kind:'value',text:name+' = '+valueDisplay(value)});
  if(changed.length>5)tags.push({kind:'muted',text:'+'+(changed.length-5)+' more'});
  const newOutput=(step.output||[]).slice((previous.output||[]).length);
  for(const out of newOutput)tags.push({kind:'output',text:'Output: '+out});
- const note=step.explanation||'';
  if(/^(?:Call |Enter \w+\(\)|Return from )/.test(note)){
   const action=note.match(/^(?:Call [^(]+\([^)]*\)|Enter [^(]+\(\)|Return from [^(]+\(\))/)?.[0];
-  if(action)tags.unshift({kind:'call',text:action});
+  if(action){
+   const returned=returning?note.match(/with value (.+?)\. Continue/)?.[1]:null;
+   tags.unshift({kind:'call',text:action+(returned?' → '+returned:'')});
+  }
  }else if(/^Return /.test(note)&&!newOutput.length){
   const match=note.match(/^Return (.+?) to the calling line/);
   if(match)tags.push({kind:'call',text:'↩ '+match[1]});
