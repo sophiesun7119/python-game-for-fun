@@ -154,7 +154,7 @@ At any step, **exactly one source row** is marked as currently executing (except
 
 | Event | Display in code | Duration |
 |---|---|---|
-| Define `def fn(...):` | **Function defined** on its `def` line during initial definition | Current step only |
+| Define `def fn(...):` | **Function defined** on its `def` line during initial definition, using the same violet event badge as function calls | Current step only |
 | Call `fn(...)` | **Call fn(...)** on the actual caller line | Current step only |
 | Enter function | Arrow to the callee **`def` line**; introduce its bound parameters there | Parameter badges remain as long as that call frame lives |
 | Execute function body | Arrow advances to the actual statement, *after* the separate entry step | Per source step |
