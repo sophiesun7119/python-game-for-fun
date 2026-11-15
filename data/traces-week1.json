@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "Teacher-authored execution snapshots for Week 1, indexed by question ID; line numbers are zero-based.",
+  "version": "2.0.0",
+  "description": "Guided traces for Week 1 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
   "traces": {
     "W1-E-01": {
       "steps": [
@@ -246,35 +246,71 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "a": 14
+            "apple": 1.5
           },
           "output": [],
-          "explanation": "Create a with value 14."
+          "explanation": "Evaluate 1.50 and set apple to 1.5."
         },
         {
           "line": 1,
           "variables": {
-            "a": 14,
-            "b": 4
+            "apple": 1.5,
+            "sandwich": 6.99
           },
           "output": [],
-          "explanation": "Create b with value 4."
+          "explanation": "Evaluate 6.99 and set sandwich to 6.99."
         },
         {
           "line": 2,
           "variables": {
-            "a": 14,
-            "b": 4
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25
+          },
+          "output": [],
+          "explanation": "Evaluate 3.25 and set juice to 3.25."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74
+          },
+          "output": [],
+          "explanation": "Evaluate apple + sandwich + juice and set subtotal to 11.74."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74,
+            "tax": 0.9392
+          },
+          "output": [],
+          "explanation": "Evaluate subtotal * 0.08 and set tax to 0.9392."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74,
+            "tax": 0.9392
           },
           "output": [
-            "3 2"
+            "$12.68"
           ],
-          "explanation": "a // b is 3; a % b is 2. print() separates them with a space."
+          "explanation": "Print '$12.68'."
         }
       ]
     },
@@ -284,44 +320,71 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "x": 3
+            "distance": 250
           },
           "output": [],
-          "explanation": "Create x with value 3."
+          "explanation": "Evaluate 250 and set distance to 250."
         },
         {
           "line": 1,
           "variables": {
-            "x": 3,
-            "y": 5
+            "distance": 250,
+            "mpg": 32
           },
           "output": [],
-          "explanation": "y reads x (3) and adds 2, making y = 5."
+          "explanation": "Evaluate 32 and set mpg to 32."
         },
         {
           "line": 2,
           "variables": {
-            "x": 10,
-            "y": 5
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89
           },
           "output": [],
-          "explanation": "Read y = 5, multiply by 2, and replace x with 10. y stays 5."
+          "explanation": "Evaluate 3.89 and set price to 3.89."
         },
         {
           "line": 3,
           "variables": {
-            "x": 10,
-            "y": 5
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 4 and set people to 4."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4,
+            "cost": 30.390625
+          },
+          "output": [],
+          "explanation": "Evaluate distance / mpg * price and set cost to 30.390625."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4,
+            "cost": 30.390625
           },
           "output": [
-            "10 5"
+            "7.60"
           ],
-          "explanation": "print(x, y) displays 10 and 5 separated by a space."
+          "explanation": "Print '7.60'."
         }
       ]
     },
@@ -331,25 +394,53 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "price": 3.5
+            "a": 4
           },
           "output": [],
-          "explanation": "Create price with value 3.5."
+          "explanation": "Evaluate 4 and set a to 4."
         },
         {
           "line": 1,
           "variables": {
-            "price": 3.5
+            "a": 4,
+            "b": 7
+          },
+          "output": [],
+          "explanation": "Evaluate a + 3 and set b to 7."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 3,
+            "b": 7
+          },
+          "output": [],
+          "explanation": "Evaluate b - a and set a to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 3,
+            "b": 21
+          },
+          "output": [],
+          "explanation": "Evaluate a * b and set b to 21."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 3,
+            "b": 21
           },
           "output": [
-            "$3.50"
+            "3 21"
           ],
-          "explanation": "The .2f format shows exactly two decimal places, so 3.5 becomes 3.50."
+          "explanation": "Print 3, 21."
         }
       ]
     },
@@ -359,24 +450,46 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "age": "12"
+            "a": "3"
           },
           "output": [],
-          "explanation": "Example input: the user types 12. age stores '12' as a string."
+          "explanation": "Evaluate '3' and set a to '3'."
         },
         {
           "line": 1,
           "variables": {
-            "age": "12"
+            "a": "3",
+            "b": 5
           },
           "output": [],
-          "explanation": "Python tries to add a string ('12') and an integer (1). That raises TypeError; the program stops.",
-          "error": "TypeError: can only concatenate str (not \"int\") to str"
+          "explanation": "Evaluate int(a) + 2 and set b to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": "3",
+            "b": 5,
+            "c": "33333"
+          },
+          "output": [],
+          "explanation": "Evaluate a * b and set c to '33333'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": "3",
+            "b": 5,
+            "c": "33333"
+          },
+          "output": [
+            "33333-5"
+          ],
+          "explanation": "Print '33333-5'."
         }
       ]
     },
@@ -386,7 +499,56 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 19
+          },
+          "output": [],
+          "explanation": "Evaluate 19 and set x to 19."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 19,
+            "y": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 4 and set y to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 19,
+            "y": 4,
+            "z": 7
+          },
+          "output": [],
+          "explanation": "Evaluate x // y + x % y and set z to 7."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 19,
+            "y": 4,
+            "z": 7
+          },
+          "output": [
+            "0010"
+          ],
+          "explanation": "Print '0010'."
+        }
+      ]
+    },
+    "W1-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
@@ -394,7 +556,7 @@
             "a": 2
           },
           "output": [],
-          "explanation": "Create a with value 2."
+          "explanation": "Evaluate 2 and set a to 2."
         },
         {
           "line": 1,
@@ -403,18 +565,342 @@
             "b": 3
           },
           "output": [],
-          "explanation": "Create b with value 3."
+          "explanation": "Evaluate 3 and set b to 3."
         },
         {
           "line": 2,
           "variables": {
-            "a": 2,
+            "a": 5,
             "b": 3
           },
+          "output": [],
+          "explanation": "Evaluate a + b and set a to 5."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 5,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a - b and set b to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 3,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a - b and set a to 3."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 3,
+            "b": 2
+          },
           "output": [
-            "14"
+            "3 2"
           ],
-          "explanation": "Multiplication happens first: b * 4 = 12. Then a + 12 = 14."
+          "explanation": "Print 3, 2."
+        }
+      ]
+    },
+    "W1-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "item1": 6.99
+          },
+          "output": [],
+          "explanation": "Evaluate 6.99 and set item1 to 6.99."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25
+          },
+          "output": [],
+          "explanation": "Evaluate 3.25 and set item2 to 3.25."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08
+          },
+          "output": [],
+          "explanation": "Evaluate 0.08 and set tax_rate to 0.08."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24
+          },
+          "output": [],
+          "explanation": "Evaluate item1 + item2 and set subtotal to 10.24."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24,
+            "total": 11.0592
+          },
+          "output": [],
+          "explanation": "Evaluate subtotal * (1 + tax_rate) and set total to 11.0592."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24,
+            "total": 11.0592,
+            "people": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 3 and set people to 3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24,
+            "total": 11.0592,
+            "people": 3
+          },
+          "output": [
+            "3.69|11.06"
+          ],
+          "explanation": "Print '3.69|11.06'."
+        }
+      ]
+    },
+    "W1-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "04"
+          },
+          "output": [],
+          "explanation": "Evaluate '04' and set s to '04'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "04",
+            "n": 12
+          },
+          "output": [],
+          "explanation": "Evaluate int(s) * 3 and set n to 12."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "0412",
+            "n": 12
+          },
+          "output": [],
+          "explanation": "Evaluate s + str(n) and set s to '0412'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "0412",
+            "n": 16
+          },
+          "output": [],
+          "explanation": "Evaluate n + len(s) and set n to 16."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "s": "0412",
+            "n": 16
+          },
+          "output": [
+            "0412 16"
+          ],
+          "explanation": "Print '0412', 16."
+        }
+      ]
+    },
+    "W1-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 27
+          },
+          "output": [],
+          "explanation": "Evaluate 27 and set a to 27."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 27,
+            "b": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 5 and set b to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 27,
+            "b": 5,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a % b and set c to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 5,
+            "b": 5,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a // b and set a to 5."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 5,
+            "b": 15,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a + c * b and set b to 15."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 5,
+            "b": 15,
+            "c": 5
+          },
+          "output": [],
+          "explanation": "Evaluate b // (a - c) and set c to 5."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "a": 5,
+            "b": 15,
+            "c": 5
+          },
+          "output": [
+            "5 15 5"
+          ],
+          "explanation": "Print 5, 15, 5."
+        }
+      ]
+    },
+    "W1-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "name": "Ana"
+          },
+          "output": [],
+          "explanation": "Evaluate 'Ana' and set name to 'Ana'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5
+          },
+          "output": [],
+          "explanation": "Evaluate 7.5 and set price to 7.5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 3 and set qty to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5
+          },
+          "output": [],
+          "explanation": "Evaluate price * qty and set subtotal to 22.5."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5,
+            "tax": 1.8
+          },
+          "output": [],
+          "explanation": "Evaluate subtotal * 0.08 and set tax to 1.8."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5,
+            "tax": 1.8
+          },
+          "output": [
+            "Ana  |$024.30"
+          ],
+          "explanation": "Print 'Ana  |$024.30'."
         }
       ]
     }
