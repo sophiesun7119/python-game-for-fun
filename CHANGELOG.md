@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1 — 2026-11-15
+- Award full points for any correct submission, including after hints and retries.
+- Show Answer gives explanation and advances without XP for that question.
+- Updated results labels, help text and scoring function to count eventually solved questions.
+- Kept per-quest personal-best progress and local username profiles unchanged.
+
 ## v0.2.0 — 2026-11-15
 - Added optional local username entry; blank defaults to shared guest name `username`.
 - Kept scores isolated per normalized username in browser localStorage, with a Switch Player control.
