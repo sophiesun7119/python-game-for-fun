@@ -19,6 +19,21 @@ function buildTrace(question) {
     ticks++;if(ticks>1500)throw Error("Too many trace steps: "+question.id);
     steps.push({line,variables:snapshot(),output:[...output],explanation});
   }
+  function splitArguments(source){
+    const parts=[];let part="",quote=null,depth=0,escaped=false;
+    for(const ch of source){
+      if(escaped){part+=ch;escaped=false;continue;}
+      if(ch==="\\"){part+=ch;escaped=true;continue;}
+      if(quote){part+=ch;if(ch===quote)quote=null;continue;}
+      if(ch==="'"||ch==='"'){quote=ch;part+=ch;continue;}
+      if(ch==="("||ch==="["){depth++;part+=ch;continue;}
+      if(ch===")"||ch==="]"){depth--;part+=ch;continue;}
+      if(ch===","&&depth===0){parts.push(part.trim());part="";continue;}
+      part+=ch;
+    }
+    if(part.trim())parts.push(part.trim());
+    return parts;
+  }
   function evalExpr(raw,env){
     let expr=raw.trim();
     expr=expr.replace(/f'([^']*)'/g,(_,body)=>"__f("+JSON.stringify(body)+")");
@@ -27,6 +42,7 @@ function buildTrace(question) {
     expr=expr.replace(/\band\b/g,"&&").replace(/\bor\b/g,"||").replace(/\bnot\b/g,"!");
     expr=expr.replace(/\b(int|str|len|range)\s*\(/g,(_,fn)=>"__"+fn+"(");
     expr=expr.replace(/([A-Za-z_]\w*|\d+)\s*\/\/\s*(\([^)]*\)|[A-Za-z_]\w*|\d+)/g,"Math.floor($1 / $2)");
+    expr=expr.replace(/('[^']*'|"[^"]*")\s*\*\s*([A-Za-z_]\w*|\d+)/g,"__mul($1,$2)");
     expr=expr.replace(/([A-Za-z_]\w*)\s*\*\s*([A-Za-z_]\w*|\d+)/g,(match,left,right)=>typeof env[left]==="string"?"__mul("+left+","+right+")":match);
     const fmt=body=>body.replace(/\{([^{}]+)\}/g,(_,inner)=>{
       const p=inner.split(/:(.+)/);const v=evalExpr(p[0],env);const spec=p[1]||"";
@@ -151,7 +167,7 @@ function buildTrace(question) {
           }
           const print=text.match(/^print\((.*)\)$/);
           if(print){
-            const params=print[1].split(/,\s*(?![^()]*\))/).map(x=>evalExpr(x,env));
+            const params=splitArguments(print[1]).map(x=>evalExpr(x,env));
             output.push(params.map(display).join(" "));active=env;
             record(node.line,"Print "+params.map(repr).join(", ")+".");
             continue;
@@ -163,6 +179,12 @@ function buildTrace(question) {
             env[name]=op==="="?value:op==="+="?env[name]+value:op==="-="?env[name]-value:env[name]*value;
             active=env;
             record(node.line,"Evaluate "+expr+" and "+(op==="="?"set ":"update ")+name+" to "+repr(env[name])+".");continue;
+          }
+          // Function call as a standalone statement, e.g. greet().
+          if(/^[A-Za-z_]\w*\s*\(.*\)$/.test(text)){
+            evalExpr(text,env);active=env;currentLine=node.line;
+            record(node.line,"Finish this function call and continue.");
+            continue;
           }
           throw Error("Unsupported statement: "+text);
         }
