@@ -1,6 +1,6 @@
 # Python Quest 🐍
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.4 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.5 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
 
 ## Run locally
 
@@ -25,7 +25,18 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
-## Watch How the Code Works — Week 1 pilot (v0.4.0)
+## Watch How the Code Works — Weeks 1–4 (v0.5.0)
+
+- All **60** Challenge 1 questions now have teacher-authored traces in `data/traces-week1.json`, `data/traces-week2.json`, `data/traces-week3.json`, and `data/traces-week4.json`.
+- The Trace panel remains hidden unless a child selects **Watch How the Code Works** on a quiz or completed review card.
+- The inline two-column UI highlights the current source line on the left and changes to variables and output on the right. Children can use Previous / Next Step / Restart / Close.
+- Every step emphasizes a **bold red Explanation:** label followed by a short plain-language explanation.
+- Week 2 explicitly walks through condition checks, selected branches, and skipped branches. Week 3 shows repeated loop-header checks, break/continue and variable changes. Week 4 follows calls into functions and returns to the caller, with local parameter examples.
+- Python is not executed by this UI; all steps are authored learning examples, including hypothetical corrected code for the Week 2 operator-fill question.
+- For input() snippets, the trace uses a clearly described example input. Tracing can reveal how a problem runs, so it is optional learning support rather than a cheating-resistant quiz tool.
+- Validate all trace entries with `node tests/validate-traces.mjs` (no npm install required).
+
+## Earlier Week 1 pilot (v0.4.0)
 
 - Every **Week 1** question (5 Easy + 5 Medium + 5 Hard) has a teacher-authored, deterministic trace in `data/traces-week1.json`. Weeks 2–4 retain their original question cards until traces are authored.
 - On an eligible question or completed Review card, click **Watch How the Code Works** beneath the existing code block. Only then does it expand into the same card's two-column view (code with line number/arrow on the left, variables/output on the right).
@@ -61,7 +72,7 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
 - A public deployment is visible to anyone who knows the URL even if the GitHub repository is private. Do not put private student information in this app.
 - Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
-- Challenge 2 (Weeks 6–9) is not included in v0.4.
+- Challenge 2 (Weeks 6–9) is not included in v0.5.
 
 ## Source documents
 
@@ -77,6 +88,10 @@ src/app.js
 src/scoring.js
 data/questions.json
 data/traces-week1.json
+data/traces-week2.json
+data/traces-week3.json
+data/traces-week4.json
+tests/validate-traces.mjs
 README.md
 CHANGELOG.md
 ```
