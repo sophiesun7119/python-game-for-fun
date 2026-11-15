@@ -59,7 +59,7 @@ Click **👀 Watch How the Code Works** on any question or completed review card
 3. **Under the code:** a separate **Output** box. Before Python prints anything, this box is **empty**. When a `print()` runs, the printed text appears there. Several prints appear on separate lines. Going backward shows only what had been printed up to that Step.
 4. **Under Output:** the bold red **Explanation:** tells you why Python performed this action. Long explanations no longer move the controls at the top.
 
-For example, a function call first highlights where it was called, then the `def` line where parameters are introduced, then the lines in its body. On `if` and `while`, **green ✓** means enter/continue; **red ✕** means skip/exit.
+For example, a function definition first displays a named purple label such as **Define greet()**, and a function call then highlights where it was called, then the `def` line where parameters are introduced, then the lines in its body. On `if` and `while`, **green ✓** means enter/continue; **red ✕** means skip/exit.
 
 The walkthrough is a prepared teaching example, not a live Python executor. Watching, going backward, or restarting does not change XP, answers or saved progress. Click **Close** to return to the normal card.
 
