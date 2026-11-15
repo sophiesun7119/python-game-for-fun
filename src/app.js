@@ -180,46 +180,58 @@ function traceInlineValues(step,source,condition){
  return found.map(name=>name+' = '+valueDisplay(vars[name])).join(' · ');
 }
 
+function traceInlineDetails(step, previous, source, condition) {
+ const tags=[];
+ const current=step.variables||{},old=previous.variables||{};
+ if(condition){
+  const involved=traceInlineValues(step,source,condition);
+  if(involved)tags.push({kind:'value',text:involved});
+  tags.push({kind:condition.passed?'pass':'fail',text:(condition.passed?'✓ ':'✕ ')+condition.action});
+  return tags;
+ }
+ const changed=Object.entries(current).filter(([name,value])=>!Object.prototype.hasOwnProperty.call(old,name)||JSON.stringify(old[name])!==JSON.stringify(value));
+ for(const [name,value] of changed.slice(0,5))tags.push({kind:'value',text:name+' = '+valueDisplay(value)});
+ if(changed.length>5)tags.push({kind:'muted',text:'+'+(changed.length-5)+' more'});
+ const newOutput=(step.output||[]).slice((previous.output||[]).length);
+ for(const out of newOutput)tags.push({kind:'output',text:'Output: '+out});
+ const note=step.explanation||'';
+ if(/^(?:Call |Enter \w+\(\)|Return from )/.test(note)){
+  const action=note.match(/^(?:Call [^(]+\([^)]*\)|Enter [^(]+\(\)|Return from [^(]+\(\))/)?.[0];
+  if(action)tags.unshift({kind:'call',text:action});
+ }else if(/^Return /.test(note)&&!newOutput.length){
+  const match=note.match(/^Return (.+?) to the calling line/);
+  if(match)tags.push({kind:'call',text:'↩ '+match[1]});
+ }else if(/^Define \w+\(\)/.test(note)){
+  tags.push({kind:'muted',text:'Function defined'});
+ }
+ if(step.error)tags.push({kind:'fail',text:'✕ '+step.error});
+ return tags;
+}
+
 function tracePanel(q){
  const trace=allTraces[q.id];
- const simpleCode=()=>`<pre class="code"><code>${escapeHTML(q.code)}</code></pre>`;
+ const simpleCode=()=>'<pre class="code"><code>'+escapeHTML(q.code)+'</code></pre>';
  if(!trace)return simpleCode();
- if(!state.traceOpen)return `${simpleCode()}<button class="btn trace-toggle" data-action="trace-open">👀 Watch How the Code Works</button>`;
- const steps=trace.steps;
- const index=Math.min(state.traceIndex,steps.length-1);
- const step=steps[index];const previous=steps[Math.max(0,index-1)];
- const code=q.code.split('\n');
- const variables=Object.entries(step.variables||{});
- const condition=traceCondition(step,code);
+ if(!state.traceOpen)return simpleCode()+'<button class="btn trace-toggle" data-action="trace-open">👀 Watch How the Code Works</button>';
+ const steps=trace.steps,index=Math.min(state.traceIndex,steps.length-1);
+ const step=steps[index],previous=steps[Math.max(0,index-1)];
+ const code=q.code.split('\n'),condition=traceCondition(step,code);
  const codeLines=code.map((line,i)=>{
-  const visible=step.line===i&&condition;
-  const values=visible?traceInlineValues(step,line,condition):'';
-  const inline=visible?`<span class="trace-inline-check ${condition.passed?'trace-inline-pass':'trace-inline-fail'}" aria-label="${escapeHTML((values?values+', ':'')+(condition.passed?'True: '+condition.action:'False: '+condition.action))}"><span class="trace-inline-symbol" aria-hidden="true">${condition.passed?'✓':'✕'}</span>${values?`<span class="trace-inline-values">${escapeHTML(values)}</span>`:''}<span class="trace-inline-decision">${escapeHTML(condition.action)}</span></span>`:'';
-  return `<div class="trace-line ${step.line===i?'trace-line-active':''}"><span class="trace-arrow" aria-hidden="true">${step.line===i?'➜':''}</span><span class="trace-lineno">${i+1}</span><span class="trace-source">${escapeHTML(line)}</span>${inline}</div>`;
+  const active=step.line===i;
+  const details=active?traceInlineDetails(step,previous,line,condition):[];
+  const tags=details.map(tag=>'<span class="trace-inline-tag trace-inline-'+tag.kind+'">'+escapeHTML(tag.text)+'</span>').join('');
+  return '<div class="trace-line '+(active?'trace-line-active':'')+'"><span class="trace-arrow" aria-hidden="true">'+(active?'➜':'')+'</span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations">'+tags+'</span></div>';
  }).join('');
- const variableRows=variables.map(([name,value])=>{
-  const isNew=!(name in (previous.variables||{}));
-  const changed=isNew||JSON.stringify(previous.variables[name])!==JSON.stringify(value);
-  return `<div class="trace-variable ${changed?'trace-variable-changed':''}"><span class="trace-var-name">${escapeHTML(name)}</span><span class="trace-var-value">${escapeHTML(valueDisplay(value))}</span>${changed?`<span class="trace-var-tag">${isNew?'New':'Updated'}</span>`:''}</div>`;
- }).join('');
- return `<section class="trace-shell" aria-label="Step-by-step Python execution">
-  <div class="trace-titlebar"><strong>👀 Watch How the Code Works</strong><button class="btn trace-close" data-action="trace-close">✕ Close</button></div>
-  <div class="trace-layout">
-   <div class="trace-code-panel"><div class="trace-panel-title">Python Code</div><div class="trace-code" aria-label="Current executing line: ${step.line<0?'not started':step.line+1}">${codeLines}</div></div>
-   <div class="trace-state-panel"><div class="trace-panel-title">Variables</div><div class="trace-vars">${variableRows||'<p class="trace-empty">No variables yet</p>'}</div>
-    ${condition?`<div class="trace-condition ${condition.passed?'trace-condition-pass':'trace-condition-fail'}" role="status"><div class="trace-condition-label">Condition Check</div><div class="trace-condition-result"><span class="trace-condition-icon" aria-hidden="true">${condition.passed?'✓':'✕'}</span><span><strong>${condition.passed?'True':'False'}</strong><span class="trace-condition-action">${condition.action}</span></span></div><code class="trace-condition-expression">${escapeHTML(condition.expression)}</code></div>`:''}
-    <div class="trace-panel-title trace-output-title">Output</div>
-    <div class="trace-output" aria-label="Program output">${(step.output||[]).length?`<pre>${escapeHTML(step.output.join('\n'))}</pre>`:'<span class="trace-empty">Nothing printed yet</span>'}</div>
-    ${step.error?`<div class="trace-error"><strong>Program stopped with an error</strong><div>${escapeHTML(step.error)}</div></div>`:''}
-   </div>
-  </div>
-  <div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step ${index} / ${steps.length-1}</div><p><strong class="trace-explanation-label">Explanation:</strong> ${escapeHTML(step.explanation)}</p></div>
-  <div class="trace-controls">
-   <button class="btn" data-action="trace-prev" ${index===0?'disabled':''}>← Previous</button>
-   <button class="btn primary" data-action="trace-next" ${index===steps.length-1?'disabled':''}>Next Step →</button>
-   <button class="btn" data-action="trace-restart" ${index===0?'disabled':''}>↻ Restart</button>
-  </div><p class="trace-footnote">A guided example, not a live Python runner. The trace starts with empty variables. Tracing does not change your score.</p>
- </section>`;
+ return '<section class="trace-shell" aria-label="Step-by-step Python execution">'
+  +'<div class="trace-titlebar"><strong>👀 Watch How the Code Works</strong><button class="btn trace-close" data-action="trace-close">✕ Close</button></div>'
+  +'<div class="trace-code-panel trace-code-full"><div class="trace-panel-title">Python Code · Execution Trace</div>'
+  +'<div class="trace-code" aria-label="Current executing line: '+(step.line<0?'not started':step.line+1)+'">'+codeLines+'</div>'
+  +(index===0?'<div class="trace-code-ready">No variables or output yet. Press Next Step to begin.</div>':'')
+  +'</div><div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step '+index+' / '+(steps.length-1)+'</div><p><strong class="trace-explanation-label">Explanation:</strong> '+escapeHTML(step.explanation)+'</p></div>'
+  +'<div class="trace-controls"><button class="btn" data-action="trace-prev" '+(index===0?'disabled':'')+'>← Previous</button>'
+  +'<button class="btn primary" data-action="trace-next" '+(index===steps.length-1?'disabled':'')+'>Next Step →</button>'
+  +'<button class="btn" data-action="trace-restart" '+(index===0?'disabled':'')+'>↻ Restart</button></div>'
+  +'<p class="trace-footnote">The tags beside the highlighted line show only this step’s changes. Earlier tags disappear when execution moves. Tracing does not affect your score.</p></section>';
 }
 
 function currentQuestion(){return state.attempt[state.index];}
