@@ -325,6 +325,7 @@
           "variables": {},
           "output": [],
           "explanation": "Calculate 16 + 1 = 17.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -438,6 +439,7 @@
           },
           "output": [],
           "explanation": "Evaluate 'Hello ' + name using name = \"Mia\"; the result is \"Hello Mia\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1107,6 +1109,7 @@
           },
           "output": [],
           "explanation": "Calculate 3 * 2 = 6.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1310,6 +1313,7 @@
           },
           "output": [],
           "explanation": "Calculate 45 + 10 = 55.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1605,7 +1609,7 @@
             "needed": 900
           },
           "output": [],
-          "explanation": "Evaluate the f-string with xp = 730, needed = 900; the formatted result is \"'Need 170'\".",
+          "explanation": "Evaluate the f-string with xp = 730, needed = 900; the formatted result is \"Need 170\".",
           "phase": "calculate"
         },
         {
@@ -2744,7 +2748,7 @@
             "x": 3
           },
           "output": [],
-          "explanation": "Calculate 5 + 2 = 7.",
+          "explanation": "Calculate 3 + 2 = 5.",
           "phase": "calculate"
         },
         {
@@ -2787,7 +2791,7 @@
             "a": 5
           },
           "output": [],
-          "explanation": "Calculate 6 * 2 = 12.",
+          "explanation": "Calculate 3 * 2 = 6.",
           "phase": "calculate"
         },
         {
