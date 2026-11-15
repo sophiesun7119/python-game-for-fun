@@ -54,7 +54,7 @@ Stars per five-card quest: **3/5 = ⭐**, **4/5 = ⭐⭐**, **5/5 = ⭐⭐⭐**.
 
 On a question or a completed review card, click **👀 Watch How the Code Works**. It is hidden until clicked and does not change your XP.
 
-The **one full-width dark code panel** shows the whole program. A yellow arrow points to the exact line involved in the current execution step. To the **right of that same highlighted line**, small temporary tags describe only the current action:
+The **one full-width dark code panel** shows the whole program. A yellow arrow points to the exact line involved in the current execution step. Variable badges may remain visible at earlier assignment lines, while temporary execution tags appear to the **right of the current highlighted line**:
 
 - `a = 1` or `needed = 900`: variable created or updated.
 - **✓ Enter Branch** / **✕ Skip Branch**: `if` or `elif` condition.
@@ -63,7 +63,7 @@ The **one full-width dark code panel** shows the whole program. A yellow arrow p
 - **Call …**, **Enter …**, **Return from … → value**: function transitions.
 - **Output: …**: something was printed on that step.
 
-Tags **move with the current execution line**: old tags disappear, and a change appears beside the line that caused it. New function parameters appear when the function is entered; an assignment made after a function returns appears on its caller line. No separate Variables/Output sidebar remains.
+**Two kinds of badges:** variable values stay at the last line that created or updated them for as long as their scope exists; temporary call, output and ✓/✕ badges follow the current highlighted line. New function parameters appear on its `def` line when the function is entered; an assignment made after a function returns appears on its caller line. No separate Variables/Output sidebar remains.
 
 Below the code, use **Previous**, **Next Step**, **Restart**, and read the bold red **Explanation:** for each step. **Close** returns to the usual question card. This is an educator-prepared walkthrough, *not* a general Python runtime; `input()` examples use a stated sample input and incomplete-code questions may show a corrected example.
 
