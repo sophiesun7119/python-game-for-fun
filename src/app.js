@@ -56,6 +56,69 @@ function difficultyView(){
  return `${header()}<div class="eyebrow">Challenge 1 · Week ${w.week}</div><h1>${w.emoji} ${w.title}</h1><p class="muted">${w.subtitle}. Pick any difficulty.</p><div class="difficulty-grid">
  ${diffs.map(d=>{const saved=readQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':'Trace and debug harder code'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
 }
+
+function saveActive(){
+ if(!username||state.view!=='quiz')return;
+ const active={
+  index:state.index,draft:state.draft,checked:state.checked,feedback:state.feedback,hint:state.hint,
+  attempt:state.attempt.map(a=>({
+   id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,
+   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
+  }))
+ };
+ writeQuest(username,state.week,state.difficulty,{active});
+}
+function hydrateRun(saved){
+ if(!saved||!Array.isArray(saved.attempt)||saved.attempt.length!==5)return false;
+ const attempt=saved.attempt.map(a=>{
+  const question=allQuestions.find(q=>q.id===a.id);
+  return question?{question,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,
+   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed}:null;
+ });
+ if(attempt.some(a=>!a))return false;
+ state={...state,view:'quiz',index:Math.min(4,Math.max(0,Number(saved.index)||0)),
+  attempt,draft:saved.draft||'',checked:!!saved.checked,feedback:saved.feedback||null,
+  hint:!!saved.hint,oldBest:best(state.week,state.difficulty)};
+ return true;
+}
+function resumeView(){
+ const saved=readQuest(username,state.week,state.difficulty);
+ return `${header()}<div class="card welcome"><div class="big-emoji">📌</div><h1>Your quest is saved!</h1><p>Week ${state.week} · ${labels[state.difficulty]}</p><p class="muted">You stopped at question ${(saved.active?.index??0)+1} of 5.</p>
+ <div class="btn-row">${button('▶ Continue Quest','resume','primary')}${button('↻ Start Over','fresh')}</div><p class="footnote">Start Over discards only this unfinished run, never your personal best score.</p></div>`;
+}
+function reviewView(){
+ const snap=readQuest(username,state.week,state.difficulty).completed;
+ if(!snap?.attempt?.length)return `${header()}<div class="card">No completed cards to review yet.</div>`;
+ const item=snap.attempt[state.index];const q=allQuestions.find(x=>x.id===item.id);
+ if(!q)return `${header()}<p>This question is no longer available.</p>`;
+ const practice=state.reviewPractice;
+ const editable=practice?(q.options?.length
+ ?`<div role="group" aria-label="Practice answers">${q.options.map((o,i)=>`<button class="option" data-review-choice="${i}" aria-pressed="${state.reviewDraft===o}"><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`
+ :`<label for="review-answer">Try it again</label><textarea id="review-answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" placeholder="Your answer...">${escapeHTML(state.reviewDraft)}</textarea>`):'';
+ const status=item.solved?'✅ Solved':item.revealed?'📖 Answer viewed':'💡 Not solved';
+ return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Review · Week ${state.week} · ${labels[state.difficulty]}</span><strong>Card ${state.index+1} / 5</strong></div>
+ <div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:18px">
+ <span class="tag ${item.solved?'green':'gold'}">${status}</span><h2 style="margin-top:12px">${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>
+ <div class="review-answer"><p><strong>Your saved answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(item.lastAnswer||'No answer entered')}</span></p>
+ <p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p>
+ <p><strong>Explanation:</strong> ${escapeHTML(q.explanation)}</p></div>
+ ${editable}
+ ${state.reviewFeedback?`<div class="feedback ${state.reviewFeedback.correct?'':'wrong'}" role="status"><strong>${state.reviewFeedback.correct?'✅ You got it!':'Try again — you can keep practicing.'}</strong><p>${escapeHTML(q.explanation)}</p></div>`:''}
+ <div class="btn-row">${practice?button('Check retry','review-check','primary')+button('Cancel retry','review-cancel'):button('↻ Retry this card','review-retry','primary')}</div>
+ </div><div class="btn-row">${button('← Previous','review-prev')}${button(state.index===4?'Back to results':'Next →',state.index===4?'review-exit':'review-next','primary')}</div>
+ <p class="footnote">Review is always available after finishing. Practice retries here do not change your saved best score; to earn more XP, start a new five-card quest.</p></div>`;
+}
+function finishQuest(){
+ const n=countCorrect(state.attempt);
+ const completed={completedAt:new Date().toISOString(),score:n,attempt:state.attempt.map(a=>({
+  id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,
+  lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
+ }))};
+ writeQuest(username,state.week,state.difficulty,{active:null,completed});
+ progress=updateBest(progress,state.week,state.difficulty,n);saveProgress(progress,username);
+ navigate('results');
+}
+
 function currentQuestion(){return state.attempt[state.index];}
 function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
 function quiz(){
@@ -77,7 +140,7 @@ function quiz(){
 }
 function results(){
  const n=countCorrect(state.attempt);const old=state.oldBest;const fresh=best(state.week,state.difficulty);const xpGain=(fresh-old)*points[state.difficulty];const stars=awardedStars(n);
- return `<div class="result"><div class="big-emoji">${n>=3?'🏆':'🌱'}</div><h1>${n>=3?'Quest complete!':'Nice effort—keep practicing!'}</h1><p class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</p><p class="muted">Week ${state.week} · ${labels[state.difficulty]}</p><div class="kpi-row"><div class="kpi"><b>${n}/5</b><span class="small muted">Questions solved</span></div><div class="kpi"><b>${fresh}/5</b><span class="small muted">Personal best</span></div><div class="kpi"><b>+${xpGain}</b><span class="small muted">New XP earned</span></div></div><div class="card" style="text-align:left;margin-top:18px"><h3>Review these topics</h3>${state.attempt.filter(a=>!a.solved).length?'<p class="muted">'+state.attempt.filter(a=>!a.solved).map(a=>escapeHTML(a.question.concept)).join(' · ')+'</p>':'<p class="muted">All five solved! Excellent work.</p>'}</div><div class="btn-row">${button('Try again','start:'+state.difficulty)}${button('Choose another level','levels','primary')}${button('My progress','progress')}</div></div>`;
+ return `<div class="result"><div class="big-emoji">${n>=3?'🏆':'🌱'}</div><h1>${n>=3?'Quest complete!':'Nice effort—keep practicing!'}</h1><p class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</p><p class="muted">Week ${state.week} · ${labels[state.difficulty]}</p><div class="kpi-row"><div class="kpi"><b>${n}/5</b><span class="small muted">Questions solved</span></div><div class="kpi"><b>${fresh}/5</b><span class="small muted">Personal best</span></div><div class="kpi"><b>+${xpGain}</b><span class="small muted">New XP earned</span></div></div><div class="card" style="text-align:left;margin-top:18px"><h3>Review these topics</h3>${state.attempt.filter(a=>!a.solved).length?'<p class="muted">'+state.attempt.filter(a=>!a.solved).map(a=>escapeHTML(a.question.concept)).join(' · ')+'</p>':'<p class="muted">All five solved! Excellent work.</p>'}</div><div class="btn-row">${button('📖 Review all 5 cards','review:'+state.difficulty)}${button('Try again','start:'+state.difficulty)}${button('Choose another level','levels','primary')}${button('My progress','progress')}</div></div>`;
 }
 function progressView(){
  const completed=weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3));
@@ -85,24 +148,27 @@ function progressView(){
 }
 function navigate(view){state.view=view;render();window.scrollTo({top:0,behavior:'instant'});}
 function start(d){
+ state.difficulty=d;
+ if(readQuest(username,state.week,d).active){navigate('resume');return;}
+ startFresh(d);
+}
+function startFresh(d){
  const qs=allQuestions.filter(q=>q.week===state.week&&q.difficulty===d);
  if(qs.length!==5){app.innerHTML='<div class="card empty">This quest is missing questions. Please report this to your teacher.</div>';return;}
- state={...state,view:'quiz',difficulty:d,index:0,attempt:qs.map(question=>({question,solved:false,submitted:false,revealed:false})),draft:'',checked:false,feedback:null,hint:false,oldBest:best(state.week,d)};
- render();window.scrollTo(0,0);
+ state={...state,view:'quiz',difficulty:d,index:0,attempt:qs.map(question=>({question,solved:false,submitted:false,revealed:false,lastAnswer:'',lastWasCorrect:false,hintUsed:false})),draft:'',checked:false,feedback:null,hint:false,oldBest:best(state.week,d)};
+ render();saveActive();window.scrollTo(0,0);
 }
 function check(){
  if(state.checked||!state.draft.trim())return;
  const item=currentQuestion(); const q=item.question;
  const correct=normalize(state.draft)===normalize(q.answer);
  if(correct && !item.revealed)item.solved=true;
- item.submitted=true;
- state.checked=true;state.feedback={correct,revealed:false};render();
+ item.submitted=true;item.lastAnswer=state.draft;item.lastWasCorrect=correct;
+ state.checked=true;state.feedback={correct,revealed:false};render();saveActive();
 }
 function next(){
- if(state.index===4){
- const n=countCorrect(state.attempt);progress=updateBest(progress,state.week,state.difficulty,n);saveProgress(progress,username);navigate('results');return;
- }
- state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();
+ if(state.index===4){finishQuest();return;}
+ state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();saveActive();
 }
 document.getElementById('player-switch').addEventListener('click',()=>{state.loginDraft='';navigate('welcome');});
 app.addEventListener('click',event=>{
