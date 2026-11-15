@@ -22,3 +22,5 @@ jobs:
         run: node tests/validate-trace-control-flow.mjs
       - name: Verify condition badges and loop decisions
         run: node tests/validate-trace-decisions.mjs
+      - name: Verify inline variable snapshots and check/cross indicators
+        run: node tests/validate-inline-trace.mjs
