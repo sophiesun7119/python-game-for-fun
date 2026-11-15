@@ -13,7 +13,7 @@ assert(start>=0&&end>start,'Walkthrough rendering helpers not found');
 const helpers=app.slice(start,end);
 const harness=runInNewContext(
  'const allTraces={};const state={traceOpen:true,traceIndex:0};'+
- 'function escapeHTML(s){return String(s).replace(/[&<>"\x27]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;","\x27":"&#39;"}[c]))}'+
+ 'function escapeHTML(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll(String.fromCharCode(34),"&quot;").replaceAll(String.fromCharCode(39),"&#39;")}'+
  'function valueDisplay(v){return typeof v==="string"?JSON.stringify(v):String(v)}\n'+
  helpers+'\n({allTraces,state,tracePanel})',{});
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
