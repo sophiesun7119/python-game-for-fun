@@ -1,5 +1,13 @@
 # Python Quest 🐍
 
+## Documentation
+
+- **[User Guide — for students, parents and teachers](docs/user-guide.md):** how to start, pick a week, solve and retry questions, use Watch How the Code Works, resume progress, review cards and understand local storage.
+- **[Technical Design — for developers and maintainers](docs/technical-design.md):** architecture, UI view flow, question and trace formats, inline annotations, scoring, user storage, curriculum migration, testing and maintenance.
+- [Difficulty Framework](docs/difficulty-framework.md): how the 80 questions and four difficulty tiers align with the course.
+- [Changelog](CHANGELOG.md): feature and fix history.
+
+
 A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.6 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 4 difficulties × 5 questions = **80 questions**.
 
 ## Run locally
