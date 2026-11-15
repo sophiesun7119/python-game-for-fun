@@ -1,6 +1,6 @@
 # Python Quest 🐍
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.3 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.4 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
 
 ## Run locally
 
@@ -24,6 +24,15 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - First submission wrong: do **not** immediately show answer. Offer **Give me a hint**, **Retry**, and **Show answer**.
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
+
+## Watch How the Code Works — Week 1 pilot (v0.4.0)
+
+- Every **Week 1** question (5 Easy + 5 Medium + 5 Hard) has a teacher-authored, deterministic trace in `data/traces-week1.json`. Weeks 2–4 retain their original question cards until traces are authored.
+- On an eligible question or completed Review card, click **Watch How the Code Works** beneath the existing code block. Only then does it expand into the same card's two-column view (code with line number/arrow on the left, variables/output on the right).
+- Starting trace step 0 has no variables and no output. **Next Step**, **Previous**, **Restart**, and **Close** control the explanation. New or updated variable values are highlighted.
+- `input()` demonstrations show a stated *example input*; the error question demonstrates how a `TypeError` stops execution.
+- No arbitrary Python code is executed: these steps are instructional examples. Opening/stepping a trace does **not** affect answer submission, XP, stars or local progress. Tracing can reveal the result, as intended for optional learning support.
+- A trace step stores zero-based `line`, full `variables` snapshot, cumulative `output` array, kid-friendly `explanation`, and optional `error`. Step 0 uses `line: -1` and empty variables/output.
 
 ## Auto-save, Resume and Review (v0.3.0)
 
@@ -52,7 +61,7 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
 - A public deployment is visible to anyone who knows the URL even if the GitHub repository is private. Do not put private student information in this app.
 - Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
-- Challenge 2 (Weeks 6–9) is not included in v0.3.
+- Challenge 2 (Weeks 6–9) is not included in v0.4.
 
 ## Source documents
 
@@ -67,6 +76,7 @@ styles.css
 src/app.js
 src/scoring.js
 data/questions.json
+data/traces-week1.json
 README.md
 CHANGELOG.md
 ```
