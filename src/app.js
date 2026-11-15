@@ -10,9 +10,10 @@ const diffs = ['easy','medium','hard'];
 const labels = {easy:'Easy',medium:'Medium',hard:'Hard'};
 const points = {easy:10,medium:15,hard:20};
 let allQuestions = [];
+let allTraces = {};
 let username = activeUsername();
 let progress = username ? loadProgress(username) : {best:{}};
-let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:'',reviewPractice:false,reviewDraft:'',reviewFeedback:null};
+let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:'',reviewPractice:false,reviewDraft:'',reviewFeedback:null,traceOpen:false,traceIndex:0};
 const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
 const scoreKey=(w,d)=>`W${w}-${d}`;
@@ -98,7 +99,7 @@ function reviewView(){
  const status=item.solved?'✅ Solved':item.revealed?'📖 Answer viewed':'💡 Not solved';
  return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Review · Week ${state.week} · ${labels[state.difficulty]}</span><strong>Card ${state.index+1} / 5</strong></div>
  <div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:18px">
- <span class="tag ${item.solved?'green':'gold'}">${status}</span><h2 style="margin-top:12px">${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>
+ <span class="tag ${item.solved?'green':'gold'}">${status}</span><h2 style="margin-top:12px">${escapeHTML(q.prompt)}</h2>${tracePanel(q)}
  ${!practice?`<div class="review-answer"><p><strong>Your saved answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(item.lastAnswer||'No answer entered')}</span></p>
  <p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p>
  <p><strong>Explanation:</strong> ${escapeHTML(q.explanation)}</p></div>`:''}
@@ -119,6 +120,43 @@ function finishQuest(){
  navigate('results');
 }
 
+
+function resetTrace(){state.traceOpen=false;state.traceIndex=0;}
+function valueDisplay(value){return typeof value==='string'?JSON.stringify(value):String(value);}
+function tracePanel(q){
+ const trace=allTraces[q.id];
+ const simpleCode=()=>`<pre class="code"><code>${escapeHTML(q.code)}</code></pre>`;
+ if(!trace)return simpleCode();
+ if(!state.traceOpen)return `${simpleCode()}<button class="btn trace-toggle" data-action="trace-open">👀 Watch How the Code Works</button>`;
+ const steps=trace.steps;
+ const index=Math.min(state.traceIndex,steps.length-1);
+ const step=steps[index];const previous=steps[Math.max(0,index-1)];
+ const code=q.code.split('\n');
+ const variables=Object.entries(step.variables||{});
+ const codeLines=code.map((line,i)=>`<div class="trace-line ${step.line===i?'trace-line-active':''}"><span class="trace-arrow" aria-hidden="true">${step.line===i?'➜':''}</span><span class="trace-lineno">${i+1}</span><span class="trace-source">${escapeHTML(line)}</span></div>`).join('');
+ const variableRows=variables.map(([name,value])=>{
+  const isNew=!(name in (previous.variables||{}));
+  const changed=isNew||JSON.stringify(previous.variables[name])!==JSON.stringify(value);
+  return `<div class="trace-variable ${changed?'trace-variable-changed':''}"><span class="trace-var-name">${escapeHTML(name)}</span><span class="trace-var-value">${escapeHTML(valueDisplay(value))}</span>${changed?`<span class="trace-var-tag">${isNew?'New':'Updated'}</span>`:''}</div>`;
+ }).join('');
+ return `<section class="trace-shell" aria-label="Step-by-step Python execution">
+  <div class="trace-titlebar"><strong>👀 Watch How the Code Works</strong><button class="btn trace-close" data-action="trace-close">✕ Close</button></div>
+  <div class="trace-layout">
+   <div class="trace-code-panel"><div class="trace-panel-title">Python Code</div><div class="trace-code" aria-label="Current executing line: ${step.line<0?'not started':step.line+1}">${codeLines}</div></div>
+   <div class="trace-state-panel"><div class="trace-panel-title">Variables</div><div class="trace-vars">${variableRows||'<p class="trace-empty">No variables yet</p>'}</div><div class="trace-panel-title trace-output-title">Output</div>
+    <div class="trace-output" aria-label="Program output">${(step.output||[]).length?`<pre>${escapeHTML(step.output.join('\n'))}</pre>`:'<span class="trace-empty">Nothing printed yet</span>'}</div>
+    ${step.error?`<div class="trace-error"><strong>Program stopped with an error</strong><div>${escapeHTML(step.error)}</div></div>`:''}
+   </div>
+  </div>
+  <div class="trace-narration" aria-live="polite"><div class="trace-stepcount">Step ${index} / ${steps.length-1}</div><p>${escapeHTML(step.explanation)}</p></div>
+  <div class="trace-controls">
+   <button class="btn" data-action="trace-prev" ${index===0?'disabled':''}>← Previous</button>
+   <button class="btn primary" data-action="trace-next" ${index===steps.length-1?'disabled':''}>Next Step →</button>
+   <button class="btn" data-action="trace-restart" ${index===0?'disabled':''}>↻ Restart</button>
+  </div><p class="trace-footnote">A guided example, not a live Python runner. The trace starts with empty variables. Tracing does not change your score.</p>
+ </section>`;
+}
+
 function currentQuestion(){return state.attempt[state.index];}
 function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
 function quiz(){
@@ -133,7 +171,7 @@ function quiz(){
  if(correct||revealed) actions=button(state.index===4?'See results →':'Next question →','next','primary');
  else if(wrong)actions=button('💡 Give me a hint','hint')+button('↻ Retry','retry','primary')+button('Show answer','reveal');
  else actions=button('💡 Give me a hint','hint')+button('Check answer','check','primary');
- return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2><pre class="code"><code>${escapeHTML(q.code)}</code></pre>${opts}
+ return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2>${tracePanel(q)}${opts}
  ${state.hint&&!revealed&&!correct?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
  ${state.checked?`<div class="feedback ${wrong?'wrong':''}" role="status"><strong>${correct?'✅ Correct!':revealed?'📖 Answer & explanation':'🔄 Not quite. Try again or see the answer.'}</strong>${correct||revealed?`<p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p><p style="margin-top:8px">${escapeHTML(q.explanation)}</p>`:`<p>You can ask for a hint, retry the question, or reveal the correct answer with an explanation.</p>`}</div>`:''}
  <div class="btn-row">${actions}</div></div><p class="footnote">Correct answers earn full XP, even after a hint or retry. Revealing the answer earns 0 XP for that question.</p></div>`;
@@ -146,7 +184,7 @@ function progressView(){
  const completed=weeks.filter(w=>diffs.every(d=>best(w.week,d)>=3));
  return `${header()}<div class="eyebrow">Your journey</div><h1>My Progress 🏅</h1><div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="small muted">XP / 900</span></div><div class="kpi"><b>${Object.values(progress.best).filter(v=>v>=3).length}/12</b><span class="small muted">Quests passed</span></div><div class="kpi"><b>${completed.length}/4</b><span class="small muted">Topic badges</span></div></div><h2 class="section-title">Badges</h2><div class="cards">${weeks.map(w=>`<article class="card"><div class="big-emoji">${completed.some(x=>x.week===w.week)?'🏅':'🔒'}</div><h3>${w.title}</h3><p class="muted small">${completed.some(x=>x.week===w.week)?'Unlocked!':'Pass all 3 difficulties to unlock.'}</p></article>`).join('')}</div><h2 class="section-title">Best scores</h2><div class="card">${weeks.map(w=>`<div style="padding:10px 0;border-bottom:1px solid #eef1f6"><strong>Week ${w.week} · ${w.title}</strong><p class="muted small" style="margin:6px 0 0">${diffs.map(d=>`${labels[d]}: ${best(w.week,d)}/5`).join(' · ')}</p><div class="btn-row" style="margin-top:9px">${diffs.filter(d=>readQuest(username,w.week,d).completed).map(d=>`<button class="btn" data-action="review-from:${w.week}:${d}">📖 Review ${labels[d]}</button>`).join('')}</div></div>`).join('')}</div><div class="btn-row">${button('Choose a level','levels','primary')}</div>`;
 }
-function navigate(view){state.view=view;render();window.scrollTo({top:0,behavior:'instant'});}
+function navigate(view){resetTrace();state.view=view;render();window.scrollTo({top:0,behavior:'instant'});}
 function start(d){
  state.difficulty=d;
  if(readQuest(username,state.week,d).active){navigate('resume');return;}
@@ -168,7 +206,7 @@ function check(){
 }
 function next(){
  if(state.index===4){finishQuest();return;}
- state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();saveActive();
+ state.index++;resetTrace();state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();saveActive();
 }
 document.getElementById('player-switch').addEventListener('click',()=>{state.loginDraft='';navigate('welcome');});
 app.addEventListener('click',event=>{
@@ -177,6 +215,11 @@ app.addEventListener('click',event=>{
  const reviewChoice=event.target.closest('[data-review-choice]');if(reviewChoice&&state.view==='review'){const snapshot=readQuest(username,state.week,state.difficulty).completed;const item=snapshot.attempt[state.index];const question=allQuestions.find(x=>x.id===item.id);state.reviewDraft=question.options[Number(reviewChoice.dataset.reviewChoice)];state.reviewFeedback=null;render();return;}
  const btn=event.target.closest('[data-action]');if(!btn)return;
  const action=btn.dataset.action;
+ if(action==='trace-open'){state.traceOpen=true;state.traceIndex=0;render();return;}
+ if(action==='trace-close'){resetTrace();render();return;}
+ if(action==='trace-next'){const q=state.view==='quiz'?currentQuestion()?.question:allQuestions.find(q=>q.id===readQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index]?.id);const steps=allTraces[q?.id]?.steps;if(steps){state.traceIndex=Math.min(steps.length-1,state.traceIndex+1);render();}return;}
+ if(action==='trace-prev'){state.traceIndex=Math.max(0,state.traceIndex-1);render();return;}
+ if(action==='trace-restart'){state.traceIndex=0;render();return;}
  if(action==='switch'){state.loginDraft='';navigate('welcome');return;}
  if(action==='back'){navigate(['quiz','resume','review','results'].includes(state.view)?'difficulty':state.view==='difficulty'?'levels':'home');return;}
  if(action==='continue'){const q=recommendedQuest(progress.best);state.week=q.week;state.difficulty=q.difficulty;start(q.difficulty);return;}
@@ -185,7 +228,7 @@ app.addEventListener('click',event=>{
  if(action==='fresh'){writeQuest(username,state.week,state.difficulty,{active:null});startFresh(state.difficulty);return;}
  if(action.startsWith('review-from:')){const parts=action.split(':');state.week=Number(parts[1]);state.difficulty=parts[2];state.index=0;state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;navigate('review');return;}
  if(action.startsWith('review:')){state.difficulty=action.split(':')[1];state.index=0;state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;navigate('review');return;}
- if(action==='review-next'||action==='review-prev'){state.index=Math.max(0,Math.min(4,state.index+(action==='review-next'?1:-1)));state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
+ if(action==='review-next'||action==='review-prev'){resetTrace();state.index=Math.max(0,Math.min(4,state.index+(action==='review-next'?1:-1)));state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
  if(action==='review-retry'){state.reviewPractice=true;state.reviewDraft='';state.reviewFeedback=null;render();return;}
  if(action==='review-cancel'){state.reviewPractice=false;state.reviewDraft='';state.reviewFeedback=null;render();return;}
  if(action==='review-check'){const q=readQuest(username,state.week,state.difficulty).completed?.attempt?.[state.index];const actual=allQuestions.find(x=>x.id===q?.id);if(!actual||!state.reviewDraft.trim())return;state.reviewFeedback={correct:normalize(state.reviewDraft)===normalize(actual.answer)};render();return;}
@@ -207,6 +250,7 @@ async function init(){
  const resp=await fetch('./data/questions.json',{cache:'no-cache'});
  if(!resp.ok)throw new Error('Question data returned '+resp.status);
  const payload=await resp.json();allQuestions=payload.questions;
+ try{const traceResp=await fetch('./data/traces-week1.json',{cache:'no-cache'});if(traceResp.ok){const traceData=await traceResp.json();allTraces=traceData.traces||{};}}catch(error){console.warn('Trace examples unavailable',error);}
  if(!Array.isArray(allQuestions)||allQuestions.length!==60)throw new Error('Expected 60 questions');
  render();
  }catch(err){app.innerHTML=`<div class="card empty"><h2>Could not load the questions</h2><p class="muted">${escapeHTML(err.message)}</p><p>Please serve the project through a web server, not by double-clicking index.html.</p></div>`;}
