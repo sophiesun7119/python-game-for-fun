@@ -33,19 +33,19 @@ assert.equal(pick(at(w4,12),'rush').length,2,'Nested rush_fee has independent pa
 assert.equal(pick(at(w4,15),'rush',5).length,0,'rush_fee parameter disappears when it returns');
 assert.equal(at(w4,17).length,0,'All total_cost locals disappear after returning to global code');
 
-const global='W1-H-03';
+const global='W1-H-02';
 assert.equal(pick(at(global,1),'price').length,1,'Global remains after assignment');
 assert.equal(pick(at(global,2),'price').length,1,'Global remains while print runs');
-const reassignment='W1-H-02';
+const reassignment='W1-H-03';
 const code=bank.find(q=>q.id===reassignment).code.split('\n');
 const trace=all[reassignment].steps;
 const locations=[];
 for(let i=0;i<trace.length;i++){
  const vals=state(trace,i,code);
- const varA=vals.find(x=>x.name==='x');
+ const varA=vals.find(x=>x.name==='a');
  if(varA)locations.push({i,line:varA.line,value:varA.value});
 }
-assert(locations.length>1,'Reassignment example must have x');
+assert(locations.length>1,'Reassignment example must have a');
 assert(locations.some(x=>x.line===0),'First assignment remains at line 1');
 assert(locations.some(x=>x.line===2),'Updated value migrates to the newer assignment line');
 
