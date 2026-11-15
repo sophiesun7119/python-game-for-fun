@@ -146,9 +146,11 @@ function traceCondition(step,codeLines){
   return {passed:loopStart,expression:source.slice(4).replace(/:\s*$/,''),action:loopStart?'Next Iteration':'Loop Finished'};
  }
  if(!/^(if|elif|while)\b/.test(source))return null;
- const match=step.explanation.match(/\b(?:True|False)\b(?=[.:,;\s]|$)/);
- if(!match)return null;
- const passed=match[0]==='True';
+ // Some explanations describe intermediate checks (e.g. "age True, ticket False, overall False").
+ // The FINAL boolean is the decision for the entire if/while expression.
+ const verdicts=[...step.explanation.matchAll(/\b(?:True|False)\b(?=[.:,;\s]|$)/g)];
+ if(!verdicts.length)return null;
+ const passed=verdicts[verdicts.length-1][0]==='True';
  const loop=source.startsWith('while ');
  const expression=source.replace(/^(?:if|elif|while)\s+/,'').replace(/:\s*$/,'');
  return {passed,expression,action:loop?(passed?'Continue Loop':'Exit Loop'):(passed?'Enter Branch':'Skip Branch')};
