@@ -150,11 +150,11 @@ The Output panel is not a side column, and no Output badges are attached to sour
 
 ### 7.3 Code-line event rules
 
-At any step, **exactly one source row** is marked as currently executing (except the ready step, which has no active row). The current-line arrow is authoritative: do not move the arrow to another line based only on the explanation's wording.
+At any step, **exactly one source row** is marked as currently executing (except the ready step, which has no active row). The current-line arrow is authoritative: do not move the arrow to another line based only on the explanation's wording. The initial definition badge derives the function name from the actual `def` source line, e.g. `Define greet()` alongside `Call greet()`; it is never a generic unnamed label.
 
 | Event | Display in code | Duration |
 |---|---|---|
-| Define `def fn(...):` | **Function defined** on its `def` line during initial definition, using the same violet event badge as function calls | Current step only |
+| Define `def fn(...):` | **Define fn()** on its `def` line during initial definition, using the same violet event badge and function-specific naming convention as **Call fn()** | Current step only |
 | Call `fn(...)` | **Call fn(...)** on the actual caller line | Current step only |
 | Enter function | Arrow to the callee **`def` line**; introduce its bound parameters there | Parameter badges remain as long as that call frame lives |
 | Execute function body | Arrow advances to the actual statement, *after* the separate entry step | Per source step |
