@@ -2520,7 +2520,6 @@
           },
           "output": [],
           "explanation": "Evaluate divisor, n // divisor using n = 15, divisor = 3; the result is \"3 5\".",
-          "event": "print",
           "phase": "calculate"
         },
         {
