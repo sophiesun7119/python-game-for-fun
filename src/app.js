@@ -279,7 +279,7 @@ function tracePanel(q){
   const active=step.line===i;
   const persistent=bindings.filter(binding=>binding.line===i).map(binding=>({kind:'value',text:binding.name+' = '+valueDisplay(binding.value)}));
   const events=active?traceInlineDetails(step,previous,line,condition).filter(tag=>tag.kind!=='value'||Boolean(condition)):[];
-  const details=[...events,...persistent];
+  const details=[...events,...persistent.filter(badge=>!events.some(event=>event.kind==='value'&&event.text===badge.text))];
   const tags=details.map(tag=>'<span class="trace-inline-tag trace-inline-'+tag.kind+'">'+escapeHTML(tag.text)+'</span>').join('');
   return '<div class="trace-line '+(active?'trace-line-active':'')+'"><span class="trace-arrow" aria-hidden="true">'+(active?'➜':'')+'</span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations">'+tags+'</span></div>';
  }).join('');
