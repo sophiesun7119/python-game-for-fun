@@ -108,7 +108,7 @@ At completion, `finishQuest()` writes the latest `completed` snapshot, clears on
 
 ## 7. Walkthrough Contract — all 80 questions
 
-**Normative specification, version 0.6.6.** These rules apply to *every* Challenge 1 question, regardless of week or difficulty. A change to this contract must change the **shared renderer**, relevant tests and documentation; no single-card UI overrides are permitted. Earlier v0.4–v0.6.5 rendering notes in CHANGELOG are historical and do not define current behavior.
+**Normative specification, version 0.6.7.** These rules apply to *every* Challenge 1 question, regardless of week or difficulty. A change to this contract must change the **shared renderer**, relevant tests and documentation; no single-card UI overrides are permitted. Earlier v0.4–v0.6.5 rendering notes in CHANGELOG are historical and do not define current behavior.
 
 ### 7.1 Source of truth and rendering architecture
 
