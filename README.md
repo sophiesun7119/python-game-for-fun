@@ -66,25 +66,9 @@ Base path max **900 XP**; four optional Extra Rock quests add **500 XP**; overal
 
 Run `python3 tests/validate_python.py` and `node tests/validate-traces.mjs` to check the fixed teacher-authored examples. The CI workflow also runs these checks on push if GitHub Actions is enabled.
 
-## Watch How the Code Works — Weeks 1–4 (v0.5.0)
+## Walkthrough history
 
-- All **80** Challenge 1 questions now have static guided traces in `data/traces-week1.json`, `data/traces-week2.json`, `data/traces-week3.json`, and `data/traces-week4.json`.
-- The Trace panel remains hidden unless a child selects **Watch How the Code Works** on a quiz or completed review card.
-- The current inline single-panel UI highlights the executing source line and shows state-change tags beside it. Children can use Previous / Next Step / Restart / Close.
-- Every step emphasizes a **bold red Explanation:** label followed by a short plain-language explanation.
-- Week 2 explicitly walks through condition checks, selected branches, and skipped branches. Week 3 shows repeated loop-header checks, break/continue and variable changes. Week 4 follows calls into functions and returns to the caller, with local parameter examples.
-- Python is not executed by this UI; all steps are authored learning examples, including hypothetical corrected code for the Week 2 operator-fill question.
-- For input() snippets, the trace uses a clearly described example input. Tracing can reveal how a problem runs, so it is optional learning support rather than a cheating-resistant quiz tool.
-- Validate all trace entries with `node tests/validate-traces.mjs` (no npm install required).
-
-## Earlier Week 1 pilot (v0.4.0)
-
-- Every **Week 1** question (5 Easy + 5 Medium + 5 Hard) has a teacher-authored, deterministic trace in `data/traces-week1.json`. Weeks 2–4 retain their original question cards until traces are authored.
-- On an eligible question or completed Review card, click **Watch How the Code Works** beneath the existing code block. Only then does it expand into the same card's two-column view (code with line number/arrow on the left, variables/output on the right).
-- Starting trace step 0 has no variables and no output. **Next Step**, **Previous**, **Restart**, and **Close** control the explanation. New or updated variable values are highlighted.
-- `input()` demonstrations show a stated *example input*; the error question demonstrates how a `TypeError` stops execution.
-- No arbitrary Python code is executed: these steps are instructional examples. Opening/stepping a trace does **not** affect answer submission, XP, stars or local progress. Tracing can reveal the result, as intended for optional learning support.
-- A trace step stores zero-based `line`, full `variables` snapshot, cumulative `output` array, kid-friendly `explanation`, and optional `error`. Step 0 uses `line: -1` and empty variables/output.
+Earlier pilot designs (including the old two-column Variables/Output layout) are superseded by the [current Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-80-questions). See [CHANGELOG](CHANGELOG.md) for historical v0.4–v0.5 changes.
 
 ## Auto-save, Resume and Review (v0.3.0)
 
