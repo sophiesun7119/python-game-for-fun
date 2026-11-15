@@ -183,3 +183,6 @@ main{max-width:1180px}
  .trace-toolbar .trace-controls{width:100%;max-width:none}
  .trace-toolbar .trace-controls .btn{font-size:11px;padding:9px 7px}
 }
+
+/* Explain intermediate arithmetic without confusing it with function calls. */
+.trace-inline-calc{background:#d6edff;color:#15456f}
