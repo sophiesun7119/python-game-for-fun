@@ -1,4 +1,4 @@
-export const POINTS = {easy:10,medium:15,hard:20};
+export const POINTS = {easy:10,medium:15,hard:20,extra:25};
 const LEGACY_KEY='python-quest-v1-progress';
 const PLAYERS_KEY='python-quest-v2-players';
 const ACTIVE_KEY='python-quest-v2-active';
@@ -10,7 +10,7 @@ export function countCorrect(attempt){return attempt.filter(a=>a.solved && !a.re
 export function levelXP(n,d){return (POINTS[d]||0)*n;}
 export function totalXP(best){return Object.entries(best).reduce((sum,[key,n])=>sum+levelXP(n,key.split('-')[1]),0);}
 export function updateBest(progress,week,difficulty,score){const key='W'+week+'-'+difficulty;return {...progress,best:{...progress.best,[key]:Math.max(progress.best[key]||0,score)}};}
-export function recommendedQuest(best){for(const week of [1,2,3,4])for(const difficulty of ['easy','medium','hard'])if((best['W'+week+'-'+difficulty]||0)<3)return {week,difficulty};return {week:1,difficulty:'easy'};}
+export function recommendedQuest(best){for(const week of [1,2,3,4])for(const difficulty of ['easy','medium','hard'])if((best['W'+week+'-'+difficulty]||0)<3)return {week,difficulty};for(const week of [1,2,3,4])if((best['W'+week+'-extra']||0)<3)return {week,difficulty:'extra'};return {week:1,difficulty:'easy'};}
 function readPlayers(){
  try{const p=JSON.parse(localStorage.getItem(PLAYERS_KEY));if(p&&typeof p==='object'&&!Array.isArray(p))return p;}catch{}
  return {};
@@ -31,13 +31,26 @@ export function selectUsername(name){
  return key;
 }
 export function loadProgress(username){
- const players=readPlayers();const key=normalizeUsername(username);const p=players[key];
- return p&&p.best&&typeof p.best==='object'?{best:{...p.best}}:{best:{}};
+ const players=readPlayers();const key=normalizeUsername(username);let p=players[key];
+ if(!p||!p.best||typeof p.best!=='object')return {best:{},archivedHardBest:{}};
+ // Hard content was replaced in curriculum-v2. Archive the original scores;
+ // otherwise old XP would appear as achievements on unseen new questions.
+ if(p.curriculumRevision!=='curriculum-v2'){
+  p.archivedHardBest={...(p.archivedHardBest||{})};
+  for(const week of [1,2,3,4]){
+   const k='W'+week+'-hard';
+   if(Object.hasOwn(p.best,k)){p.archivedHardBest[k]=p.best[k];delete p.best[k];}
+  }
+  p.curriculumRevision='curriculum-v2';
+  players[key]=p;
+  try{localStorage.setItem(PLAYERS_KEY,JSON.stringify(players));}catch{}
+ }
+ return {best:{...p.best},archivedHardBest:{...p.archivedHardBest}};
 }
 export function saveProgress(progress,username){
  const key=normalizeUsername(username);const players=readPlayers();
  const existing=players[key];
- players[key]={name:existing?.name||displayUsername(username),best:{...progress.best}};
+ players[key]={...existing,name:existing?.name||displayUsername(username),best:{...progress.best},archivedHardBest:{...(progress.archivedHardBest||existing?.archivedHardBest||{})},curriculumRevision:'curriculum-v2'};
  try{localStorage.setItem(PLAYERS_KEY,JSON.stringify(players));return true;}catch{return false;}
 }
 export function playerDisplayName(username){const p=readPlayers()[normalizeUsername(username)];return p?.name||displayUsername(username);}
