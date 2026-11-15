@@ -33,58 +33,19 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
-## Inline condition indicators — v0.6.2
+## Walkthrough — unified design (v0.6.6)
 
-- On the currently highlighted `if`, `elif`, `while`, or `for` source line, a small **✓ green / ✕ red** marker appears with **actual variable values at that exact step**, plus Enter Branch, Skip Branch, Continue Loop, Exit Loop, Next Iteration, or Loop Finished.
-- Example: `while i <= 3:` shows `✓ i = 1 · Continue Loop`, then `✓ i = 2 · Continue Loop`, and finally `✕ i = 4 · Exit Loop`.
-- For compound expressions, all referenced variables are shown (when available), and ✓/✕ reflects the final combined truth value. The inline marker is hidden for nondecision steps and disappears when the next source line executes.
-- The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
-- Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
+**One rendering rule for all 80 questions:** Easy, Medium, Hard, and Extra Rock read the same static `data/traces-week*.json` format and use the same `tracePanel()` UI. Nothing in the layout is hardcoded per question or difficulty.
 
-## Consistent walkthrough events (v0.6.5)
+**Visual order, from top to bottom:**
+1. **Step counter + Previous / Next Step / Restart controls** above the code, so varying Explanation length never moves the buttons.
+2. **Full-width dark Python code panel.** The arrow highlights the current executed line. Call/return and ✓/✕ condition events appear beside that line. Variable tags remain at their latest assignment or function-parameter binding line while their scope is alive; outdated values and returned-function locals disappear.
+3. **Output panel immediately below code.** The panel always appears; it is **empty before anything prints**. It displays the complete cumulative `step.output` value, including multiple lines. No output tags are displayed beside individual code lines.
+4. **Explanation** below Output, with the bold red label and step-specific teaching text.
 
-All 80 question walkthroughs share the same display rules, including older Easy/Medium steps that were originally hand-authored:
+Function entry is shown at the `def` line with parameters; only the next step executes the first body statement. All quiz/review progress, scoring, hints and retries remain unchanged. Trace data is precomputed; student code is not executed in the browser.
 
-- A **`def` definition** step shows **Function defined** based on the actual `def` source line, regardless of minor wording differences such as “Define greet;” versus “Define greet().”
-- An **invocation** shows a call at the caller line, then the arrow enters the callee's `def` line to bind parameters, and only then enters the function body.
-- **`print()` output stays visible** beside the exact line where it was printed, including after execution moves to another line or returns from a function. It is not removed when local variables go out of scope.
-- **Variables** still stay at the most recent binding/assignment line while their scope is alive. **Decision and call/return indicators** remain temporary on the active arrow line.
-- Output is never attributed to `if`/`else` instead of `print()`; one legacy Week 2 trace (`W2-M-03`) was split into the actual else decision followed by the print.
-- The cross-question rule check `node tests/validate-trace-events.mjs` now runs in CI, alongside existing trace correctness, scopes and control-flow checks.
-
-## Persistent variables and wider Trace view (v0.6.4)
-
-- The main game container is wider (up to 1,180 px), and the question/Trace panel can use up to 1,100 px on larger screens.
-- Tags on a long code line **wrap onto another row within the same highlighted source line** instead of forcing horizontal scrolling to see `weight = 5` or `rush = True`.
-- Variable badges now remain at their **latest assignment/binding line** across subsequent steps. Reassigning a variable moves its single badge to the newer line and removes the previous badge; only the newest value remains.
-- Function parameters start on the highlighted `def` line when the call enters. Local variables remain visible even while another statement in that function runs, including its final `return`. They disappear only after the function returns to its caller.
-- **Nested calls:** outer-function variables remain available while an inner function runs; the inner function's own locals disappear on return. Global variables stay until reassigned or the program ends.
-- Execution-specific call/return and ✓/✕ verdicts still follow the current arrow. Output stays pinned to its `print()` line after appearing. Previous/Next reconstruct the same variable display deterministically; the traces do not execute Python in the browser.
-- CI includes `node tests/validate-trace-scopes.mjs` to check 80 questions and nested-function lifetimes.
-
-## Function entry and stable explanation layout
-
-- A call highlights its **caller line**, then the arrow moves to the target **`def` line**, where the parameter bindings appear (for example, `xp = 730`, `level = 6`). **Only the following step** enters the first executable line inside that function.
-- This avoids conflating parameter binding and execution of the first body statement. Nested function calls follow the same sequence.
-- The **Explanation:** area reserves space for **three lines**, so short descriptions do not move the navigation buttons up and down. Longer explanations can naturally expand rather than being clipped.
-
-## Inline Trace — one full-width code panel (v0.6.3)
-
-- The Trace view now uses **one full-width dark code area**, with no separate Variables or Output sidebar.
-- The yellow arrow and highlight track the currently executed source line. Temporary event annotations (calls, returns, print output, conditions) appear **to the right of that highlighted line only**. Variable badges persist at their latest binding/assignment lines until reassigned or the function scope ends.
-- New or updated variables appear as small persistent value tags (e.g. `xp = 730`, `needed = 900`) at their latest assignment lines; outdated tags are removed. Function entry introduces that function's parameter values on its `def` line; returning to the caller removes those function-local tags and shows the returned value without falsely claiming a variable changed.
-- For `if/elif/for/while`, the active code line shows the relevant variable values and a green ✓ or red ✕ with branch/loop action.
-- `print()` results appear as `Output: ...` on the print line when they are produced. Previously printed output is not carried over as a separate sidebar.
-- **Step**, bold red **Explanation:** text, Previous/Next/Restart, and Close remain beneath/above the code as before; opening Trace never changes XP.
-- There is still horizontal scrolling when lines are unusually long, especially on phones; no animation or Python runtime is required.
-
-## Walkthrough correctness and condition feedback (v0.6.1)
-
-- The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` first highlights the call on line 12, then **`def message(xp, level):` on line 7** to bind `xp = 730` and `level = 6`. Only the next step enters line 8, where `xp_needed(6)` is called; **`def xp_needed(level):` on line 1** first displays `level = 6`, then its body starts at line 2. The function later returns to line 8 before `needed = 900` is assigned.
-- The current code line uses a small **Condition Check** verdict (there is no separate Variables panel) for conditional statements: green **✓ True / Enter Branch**, red **✕ False / Skip Branch**. `while` shows Continue Loop / Exit Loop; `for` shows Next Iteration / Loop Finished.
-- Compound conditions use their **final Boolean result**, not a single intermediate comparison. The code arrow and condition badge always refer to the same source line and step.
-- These optional guided explanations do not execute student-supplied Python and do not modify XP.
-- Tests: `node tests/validate-trace-control-flow.mjs`, `node tests/validate-trace-decisions.mjs` and `node tests/validate-traces.mjs`.
+The **single normative design specification** is [Technical Design §7 — Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-80-questions). This replaces the previous fragmented v0.6.1–v0.6.5 layout notes; historical revisions remain in [CHANGELOG](CHANGELOG.md). Automated CI validates all questions and renders every step using the same shared component: `node tests/validate-walkthrough-layout.mjs`.
 
 ## Difficulty rebalancing — Extra Rock (v0.6.0)
 
