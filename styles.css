@@ -108,3 +108,49 @@
 
 /* Keep navigation controls stationary as short explanations change. */
 .trace-narration p{line-height:1.6;min-height:4.8em}
+
+/* v0.6.4: wider practice space and persistent inline variable positions.
+   Flex wrapping belongs to each individual code row, not the entire code panel. */
+main{max-width:1180px}
+.topbar{padding-left:max(20px,calc((100vw - 1200px)/2));padding-right:max(20px,calc((100vw - 1200px)/2))}
+.question-panel{max-width:1100px}
+.trace-code-full .trace-code{overflow-x:visible}
+.trace-code-full .trace-line,
+.trace-code-full .trace-line-active{
+  min-width:0;
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  column-gap:8px;
+  row-gap:7px;
+}
+.trace-code-full .trace-source{
+  flex:0 1 auto;
+  min-width:0;
+  max-width:100%;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.trace-code-full .trace-inline-annotations{
+  display:flex;
+  flex:1 1 220px;
+  min-width:0;
+  max-width:none;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  align-items:center;
+  gap:7px;
+  margin-left:10px;
+  padding-left:0;
+  white-space:normal;
+}
+.trace-code-full .trace-inline-annotations:empty{display:none}
+.trace-code-full .trace-inline-tag{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:640px){
+ main{padding-left:12px;padding-right:12px}
+ .question-panel{max-width:100%}
+ .trace-code-full .trace-line{row-gap:5px}
+ .trace-code-full .trace-inline-annotations{flex-basis:180px;margin-left:0}
+ .trace-code-full .trace-source{font-size:12px}
+}
