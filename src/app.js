@@ -99,6 +99,7 @@ function next(){
  }
  state.index++;state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();
 }
+document.getElementById('player-switch').addEventListener('click',()=>{state.loginDraft='';navigate('welcome');});
 app.addEventListener('click',event=>{
  const choice=event.target.closest('[data-choice]');
  if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();return;}
