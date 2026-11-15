@@ -30,3 +30,5 @@ jobs:
         run: node tests/validate-trace-events.mjs
       - name: Verify shared walkthrough layout on every question and step
         run: node tests/validate-walkthrough-layout.mjs
+      - name: Verify detailed arithmetic and explained print calls for all questions
+        run: node tests/validate-walkthrough-detail.mjs
