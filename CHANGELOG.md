@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.6.7 — 2026-11-15
+- Re-audited all 80 question walkthroughs and inserted explicit intermediate steps for arithmetic, function-return expressions, and formatted output where appropriate.
+- Separated `print(square(4) + 1)` into return 16, calculate 16 + 1 = 17, then Call print() with Output 17.
+- Added per-operation breakdown for numeric `+`, `-`, `*`, `/`, `//`, `%`, and parentheses, with explicit formatting steps for f-strings.
+- Print events now have consistent violet Call print() badges and specific explanations, even for simple `print('Hi')` examples.
+- Corrected arithmetic enrichment to use pre-assignment variable values and made the offline transformation idempotent.
+- Reviewed 80 questions, 1,103 trace states, 125 calculation steps, and 96 print events against shared rules and added an all-question detailed-step CI test.
+- Trace source, Output/Explanation layout, saved progress and XP semantics are unchanged.
+
 ## UI label consistency — 2026-11-15
 - Function definition events now use named violet badges such as `Define greet()`, matching existing `Call greet()` badges instead of generic `Function defined`.
 - The function name is extracted from the actual Python `def` source line; the rule applies to every question using the common Trace renderer.
