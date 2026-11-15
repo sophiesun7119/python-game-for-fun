@@ -209,7 +209,8 @@ function traceInlineDetails(step, previous, source, condition) {
  }else if(/^Return /.test(note)&&!newOutput.length){
   const match=note.match(/^Return (.+?) to the calling line/);
   if(match)tags.push({kind:'call',text:'↩ '+match[1]});
- }else if(/^Define \w+\(\)/.test(note)){
+ }else if(/^\s*def\s+[A-Za-z_]\w*\s*\(/.test(source)&&/^(?:Define|Function defined)/i.test(note)){
+  // Infer the display event from the actual def line, not punctuation in narration.
   tags.push({kind:'muted',text:'Function defined'});
  }
  if(step.error)tags.push({kind:'fail',text:'✕ '+step.error});
@@ -266,6 +267,25 @@ function tracePersistentBindings(steps, index, codeLines){
  return frames.flatMap(frame=>[...frame.bindings.values()]);
 }
 
+// Printed output is permanent program history, independent of local variable
+// lifetime. Pin each newly printed line beside the source print() that made it.
+function tracePersistentOutputs(steps,index,codeLines){
+ const outputs=[];
+ for(let i=1;i<=index&&i<steps.length;i++){
+  const step=steps[i],previous=steps[i-1];
+  const added=(step.output||[]).slice((previous.output||[]).length);
+  if(!added.length)continue;
+  const src=(codeLines[step.line]||'').trim();
+  if(!/^print\s*\(/.test(src)){
+   // Existing legacy steps must be corrected in trace JSON: attaching printed
+   // output to if/else or def is pedagogically incorrect.
+   continue;
+  }
+  for(const value of added)outputs.push({line:step.line,value});
+ }
+ return outputs;
+}
+
 function tracePanel(q){
  const trace=allTraces[q.id];
  const simpleCode=()=>'<pre class="code"><code>'+escapeHTML(q.code)+'</code></pre>';
@@ -275,11 +295,14 @@ function tracePanel(q){
  const step=steps[index],previous=steps[Math.max(0,index-1)];
  const code=q.code.split('\n'),condition=traceCondition(step,code);
  const bindings=tracePersistentBindings(steps,index,code);
+ const printed=tracePersistentOutputs(steps,index,code);
  const codeLines=code.map((line,i)=>{
   const active=step.line===i;
   const persistent=bindings.filter(binding=>binding.line===i).map(binding=>({kind:'value',text:binding.name+' = '+valueDisplay(binding.value)}));
-  const events=active?traceInlineDetails(step,previous,line,condition).filter(tag=>tag.kind!=='value'||Boolean(condition)):[];
-  const details=[...events,...persistent.filter(badge=>!events.some(event=>event.kind==='value'&&event.text===badge.text))];
+  const outputTags=printed.filter(event=>event.line===i).map(event=>({kind:'output',text:'Output: '+event.value}));
+  const events=active?traceInlineDetails(step,previous,line,condition).filter(tag=>
+   (tag.kind!=='value'||Boolean(condition))&&tag.kind!=='output'):[];
+  const details=[...events,...persistent.filter(badge=>!events.some(event=>event.kind==='value'&&event.text===badge.text)),...outputTags];
   const tags=details.map(tag=>'<span class="trace-inline-tag trace-inline-'+tag.kind+'">'+escapeHTML(tag.text)+'</span>').join('');
   return '<div class="trace-line '+(active?'trace-line-active':'')+'"><span class="trace-arrow" aria-hidden="true">'+(active?'➜':'')+'</span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations">'+tags+'</span></div>';
  }).join('');
@@ -292,7 +315,7 @@ function tracePanel(q){
   +'<div class="trace-controls"><button class="btn" data-action="trace-prev" '+(index===0?'disabled':'')+'>← Previous</button>'
   +'<button class="btn primary" data-action="trace-next" '+(index===steps.length-1?'disabled':'')+'>Next Step →</button>'
   +'<button class="btn" data-action="trace-restart" '+(index===0?'disabled':'')+'>↻ Restart</button></div>'
-  +'<p class="trace-footnote">Variable values stay beside their latest assignment until updated or their function returns. Execution hints follow the arrow. Tracing does not affect your score.</p></section>';
+  +'<p class="trace-footnote">Variables remain visible while in scope; printed output stays beside its print() line. Function and condition hints follow the arrow. Tracing does not affect your score.</p></section>';
 }
 
 function currentQuestion(){return state.attempt[state.index];}
