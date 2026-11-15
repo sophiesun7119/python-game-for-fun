@@ -1,6 +1,6 @@
 # Python Quest 🐍
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.5 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 3 difficulties × 5 questions = **60 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.6 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 4 difficulties × 5 questions = **80 questions**.
 
 ## Run locally
 
@@ -25,9 +25,28 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
+## Difficulty rebalancing — Extra Rock (v0.6.0)
+
+The original Hard questions have been redesigned after reviewing the course materials (lesson decks, QuickChecks, in-class practice and homework). Twenty new **Extra Rock** cards add a fourth, optional difficulty. All 80 cards have inline Watch How the Code Works traces.
+
+The learning path is cumulative: Week 2 combines arithmetic and if/else; Week 3 mixes conditional logic, accumulator updates, nested loops and break/continue; Week 4 brings functions together with previous skills. See [Difficulty Framework](docs/difficulty-framework.md) for the four-level rubric, curriculum references and coverage table.
+
+| Difficulty | XP per solved card | Max per quest |
+| --- | ---: | ---: |
+| Easy | 10 | 50 |
+| Medium | 15 | 75 |
+| Hard (recalibrated) | 20 | 100 |
+| **Extra Rock** | **25** | **125** |
+
+Base path max **900 XP**; four optional Extra Rock quests add **500 XP**; overall max **1,400 XP**. Extra Rock is not required for the original topic badges.
+
+**Progress migration:** The old Hard questions are replaced, so on first opening curriculum v2 the earlier Hard best scores are archived (viewable under My Progress), not counted as achievements for unseen new Hard questions. Easy and Medium scores are preserved. Older Hard in-progress/review snapshots will not be attached to new code.
+
+Run `python3 tests/validate_python.py` and `node tests/validate-traces.mjs` to check the fixed teacher-authored examples. The CI workflow also runs these checks on push if GitHub Actions is enabled.
+
 ## Watch How the Code Works — Weeks 1–4 (v0.5.0)
 
-- All **60** Challenge 1 questions now have teacher-authored traces in `data/traces-week1.json`, `data/traces-week2.json`, `data/traces-week3.json`, and `data/traces-week4.json`.
+- All **80** Challenge 1 questions now have static guided traces in `data/traces-week1.json`, `data/traces-week2.json`, `data/traces-week3.json`, and `data/traces-week4.json`.
 - The Trace panel remains hidden unless a child selects **Watch How the Code Works** on a quiz or completed review card.
 - The inline two-column UI highlights the current source line on the left and changes to variables and output on the right. Children can use Previous / Next Step / Restart / Close.
 - Every step emphasizes a **bold red Explanation:** label followed by a short plain-language explanation.
@@ -61,23 +80,25 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Choose Weeks 1–4 and any difficulty, with suggested next step but no locked levels
 - Five questions per quest; multiple choice where defined and short-answer elsewhere
 - Hints, answer feedback, explanations, next question, and result summary
-- Mastery-based scoring, including successful retries; Easy 10, Medium 15, Hard 20 XP per solved question
+- Mastery-based scoring, including successful retries; Easy 10, Medium 15, Hard 20, Extra Rock 25 XP per solved question
 - Best result per quest is saved per nickname in the **same browser** using localStorage
-- 3/5 = one star, 4/5 = two, 5/5 = three; all three difficulties passed earns a topic badge
+- 3/5 = one star, 4/5 = two, 5/5 = three; pass Easy/Medium/Hard for a topic badge; Extra Rock is optional
 - No passwords, no email, no timers, no leaderboard
 
 ## Important limitations
 
-- The 60 questions are teacher-review drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
+- The 80 questions are curriculum-calibrated teaching drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
 - A public deployment is visible to anyone who knows the URL even if the GitHub repository is private. Do not put private student information in this app.
 - Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
-- Challenge 2 (Weeks 6–9) is not included in v0.5.
+- Challenge 2 (Weeks 6–9) is not included in v0.6.
 
 ## Source documents
 
 - [Product plan](https://docs.google.com/document/d/1IYkMOB8pIzhWOEliFy93fHoET743fQ-XUvbNTVC-5hs/edit)
-- [Challenge 1 question bank](https://docs.google.com/document/d/1pqRtD9Ld6HCrGVvDk9NnOj3mxXhMBnl0HLFOE_LY3-A/edit)
+- [Original 60-question draft (historical teacher document)](https://docs.google.com/document/d/1pqRtD9Ld6HCrGVvDk9NnOj3mxXhMBnl0HLFOE_LY3-A/edit)
+- [Current 80-question source of truth](data/questions.json)
+- [Class-aligned difficulty framework](docs/difficulty-framework.md)
 
 ## Files
 
@@ -91,7 +112,10 @@ data/traces-week1.json
 data/traces-week2.json
 data/traces-week3.json
 data/traces-week4.json
+docs/difficulty-framework.md
 tests/validate-traces.mjs
+tests/validate_python.py
+scripts/build-trace-runtime.js
 README.md
 CHANGELOG.md
 ```
