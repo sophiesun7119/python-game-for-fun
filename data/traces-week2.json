@@ -432,7 +432,6 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with total = 49, fee = 4.99; the formatted result is \"53.99\".",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -871,7 +870,6 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with subtotal = 41.4, shipping = 9.99; the formatted result is \"51.39\".",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -988,7 +986,6 @@
           },
           "output": [],
           "explanation": "Calculate 4 * 6 = 24.",
-          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1217,7 +1214,6 @@
           },
           "output": [],
           "explanation": "Calculate 5 + 3 = 8.",
-          "event": "print",
           "phase": "calculate"
         },
         {
