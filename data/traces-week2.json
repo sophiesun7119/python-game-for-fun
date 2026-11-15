@@ -431,7 +431,19 @@
             "fee": 4.99
           },
           "output": [],
-          "explanation": "Evaluate the f-string with total = 49, fee = 4.99; the formatted result is \"53.99\".",
+          "explanation": "Calculate 49 + 4.99 = 53.99.",
+          "phase": "calculate"
+        },
+        {
+          "line": 11,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard",
+            "fee": 4.99
+          },
+          "output": [],
+          "explanation": "Format the f-string with total = 49, fee = 4.99; the printed/returned text is \"53.99\".",
           "phase": "calculate"
         },
         {
@@ -869,7 +881,19 @@
             "shipping": 9.99
           },
           "output": [],
-          "explanation": "Evaluate the f-string with subtotal = 41.4, shipping = 9.99; the formatted result is \"51.39\".",
+          "explanation": "Calculate 41.4 + 9.99 = 51.39.",
+          "phase": "calculate"
+        },
+        {
+          "line": 11,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8,
+            "shipping": 9.99
+          },
+          "output": [],
+          "explanation": "Format the f-string with subtotal = 41.4, shipping = 9.99; the printed/returned text is \"51.39\".",
           "phase": "calculate"
         },
         {
@@ -1045,7 +1069,18 @@
             "deaths": 2
           },
           "output": [],
-          "explanation": "Calculate (9 + 5) / 2 = 7.",
+          "explanation": "Calculate 9 + 5 = 14.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2
+          },
+          "output": [],
+          "explanation": "Calculate 14 / 2 = 7.",
           "phase": "calculate"
         },
         {
@@ -1325,7 +1360,7 @@
             "fee": 9.99
           },
           "output": [],
-          "explanation": "Calculate 49.99 + 9.99 = 59.980000000000004.",
+          "explanation": "Calculate 49.99 + 9.99 = 59.98.",
           "phase": "calculate"
         },
         {
