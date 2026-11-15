@@ -50,28 +50,18 @@ A child's learning can combine topics from earlier weeks, especially at Hard and
 
 Stars per five-card quest: **3/5 = ⭐**, **4/5 = ⭐⭐**, **5/5 = ⭐⭐⭐**. Finishing with fewer than 3 solved cards does not earn a star. Topic badges require passing Easy, Medium, and Hard (at least 3/5 each); Extra Rock is optional.
 
-## 4. Watch How the Code Works — Inline Trace
+## 4. Watch How the Code Works
 
-On a question or a completed review card, click **👀 Watch How the Code Works**. It is hidden until clicked and does not change your XP.
+Click **👀 Watch How the Code Works** on any question or completed review card. All four difficulty levels have the **same layout**:
 
-The **one full-width dark code panel** shows the whole program. A yellow arrow points to the exact line involved in the current execution step. Variable badges may remain visible at earlier assignment lines, while temporary execution tags appear to the **right of the current highlighted line**:
+1. **At the top:** use **Previous**, **Next Step**, or **Restart**. The current Step number is beside these controls.
+2. **Next:** the full dark Python code panel. A yellow arrow shows which line the program is using. Colored tags beside the code show current variables, ✓ / ✕ condition checks, and function calls or returns. Variables remain visible at their newest assignment line while they exist. Inside a function, its local variables disappear only after returning to its caller.
+3. **Under the code:** a separate **Output** box. Before Python prints anything, this box is **empty**. When a `print()` runs, the printed text appears there. Several prints appear on separate lines. Going backward shows only what had been printed up to that Step.
+4. **Under Output:** the bold red **Explanation:** tells you why Python performed this action. Long explanations no longer move the controls at the top.
 
-- `a = 1` or `needed = 900`: variable created or updated.
-- **✓ Enter Branch** / **✕ Skip Branch**: `if` or `elif` condition.
-- **✓ Continue Loop** / **✕ Exit Loop**: `while` check.
-- **✓ Next Iteration** / **✕ Loop Finished**: `for` progression.
-- **Call …**, **Enter …**, **Return from … → value**: function transitions.
-- **Output: …**: something was printed on that step.
+For example, a function call first highlights where it was called, then the `def` line where parameters are introduced, then the lines in its body. On `if` and `while`, **green ✓** means enter/continue; **red ✕** means skip/exit.
 
-**Two kinds of badges:** variable values stay at the last line that created or updated them for as long as their scope exists; temporary call, output and ✓/✕ badges follow the current highlighted line. New function parameters appear on its `def` line when the function is entered; an assignment made after a function returns appears on its caller line. No separate Variables/Output sidebar remains.
-
-Below the code, use **Previous**, **Next Step**, **Restart**, and read the bold red **Explanation:** for each step. **Close** returns to the usual question card. This is an educator-prepared walkthrough, *not* a general Python runtime; `input()` examples use a stated sample input and incomplete-code questions may show a corrected example.
-
-### Variable badges stay visible while they exist
-
-The code area is wider on a desktop or laptop. Long lines can show their variable badges **under the code on that same row**, so you do not have to scroll sideways to read them.
-
-Unlike the temporary ✓/✕ and function-call hints, **variable badges stay visible** at the line where the variable was most recently created or updated. If `a` changes later, its old badge disappears and the new `a` value appears at the new assignment. Variables inside a function remain visible while that function runs, including its `return` step, and disappear after returning to the caller. Variables in an outer function remain visible during nested calls; global variables remain available throughout the program. **Output** from `print()` also stays visible at the line that printed it. The text **Function defined** appears when Python first defines a function; calling it later shows **Call** and **Enter** separately.
+The walkthrough is a prepared teaching example, not a live Python executor. Watching, going backward, or restarting does not change XP, answers or saved progress. Click **Close** to return to the normal card.
 
 ## 5. Leave and continue later
 
