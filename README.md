@@ -41,6 +41,17 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
 - Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
 
+## Consistent walkthrough events (v0.6.5)
+
+All 80 question walkthroughs share the same display rules, including older Easy/Medium steps that were originally hand-authored:
+
+- A **`def` definition** step shows **Function defined** based on the actual `def` source line, regardless of minor wording differences such as “Define greet;” versus “Define greet().”
+- An **invocation** shows a call at the caller line, then the arrow enters the callee's `def` line to bind parameters, and only then enters the function body.
+- **`print()` output stays visible** beside the exact line where it was printed, including after execution moves to another line or returns from a function. It is not removed when local variables go out of scope.
+- **Variables** still stay at the most recent binding/assignment line while their scope is alive. **Decision and call/return indicators** remain temporary on the active arrow line.
+- Output is never attributed to `if`/`else` instead of `print()`; one legacy Week 2 trace (`W2-M-03`) was split into the actual else decision followed by the print.
+- The cross-question rule check `node tests/validate-trace-events.mjs` now runs in CI, alongside existing trace correctness, scopes and control-flow checks.
+
 ## Persistent variables and wider Trace view (v0.6.4)
 
 - The main game container is wider (up to 1,180 px), and the question/Trace panel can use up to 1,100 px on larger screens.
@@ -48,7 +59,7 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Variable badges now remain at their **latest assignment/binding line** across subsequent steps. Reassigning a variable moves its single badge to the newer line and removes the previous badge; only the newest value remains.
 - Function parameters start on the highlighted `def` line when the call enters. Local variables remain visible even while another statement in that function runs, including its final `return`. They disappear only after the function returns to its caller.
 - **Nested calls:** outer-function variables remain available while an inner function runs; the inner function's own locals disappear on return. Global variables stay until reassigned or the program ends.
-- Execution-specific call/return, output and ✓/✕ verdicts still follow the current arrow. Previous/Next reconstruct the same variable display deterministically; the traces do not execute Python in the browser.
+- Execution-specific call/return and ✓/✕ verdicts still follow the current arrow. Output stays pinned to its `print()` line after appearing. Previous/Next reconstruct the same variable display deterministically; the traces do not execute Python in the browser.
 - CI includes `node tests/validate-trace-scopes.mjs` to check 80 questions and nested-function lifetimes.
 
 ## Function entry and stable explanation layout
