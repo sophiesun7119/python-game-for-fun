@@ -1,0 +1,422 @@
+{
+  "version": "1.0.0",
+  "description": "Teacher-authored execution snapshots for Week 1, indexed by question ID; line numbers are zero-based.",
+  "traces": {
+    "W1-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "Hello, Python!"
+          ],
+          "explanation": "print() writes the text without its quote marks."
+        }
+      ]
+    },
+    "W1-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "10"
+          ],
+          "explanation": "Python adds the integers 7 + 3 to make 10, then prints it."
+        }
+      ]
+    },
+    "W1-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 10
+          },
+          "output": [],
+          "explanation": "Create the variable score with value 10."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 15
+          },
+          "output": [],
+          "explanation": "Read the old score (10), add 5, and save 15 back into score."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 15
+          },
+          "output": [
+            "15"
+          ],
+          "explanation": "Print the updated value of score: 15."
+        }
+      ]
+    },
+    "W1-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "hahaha"
+          ],
+          "explanation": "'ha' * 3 makes three copies together, then print() displays them."
+        }
+      ]
+    },
+    "W1-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "age": "12"
+          },
+          "output": [],
+          "explanation": "Example input: the user types 12. input() always stores it as a string, so age is '12'."
+        }
+      ]
+    },
+    "W1-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "3"
+          ],
+          "explanation": "17 // 5 is floor division: three complete groups of five."
+        }
+      ]
+    },
+    "W1-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "2"
+          ],
+          "explanation": "17 % 5 gives the remainder after dividing 17 by 5: 2."
+        }
+      ]
+    },
+    "W1-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "age": "12"
+          },
+          "output": [],
+          "explanation": "Create age as a string: '12', not the number 12."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "age": "12"
+          },
+          "output": [
+            "123"
+          ],
+          "explanation": "Both values are strings. '12' + '3' joins them into '123'."
+        }
+      ]
+    },
+    "W1-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "name": "Mia"
+          },
+          "output": [],
+          "explanation": "Save the string 'Mia' in name."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "Mia",
+            "points": 8
+          },
+          "output": [],
+          "explanation": "Save the number 8 in points."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "Mia",
+            "points": 8
+          },
+          "output": [
+            "Mia: 10"
+          ],
+          "explanation": "Inside the f-string, points + 2 becomes 10. The output is Mia: 10."
+        }
+      ]
+    },
+    "W1-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 7
+          },
+          "output": [],
+          "explanation": "Example input: 7. input() returns '7', then int() converts it to the integer 7."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 7
+          },
+          "output": [
+            "14"
+          ],
+          "explanation": "n * 2 is 7 * 2 = 14, so print() outputs 14."
+        }
+      ]
+    },
+    "W1-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 14
+          },
+          "output": [],
+          "explanation": "Create a with value 14."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 14,
+            "b": 4
+          },
+          "output": [],
+          "explanation": "Create b with value 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 14,
+            "b": 4
+          },
+          "output": [
+            "3 2"
+          ],
+          "explanation": "a // b is 3; a % b is 2. print() separates them with a space."
+        }
+      ]
+    },
+    "W1-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Create x with value 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3,
+            "y": 5
+          },
+          "output": [],
+          "explanation": "y reads x (3) and adds 2, making y = 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 10,
+            "y": 5
+          },
+          "output": [],
+          "explanation": "Read y = 5, multiply by 2, and replace x with 10. y stays 5."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 10,
+            "y": 5
+          },
+          "output": [
+            "10 5"
+          ],
+          "explanation": "print(x, y) displays 10 and 5 separated by a space."
+        }
+      ]
+    },
+    "W1-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "price": 3.5
+          },
+          "output": [],
+          "explanation": "Create price with value 3.5."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "price": 3.5
+          },
+          "output": [
+            "$3.50"
+          ],
+          "explanation": "The .2f format shows exactly two decimal places, so 3.5 becomes 3.50."
+        }
+      ]
+    },
+    "W1-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "age": "12"
+          },
+          "output": [],
+          "explanation": "Example input: the user types 12. age stores '12' as a string."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "age": "12"
+          },
+          "output": [],
+          "explanation": "Python tries to add a string ('12') and an integer (1). That raises TypeError; the program stops.",
+          "error": "TypeError: can only concatenate str (not \"int\") to str"
+        }
+      ]
+    },
+    "W1-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to begin. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 2
+          },
+          "output": [],
+          "explanation": "Create a with value 2."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 2,
+            "b": 3
+          },
+          "output": [],
+          "explanation": "Create b with value 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 2,
+            "b": 3
+          },
+          "output": [
+            "14"
+          ],
+          "explanation": "Multiplication happens first: b * 4 = 12. Then a + 12 = 14."
+        }
+      ]
+    }
+  }
+}
