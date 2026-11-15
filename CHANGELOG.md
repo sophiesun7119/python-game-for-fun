@@ -1,5 +1,12 @@
 # Changelog
 
+## CI correction — 2026-11-15
+
+- Corrected `tests/validate-trace-control-flow.mjs` to recognize the two intentionally curated Python floating-point output steps, `W4-H-04` (`55.0`) and `W4-X-03` (`36.0`).
+- Preserved strict matching of arrow lines, variable snapshots and all other trace explanations.
+- Rechecked 40 Hard/Extra trace sequences against their generated counterparts with no mismatches.
+- Added CI debugging guidance to the Technical Design documentation.
+
 ## v0.6.3 — 2026-11-15
 - Redesigned Watch How the Code Works into one full-width dark code panel, removing the separate Variables, Output and condition sidebar.
 - Made variable creations/updates, function call/return messages, check/cross verdicts and print output appear beside the highlighted code line.
