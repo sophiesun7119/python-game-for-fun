@@ -7,6 +7,7 @@ function buildTrace(question) {
   let ticks=0;
   let globals={};
   let active=globals;
+  let currentLine=-1; // The real caller's source line, not a function definition line.
   const display=x=> x===null?"None":x===true?"True":x===false?"False":typeof x==="string"?x:String(x);
   const repr=x=>typeof x==="string"?"'"+x+"'":display(x);
   function snapshot(){
@@ -88,26 +89,43 @@ function buildTrace(question) {
       for(const node of nodes){
         if(node.kind==="def"){
           env[node.name]=(...args)=>{
+            const callerLine=currentLine;
+            const callerFrame=active;
+            // Function invocation happens AT THE CALL SITE (e.g. print(message(...))),
+            // not where the def statement originally executed.
+            active=callerFrame;
+            record(callerLine,"Call "+node.name+"("+args.map(display).join(", ")+") from this line.");
             const local=Object.create(globals);
             node.params.forEach((param,i)=>local[param]=args[i]);
-            record(node.line,"Call "+node.name+"("+args.map(display).join(", ")+"). Bind parameters and enter its body.");
-            const res=execute(node.body,local);
-            active=env;
-            return res?.type==="return"?res.value:null;
+            active=local;
+            record(node.body[0].line,"Enter "+node.name+"(): bind "+(node.params.length?node.params.map(p=>p+" = "+repr(local[p])).join(", "):"no parameters")+". The next line runs inside this function.");
+            try{
+              const res=execute(node.body,local);
+              return res?.type==="return"?res.value:null;
+            }finally{
+              active=callerFrame;
+              currentLine=callerLine;
+            }
           };
+          currentLine=node.line;
+          active=env;
           record(node.line,"Define "+node.name+"(). Its body does not run until the function is called.");
         }else if(node.kind==="for"){
+          currentLine=node.line;active=env;
           const values=evalExpr(node.expr,env);
           for(const value of values){
+            currentLine=node.line;active=env;
             env[node.name]=value;
             record(node.line,"for loop: "+node.name+" = "+display(value)+". Enter the loop body.");
             const result=execute(node.body,env);active=env;
             if(result?.type==="return")return result;
             if(result?.type==="break")break;
           }
+          currentLine=node.line;active=env;
           record(node.line,"The for loop has finished or exited. Continue after the loop.");
         }else if(node.kind==="while"){
           for(let n=0;n<300;n++){
+            currentLine=node.line;active=env;
             const ok=!!evalExpr(node.expr,env);
             record(node.line,"Check while "+node.expr+": "+display(ok)+(ok?". Run the body.":". Exit the loop."));
             if(!ok)break;
@@ -117,12 +135,14 @@ function buildTrace(question) {
           }
         }else if(node.kind==="if"){
           for(const br of node.branches){
+            currentLine=br.line;active=env;
             const ok=br.cond===null?true:!!evalExpr(br.cond,env);
             record(br.line,br.cond===null?"Take the else branch.":"Check "+br.cond+": "+display(ok)+(ok?". Enter this branch.":". Skip this branch."));
             if(ok){const result=execute(br.body,env);active=env;if(result)return result;break;}
           }
         }else{
           const text=node.text;
+          currentLine=node.line;active=env;
           if(text==="break"){record(node.line,"break exits this loop immediately.");return{type:"break"};}
           if(text==="continue"){record(node.line,"continue skips the remaining statements in this round.");return{type:"continue"};}
           if(text.startsWith("return ")){
