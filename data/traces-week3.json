@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "Week 3 guided traces emphasize each loop-header check, continue/break, and variable update. Line numbers zero-based.",
+  "version": "2.0.0",
+  "description": "Guided traces for Week 3 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
   "traces": {
     "W3-E-01": {
       "steps": [
@@ -1086,227 +1086,224 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to see each line run."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "i": 0
+            "total": 0
           },
           "output": [],
-          "explanation": "Outer loop selects i = 0."
+          "explanation": "Evaluate 0 and set total to 0."
         },
         {
           "line": 1,
           "variables": {
-            "i": 0,
-            "j": 0
+            "total": 0,
+            "n": 1
           },
           "output": [],
-          "explanation": "Inner loop selects j = 0."
+          "explanation": "for loop: n = 1. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 0,
-            "j": 0
+            "total": 0,
+            "n": 1
           },
-          "output": [
-            "0 0"
-          ],
-          "explanation": "Print pair (0, 0); 1 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "total": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": -1,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update total to -1."
         },
         {
           "line": 1,
           "variables": {
-            "i": 0,
-            "j": 1
+            "total": -1,
+            "n": 2
           },
-          "output": [
-            "0 0"
-          ],
-          "explanation": "Inner loop selects j = 1."
+          "output": [],
+          "explanation": "for loop: n = 2. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 0,
-            "j": 1
+            "total": -1,
+            "n": 2
           },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Print pair (0, 1); 2 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 3,
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Evaluate n * 2 and update total to 3."
         },
         {
           "line": 1,
           "variables": {
-            "i": 0,
-            "j": 2
+            "total": 3,
+            "n": 3
           },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Inner loop selects j = 2."
+          "output": [],
+          "explanation": "for loop: n = 3. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 0,
-            "j": 2
+            "total": 3,
+            "n": 3
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2"
-          ],
-          "explanation": "Print pair (0, 2); 3 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "total": 3,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 2,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update total to 2."
         },
         {
           "line": 1,
           "variables": {
-            "i": 0,
-            "j": 2
+            "total": 2,
+            "n": 4
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2"
-          ],
-          "explanation": "Inner loop finishes. Go back to the outer loop."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 1
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2"
-          ],
-          "explanation": "Outer loop selects i = 1."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 1,
-            "j": 0
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2"
-          ],
-          "explanation": "Inner loop selects j = 0."
+          "output": [],
+          "explanation": "for loop: n = 4. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 1,
-            "j": 0
+            "total": 2,
+            "n": 4
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0"
-          ],
-          "explanation": "Print pair (1, 0); 4 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 10,
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Evaluate n * 2 and update total to 10."
         },
         {
           "line": 1,
           "variables": {
-            "i": 1,
-            "j": 1
+            "total": 10,
+            "n": 5
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0"
-          ],
-          "explanation": "Inner loop selects j = 1."
+          "output": [],
+          "explanation": "for loop: n = 5. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 1,
-            "j": 1
+            "total": 10,
+            "n": 5
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "Print pair (1, 1); 5 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "total": 10,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 9,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update total to 9."
         },
         {
           "line": 1,
           "variables": {
-            "i": 1,
-            "j": 2
+            "total": 9,
+            "n": 6
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "Inner loop selects j = 2."
+          "output": [],
+          "explanation": "for loop: n = 6. Enter the loop body."
         },
         {
           "line": 2,
           "variables": {
-            "i": 1,
-            "j": 2
+            "total": 9,
+            "n": 6
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0",
-            "1 1",
-            "1 2"
-          ],
-          "explanation": "Print pair (1, 2); 6 lines so far."
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 21,
+            "n": 6
+          },
+          "output": [],
+          "explanation": "Evaluate n * 2 and update total to 21."
         },
         {
           "line": 1,
           "variables": {
-            "i": 1,
-            "j": 2
+            "total": 21,
+            "n": 6
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0",
-            "1 1",
-            "1 2"
-          ],
-          "explanation": "Inner loop finishes. Go back to the outer loop."
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
         },
         {
-          "line": 0,
+          "line": 6,
           "variables": {
-            "i": 1,
-            "j": 2
+            "total": 21,
+            "n": 6
           },
           "output": [
-            "0 0",
-            "0 1",
-            "0 2",
-            "1 0",
-            "1 1",
-            "1 2"
+            "21"
           ],
-          "explanation": "Both loops have finished; 2 × 3 = 6 output lines."
+          "explanation": "Print 21."
         }
       ]
     },
@@ -1316,7 +1313,7 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to see each line run."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
@@ -1324,7 +1321,7 @@
             "total": 0
           },
           "output": [],
-          "explanation": "Create total = 0."
+          "explanation": "Evaluate 0 and set total to 0."
         },
         {
           "line": 1,
@@ -1333,7 +1330,7 @@
             "i": 1
           },
           "output": [],
-          "explanation": "Outer loop: i = 1."
+          "explanation": "for loop: i = 1. Enter the loop body."
         },
         {
           "line": 2,
@@ -1343,98 +1340,339 @@
             "j": 1
           },
           "output": [],
-          "explanation": "Inner loop: j = 1."
+          "explanation": "for loop: j = 1. Enter the loop body."
         },
         {
           "line": 3,
           "variables": {
-            "total": 1,
+            "total": 0,
             "i": 1,
             "j": 1
           },
           "output": [],
-          "explanation": "Add 1 × 1 = 1; total becomes 1."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "total": 1,
-            "i": 1,
-            "j": 2
-          },
-          "output": [],
-          "explanation": "Inner loop: j = 2."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "total": 3,
-            "i": 1,
-            "j": 2
-          },
-          "output": [],
-          "explanation": "Add 1 × 2 = 2; total becomes 3."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "total": 3,
-            "i": 2
-          },
-          "output": [],
-          "explanation": "Outer loop: i = 2."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "total": 3,
-            "i": 2,
-            "j": 1
-          },
-          "output": [],
-          "explanation": "Inner loop: j = 1."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "total": 5,
-            "i": 2,
-            "j": 1
-          },
-          "output": [],
-          "explanation": "Add 2 × 1 = 2; total becomes 5."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "total": 5,
-            "i": 2,
-            "j": 2
-          },
-          "output": [],
-          "explanation": "Inner loop: j = 2."
-        },
-        {
-          "line": 3,
-          "variables": {
-            "total": 9,
-            "i": 2,
-            "j": 2
-          },
-          "output": [],
-          "explanation": "Add 2 × 2 = 4; total becomes 9."
+          "explanation": "Check i == j: True. Enter this branch."
         },
         {
           "line": 4,
           "variables": {
-            "total": 9,
+            "total": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 0,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 0,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 3,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 3,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 3,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 7,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 7."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 7,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "total": 7,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 7,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 7,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 10,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 10."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 10,
             "i": 2,
             "j": 2
           },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 10,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i == j: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "total": 10,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 10,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 10,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 15,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 15."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 15,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "total": 15,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: i = 3. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 15,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 15,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 19,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 19."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 19,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 19,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i == j: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i + j and update total to 24."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check i == j: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "total": 24,
+            "i": 3,
+            "j": 3
+          },
           "output": [
-            "9"
+            "24"
           ],
-          "explanation": "Print total = 9."
+          "explanation": "Print 24."
         }
       ]
     },
@@ -1444,125 +1682,260 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to see each line run."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "i": 1
+            "n": 0
           },
           "output": [],
-          "explanation": "for loop gives i = 1."
+          "explanation": "Evaluate 0 and set n to 0."
         },
         {
           "line": 1,
           "variables": {
-            "i": 1,
+            "n": 0,
             "total": 0
           },
           "output": [],
-          "explanation": "Reset total to 0 inside the loop."
+          "explanation": "Evaluate 0 and set total to 0."
         },
         {
           "line": 2,
           "variables": {
-            "i": 1,
-            "total": 1
-          },
-          "output": [],
-          "explanation": "Add i = 1; total is 1."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 2,
-            "total": 1
-          },
-          "output": [],
-          "explanation": "for loop gives i = 2."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 2,
+            "n": 0,
             "total": 0
           },
           "output": [],
-          "explanation": "Reset total to 0 inside the loop."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 2,
-            "total": 2
-          },
-          "output": [],
-          "explanation": "Add i = 2; total is 2."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 3,
-            "total": 2
-          },
-          "output": [],
-          "explanation": "for loop gives i = 3."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 3,
-            "total": 0
-          },
-          "output": [],
-          "explanation": "Reset total to 0 inside the loop."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 3,
-            "total": 3
-          },
-          "output": [],
-          "explanation": "Add i = 3; total is 3."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 4,
-            "total": 3
-          },
-          "output": [],
-          "explanation": "for loop gives i = 4."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 4,
-            "total": 0
-          },
-          "output": [],
-          "explanation": "Reset total to 0 inside the loop."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 4,
-            "total": 4
-          },
-          "output": [],
-          "explanation": "Add i = 4; total is 4."
+          "explanation": "Check while n < 6: True. Run the body."
         },
         {
           "line": 3,
           "variables": {
-            "i": 4,
+            "n": 1,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 1,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 1,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Evaluate n and update total to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 1,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Check while n < 6: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 2,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 2,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 2,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Check while n < 6: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 3,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 3."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 3,
+            "total": 1
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 3,
             "total": 4
           },
+          "output": [],
+          "explanation": "Evaluate n and update total to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 3,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Check while n < 6: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 4,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 4."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 4,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 4,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 4,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Check while n < 6: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 5,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 5."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 5,
+            "total": 4
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 5,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "Evaluate n and update total to 9."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 5,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "Check while n < 6: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 6,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 6."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 6,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 6,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 6,
+            "total": 9
+          },
+          "output": [],
+          "explanation": "Check while n < 6: False. Exit the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 6,
+            "total": 9
+          },
           "output": [
-            "4"
+            "9"
           ],
-          "explanation": "After the loop, total holds only the final i = 4. Print 4."
+          "explanation": "Print 9."
         }
       ]
     },
@@ -1572,259 +1945,366 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to see each line run."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "count": 0,
             "i": 0
           },
           "output": [],
-          "explanation": "Outer loop gets i = 0."
+          "explanation": "for loop: i = 0. Enter the loop body."
         },
         {
-          "line": 1,
+          "line": 2,
           "variables": {
+            "count": 0,
             "i": 0,
             "j": 0
           },
           "output": [],
-          "explanation": "Inner loop gets j = 0."
+          "explanation": "for loop: j = 0. Enter the loop body."
         },
         {
-          "line": 2,
+          "line": 3,
           "variables": {
+            "count": 0,
             "i": 0,
             "j": 0
           },
           "output": [],
-          "explanation": "Check j == 2: false."
+          "explanation": "Check j == i + 1: False. Skip this branch."
         },
         {
-          "line": 4,
+          "line": 5,
           "variables": {
+            "count": 1,
             "i": 0,
             "j": 0
           },
-          "output": [
-            "0 0"
-          ],
-          "explanation": "Print 0 0."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 0,
-            "j": 1
-          },
-          "output": [
-            "0 0"
-          ],
-          "explanation": "Inner loop gets j = 1."
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
         },
         {
           "line": 2,
           "variables": {
+            "count": 1,
             "i": 0,
             "j": 1
           },
-          "output": [
-            "0 0"
-          ],
-          "explanation": "Check j == 2: false."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "i": 0,
-            "j": 1
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Print 0 1."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 0,
-            "j": 2
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Inner loop gets j = 2."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 0,
-            "j": 2
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Check j == 2: true."
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
         },
         {
           "line": 3,
           "variables": {
+            "count": 1,
             "i": 0,
-            "j": 2
+            "j": 1
           },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "break exits only this inner loop."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 1,
-            "j": 2
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Outer loop gets i = 1."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 1,
-            "j": 0
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Inner loop gets j = 0."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 1,
-            "j": 0
-          },
-          "output": [
-            "0 0",
-            "0 1"
-          ],
-          "explanation": "Check j == 2: false."
+          "output": [],
+          "explanation": "Check j == i + 1: True. Enter this branch."
         },
         {
           "line": 4,
           "variables": {
+            "count": 1,
+            "i": 0,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 1,
+            "i": 0,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "count": 1,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 1,
             "i": 1,
             "j": 0
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0"
-          ],
-          "explanation": "Print 1 0."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 1,
-            "j": 1
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0"
-          ],
-          "explanation": "Inner loop gets j = 1."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 1,
-            "j": 1
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0"
-          ],
-          "explanation": "Check j == 2: false."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "i": 1,
-            "j": 1
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "Print 1 1."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 1,
-            "j": 2
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "Inner loop gets j = 2."
-        },
-        {
-          "line": 2,
-          "variables": {
-            "i": 1,
-            "j": 2
-          },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "Check j == 2: true."
+          "output": [],
+          "explanation": "for loop: j = 0. Enter the loop body."
         },
         {
           "line": 3,
           "variables": {
+            "count": 1,
             "i": 1,
-            "j": 2
+            "j": 0
           },
-          "output": [
-            "0 0",
-            "0 1",
-            "1 0",
-            "1 1"
-          ],
-          "explanation": "break exits only this inner loop."
+          "output": [],
+          "explanation": "Check j == i + 1: False. Skip this branch."
         },
         {
-          "line": 0,
+          "line": 5,
           "variables": {
+            "count": 2,
+            "i": 1,
+            "j": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 2,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 2,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "count": 3,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 3,
             "i": 1,
             "j": 2
           },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 3,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "count": 3,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 3,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "count": 3,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 3,
+            "i": 2,
+            "j": 0
+          },
+          "output": [],
+          "explanation": "for loop: j = 0. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 3,
+            "i": 2,
+            "j": 0
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "count": 4,
+            "i": 2,
+            "j": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 4,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 4,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "count": 5,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 5,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 5,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 6."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check j == i + 1: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "count": 6,
+            "i": 2,
+            "j": 3
+          },
           "output": [
-            "0 0",
-            "0 1",
-            "1 0",
-            "1 1"
+            "6"
           ],
-          "explanation": "The outer loop is complete; four lines were printed."
+          "explanation": "Print 6."
         }
       ]
     },
@@ -1834,148 +2314,1942 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to see each line run."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "i": 3
+            "n": 15
           },
           "output": [],
-          "explanation": "Loop gets i = 3."
+          "explanation": "Evaluate 15 and set n to 15."
         },
         {
           "line": 1,
           "variables": {
-            "i": 3
+            "n": 15,
+            "divisor": 2
           },
           "output": [],
-          "explanation": "Check 3 % 3 == 0: true."
+          "explanation": "Evaluate 2 and set divisor to 2."
         },
         {
           "line": 2,
           "variables": {
-            "i": 3
+            "n": 15,
+            "divisor": 2
           },
-          "output": [
-            "Fizz"
-          ],
-          "explanation": "Print Fizz."
+          "output": [],
+          "explanation": "Check while divisor < n: True. Run the body."
         },
         {
-          "line": 0,
+          "line": 3,
           "variables": {
-            "i": 4
+            "n": 15,
+            "divisor": 2
           },
-          "output": [
-            "Fizz"
-          ],
-          "explanation": "Loop gets i = 4."
+          "output": [],
+          "explanation": "Check n % divisor == 0: False. Skip this branch."
         },
         {
-          "line": 1,
+          "line": 5,
           "variables": {
-            "i": 4
+            "n": 15,
+            "divisor": 3
           },
-          "output": [
-            "Fizz"
-          ],
-          "explanation": "Check 4 % 3 == 0: false."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "i": 4
-          },
-          "output": [
-            "Fizz",
-            "4"
-          ],
-          "explanation": "Print 4."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 5
-          },
-          "output": [
-            "Fizz",
-            "4"
-          ],
-          "explanation": "Loop gets i = 5."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 5
-          },
-          "output": [
-            "Fizz",
-            "4"
-          ],
-          "explanation": "Check 5 % 3 == 0: false."
-        },
-        {
-          "line": 4,
-          "variables": {
-            "i": 5
-          },
-          "output": [
-            "Fizz",
-            "4",
-            "5"
-          ],
-          "explanation": "Print 5."
-        },
-        {
-          "line": 0,
-          "variables": {
-            "i": 6
-          },
-          "output": [
-            "Fizz",
-            "4",
-            "5"
-          ],
-          "explanation": "Loop gets i = 6."
-        },
-        {
-          "line": 1,
-          "variables": {
-            "i": 6
-          },
-          "output": [
-            "Fizz",
-            "4",
-            "5"
-          ],
-          "explanation": "Check 6 % 3 == 0: true."
+          "output": [],
+          "explanation": "Evaluate 1 and update divisor to 3."
         },
         {
           "line": 2,
           "variables": {
-            "i": 6
+            "n": 15,
+            "divisor": 3
+          },
+          "output": [],
+          "explanation": "Check while divisor < n: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 15,
+            "divisor": 3
+          },
+          "output": [],
+          "explanation": "Check n % divisor == 0: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 15,
+            "divisor": 3
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 15,
+            "divisor": 3
           },
           "output": [
-            "Fizz",
-            "4",
-            "5",
-            "Fizz"
+            "3 5"
           ],
-          "explanation": "Print Fizz."
+          "explanation": "Print 3, 5."
+        }
+      ]
+    },
+    "W3-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "i": 6
+            "n": 10
+          },
+          "output": [],
+          "explanation": "Evaluate 10 and set n to 10."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 10
+          },
+          "output": [],
+          "explanation": "Check while n < 15: True. Run the body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 10,
+            "prime": true
+          },
+          "output": [],
+          "explanation": "Evaluate True and set prime to True."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 10,
+            "prime": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "for loop: d = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 10,
+            "prime": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "n": 10,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Evaluate False and set prime to False."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "n": 10,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 10,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 10,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check prime: False. Skip this branch."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "n": 11,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update n to 11."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 11,
+            "prime": false,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check while n < 15: True. Run the body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Evaluate True and set prime to True."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "for loop: d = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 3
+          },
+          "output": [],
+          "explanation": "for loop: d = 3. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 3
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 4
+          },
+          "output": [],
+          "explanation": "for loop: d = 4. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 4
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 5
+          },
+          "output": [],
+          "explanation": "for loop: d = 5. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 5
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 6
+          },
+          "output": [],
+          "explanation": "for loop: d = 6. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 6
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 7
+          },
+          "output": [],
+          "explanation": "for loop: d = 7. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 7
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 8
+          },
+          "output": [],
+          "explanation": "for loop: d = 8. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 8
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 9
+          },
+          "output": [],
+          "explanation": "for loop: d = 9. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 9
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
+          },
+          "output": [],
+          "explanation": "for loop: d = 10. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
+          },
+          "output": [],
+          "explanation": "Check n % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
+          },
+          "output": [],
+          "explanation": "Check prime: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
           },
           "output": [
-            "Fizz",
-            "4",
-            "5",
-            "Fizz"
+            "11"
           ],
-          "explanation": "All values have been processed."
+          "explanation": "Print 11."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "n": 11,
+            "prime": true,
+            "d": 10
+          },
+          "output": [
+            "11"
+          ],
+          "explanation": "break exits this loop immediately."
+        }
+      ]
+    },
+    "W3-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "n": 20
+          },
+          "output": [],
+          "explanation": "Evaluate 20 and set n to 20."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 20,
+            "a": 2
+          },
+          "output": [],
+          "explanation": "for loop: a = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 20,
+            "a": 2,
+            "prime_a": true
+          },
+          "output": [],
+          "explanation": "Evaluate True and set prime_a to True."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 20,
+            "a": 2,
+            "prime_a": true
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 20,
+            "a": 2,
+            "prime_a": true
+          },
+          "output": [],
+          "explanation": "Check prime_a and a == 3: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true
+          },
+          "output": [],
+          "explanation": "for loop: a = 3. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true
+          },
+          "output": [],
+          "explanation": "Evaluate True and set prime_a to True."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "for loop: d = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check a % d == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [],
+          "explanation": "Check prime_a and a == 3: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [
+            "3 17"
+          ],
+          "explanation": "Print 3, 17."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [
+            "3 17"
+          ],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 20,
+            "a": 3,
+            "prime_a": true,
+            "d": 2
+          },
+          "output": [
+            "3 17"
+          ],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        }
+      ]
+    },
+    "W3-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and set i to 1."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "i": 1,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set total to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "i": 1,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Check while i <= 3: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "i": 1,
+            "total": 0,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and set j to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 1,
+            "total": 0,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 1,
+            "total": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 1."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 1,
+            "total": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 1,
+            "total": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check while j <= i: False. Exit the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "i": 2,
+            "total": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update i to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "i": 2,
+            "total": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check while i <= 3: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "i": 2,
+            "total": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and set j to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 2,
+            "total": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 2,
+            "total": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 2,
+            "total": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 2,
+            "total": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 2,
+            "total": 7,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 7."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 2,
+            "total": 7,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 3."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 2,
+            "total": 7,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check while j <= i: False. Exit the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "i": 3,
+            "total": 7,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update i to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "i": 3,
+            "total": 7,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check while i <= 3: True. Run the body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "i": 3,
+            "total": 7,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and set j to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 3,
+            "total": 7,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 3,
+            "total": 10,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 10."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 3,
+            "total": 10,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 3,
+            "total": 10,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 3,
+            "total": 16,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 16."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 3,
+            "total": 16,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 3."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 3,
+            "total": 16,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check while j <= i: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "i": 3,
+            "total": 25,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update total to 25."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "i": 3,
+            "total": 25,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update j to 4."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "i": 3,
+            "total": 25,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check while j <= i: False. Exit the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "i": 4,
+            "total": 25,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update i to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "i": 4,
+            "total": 25,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check while i <= 3: False. Exit the loop."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "i": 4,
+            "total": 25,
+            "j": 4
+          },
+          "output": [
+            "25"
+          ],
+          "explanation": "Print 25."
+        }
+      ]
+    },
+    "W3-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set score to 0."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 0,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 0,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 1,
+            "i": 1,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 1,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 1,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 1,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check j == 3: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: j = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 3,
+            "i": 1,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 7,
+            "i": 1,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 7."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 7,
+            "i": 1,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 7,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 7,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 7,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 7,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 9,
+            "i": 2,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 9."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 9,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 9,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 9,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 13."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check j == 3: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: j = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 13,
+            "i": 2,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 13,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: i = 3. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 13,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 13,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 13,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 16,
+            "i": 3,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 16."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 16,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 16,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 16,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 22."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "for loop: j = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "Check j == 3: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 3
+          },
+          "output": [],
+          "explanation": "continue skips the remaining statements in this round."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: j = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 22,
+            "i": 3,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 22,
+            "i": 4,
+            "j": 4
+          },
+          "output": [],
+          "explanation": "for loop: i = 4. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 22,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "for loop: j = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 22,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 22,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 1
+          },
+          "output": [],
+          "explanation": "Evaluate i * j and update score to 26."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "for loop: j = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check j == 3: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "Check i + j > 5: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "break exits this loop immediately."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "score": 26,
+            "i": 4,
+            "j": 2
+          },
+          "output": [
+            "26"
+          ],
+          "explanation": "Print 26."
+        }
+      ]
+    },
+    "W3-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "largest": -100
+          },
+          "output": [],
+          "explanation": "Evaluate -100 and set largest to -100."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "largest": -100,
+            "smallest": 100
+          },
+          "output": [],
+          "explanation": "Evaluate 100 and set smallest to 100."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "largest": -100,
+            "smallest": 100,
+            "evens": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set evens to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": -100,
+            "smallest": 100,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "for loop: n = -3. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "largest": -100,
+            "smallest": 100,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "Check n > largest: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "largest": -3,
+            "smallest": 100,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "Evaluate n and set largest to -3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "largest": -3,
+            "smallest": 100,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "Check n < smallest: True. Enter this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "largest": -3,
+            "smallest": -3,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "Evaluate n and set smallest to -3."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "largest": -3,
+            "smallest": -3,
+            "evens": 0,
+            "n": -3
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": -3,
+            "smallest": -3,
+            "evens": 0,
+            "n": -1
+          },
+          "output": [],
+          "explanation": "for loop: n = -1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "largest": -3,
+            "smallest": -3,
+            "evens": 0,
+            "n": -1
+          },
+          "output": [],
+          "explanation": "Check n > largest: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "largest": -1,
+            "smallest": -3,
+            "evens": 0,
+            "n": -1
+          },
+          "output": [],
+          "explanation": "Evaluate n and set largest to -1."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "largest": -1,
+            "smallest": -3,
+            "evens": 0,
+            "n": -1
+          },
+          "output": [],
+          "explanation": "Check n < smallest: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "largest": -1,
+            "smallest": -3,
+            "evens": 0,
+            "n": -1
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": -1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "for loop: n = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "largest": -1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Check n > largest: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "largest": 1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Evaluate n and set largest to 1."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "largest": 1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Check n < smallest: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "largest": 1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": 1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "for loop: n = 3. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "largest": 1,
+            "smallest": -3,
+            "evens": 0,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Check n > largest: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "largest": 3,
+            "smallest": -3,
+            "evens": 0,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Evaluate n and set largest to 3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "largest": 3,
+            "smallest": -3,
+            "evens": 0,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Check n < smallest: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "largest": 3,
+            "smallest": -3,
+            "evens": 0,
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": 3,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "for loop: n = 5. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "largest": 3,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n > largest: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "largest": 5,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Evaluate n and set largest to 5."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "largest": 5,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n < smallest: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "largest": 5,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "largest": 5,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "largest": 5,
+            "smallest": -3,
+            "evens": 0,
+            "n": 5
+          },
+          "output": [
+            "5 -3 0"
+          ],
+          "explanation": "Print 5, -3, 0."
         }
       ]
     }
