@@ -144,6 +144,14 @@ The program's Python code is **not executed in the student's browser**. Walkthro
 
 The code may scroll horizontally for longer source lines (especially on phones), rather than shrinking to unreadable text. The UI uses text labels in addition to color for decisions. Interaction should remain keyboard-accessible through buttons and input controls; add live browser QA when modifying layouts, focus behavior, or screen reader announcements.
 
+## CI troubleshooting — curated Python float output
+
+The fixed code examples can print floating-point values ending in `.0`, such as **`W4-H-04` → `55.0`** and **`W4-X-03` → `36.0`**. The offline trace builder uses JavaScript `Number`, which formats integral-valued floats as `55` or `36`. However, actual Python correctly prints `55.0` and `36.0`. Those two **final trace steps** are deliberately curated with the correct Python output and child-friendly explanation.
+
+The earlier control-flow test compared the generated final `explanation` literally against the curated one, causing GitHub Actions to fail with `AssertionError: W4-H-04 step 14: explanation does not match action`. The corrected test explicitly validates the final Python-formatted string and its explanation for those two cases, while still checking the same arrow position and variables. Every other Hard/Extra step must match the generator exactly.
+
+For a failing GitHub Actions job, open **Actions → Validate Python Quest questions → failing run → validate → failed step**. Copy the first `FAIL` or `AssertionError` rather than relying on the generic email/annotation `Process completed with exit code 1`. Run the specific command locally, correct the underlying data/code or narrowly justified expected result, and only then rerun the whole workflow. The Node.js version deprecation warning from older checkout/setup actions is a separate warning, not evidence of this assertion failure.
+
 ## 9. How to test and make changes
 
 ```bash
