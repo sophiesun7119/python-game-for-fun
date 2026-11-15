@@ -6,14 +6,20 @@ const traces = Object.assign({}, ...[1,2,3,4].map(week => {
   const payload = JSON.parse(readFileSync(new URL(`../data/traces-week${week}.json`, import.meta.url), 'utf8'));
   return payload.traces;
 }));
-const exceptions = new Set(['W1-E-05','W1-H-04','W2-M-05']);
-const printCount = new Set(['W3-E-02','W3-H-01']);
-const lastLineOnly = new Set(['W4-M-03','W4-H-04']);
+const exceptions = new Set(['W1-E-05','W2-M-05']);
+const printCount = new Set(['W3-E-02']);
+const lastLineOnly = new Set(['W4-M-03']);
 const found = new Set();
 let stepCount = 0;
 
-assert.equal(questions.length, 60, 'Expected 60 questions');
-assert.equal(Object.keys(traces).length, 60, 'Expected 60 trace entries');
+assert.equal(questions.length, 80, 'Expected 80 questions');
+assert.equal(Object.keys(traces).length, 80, 'Expected 80 trace entries');
+for (const week of [1,2,3,4]) {
+  for (const difficulty of ['easy','medium','hard','extra']) {
+    const actual=questions.filter(q=>q.week===week && q.difficulty===difficulty);
+    assert.equal(actual.length,5,`Expected five ${difficulty} questions for Week ${week}`);
+  }
+}
 for (const question of questions) {
   const trace = traces[question.id];
   assert(trace, `Missing trace: ${question.id}`);
