@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.0 — 2026-11-15
+- Added optional local username entry; blank defaults to shared guest name `username`.
+- Kept scores isolated per normalized username in browser localStorage, with a Switch Player control.
+- Migrates old v0.1 single-browser progress into the guest profile when first selected.
+- Redesigned wrong-answer flow: Give me a hint → Retry or Show answer → explanation.
+- Preserved first-submission-only scoring and best-score XP calculation.
+- No database, password, or hosted account created.
+
+### Known limitations
+- Nicknames are not secure logins; same browser and same nickname can alter progress.
+- Refresh during a question does not resume the unfinished five-question attempt.
+- Browser/device changes and cleared local storage lose profile progress.
+
 ## v0.1.0 — 2026-11-15
 - Imported Challenge 1 teacher-draft bank: Weeks 1–4, 60 questions.
 - Added responsive static UI with week/difficulty selector, five-question quizzes, hints and result pages.
