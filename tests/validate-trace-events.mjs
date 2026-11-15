@@ -28,8 +28,9 @@ for(const question of bank){
   const newOutput=step.output.slice(prev.output.length);
   if(/^def\s+\w+\(/.test(source)&&/^Define\b/.test(step.explanation)){
    definitions++;
-   assert(tags.some(tag=>tag.text==='Function defined'),
-    question.id+' step '+index+' missing definition badge');
+   const name=source.match(/^def\s+(\w+)\(/)?.[1];
+   assert(tags.some(tag=>tag.kind==='call'&&tag.text==='Define '+name+'()'),
+    question.id+' step '+index+' missing named definition badge');
   }
   if(newOutput.length){
    prints+=newOutput.length;
@@ -50,7 +51,7 @@ for(const question of bank){
 const sample={line:0,variables:{},output:[],explanation:'Define greet; body saved'};
 const tags=api.traceInlineDetails(sample,{variables:{},output:[]},
  'def greet():',null);
-assert(tags.some(tag=>tag.text==='Function defined'),
+assert(tags.some(tag=>tag.kind==='call'&&tag.text==='Define greet()'),
  'Source-based definition detection must handle alternate teacher wording');
 
 const w4=traces['W4-E-01'].steps;
