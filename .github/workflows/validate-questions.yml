@@ -28,3 +28,5 @@ jobs:
         run: node tests/validate-trace-scopes.mjs
       - name: Verify semantic function and output event consistency
         run: node tests/validate-trace-events.mjs
+      - name: Verify shared walkthrough layout on every question and step
+        run: node tests/validate-walkthrough-layout.mjs
