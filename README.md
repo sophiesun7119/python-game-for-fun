@@ -60,8 +60,8 @@ On first opening the page, students may enter a nickname; submitting an empty na
 ## Inline Trace — one full-width code panel (v0.6.3)
 
 - The Trace view now uses **one full-width dark code area**, with no separate Variables or Output sidebar.
-- The yellow arrow and highlight track the currently executed source line. Temporary annotations appear **to the right of that same line only**, then disappear when Next/Previous moves to another step.
-- New or updated variables appear as small value tags (e.g. `xp = 730`, `needed = 900`); values are not persistently repeated on earlier lines. Function entry reintroduces that function's parameter values; returning to the caller shows the returned value without falsely claiming a variable changed.
+- The yellow arrow and highlight track the currently executed source line. Temporary event annotations (calls, returns, print output, conditions) appear **to the right of that highlighted line only**. Variable badges persist at their latest binding/assignment lines until reassigned or the function scope ends.
+- New or updated variables appear as small persistent value tags (e.g. `xp = 730`, `needed = 900`) at their latest assignment lines; outdated tags are removed. Function entry introduces that function's parameter values on its `def` line; returning to the caller removes those function-local tags and shows the returned value without falsely claiming a variable changed.
 - For `if/elif/for/while`, the active code line shows the relevant variable values and a green ✓ or red ✕ with branch/loop action.
 - `print()` results appear as `Output: ...` on the print line when they are produced. Previously printed output is not carried over as a separate sidebar.
 - **Step**, bold red **Explanation:** text, Previous/Next/Restart, and Close remain beneath/above the code as before; opening Trace never changes XP.
