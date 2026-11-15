@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "Hand-authored Week 2 conditional and Boolean guided traces, zero-based line numbers.",
+  "version": "2.0.0",
+  "description": "Guided traces for Week 2 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
   "traces": {
     "W2-E-01": {
       "steps": [
@@ -343,33 +343,78 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to watch the code execute."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "score": 95
+            "total": 49
           },
           "output": [],
-          "explanation": "Set score = 95."
+          "explanation": "Evaluate 49 and set total to 49."
         },
         {
           "line": 1,
           "variables": {
-            "score": 95
+            "total": 49,
+            "weight": 5
           },
           "output": [],
-          "explanation": "95 >= 60 is True, so this first branch is selected."
+          "explanation": "Evaluate 5 and set weight to 5."
         },
         {
           "line": 2,
           "variables": {
-            "score": 95
+            "total": 49,
+            "weight": 5,
+            "member": "standard"
+          },
+          "output": [],
+          "explanation": "Evaluate 'standard' and set member to 'standard'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard"
+          },
+          "output": [],
+          "explanation": "Check member == 'premium' or total >= 50: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard"
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard",
+            "fee": 4.99
+          },
+          "output": [],
+          "explanation": "Evaluate 4.99 and set fee to 4.99."
+        },
+        {
+          "line": 11,
+          "variables": {
+            "total": 49,
+            "weight": 5,
+            "member": "standard",
+            "fee": 4.99
           },
           "output": [
-            "D"
+            "53.99"
           ],
-          "explanation": "Print D. The later elif is never checked."
+          "explanation": "Print '53.99'."
         }
       ]
     },
@@ -379,53 +424,92 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to watch the code execute."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "coins": 10
+            "kills": 8
           },
           "output": [],
-          "explanation": "Create coins = 10."
+          "explanation": "Evaluate 8 and set kills to 8."
         },
         {
           "line": 1,
           "variables": {
-            "coins": 10,
-            "level": 2
+            "kills": 8,
+            "deaths": 0
           },
           "output": [],
-          "explanation": "Create level = 2."
+          "explanation": "Evaluate 0 and set deaths to 0."
         },
         {
           "line": 2,
           "variables": {
-            "coins": 10,
-            "level": 2
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4
           },
           "output": [],
-          "explanation": "10 >= 10 is True. Enter outer if."
+          "explanation": "Evaluate 4 and set assists to 4."
         },
         {
           "line": 3,
           "variables": {
-            "coins": 10,
-            "level": 2
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4
           },
           "output": [],
-          "explanation": "2 >= 3 is False. Skip Door A."
+          "explanation": "Check deaths == 0: True. Enter this branch."
         },
         {
-          "line": 6,
+          "line": 4,
           "variables": {
-            "coins": 10,
-            "level": 2
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4,
+            "kda": 12
+          },
+          "output": [],
+          "explanation": "Evaluate kills + assists and set kda to 12."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4,
+            "kda": 12
+          },
+          "output": [],
+          "explanation": "Check kda >= 5: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4,
+            "kda": 12,
+            "rank": "S"
+          },
+          "output": [],
+          "explanation": "Evaluate 'S' and set rank to 'S'."
+        },
+        {
+          "line": 13,
+          "variables": {
+            "kills": 8,
+            "deaths": 0,
+            "assists": 4,
+            "kda": 12,
+            "rank": "S"
           },
           "output": [
-            "Door B"
+            "S 12.00"
           ],
-          "explanation": "Enter inner else and print Door B."
+          "explanation": "Print 'S', '12.00'."
         }
       ]
     },
@@ -435,35 +519,57 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to watch the code execute."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "a": true
+            "x": 4
           },
           "output": [],
-          "explanation": "Set a = True."
+          "explanation": "Evaluate 4 and set x to 4."
         },
         {
           "line": 1,
           "variables": {
-            "a": true,
-            "b": false
+            "x": 4
           },
           "output": [],
-          "explanation": "Set b = False."
+          "explanation": "Check x % 2 == 0: True. Enter this branch."
         },
         {
           "line": 2,
           "variables": {
-            "a": true,
-            "b": false
+            "x": 7
+          },
+          "output": [],
+          "explanation": "Evaluate x + 3 and set x to 7."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 7
+          },
+          "output": [],
+          "explanation": "Check x > 6: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "x": 14
+          },
+          "output": [],
+          "explanation": "Evaluate x * 2 and set x to 14."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "x": 14
           },
           "output": [
-            "True"
+            "14"
           ],
-          "explanation": "not b is True; a and True is True."
+          "explanation": "Print 14."
         }
       ]
     },
@@ -473,55 +579,56 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to watch the code execute."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "cost": 50
+            "a": true
           },
           "output": [],
-          "explanation": "Set cost = 50."
+          "explanation": "Evaluate True and set a to True."
         },
         {
           "line": 1,
           "variables": {
-            "cost": 50,
-            "weight": 21
+            "a": true,
+            "b": false
           },
           "output": [],
-          "explanation": "Set weight = 21."
+          "explanation": "Evaluate False and set b to False."
         },
         {
           "line": 2,
           "variables": {
-            "cost": 50,
-            "weight": 21
+            "a": true,
+            "b": false,
+            "c": false
           },
           "output": [],
-          "explanation": "50 >= 50 is True. Choose the first branch."
+          "explanation": "Evaluate False and set c to False."
         },
         {
           "line": 3,
           "variables": {
-            "cost": 50,
-            "weight": 21,
-            "fee": 0
+            "a": true,
+            "b": false,
+            "c": false
           },
           "output": [],
-          "explanation": "Create fee = 0; other branches are skipped."
+          "explanation": "Check a and not b or c: True. Enter this branch."
         },
         {
-          "line": 8,
+          "line": 4,
           "variables": {
-            "cost": 50,
-            "weight": 21,
-            "fee": 0
+            "a": true,
+            "b": false,
+            "c": false
           },
           "output": [
-            "0"
+            "Go"
           ],
-          "explanation": "Print fee, which is 0."
+          "explanation": "Print 'Go'."
         }
       ]
     },
@@ -531,46 +638,542 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Press Next Step to watch the code execute."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {
-            "a": false
+            "score": 88
           },
           "output": [],
-          "explanation": "Create a = False."
+          "explanation": "Evaluate 88 and set score to 88."
         },
         {
           "line": 1,
           "variables": {
-            "a": false,
-            "b": true
+            "score": 88,
+            "bonus": 7
           },
           "output": [],
-          "explanation": "Create b = True."
+          "explanation": "Evaluate 7 and set bonus to 7."
         },
         {
           "line": 2,
           "variables": {
-            "a": false,
-            "b": true,
-            "c": false
+            "score": 88,
+            "bonus": 7
           },
           "output": [],
-          "explanation": "Create c = False."
+          "explanation": "Check score + bonus >= 100: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 88,
+            "bonus": 7
+          },
+          "output": [],
+          "explanation": "Check score >= 80 and bonus > 5: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "score": 88,
+            "bonus": 7
+          },
+          "output": [
+            "Silver"
+          ],
+          "explanation": "Print 'Silver'."
+        }
+      ]
+    },
+    "W2-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "subtotal": 46
+          },
+          "output": [],
+          "explanation": "Evaluate 46 and set subtotal to 46."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "subtotal": 46,
+            "is_member": true
+          },
+          "output": [],
+          "explanation": "Evaluate True and set is_member to True."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "subtotal": 46,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Evaluate 8 and set weight to 8."
         },
         {
           "line": 3,
           "variables": {
-            "a": false,
-            "b": true,
-            "c": false
+            "subtotal": 46,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Check is_member: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Evaluate subtotal * 0.9 and set subtotal to 41.4."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Check subtotal >= 50: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Check weight <= 5: False. Skip this branch."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8,
+            "shipping": 9.99
+          },
+          "output": [],
+          "explanation": "Evaluate 9.99 and set shipping to 9.99."
+        },
+        {
+          "line": 11,
+          "variables": {
+            "subtotal": 41.4,
+            "is_member": true,
+            "weight": 8,
+            "shipping": 9.99
           },
           "output": [
-            "True"
+            "51.39"
           ],
-          "explanation": "not c is True; b and True is True; False or True is True."
+          "explanation": "Print '51.39'."
+        }
+      ]
+    },
+    "W2-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "coins": 10
+          },
+          "output": [],
+          "explanation": "Evaluate 10 and set coins to 10."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 2 and set level to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Check coins >= 10: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "coins": 6,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Evaluate coins - 4 and set coins to 6."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "coins": 6,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Check level >= 3 or coins > 5: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "coins": 6,
+            "level": 4
+          },
+          "output": [],
+          "explanation": "Evaluate level + 2 and set level to 4."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "coins": 6,
+            "level": 4
+          },
+          "output": [],
+          "explanation": "Check level >= 4 and coins <= 6: True. Enter this branch."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "coins": 6,
+            "level": 4
+          },
+          "output": [
+            "24"
+          ],
+          "explanation": "Print 24."
+        }
+      ]
+    },
+    "W2-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "kills": 9
+          },
+          "output": [],
+          "explanation": "Evaluate 9 and set kills to 9."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "kills": 9,
+            "assists": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 5 and set assists to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 2 and set deaths to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 7
+          },
+          "output": [],
+          "explanation": "Evaluate (kills + assists) / deaths and set kda to 7."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 7
+          },
+          "output": [],
+          "explanation": "Check kda >= 5: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 4.2
+          },
+          "output": [],
+          "explanation": "Evaluate kda * 0.6 and set kda to 4.2."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 4.2
+          },
+          "output": [],
+          "explanation": "Check kda >= 5: False. Skip this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 4.2
+          },
+          "output": [],
+          "explanation": "Check kda >= 3: True. Enter this branch."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 4.2,
+            "rank": "A"
+          },
+          "output": [],
+          "explanation": "Evaluate 'A' and set rank to 'A'."
+        },
+        {
+          "line": 12,
+          "variables": {
+            "kills": 9,
+            "assists": 5,
+            "deaths": 2,
+            "kda": 4.2,
+            "rank": "A"
+          },
+          "output": [
+            "A 4.2"
+          ],
+          "explanation": "Print 'A', '4.2'."
+        }
+      ]
+    },
+    "W2-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 5 and set a to 5."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": 5,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 2 and set b to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 5,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Check a < 5 or b * 3 >= a: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 5,
+            "b": 3
+          },
+          "output": [],
+          "explanation": "Evaluate a - b and set b to 3."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 5,
+            "b": 3
+          },
+          "output": [],
+          "explanation": "Check b == 3 and not a < b: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 5,
+            "b": 3
+          },
+          "output": [
+            "8"
+          ],
+          "explanation": "Print 8."
+        }
+      ]
+    },
+    "W2-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "weight": 20
+          },
+          "output": [],
+          "explanation": "Evaluate 20 and set weight to 20."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 20,
+            "total": 49.99
+          },
+          "output": [],
+          "explanation": "Evaluate 49.99 and set total to 49.99."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false
+          },
+          "output": [],
+          "explanation": "Evaluate False and set premium to False."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false
+          },
+          "output": [],
+          "explanation": "Check premium: False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false
+          },
+          "output": [],
+          "explanation": "Check total >= 50: False. Skip this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false
+          },
+          "output": [],
+          "explanation": "Check weight < 5: False. Skip this branch."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false
+          },
+          "output": [],
+          "explanation": "Check weight <= 20: True. Enter this branch."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "weight": 20,
+            "total": 49.99,
+            "premium": false,
+            "fee": 9.99
+          },
+          "output": [],
+          "explanation": "Evaluate 9.99 and set fee to 9.99."
+        },
+        {
+          "line": 13,
+          "variables": {
+            "weight": 20,
+            "total": 59.980000000000004,
+            "premium": false,
+            "fee": 9.99
+          },
+          "output": [],
+          "explanation": "Evaluate total + fee and set total to 59.980000000000004."
+        },
+        {
+          "line": 14,
+          "variables": {
+            "weight": 20,
+            "total": 59.980000000000004,
+            "premium": false,
+            "fee": 9.99
+          },
+          "output": [
+            "59.98"
+          ],
+          "explanation": "Print '59.98'."
         }
       ]
     }
