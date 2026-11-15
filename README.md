@@ -33,6 +33,19 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
 
+## Detailed execution walkthroughs (v0.6.7)
+
+**All 80 cards** use one validated walkthrough contract. The code arrow, variables, function events and cumulative Output still follow [Technical Design §7](docs/technical-design.md#7-walkthrough-contract--all-80-questions). The new educational rule is that **calculating an expression and executing its final statement are separate steps**:
+
+- `print('Hi')`: highlight the print statement, show **Call print()**, explain it, then display **Hi** in Output. A simple literal print needs no invented arithmetic step.
+- `print(square(4) + 1)`: `square(4)` returns **16** → evaluate **16 + 1 = 17** on the caller line → call `print()` → Output becomes **17**, and not before.
+- `z = x // y + x % y` with `x=19,y=4`: show **19 // 4 = 4**, then **19 % 4 = 3**, then **4 + 3 = 7**, and only afterward assign `z=7`.
+- Other numeric expressions respect Python arithmetic precedence and parentheses; formatted f-strings get a separate formatting explanation after any supported numeric calculations.
+- Each calculation step has the **same code line**, explanatory text and a distinct blue calculation tag. It does **not** prematurely mutate variables or append Output. Variables change on the actual assignment step; Output changes only on the actual `print()` step.
+- This rule is applied offline to the curated trace JSON by `scripts/enrich-walkthroughs.js`, not by executing students' code in the browser. Currently supported arithmetic operators are `+`, `-`, `*`, `/`, `//`, `%` and parentheses for numeric expressions. Other introductory expressions retain explicit factual explanations without guessing unsupported evaluation.
+
+The audit covers **80 questions, 1,103 trace states, 125 explicit calculation steps and 96 explained print events**. `tests/validate-walkthrough-detail.mjs` checks all 80, including arithmetic consistency and the square() return→add→print regression. Automated tests do not substitute for teacher review of the wording or manual browser QA.
+
 ## Walkthrough — unified design (v0.6.6)
 
 **One rendering rule for all 80 questions:** Easy, Medium, Hard, and Extra Rock read the same static `data/traces-week*.json` format and use the same `tracePanel()` UI. Nothing in the layout is hardcoded per question or difficulty.
