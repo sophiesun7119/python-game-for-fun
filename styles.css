@@ -10,3 +10,46 @@
 .welcome label{font-weight:750;font-size:14px}
 .answer-input{font-family:inherit;line-height:1.5}
 @media(max-width:640px){.header-actions{gap:6px}.player-switch{max-width:125px;font-size:12px}.welcome{margin:14px auto;padding:22px}.score-pill{padding:7px;font-size:12px}}
+
+/* Week 1 guided code trace — expands the existing question code panel */
+.trace-toggle{margin:-2px 0 17px;font-size:13px;border-color:#aec8ed;background:#eef5ff}
+.trace-shell{border:1px solid #cdddf1;border-radius:14px;overflow:hidden;margin:14px 0 18px;background:#fbfdff}
+.trace-titlebar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:1px solid #dfe8f5;color:#24466d;font-size:14px}
+.trace-close{font-size:12px;padding:6px 9px}
+.trace-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(180px,1fr)}
+.trace-panel-title{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#66809f;margin-bottom:10px}
+.trace-code-panel{background:#182638;min-width:0;padding:14px 8px}
+.trace-code-panel .trace-panel-title{color:#a7bad1;padding-left:12px}
+.trace-code{font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#daebff;overflow-x:auto}
+.trace-line{display:flex;align-items:baseline;gap:8px;white-space:pre;padding:6px 8px;border-left:3px solid transparent;border-radius:4px;min-width:max-content}
+.trace-line-active{background:#344962;border-left-color:#f6c05d}
+.trace-arrow{color:#ffcf63;font-weight:900;width:12px;flex-shrink:0}
+.trace-lineno{color:#8096ae;font-size:11px;width:18px;text-align:right;flex-shrink:0}
+.trace-source{white-space:pre}
+.trace-state-panel{padding:14px;min-width:0;display:flex;flex-direction:column}
+.trace-vars{display:flex;flex-direction:column;gap:7px;min-height:80px}
+.trace-variable{display:flex;align-items:center;flex-wrap:wrap;gap:7px;background:#f0f5fb;border:1px solid #e0eafa;border-radius:8px;padding:8px}
+.trace-variable-changed{border-color:#e6c96a;background:#fff8df}
+.trace-var-name{color:#235c9f;font:700 13px ui-monospace,monospace}
+.trace-var-name::after{content:' =';color:#7b8b9a}
+.trace-var-value{color:#253c54;font:700 13px ui-monospace,monospace;word-break:break-word}
+.trace-var-tag{font-size:10px;color:#825f12;background:#ffe9ac;border-radius:20px;padding:3px 6px;font-weight:800}
+.trace-empty{color:#8595a8;font-size:12px}
+.trace-output-title{margin-top:16px}
+.trace-output{background:#eaf1f8;border-radius:8px;min-height:46px;padding:10px;overflow-wrap:anywhere}
+.trace-output pre{white-space:pre-wrap;word-break:break-word;font:13px/1.5 ui-monospace,monospace;margin:0}
+.trace-error{color:#9d2636;background:#fff0f0;border:1px solid #f2cbd1;border-radius:8px;padding:8px;margin-top:10px;font-size:12px;overflow-wrap:anywhere}
+.trace-narration{padding:12px 14px 3px;border-top:1px solid #dfe8f5}
+.trace-stepcount{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#5376a1;font-weight:800;margin-bottom:5px}
+.trace-narration p{font-size:14px}
+.trace-controls{display:flex;flex-wrap:wrap;gap:8px;padding:5px 14px 10px}
+.trace-controls .btn{font-size:12px;padding:9px 12px;flex:1}
+.trace-footnote{color:#74859b;font-size:11px;margin:0;padding:0 14px 12px}
+@media(max-width:600px){
+ .trace-layout{grid-template-columns:minmax(0,1fr)}
+ .trace-code-panel{padding:12px 8px}
+ .trace-state-panel{padding:12px}
+ .trace-vars{min-height:34px}
+ .trace-line{font-size:12px}
+ .trace-controls .btn{min-width:120px}
+}
