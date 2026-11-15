@@ -1,0 +1,578 @@
+{
+  "version": "1.0.0",
+  "description": "Hand-authored Week 2 conditional and Boolean guided traces, zero-based line numbers.",
+  "traces": {
+    "W2-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "True"
+          ],
+          "explanation": "Compare 5 > 3. This is True, so print() displays True."
+        }
+      ]
+    },
+    "W2-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 4
+          },
+          "output": [],
+          "explanation": "Create x = 4."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 4
+          },
+          "output": [
+            "False"
+          ],
+          "explanation": "Check x == 5: 4 == 5 is False."
+        }
+      ]
+    },
+    "W2-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 70
+          },
+          "output": [],
+          "explanation": "Create score = 70."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 70
+          },
+          "output": [],
+          "explanation": "Check 70 >= 60: True. Enter the if block."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 70
+          },
+          "output": [
+            "Pass"
+          ],
+          "explanation": "Print Pass. The else branch is skipped."
+        }
+      ]
+    },
+    "W2-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "is_raining": false
+          },
+          "output": [],
+          "explanation": "Create is_raining = False."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "is_raining": false
+          },
+          "output": [
+            "True"
+          ],
+          "explanation": "not False is True. Print True."
+        }
+      ]
+    },
+    "W2-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "False"
+          ],
+          "explanation": "True and False is False because both parts must be True."
+        }
+      ]
+    },
+    "W2-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 85
+          },
+          "output": [],
+          "explanation": "Set score = 85."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 85
+          },
+          "output": [],
+          "explanation": "Check 85 >= 90: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "score": 85
+          },
+          "output": [],
+          "explanation": "Check 85 >= 80: True. Choose elif."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "score": 85
+          },
+          "output": [
+            "B"
+          ],
+          "explanation": "Print B, then skip else."
+        }
+      ]
+    },
+    "W2-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "age": 9
+          },
+          "output": [],
+          "explanation": "Create age = 9."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "age": 9
+          },
+          "output": [],
+          "explanation": "9 < 10 is True, so the condition with or is True."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "age": 9
+          },
+          "output": [
+            "Discount"
+          ],
+          "explanation": "Print Discount."
+        }
+      ]
+    },
+    "W2-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "age": 13
+          },
+          "output": [],
+          "explanation": "Create age = 13."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "age": 13,
+            "has_ticket": "no"
+          },
+          "output": [],
+          "explanation": "Store 'no' in has_ticket."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "age": 13,
+            "has_ticket": "no"
+          },
+          "output": [],
+          "explanation": "Age check is True, but ticket check is False. The and expression is False."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "age": 13,
+            "has_ticket": "no"
+          },
+          "output": [
+            "Wait"
+          ],
+          "explanation": "Take else and print Wait."
+        }
+      ]
+    },
+    "W2-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "Set weight = 5."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "weight": 5
+          },
+          "output": [],
+          "explanation": "5 <= 5 is True because the boundary is included."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "weight": 5
+          },
+          "output": [
+            "Small"
+          ],
+          "explanation": "Print Small."
+        }
+      ]
+    },
+    "W2-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "Create x = 3."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "The blank is incomplete code. To compare values, replace __ with ==."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "x": 3
+          },
+          "output": [],
+          "explanation": "After the fix, 3 == 3 evaluates to True."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 3
+          },
+          "output": [
+            "Match"
+          ],
+          "explanation": "In the corrected code, this line prints Match."
+        }
+      ]
+    },
+    "W2-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "score": 95
+          },
+          "output": [],
+          "explanation": "Set score = 95."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "score": 95
+          },
+          "output": [],
+          "explanation": "95 >= 60 is True, so this first branch is selected."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "score": 95
+          },
+          "output": [
+            "D"
+          ],
+          "explanation": "Print D. The later elif is never checked."
+        }
+      ]
+    },
+    "W2-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "coins": 10
+          },
+          "output": [],
+          "explanation": "Create coins = 10."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "Create level = 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "10 >= 10 is True. Enter outer if."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [],
+          "explanation": "2 >= 3 is False. Skip Door A."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "coins": 10,
+            "level": 2
+          },
+          "output": [
+            "Door B"
+          ],
+          "explanation": "Enter inner else and print Door B."
+        }
+      ]
+    },
+    "W2-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": true
+          },
+          "output": [],
+          "explanation": "Set a = True."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": true,
+            "b": false
+          },
+          "output": [],
+          "explanation": "Set b = False."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": true,
+            "b": false
+          },
+          "output": [
+            "True"
+          ],
+          "explanation": "not b is True; a and True is True."
+        }
+      ]
+    },
+    "W2-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "cost": 50
+          },
+          "output": [],
+          "explanation": "Set cost = 50."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "cost": 50,
+            "weight": 21
+          },
+          "output": [],
+          "explanation": "Set weight = 21."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "cost": 50,
+            "weight": 21
+          },
+          "output": [],
+          "explanation": "50 >= 50 is True. Choose the first branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "cost": 50,
+            "weight": 21,
+            "fee": 0
+          },
+          "output": [],
+          "explanation": "Create fee = 0; other branches are skipped."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "cost": 50,
+            "weight": 21,
+            "fee": 0
+          },
+          "output": [
+            "0"
+          ],
+          "explanation": "Print fee, which is 0."
+        }
+      ]
+    },
+    "W2-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to watch the code execute."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": false
+          },
+          "output": [],
+          "explanation": "Create a = False."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": false,
+            "b": true
+          },
+          "output": [],
+          "explanation": "Create b = True."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": false,
+            "b": true,
+            "c": false
+          },
+          "output": [],
+          "explanation": "Create c = False."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": false,
+            "b": true,
+            "c": false
+          },
+          "output": [
+            "True"
+          ],
+          "explanation": "not c is True; b and True is True; False or True is True."
+        }
+      ]
+    }
+  }
+}
