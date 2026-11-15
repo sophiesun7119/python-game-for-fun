@@ -4,6 +4,9 @@
 function enrichTrace(question, trace) {
  const lines=question.code.split('\n');
  const result=[],returnValues=new Map();
+ // Strip any earlier injected calculation steps before rebuilding. This makes
+ // the transform safe to rerun after correcting its pedagogical rules.
+ const baseSteps=trace.steps.filter(step=>step.phase!=='calculate');
  const repr=v=>typeof v==='string'?JSON.stringify(v):String(v);
  const safeMath=expr=>/^[\d+\-*/%. ()]+$/.test(expr)&&!/[a-zA-Z]/.test(expr);
  const calculate=expr=>{
@@ -50,7 +53,9 @@ function enrichTrace(question, trace) {
   }else if(/^f['"]/.test(expr)){
     const names=Object.keys(step.variables||{}).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
     const values=names.map(name=>name+' = '+repr(step.variables[name]));
-    explanation='Evaluate the f-string'+(values.length?' with '+values.join(', '):'')+'; the formatted result is '+repr(resultValue)+'.';
+    const formatted=typeof resultValue==='string'&&/^['"].*['"]$/.test(resultValue)
+      ?resultValue.slice(1,-1):resultValue;
+    explanation='Evaluate the f-string'+(values.length?' with '+values.join(', '):'')+'; the formatted result is '+repr(formatted)+'.';
   }else{
     const names=Object.keys(step.variables||{}).filter(name=>new RegExp('\\b'+name+'\\b').test(expr));
     const values=names.map(name=>name+' = '+repr(step.variables[name]));
@@ -71,12 +76,11 @@ function enrichTrace(question, trace) {
   else value=raw;
   return{fn:m[1],value};
  }
- for(let i=0;i<trace.steps.length;i++){
-  const step=trace.steps[i];
-  if(step.phase==='calculate'){result.push(step);continue;}
+ for(let i=0;i<baseSteps.length;i++){
+  const step=baseSteps[i];
   const src=(lines[step.line]||'').trim();
   if(i===0){result.push(step);continue;}
-  const previous=trace.steps[i-1];
+  const previous=baseSteps[i-1];
   const ret=parseReturned(step.explanation||'');
   if(ret) {
    const list=returnValues.get(step.line)||[];
@@ -95,7 +99,10 @@ function enrichTrace(question, trace) {
    expr=assign[3];value=step.variables?.[assign[1]];kind='assignment';
   }
   if(expr){
-   const evaluated=calcFor(expr,step,step.line,value);
+   // Assignment snapshots contain the NEW value. Expressions on the right
+   // side must use the OLD variable values, prior to the assignment.
+   const context=kind==='assignment'?{...step,variables:previous.variables}:step;
+   const evaluated=calcFor(expr,context,step.line,value);
    if(evaluated){
     // Before evaluating, preserve the prior variable/output state. For a
     // calculation step do not yet apply this line's new assignment or print.
