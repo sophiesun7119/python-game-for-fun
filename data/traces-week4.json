@@ -8,19 +8,25 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define greet; the body is saved but not run yet."
+          "explanation": "Define greet(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call greet(). Jump to the function body."
+          "explanation": "Call greet() from this line."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Enter greet(): bind no parameters. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -28,7 +34,23 @@
           "output": [
             "Hi"
           ],
-          "explanation": "Inside greet: print Hi. The function finishes and returns to the caller."
+          "explanation": "Print 'Hi'."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "Hi"
+          ],
+          "explanation": "Return from greet() to this calling line with value None. Continue evaluating this statement."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "Hi"
+          ],
+          "explanation": "Finish this function call and continue."
         }
       ]
     },
@@ -38,19 +60,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define double(n). Nothing runs inside yet."
+          "explanation": "Define double(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call double(3) as the print argument."
+          "explanation": "Call double(3) from this line."
         },
         {
           "line": 0,
@@ -58,7 +80,7 @@
             "n": 3
           },
           "output": [],
-          "explanation": "Enter double with local parameter n = 3."
+          "explanation": "Enter double(): bind n = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -66,7 +88,13 @@
             "n": 3
           },
           "output": [],
-          "explanation": "Return 3 * 2 = 6 to the print call."
+          "explanation": "Return 6 to the calling line."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from double() to this calling line with value 6. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -74,7 +102,7 @@
           "output": [
             "6"
           ],
-          "explanation": "The call has returned; print 6."
+          "explanation": "Print 6."
         }
       ]
     },
@@ -84,19 +112,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define square(n)."
+          "explanation": "Define square(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call square(4)."
+          "explanation": "Call square(4) from this line."
         },
         {
           "line": 0,
@@ -104,7 +132,7 @@
             "n": 4
           },
           "output": [],
-          "explanation": "The local parameter n becomes 4."
+          "explanation": "Enter square(): bind n = 4. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -112,7 +140,13 @@
             "n": 4
           },
           "output": [],
-          "explanation": "Return n * n = 4 * 4 = 16."
+          "explanation": "Return 16 to the calling line."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from square() to this calling line with value 16. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -120,7 +154,7 @@
           "output": [
             "16"
           ],
-          "explanation": "Print 16 after the call returns."
+          "explanation": "Print 16."
         }
       ]
     },
@@ -130,19 +164,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define add(a, b)."
+          "explanation": "Define add(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call add(2, 5)."
+          "explanation": "Call add(2, 5) from this line."
         },
         {
           "line": 0,
@@ -151,7 +185,7 @@
             "b": 5
           },
           "output": [],
-          "explanation": "Assign parameters a = 2 and b = 5."
+          "explanation": "Enter add(): bind a = 2, b = 5. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -160,7 +194,13 @@
             "b": 5
           },
           "output": [],
-          "explanation": "Return 2 + 5 = 7."
+          "explanation": "Return 7 to the calling line."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from add() to this calling line with value 7. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -168,7 +208,7 @@
           "output": [
             "7"
           ],
-          "explanation": "Print the returned value 7."
+          "explanation": "Print 7."
         }
       ]
     },
@@ -178,13 +218,13 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define hello(). Its body is not executed because hello() is never called."
+          "explanation": "Define hello(). Its body does not run until the function is called."
         },
         {
           "line": 2,
@@ -192,7 +232,7 @@
           "output": [
             "Done"
           ],
-          "explanation": "Print Done. The Hello line is skipped entirely."
+          "explanation": "Print 'Done'."
         }
       ]
     },
@@ -202,19 +242,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define square(n)."
+          "explanation": "Define square(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Prepare print(square(4) + 1): first call square(4)."
+          "explanation": "Call square(4) from this line."
         },
         {
           "line": 0,
@@ -222,7 +262,7 @@
             "n": 4
           },
           "output": [],
-          "explanation": "Enter square with local n = 4."
+          "explanation": "Enter square(): bind n = 4. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -230,7 +270,13 @@
             "n": 4
           },
           "output": [],
-          "explanation": "Return 4 * 4 = 16."
+          "explanation": "Return 16 to the calling line."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from square() to this calling line with value 16. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -238,7 +284,7 @@
           "output": [
             "17"
           ],
-          "explanation": "Add 1 to the returned 16 and print 17."
+          "explanation": "Print 17."
         }
       ]
     },
@@ -248,19 +294,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define subtract(a, b)."
+          "explanation": "Define subtract(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call subtract(3, 10)."
+          "explanation": "Call subtract(3, 10) from this line."
         },
         {
           "line": 0,
@@ -269,7 +315,7 @@
             "b": 10
           },
           "output": [],
-          "explanation": "Set local a = 3, b = 10. Argument order matters."
+          "explanation": "Enter subtract(): bind a = 3, b = 10. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -278,7 +324,13 @@
             "b": 10
           },
           "output": [],
-          "explanation": "Return 3 - 10 = -7."
+          "explanation": "Return -7 to the calling line."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from subtract() to this calling line with value -7. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -296,19 +348,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define greet(name)."
+          "explanation": "Define greet(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Call greet('Mia') while calculating the right side of result = ..."
+          "explanation": "Call greet(Mia) from this line."
         },
         {
           "line": 0,
@@ -316,7 +368,7 @@
             "name": "Mia"
           },
           "output": [],
-          "explanation": "Inside greet, the local parameter name is 'Mia'."
+          "explanation": "Enter greet(): bind name = 'Mia'. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -326,7 +378,15 @@
           "output": [
             "Hello Mia"
           ],
-          "explanation": "Print Hello Mia. This function has no return statement."
+          "explanation": "Print 'Hello Mia'."
+        },
+        {
+          "line": 2,
+          "variables": {},
+          "output": [
+            "Hello Mia"
+          ],
+          "explanation": "Return from greet() to this calling line with value None. Continue evaluating this statement."
         },
         {
           "line": 2,
@@ -336,7 +396,7 @@
           "output": [
             "Hello Mia"
           ],
-          "explanation": "The function ends and implicitly returns None; assign result = None."
+          "explanation": "Evaluate greet('Mia') and set result to None."
         },
         {
           "line": 3,
@@ -347,7 +407,7 @@
             "Hello Mia",
             "None"
           ],
-          "explanation": "Print result. The second output line is None."
+          "explanation": "Print None."
         }
       ]
     },
@@ -357,25 +417,25 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define double(n)."
+          "explanation": "Define double(). Its body does not run until the function is called."
         },
         {
           "line": 2,
           "variables": {},
           "output": [],
-          "explanation": "Define triple_double(n)."
+          "explanation": "Define triple_double(). Its body does not run until the function is called."
         },
         {
           "line": 4,
           "variables": {},
           "output": [],
-          "explanation": "Call triple_double(2)."
+          "explanation": "Call triple_double(2) from this line."
         },
         {
           "line": 2,
@@ -383,7 +443,7 @@
             "n": 2
           },
           "output": [],
-          "explanation": "Inside triple_double, local n = 2."
+          "explanation": "Enter triple_double(): bind n = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 3,
@@ -391,7 +451,7 @@
             "n": 2
           },
           "output": [],
-          "explanation": "To calculate return double(n) * 3, call double(2)."
+          "explanation": "Call double(2) from this line."
         },
         {
           "line": 0,
@@ -399,7 +459,7 @@
             "n": 2
           },
           "output": [],
-          "explanation": "Inside double, local n = 2."
+          "explanation": "Enter double(): bind n = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -407,7 +467,7 @@
             "n": 2
           },
           "output": [],
-          "explanation": "Return 2 * 2 = 4 to triple_double."
+          "explanation": "Return 4 to the calling line."
         },
         {
           "line": 3,
@@ -415,7 +475,21 @@
             "n": 2
           },
           "output": [],
-          "explanation": "Continue triple_double: 4 * 3 = 12. Return 12."
+          "explanation": "Return from double() to this calling line with value 4. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Return 12 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from triple_double() to this calling line with value 12. Continue evaluating this statement."
         },
         {
           "line": 4,
@@ -423,7 +497,7 @@
           "output": [
             "12"
           ],
-          "explanation": "Print the returned 12."
+          "explanation": "Print 12."
         }
       ]
     },
@@ -433,19 +507,19 @@
           "line": -1,
           "variables": {},
           "output": [],
-          "explanation": "Ready! Functions are defined first; their bodies run only when called."
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
         },
         {
           "line": 0,
           "variables": {},
           "output": [],
-          "explanation": "Define check(n)."
+          "explanation": "Define check(). Its body does not run until the function is called."
         },
         {
           "line": 4,
           "variables": {},
           "output": [],
-          "explanation": "Call check(5)."
+          "explanation": "Call check(5) from this line."
         },
         {
           "line": 0,
@@ -453,7 +527,7 @@
             "n": 5
           },
           "output": [],
-          "explanation": "Inside check, n = 5."
+          "explanation": "Enter check(): bind n = 5. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -461,7 +535,7 @@
             "n": 5
           },
           "output": [],
-          "explanation": "Check n > 0: 5 > 0 is True."
+          "explanation": "Check n > 0: True. Enter this branch."
         },
         {
           "line": 2,
@@ -469,7 +543,13 @@
             "n": 5
           },
           "output": [],
-          "explanation": "Return Yes immediately. The later return No is skipped."
+          "explanation": "Return 'Yes' to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from check() to this calling line with value 'Yes'. Continue evaluating this statement."
         },
         {
           "line": 4,
@@ -477,7 +557,7 @@
           "output": [
             "Yes"
           ],
-          "explanation": "Print Yes."
+          "explanation": "Print 'Yes'."
         }
       ]
     },
@@ -514,13 +594,13 @@
           "explanation": "Call total_cost(5, True) from this line."
         },
         {
-          "line": 9,
+          "line": 8,
           "variables": {
             "weight": 5,
             "rush": true
           },
           "output": [],
-          "explanation": "Enter total_cost(): bind weight = 5, rush = True. Execute this first line of the function body."
+          "explanation": "Enter total_cost(): bind weight = 5, rush = True. Parameters are ready; the function body runs next."
         },
         {
           "line": 9,
@@ -532,12 +612,12 @@
           "explanation": "Call base_rate(5) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "weight": 5
           },
           "output": [],
-          "explanation": "Enter base_rate(): bind weight = 5. Execute this first line of the function body."
+          "explanation": "Enter base_rate(): bind weight = 5. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -574,12 +654,12 @@
           "explanation": "Call rush_fee(True) from this line."
         },
         {
-          "line": 5,
+          "line": 4,
           "variables": {
             "rush": true
           },
           "output": [],
-          "explanation": "Enter rush_fee(): bind rush = True. Execute this first line of the function body."
+          "explanation": "Enter rush_fee(): bind rush = True. Parameters are ready; the function body runs next."
         },
         {
           "line": 5,
@@ -652,12 +732,12 @@
           "explanation": "Call total(4) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "n": 4
           },
           "output": [],
-          "explanation": "Enter total(): bind n = 4. Execute this first line of the function body."
+          "explanation": "Enter total(): bind n = 4. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -871,12 +951,12 @@
           "explanation": "Call use(2) from this line."
         },
         {
-          "line": 3,
+          "line": 2,
           "variables": {
             "n": 2
           },
           "output": [],
-          "explanation": "Enter use(): bind n = 2. Execute this first line of the function body."
+          "explanation": "Enter use(): bind n = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 3,
@@ -887,12 +967,12 @@
           "explanation": "Call show(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "n": 3
           },
           "output": [],
-          "explanation": "Enter show(): bind n = 3. Execute this first line of the function body."
+          "explanation": "Enter show(): bind n = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -982,13 +1062,13 @@
           "explanation": "Call adjust(50, True) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "cost": 50,
             "member": true
           },
           "output": [],
-          "explanation": "Enter adjust(): bind cost = 50, member = True. Execute this first line of the function body."
+          "explanation": "Enter adjust(): bind cost = 50, member = True. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1031,13 +1111,13 @@
           "explanation": "Call shipping(6) from this line."
         },
         {
-          "line": 5,
+          "line": 4,
           "variables": {
             "weight": 6,
             "price": 45
           },
           "output": [],
-          "explanation": "Enter shipping(): bind weight = 6. Execute this first line of the function body."
+          "explanation": "Enter shipping(): bind weight = 6. Parameters are ready; the function body runs next."
         },
         {
           "line": 5,
@@ -1104,12 +1184,12 @@
           "explanation": "Call score(3) from this line."
         },
         {
-          "line": 3,
+          "line": 2,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Enter score(): bind x = 3. Execute this first line of the function body."
+          "explanation": "Enter score(): bind x = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 3,
@@ -1120,12 +1200,12 @@
           "explanation": "Call bonus(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Enter bonus(): bind x = 3. Execute this first line of the function body."
+          "explanation": "Enter bonus(): bind x = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1160,12 +1240,12 @@
           "explanation": "Call bonus(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Enter bonus(): bind x = 3. Execute this first line of the function body."
+          "explanation": "Enter bonus(): bind x = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1234,13 +1314,13 @@
           "explanation": "Call message(730, 6) from this line."
         },
         {
-          "line": 7,
+          "line": 6,
           "variables": {
             "xp": 730,
             "level": 6
           },
           "output": [],
-          "explanation": "Enter message(): bind xp = 730, level = 6. Execute this first line of the function body."
+          "explanation": "Enter message(): bind xp = 730, level = 6. Parameters are ready; the function body runs next."
         },
         {
           "line": 7,
@@ -1252,12 +1332,12 @@
           "explanation": "Call xp_needed(6) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 6
           },
           "output": [],
-          "explanation": "Enter xp_needed(): bind level = 6. Execute this first line of the function body."
+          "explanation": "Enter xp_needed(): bind level = 6. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1365,13 +1445,13 @@
           "explanation": "Call levels_gained(650, 2) from this line."
         },
         {
-          "line": 3,
+          "line": 2,
           "variables": {
             "xp": 650,
             "level": 2
           },
           "output": [],
-          "explanation": "Enter levels_gained(): bind xp = 650, level = 2. Execute this first line of the function body."
+          "explanation": "Enter levels_gained(): bind xp = 650, level = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 3,
@@ -1394,12 +1474,12 @@
           "explanation": "Call needed(2) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 2
           },
           "output": [],
-          "explanation": "Enter needed(): bind level = 2. Execute this first line of the function body."
+          "explanation": "Enter needed(): bind level = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1440,12 +1520,12 @@
           "explanation": "Call needed(2) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 2
           },
           "output": [],
-          "explanation": "Enter needed(): bind level = 2. Execute this first line of the function body."
+          "explanation": "Enter needed(): bind level = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1506,12 +1586,12 @@
           "explanation": "Call needed(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 3
           },
           "output": [],
-          "explanation": "Enter needed(): bind level = 3. Execute this first line of the function body."
+          "explanation": "Enter needed(): bind level = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1552,12 +1632,12 @@
           "explanation": "Call needed(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 3
           },
           "output": [],
-          "explanation": "Enter needed(): bind level = 3. Execute this first line of the function body."
+          "explanation": "Enter needed(): bind level = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1618,12 +1698,12 @@
           "explanation": "Call needed(4) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "level": 4
           },
           "output": [],
-          "explanation": "Enter needed(): bind level = 4. Execute this first line of the function body."
+          "explanation": "Enter needed(): bind level = 4. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1712,7 +1792,7 @@
           "explanation": "Call checkout(2, 7, 5, True) from this line."
         },
         {
-          "line": 9,
+          "line": 8,
           "variables": {
             "a": 2,
             "b": 7,
@@ -1720,7 +1800,7 @@
             "member": true
           },
           "output": [],
-          "explanation": "Enter checkout(): bind a = 2, b = 7, c = 5, member = True. Execute this first line of the function body."
+          "explanation": "Enter checkout(): bind a = 2, b = 7, c = 5, member = True. Parameters are ready; the function body runs next."
         },
         {
           "line": 9,
@@ -1734,12 +1814,12 @@
           "explanation": "Call base(2) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "weight": 2
           },
           "output": [],
-          "explanation": "Enter base(): bind weight = 2. Execute this first line of the function body."
+          "explanation": "Enter base(): bind weight = 2. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1780,12 +1860,12 @@
           "explanation": "Call base(7) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "weight": 7
           },
           "output": [],
-          "explanation": "Enter base(): bind weight = 7. Execute this first line of the function body."
+          "explanation": "Enter base(): bind weight = 7. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1826,12 +1906,12 @@
           "explanation": "Call base(5) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "weight": 5
           },
           "output": [],
-          "explanation": "Enter base(): bind weight = 5. Execute this first line of the function body."
+          "explanation": "Enter base(): bind weight = 5. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -1885,13 +1965,13 @@
           "explanation": "Call discount(40, True) from this line."
         },
         {
-          "line": 5,
+          "line": 4,
           "variables": {
             "total": 40,
             "member": true
           },
           "output": [],
-          "explanation": "Enter discount(): bind total = 40, member = True. Execute this first line of the function body."
+          "explanation": "Enter discount(): bind total = 40, member = True. Parameters are ready; the function body runs next."
         },
         {
           "line": 5,
@@ -1972,12 +2052,12 @@
           "explanation": "Call pairs(4) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "n": 4
           },
           "output": [],
-          "explanation": "Enter pairs(): bind n = 4. Execute this first line of the function body."
+          "explanation": "Enter pairs(): bind n = 4. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
@@ -2348,12 +2428,12 @@
           "explanation": "Call process(3) from this line."
         },
         {
-          "line": 4,
+          "line": 3,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Enter process(): bind x = 3. Execute this first line of the function body."
+          "explanation": "Enter process(): bind x = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 4,
@@ -2364,12 +2444,12 @@
           "explanation": "Call bump(3) from this line."
         },
         {
-          "line": 1,
+          "line": 0,
           "variables": {
             "x": 3
           },
           "output": [],
-          "explanation": "Enter bump(): bind x = 3. Execute this first line of the function body."
+          "explanation": "Enter bump(): bind x = 3. Parameters are ready; the function body runs next."
         },
         {
           "line": 1,
