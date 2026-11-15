@@ -9,6 +9,13 @@ const allTraces = Object.assign({}, ...[1,2,3,4].map(week =>
 ));
 const generatorCode = readFileSync(new URL('scripts/build-trace-runtime.js', root), 'utf8');
 const buildTrace = runInNewContext(generatorCode + '\nthis.buildTrace = buildTrace; this.buildTrace', {});
+const curatedFloatOutputs = new Map([
+  ['W4-H-04', '55.0'],
+  ['W4-X-03', '36.0']
+]);
+// The lightweight JS trace builder represents Python floats as JS Numbers.
+// JS formats 55.0 as '55', but Python correctly prints '55.0'.
+// The final saved trace steps explicitly preserve Python's display.
 let verified = 0;
 
 for (const question of questions.filter(q => ['hard', 'extra'].includes(q.difficulty))) {
@@ -18,10 +25,17 @@ for (const question of questions.filter(q => ['hard', 'extra'].includes(q.diffic
   for (let index = 0; index < expected.length; index++) {
     const step = saved[index], generated = expected[index];
     assert.equal(step.line, generated.line, `${question.id} step ${index}: wrong arrow line`);
-    assert.equal(step.explanation, generated.explanation, `${question.id} step ${index}: explanation does not match action`);
+    const curatedFinal = curatedFloatOutputs.has(question.id) && index === expected.length - 1;
+    if (curatedFinal) {
+      const expectedOutput = curatedFloatOutputs.get(question.id);
+      assert.deepEqual(step.output, [expectedOutput], `${question.id}: incorrect Python float output`);
+      assert(step.explanation.includes(expectedOutput), `${question.id}: float explanation must match printed value`);
+    } else {
+      assert.equal(step.explanation, generated.explanation, `${question.id} step ${index}: explanation does not match action`);
+    }
     assert.deepEqual(JSON.parse(JSON.stringify(step.variables)), JSON.parse(JSON.stringify(generated.variables)),
       `${question.id} step ${index}: wrong variables`);
-    if (!['W4-H-04','W4-X-03'].includes(question.id) || index !== expected.length - 1) {
+    if (!curatedFinal) {
       assert.deepEqual(step.output, JSON.parse(JSON.stringify(generated.output)), `${question.id} step ${index}: wrong output`);
     }
   }
