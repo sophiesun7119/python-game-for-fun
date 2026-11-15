@@ -432,6 +432,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with total = 49, fee = 4.99; the formatted result is \"53.99\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -587,7 +588,7 @@
             "x": 4
           },
           "output": [],
-          "explanation": "Calculate 7 + 3 = 10.",
+          "explanation": "Calculate 4 + 3 = 7.",
           "phase": "calculate"
         },
         {
@@ -612,7 +613,7 @@
             "x": 7
           },
           "output": [],
-          "explanation": "Calculate 14 * 2 = 28.",
+          "explanation": "Calculate 7 * 2 = 14.",
           "phase": "calculate"
         },
         {
@@ -806,7 +807,7 @@
             "weight": 8
           },
           "output": [],
-          "explanation": "Calculate 41.4 * 0.9 = 37.26.",
+          "explanation": "Calculate 46 * 0.9 = 41.4.",
           "phase": "calculate"
         },
         {
@@ -870,6 +871,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with subtotal = 41.4, shipping = 9.99; the formatted result is \"51.39\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -929,7 +931,7 @@
             "level": 2
           },
           "output": [],
-          "explanation": "Calculate 6 - 4 = 2.",
+          "explanation": "Calculate 10 - 4 = 6.",
           "phase": "calculate"
         },
         {
@@ -957,7 +959,7 @@
             "level": 2
           },
           "output": [],
-          "explanation": "Calculate 4 + 2 = 6.",
+          "explanation": "Calculate 2 + 2 = 4.",
           "phase": "calculate"
         },
         {
@@ -986,6 +988,7 @@
           },
           "output": [],
           "explanation": "Calculate 4 * 6 = 24.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1079,7 +1082,7 @@
             "kda": 7
           },
           "output": [],
-          "explanation": "Calculate 4.2 * 0.6 = 2.52.",
+          "explanation": "Calculate 7 * 0.6 = 4.2.",
           "phase": "calculate"
         },
         {
@@ -1185,7 +1188,7 @@
             "b": 2
           },
           "output": [],
-          "explanation": "Calculate 5 - 3 = 2.",
+          "explanation": "Calculate 5 - 2 = 3.",
           "phase": "calculate"
         },
         {
@@ -1214,6 +1217,7 @@
           },
           "output": [],
           "explanation": "Calculate 5 + 3 = 8.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1325,7 +1329,7 @@
             "fee": 9.99
           },
           "output": [],
-          "explanation": "Calculate 59.980000000000004 + 9.99 = 69.97.",
+          "explanation": "Calculate 49.99 + 9.99 = 59.980000000000004.",
           "phase": "calculate"
         },
         {
