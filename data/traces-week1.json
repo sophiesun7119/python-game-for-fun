@@ -34,6 +34,7 @@
           "variables": {},
           "output": [],
           "explanation": "Calculate 7 + 3 = 10.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -97,6 +98,7 @@
           "variables": {},
           "output": [],
           "explanation": "Evaluate 'ha' * 3; the result is \"hahaha\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -141,6 +143,7 @@
           "variables": {},
           "output": [],
           "explanation": "Evaluate 17 // 5; the result is \"3\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -167,6 +170,7 @@
           "variables": {},
           "output": [],
           "explanation": "Calculate 17 % 5 = 2.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -203,6 +207,7 @@
           },
           "output": [],
           "explanation": "Evaluate age + '3' using age = \"12\"; the result is \"123\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -251,6 +256,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with name = \"Mia\", points = 8; the formatted result is \"Mia: 10\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -290,6 +296,7 @@
           },
           "output": [],
           "explanation": "Calculate 7 * 2 = 14.",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -397,6 +404,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with subtotal = 11.74, tax = 0.9392; the formatted result is \"$12.68\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -497,6 +505,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with people = 4, cost = 30.390625; the formatted result is \"7.60\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -557,7 +566,7 @@
             "b": 7
           },
           "output": [],
-          "explanation": "Calculate 7 - 3 = 4.",
+          "explanation": "Calculate 7 - 4 = 3.",
           "phase": "calculate"
         },
         {
@@ -576,7 +585,7 @@
             "b": 7
           },
           "output": [],
-          "explanation": "Calculate 3 * 21 = 63.",
+          "explanation": "Calculate 3 * 7 = 21.",
           "phase": "calculate"
         },
         {
@@ -725,6 +734,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with y = 4, z = 7; the formatted result is \"0010\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -774,7 +784,7 @@
             "b": 3
           },
           "output": [],
-          "explanation": "Calculate 5 + 3 = 8.",
+          "explanation": "Calculate 2 + 3 = 5.",
           "phase": "calculate"
         },
         {
@@ -793,7 +803,7 @@
             "b": 3
           },
           "output": [],
-          "explanation": "Calculate 5 - 2 = 3.",
+          "explanation": "Calculate 5 - 3 = 2.",
           "phase": "calculate"
         },
         {
@@ -812,7 +822,7 @@
             "b": 2
           },
           "output": [],
-          "explanation": "Calculate 3 - 2 = 1.",
+          "explanation": "Calculate 5 - 2 = 3.",
           "phase": "calculate"
         },
         {
@@ -944,6 +954,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with total = 11.0592, people = 3; the formatted result is \"3.69|11.06\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
@@ -1005,7 +1016,7 @@
             "n": 12
           },
           "output": [],
-          "explanation": "Evaluate s + str(n) using s = \"0412\", n = 12; the result is \"0412\".",
+          "explanation": "Evaluate s + str(n) using s = \"04\", n = 12; the result is \"0412\".",
           "phase": "calculate"
         },
         {
@@ -1024,7 +1035,7 @@
             "n": 12
           },
           "output": [],
-          "explanation": "Evaluate n + len(s) using s = \"0412\", n = 16; the result is 16.",
+          "explanation": "Evaluate n + len(s) using s = \"0412\", n = 12; the result is 16.",
           "phase": "calculate"
         },
         {
@@ -1103,7 +1114,7 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Evaluate a // b using a = 5, b = 5; the result is 5.",
+          "explanation": "Evaluate a // b using a = 27, b = 5; the result is 5.",
           "phase": "calculate"
         },
         {
@@ -1124,7 +1135,7 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Calculate 5 + 2 * 15 = 35.",
+          "explanation": "Calculate 5 + 2 * 5 = 15.",
           "phase": "calculate"
         },
         {
@@ -1145,7 +1156,7 @@
             "c": 2
           },
           "output": [],
-          "explanation": "Evaluate b // (a - c) using a = 5, b = 15, c = 5; the result is 5.",
+          "explanation": "Evaluate b // (a - c) using a = 5, b = 15, c = 2; the result is 5.",
           "phase": "calculate"
         },
         {
@@ -1265,6 +1276,7 @@
           },
           "output": [],
           "explanation": "Evaluate the f-string with name = \"Ana\", subtotal = 22.5, tax = 1.8; the formatted result is \"Ana  |$024.30\".",
+          "event": "print",
           "phase": "calculate"
         },
         {
