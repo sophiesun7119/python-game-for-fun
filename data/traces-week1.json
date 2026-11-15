@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "description": "Guided traces for Week 1 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed.",
+  "description": "Guided traces for Week 1 including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
   "traces": {
     "W1-E-01": {
       "steps": [
@@ -16,7 +16,8 @@
           "output": [
             "Hello, Python!"
           ],
-          "explanation": "print() writes the text without its quote marks."
+          "explanation": "Call print() to display \"Hello, Python!\".",
+          "event": "print"
         }
       ]
     },
@@ -31,10 +32,18 @@
         {
           "line": 0,
           "variables": {},
+          "output": [],
+          "explanation": "Calculate 7 + 3 = 10.",
+          "phase": "calculate"
+        },
+        {
+          "line": 0,
+          "variables": {},
           "output": [
             "10"
           ],
-          "explanation": "Python adds the integers 7 + 3 to make 10, then prints it."
+          "explanation": "Call print() to display \"10\".",
+          "event": "print"
         }
       ]
     },
@@ -70,7 +79,8 @@
           "output": [
             "15"
           ],
-          "explanation": "Print the updated value of score: 15."
+          "explanation": "Call print() to display \"15\".",
+          "event": "print"
         }
       ]
     },
@@ -85,10 +95,18 @@
         {
           "line": 0,
           "variables": {},
+          "output": [],
+          "explanation": "Evaluate 'ha' * 3; the result is \"hahaha\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 0,
+          "variables": {},
           "output": [
             "hahaha"
           ],
-          "explanation": "'ha' * 3 makes three copies together, then print() displays them."
+          "explanation": "Call print() to display \"hahaha\".",
+          "event": "print"
         }
       ]
     },
@@ -121,10 +139,18 @@
         {
           "line": 0,
           "variables": {},
+          "output": [],
+          "explanation": "Evaluate 17 // 5; the result is \"3\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 0,
+          "variables": {},
           "output": [
             "3"
           ],
-          "explanation": "17 // 5 is floor division: three complete groups of five."
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
         }
       ]
     },
@@ -139,10 +165,18 @@
         {
           "line": 0,
           "variables": {},
+          "output": [],
+          "explanation": "Calculate 17 % 5 = 2.",
+          "phase": "calculate"
+        },
+        {
+          "line": 0,
+          "variables": {},
           "output": [
             "2"
           ],
-          "explanation": "17 % 5 gives the remainder after dividing 17 by 5: 2."
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
         }
       ]
     },
@@ -167,10 +201,20 @@
           "variables": {
             "age": "12"
           },
+          "output": [],
+          "explanation": "Evaluate age + '3' using age = \"12\"; the result is \"123\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "age": "12"
+          },
           "output": [
             "123"
           ],
-          "explanation": "Both values are strings. '12' + '3' joins them into '123'."
+          "explanation": "Call print() to display \"123\".",
+          "event": "print"
         }
       ]
     },
@@ -205,10 +249,21 @@
             "name": "Mia",
             "points": 8
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with name = \"Mia\", points = 8; the formatted result is \"Mia: 10\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "Mia",
+            "points": 8
+          },
           "output": [
             "Mia: 10"
           ],
-          "explanation": "Inside the f-string, points + 2 becomes 10. The output is Mia: 10."
+          "explanation": "Call print() to display \"Mia: 10\".",
+          "event": "print"
         }
       ]
     },
@@ -233,10 +288,20 @@
           "variables": {
             "n": 7
           },
+          "output": [],
+          "explanation": "Calculate 7 * 2 = 14.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "n": 7
+          },
           "output": [
             "14"
           ],
-          "explanation": "n * 2 is 7 * 2 = 14, so print() outputs 14."
+          "explanation": "Call print() to display \"14\".",
+          "event": "print"
         }
       ]
     },
@@ -280,11 +345,34 @@
           "variables": {
             "apple": 1.5,
             "sandwich": 6.99,
+            "juice": 3.25
+          },
+          "output": [],
+          "explanation": "Calculate 1.5 + 6.99 + 3.25 = 11.74.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
             "juice": 3.25,
             "subtotal": 11.74
           },
           "output": [],
           "explanation": "Evaluate apple + sandwich + juice and set subtotal to 11.74."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74
+          },
+          "output": [],
+          "explanation": "Calculate 11.74 * 0.08 = 0.9392.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -307,10 +395,24 @@
             "subtotal": 11.74,
             "tax": 0.9392
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with subtotal = 11.74, tax = 0.9392; the formatted result is \"$12.68\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "apple": 1.5,
+            "sandwich": 6.99,
+            "juice": 3.25,
+            "subtotal": 11.74,
+            "tax": 0.9392
+          },
           "output": [
             "$12.68"
           ],
-          "explanation": "Print '$12.68'."
+          "explanation": "Call print() to display \"$12.68\".",
+          "event": "print"
         }
       ]
     },
@@ -366,6 +468,18 @@
             "distance": 250,
             "mpg": 32,
             "price": 3.89,
+            "people": 4
+          },
+          "output": [],
+          "explanation": "Calculate 250 / 32 * 3.89 = 30.390625.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
             "people": 4,
             "cost": 30.390625
           },
@@ -381,10 +495,24 @@
             "people": 4,
             "cost": 30.390625
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with people = 4, cost = 30.390625; the formatted result is \"7.60\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "distance": 250,
+            "mpg": 32,
+            "price": 3.89,
+            "people": 4,
+            "cost": 30.390625
+          },
           "output": [
             "7.60"
           ],
-          "explanation": "Print '7.60'."
+          "explanation": "Call print() to display \"7.60\".",
+          "event": "print"
         }
       ]
     },
@@ -407,6 +535,15 @@
         {
           "line": 1,
           "variables": {
+            "a": 4
+          },
+          "output": [],
+          "explanation": "Calculate 4 + 3 = 7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
             "a": 4,
             "b": 7
           },
@@ -416,11 +553,31 @@
         {
           "line": 2,
           "variables": {
+            "a": 4,
+            "b": 7
+          },
+          "output": [],
+          "explanation": "Calculate 7 - 3 = 4.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
             "a": 3,
             "b": 7
           },
           "output": [],
           "explanation": "Evaluate b - a and set a to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 3,
+            "b": 7
+          },
+          "output": [],
+          "explanation": "Calculate 3 * 21 = 63.",
+          "phase": "calculate"
         },
         {
           "line": 3,
@@ -440,7 +597,8 @@
           "output": [
             "3 21"
           ],
-          "explanation": "Print 3, 21."
+          "explanation": "Call print() to display \"3 21\".",
+          "event": "print"
         }
       ]
     },
@@ -463,11 +621,30 @@
         {
           "line": 1,
           "variables": {
+            "a": "3"
+          },
+          "output": [],
+          "explanation": "Evaluate int(a) + 2 using a = \"3\"; the result is 5.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
             "a": "3",
             "b": 5
           },
           "output": [],
           "explanation": "Evaluate int(a) + 2 and set b to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": "3",
+            "b": 5
+          },
+          "output": [],
+          "explanation": "Evaluate a * b using a = \"3\", b = 5; the result is \"33333\".",
+          "phase": "calculate"
         },
         {
           "line": 2,
@@ -489,7 +666,8 @@
           "output": [
             "33333-5"
           ],
-          "explanation": "Print '33333-5'."
+          "explanation": "Call print() to display \"33333-5\".",
+          "event": "print"
         }
       ]
     },
@@ -522,6 +700,16 @@
           "line": 2,
           "variables": {
             "x": 19,
+            "y": 4
+          },
+          "output": [],
+          "explanation": "Evaluate x // y + x % y using x = 19, y = 4; the result is 7.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "x": 19,
             "y": 4,
             "z": 7
           },
@@ -535,10 +723,22 @@
             "y": 4,
             "z": 7
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with y = 4, z = 7; the formatted result is \"0010\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "x": 19,
+            "y": 4,
+            "z": 7
+          },
           "output": [
             "0010"
           ],
-          "explanation": "Print '0010'."
+          "explanation": "Call print() to display \"0010\".",
+          "event": "print"
         }
       ]
     },
@@ -570,6 +770,16 @@
         {
           "line": 2,
           "variables": {
+            "a": 2,
+            "b": 3
+          },
+          "output": [],
+          "explanation": "Calculate 5 + 3 = 8.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
             "a": 5,
             "b": 3
           },
@@ -580,10 +790,30 @@
           "line": 3,
           "variables": {
             "a": 5,
+            "b": 3
+          },
+          "output": [],
+          "explanation": "Calculate 5 - 2 = 3.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 5,
             "b": 2
           },
           "output": [],
           "explanation": "Evaluate a - b and set b to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 5,
+            "b": 2
+          },
+          "output": [],
+          "explanation": "Calculate 3 - 2 = 1.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -603,7 +833,8 @@
           "output": [
             "3 2"
           ],
-          "explanation": "Print 3, 2."
+          "explanation": "Call print() to display \"3 2\".",
+          "event": "print"
         }
       ]
     },
@@ -647,11 +878,34 @@
           "variables": {
             "item1": 6.99,
             "item2": 3.25,
+            "tax_rate": 0.08
+          },
+          "output": [],
+          "explanation": "Calculate 6.99 + 3.25 = 10.24.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
             "tax_rate": 0.08,
             "subtotal": 10.24
           },
           "output": [],
           "explanation": "Evaluate item1 + item2 and set subtotal to 10.24."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24
+          },
+          "output": [],
+          "explanation": "Calculate 10.24 * (1 + 0.08) = 11.0592.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -688,10 +942,25 @@
             "total": 11.0592,
             "people": 3
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with total = 11.0592, people = 3; the formatted result is \"3.69|11.06\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 6,
+          "variables": {
+            "item1": 6.99,
+            "item2": 3.25,
+            "tax_rate": 0.08,
+            "subtotal": 10.24,
+            "total": 11.0592,
+            "people": 3
+          },
           "output": [
             "3.69|11.06"
           ],
-          "explanation": "Print '3.69|11.06'."
+          "explanation": "Call print() to display \"3.69|11.06\".",
+          "event": "print"
         }
       ]
     },
@@ -714,6 +983,15 @@
         {
           "line": 1,
           "variables": {
+            "s": "04"
+          },
+          "output": [],
+          "explanation": "Evaluate int(s) * 3 using s = \"04\"; the result is 12.",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
             "s": "04",
             "n": 12
           },
@@ -723,11 +1001,31 @@
         {
           "line": 2,
           "variables": {
+            "s": "04",
+            "n": 12
+          },
+          "output": [],
+          "explanation": "Evaluate s + str(n) using s = \"0412\", n = 12; the result is \"0412\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
             "s": "0412",
             "n": 12
           },
           "output": [],
           "explanation": "Evaluate s + str(n) and set s to '0412'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "0412",
+            "n": 12
+          },
+          "output": [],
+          "explanation": "Evaluate n + len(s) using s = \"0412\", n = 16; the result is 16.",
+          "phase": "calculate"
         },
         {
           "line": 3,
@@ -747,7 +1045,8 @@
           "output": [
             "0412 16"
           ],
-          "explanation": "Print '0412', 16."
+          "explanation": "Call print() to display \"0412 16\".",
+          "event": "print"
         }
       ]
     },
@@ -780,11 +1079,32 @@
           "line": 2,
           "variables": {
             "a": 27,
+            "b": 5
+          },
+          "output": [],
+          "explanation": "Calculate 27 % 5 = 2.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": 27,
             "b": 5,
             "c": 2
           },
           "output": [],
           "explanation": "Evaluate a % b and set c to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": 27,
+            "b": 5,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Evaluate a // b using a = 5, b = 5; the result is 5.",
+          "phase": "calculate"
         },
         {
           "line": 3,
@@ -800,11 +1120,33 @@
           "line": 4,
           "variables": {
             "a": 5,
+            "b": 5,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Calculate 5 + 2 * 15 = 35.",
+          "phase": "calculate"
+        },
+        {
+          "line": 4,
+          "variables": {
+            "a": 5,
             "b": 15,
             "c": 2
           },
           "output": [],
           "explanation": "Evaluate a + c * b and set b to 15."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "a": 5,
+            "b": 15,
+            "c": 2
+          },
+          "output": [],
+          "explanation": "Evaluate b // (a - c) using a = 5, b = 15, c = 5; the result is 5.",
+          "phase": "calculate"
         },
         {
           "line": 5,
@@ -826,7 +1168,8 @@
           "output": [
             "5 15 5"
           ],
-          "explanation": "Print 5, 15, 5."
+          "explanation": "Call print() to display \"5 15 5\".",
+          "event": "print"
         }
       ]
     },
@@ -870,11 +1213,34 @@
           "variables": {
             "name": "Ana",
             "price": 7.5,
+            "qty": 3
+          },
+          "output": [],
+          "explanation": "Calculate 7.5 * 3 = 22.5.",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
             "qty": 3,
             "subtotal": 22.5
           },
           "output": [],
           "explanation": "Evaluate price * qty and set subtotal to 22.5."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5
+          },
+          "output": [],
+          "explanation": "Calculate 22.5 * 0.08 = 1.8.",
+          "phase": "calculate"
         },
         {
           "line": 4,
@@ -897,10 +1263,24 @@
             "subtotal": 22.5,
             "tax": 1.8
           },
+          "output": [],
+          "explanation": "Evaluate the f-string with name = \"Ana\", subtotal = 22.5, tax = 1.8; the formatted result is \"Ana  |$024.30\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 5,
+          "variables": {
+            "name": "Ana",
+            "price": 7.5,
+            "qty": 3,
+            "subtotal": 22.5,
+            "tax": 1.8
+          },
           "output": [
             "Ana  |$024.30"
           ],
-          "explanation": "Print 'Ana  |$024.30'."
+          "explanation": "Call print() to display \"Ana  |$024.30\".",
+          "event": "print"
         }
       ]
     }
