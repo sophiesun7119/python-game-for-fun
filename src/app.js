@@ -133,6 +133,20 @@ function finishQuest(){
 
 function resetTrace(){state.traceOpen=false;state.traceIndex=0;}
 function valueDisplay(value){return typeof value==='string'?JSON.stringify(value):String(value);}
+function traceCondition(step,codeLines){
+ // Only show decisions when a trace explicitly reports True/False.
+ // This avoids treating assignments or function calls as condition checks.
+ if(!Number.isInteger(step.line)||step.line<0)return null;
+ const source=(codeLines[step.line]||'').trim();
+ if(!/^(if|elif|while)\b/.test(source))return null;
+ const match=step.explanation.match(/\b(?:True|False)\b(?=[.:,;\s]|$)/);
+ if(!match)return null;
+ const passed=match[0]==='True';
+ const loop=source.startsWith('while ');
+ const expression=source.replace(/^(?:if|elif|while)\s+/,'').replace(/:\s*$/,'');
+ return {passed,expression,action:loop?(passed?'Continue Loop':'Exit Loop'):(passed?'Enter Branch':'Skip Branch')};
+}
+
 function tracePanel(q){
  const trace=allTraces[q.id];
  const simpleCode=()=>`<pre class="code"><code>${escapeHTML(q.code)}</code></pre>`;
@@ -143,6 +157,7 @@ function tracePanel(q){
  const step=steps[index];const previous=steps[Math.max(0,index-1)];
  const code=q.code.split('\n');
  const variables=Object.entries(step.variables||{});
+ const condition=traceCondition(step,code);
  const codeLines=code.map((line,i)=>`<div class="trace-line ${step.line===i?'trace-line-active':''}"><span class="trace-arrow" aria-hidden="true">${step.line===i?'➜':''}</span><span class="trace-lineno">${i+1}</span><span class="trace-source">${escapeHTML(line)}</span></div>`).join('');
  const variableRows=variables.map(([name,value])=>{
   const isNew=!(name in (previous.variables||{}));
@@ -153,7 +168,9 @@ function tracePanel(q){
   <div class="trace-titlebar"><strong>👀 Watch How the Code Works</strong><button class="btn trace-close" data-action="trace-close">✕ Close</button></div>
   <div class="trace-layout">
    <div class="trace-code-panel"><div class="trace-panel-title">Python Code</div><div class="trace-code" aria-label="Current executing line: ${step.line<0?'not started':step.line+1}">${codeLines}</div></div>
-   <div class="trace-state-panel"><div class="trace-panel-title">Variables</div><div class="trace-vars">${variableRows||'<p class="trace-empty">No variables yet</p>'}</div><div class="trace-panel-title trace-output-title">Output</div>
+   <div class="trace-state-panel"><div class="trace-panel-title">Variables</div><div class="trace-vars">${variableRows||'<p class="trace-empty">No variables yet</p>'}</div>
+    ${condition?`<div class="trace-condition ${condition.passed?'trace-condition-pass':'trace-condition-fail'}" role="status"><div class="trace-condition-label">Condition Check</div><div class="trace-condition-result"><span class="trace-condition-icon" aria-hidden="true">${condition.passed?'✓':'✕'}</span><span><strong>${condition.passed?'True':'False'}</strong><span class="trace-condition-action">${condition.action}</span></span></div><code class="trace-condition-expression">${escapeHTML(condition.expression)}</code></div>`:''}
+    <div class="trace-panel-title trace-output-title">Output</div>
     <div class="trace-output" aria-label="Program output">${(step.output||[]).length?`<pre>${escapeHTML(step.output.join('\n'))}</pre>`:'<span class="trace-empty">Nothing printed yet</span>'}</div>
     ${step.error?`<div class="trace-error"><strong>Program stopped with an error</strong><div>${escapeHTML(step.error)}</div></div>`:''}
    </div>
