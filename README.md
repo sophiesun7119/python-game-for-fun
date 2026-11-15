@@ -41,6 +41,12 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - The larger right-hand Condition Check is retained as reinforcement; the inline marker is compact and horizontally scrollable with longer code.
 - Check behavior with `node tests/validate-inline-trace.mjs` in addition to the existing decision/control-flow tests.
 
+## Function entry and stable explanation layout
+
+- A call highlights its **caller line**, then the arrow moves to the target **`def` line**, where the parameter bindings appear (for example, `xp = 730`, `level = 6`). **Only the following step** enters the first executable line inside that function.
+- This avoids conflating parameter binding and execution of the first body statement. Nested function calls follow the same sequence.
+- The **Explanation:** area reserves space for **three lines**, so short descriptions do not move the navigation buttons up and down. Longer explanations can naturally expand rather than being clipped.
+
 ## Inline Trace — one full-width code panel (v0.6.3)
 
 - The Trace view now uses **one full-width dark code area**, with no separate Variables or Output sidebar.
@@ -53,8 +59,8 @@ On first opening the page, students may enter a nickname; submitting an empty na
 
 ## Walkthrough correctness and condition feedback (v0.6.1)
 
-- The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` highlights that print line, then line 8 `needed = xp_needed(level)` inside `message()`, then the condition lines inside `xp_needed()`. It returns to line 8 before setting `needed = 900`.
-- The Variables panel now shows a small **Condition Check** verdict for conditional statements: green **✓ True / Enter Branch**, red **✕ False / Skip Branch**. `while` shows Continue Loop / Exit Loop; `for` shows Next Iteration / Loop Finished.
+- The arrow follows the **actual call site** before entering a function. For example, `print(message(730, 6))` first highlights the call on line 12, then **`def message(xp, level):` on line 7** to bind `xp = 730` and `level = 6`. Only the next step enters line 8, where `xp_needed(6)` is called; **`def xp_needed(level):` on line 1** first displays `level = 6`, then its body starts at line 2. The function later returns to line 8 before `needed = 900` is assigned.
+- The current code line uses a small **Condition Check** verdict (there is no separate Variables panel) for conditional statements: green **✓ True / Enter Branch**, red **✕ False / Skip Branch**. `while` shows Continue Loop / Exit Loop; `for` shows Next Iteration / Loop Finished.
 - Compound conditions use their **final Boolean result**, not a single intermediate comparison. The code arrow and condition badge always refer to the same source line and step.
 - These optional guided explanations do not execute student-supplied Python and do not modify XP.
 - Tests: `node tests/validate-trace-control-flow.mjs`, `node tests/validate-trace-decisions.mjs` and `node tests/validate-traces.mjs`.
