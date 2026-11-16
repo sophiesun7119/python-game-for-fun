@@ -91,7 +91,7 @@ Only the **latest completed five-card attempt** per difficulty is retained for r
 
 Progress is in the browser's **localStorage**, *not* in your project directory or Git repository. The current player name for the browser tab/session is remembered with **sessionStorage**.
 
-**For the teacher (published site only):** when students play on the GitHub Pages site, the game also sends a copy of each quest snapshot (player name, week, difficulty, solved count, XP, per-card status) to the teacher's Supabase project. Open the Supabase dashboard and look at the **progress_latest** view to see each student's latest state per quest. Students cannot see each other's data — the connection is write-only for them — and playing locally never sends anything.
+**For the teacher (published site only):** when students play on the GitHub Pages site, the game also sends a copy of each quest snapshot (player name, week, difficulty, solved count, XP, per-card status) to the teacher's Supabase project. Open the **teacher dashboard** at `teacher.html` on the same site (e.g. https://sophiesun7119.github.io/python-game-for-fun/teacher.html) to see every student's latest state per quest — it refreshes itself every 5 seconds while open. The dashboard is public by the teacher's choice: it shows only self-chosen nicknames and game progress, no real names. The same data is in the Supabase **progress_latest** view. Playing locally never sends anything.
 
 - A normal `git pull` updates code but **does not overwrite browser progress**.
 - Using another browser, another device, or another origin (e.g., changing `localhost:8000` to `localhost:3000`) does not share progress.

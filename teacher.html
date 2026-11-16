@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Quest · 老师看板</title>
+<style>
+  :root { --ink:#1c2430; --muted:#66707e; --line:#e3e8ef; --bg:#f6f8fb; --card:#fff;
+          --green:#1f9d55; --amber:#d97706; --violet:#7c5cd6; --grey:#9aa5b1; --accent:#2563eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+         background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(120deg,#1d4ed8,#7c5cd6); color:#fff; padding:18px 20px 14px; }
+  header h1 { margin:0; font-size:22px; }
+  header .sub { opacity:.9; font-size:13px; margin-top:4px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:10px; }
+  .bar .status { font-size:13px; background:rgba(255,255,255,.16); padding:4px 10px; border-radius:999px; }
+  .bar button { border:0; background:#fff; color:#1d4ed8; font-weight:600; padding:6px 14px;
+                border-radius:999px; cursor:pointer; font-size:13px; }
+  main { max-width:980px; margin:0 auto; padding:16px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:16px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .stat .num { font-size:24px; font-weight:700; }
+  .stat .lbl { font-size:12px; color:var(--muted); margin-top:2px; }
+  .student { background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:14px; overflow:hidden; }
+  .student > .head { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+                     padding:12px 16px; border-bottom:1px solid var(--line); background:#fbfcfe; }
+  .student .name { font-size:18px; font-weight:700; }
+  .student .meta { font-size:13px; color:var(--muted); }
+  .student .meta b { color:var(--ink); }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  th { font-size:12px; color:var(--muted); font-weight:600; }
+  tr:last-child td { border-bottom:0; }
+  .bar-wrap { background:#edf1f6; border-radius:999px; height:8px; width:110px; display:inline-block; vertical-align:middle; }
+  .bar-fill { background:var(--green); height:8px; border-radius:999px; }
+  .chips { display:flex; flex-wrap:wrap; gap:4px; }
+  .chip { font-size:11px; padding:2px 7px; border-radius:999px; border:1px solid var(--line); white-space:nowrap; }
+  .chip.solved  { background:#e7f7ee; border-color:#bfe8cf; }
+  .chip.skipped { background:#fdf3e3; border-color:#f3ddba; }
+  .chip.revealed{ background:#f0eafd; border-color:#ddd0f7; }
+  .chip.pending { background:#f2f4f7; color:var(--grey); }
+  .done { color:var(--green); font-weight:600; }
+  .empty, .error { background:var(--card); border:1px solid var(--line); border-radius:12px;
+                   padding:22px; text-align:center; color:var(--muted); }
+  .error { color:#b42318; border-color:#f3c2bd; }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:8px 16px 24px; }
+  @media (max-width:640px){ .bar-wrap{width:70px} th.hide-s, td.hide-s{display:none} }
+</style>
+</head>
+<body>
+<header>
+  <h1>🐍 Python Quest · 老师看板</h1>
+  <div class="sub">学生进度总览（数据来自 Supabase · progress_latest，每关卡显示最近一次成绩）</div>
+  <div class="bar">
+    <span class="status" id="status">正在加载…</span>
+    <button id="refresh" type="button">↻ 立即刷新</button>
+  </div>
+</header>
+<main>
+  <div class="stats" id="stats"></div>
+  <div id="content"><div class="empty">正在加载学生数据…</div></div>
+</main>
+<footer>页面打开时每 5 秒自动刷新一次；关掉或切到后台就停止。昵称是学生自选的游戏名，不含真实姓名。</footer>
+
+<script>
+const SUPABASE_URL = 'https://delpcanykrobigufyomd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbHBjYW55a3JvYmlndWZ5b21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3OTc4ODQsImV4cCI6MjExMDM3Mzg4NH0.d6wZSQH0LZ8Z85FPKrtRumEmh5C0pgQSI8S8ET7znF4';
+const WEEK_TOPICS = {1:'Output & Variables',2:'Logic & Decisions',3:'Loop Master',4:'Function Builder',
+                     6:'Lists',7:'Strings',8:'Sets',9:'Dictionaries'};
+const DIFF_LABELS = {easy:'Easy',medium:'Medium',hard:'Hard',extra:'Extra Rock'};
+const STATUS_ICON = {solved:'✅',skipped:'⏭️',revealed:'👀',pending:'○'};
+const REFRESH_MS = 5000;
+
+const $ = s => document.querySelector(s);
+let loading = false;
+
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function relTime(iso){
+  const t = new Date(iso).getTime(); if (isNaN(t)) return '';
+  const s = Math.max(0, (Date.now() - t) / 1000);
+  if (s < 60) return '刚刚';
+  if (s < 3600) return Math.floor(s / 60) + ' 分钟前';
+  if (s < 86400) return Math.floor(s / 3600) + ' 小时前';
+  return Math.floor(s / 86400) + ' 天前';
+}
+function absTime(iso){ const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString(); }
+
+async function load(){
+  if (loading) return; loading = true;
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/progress_latest?select=nickname,week,difficulty,solved,xp,cards,created_at&order=created_at.desc',
+      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY } });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    render(await res.json());
+    $('#status').textContent = '上次更新 ' + new Date().toLocaleTimeString() + ' · 每 5 秒自动刷新';
+  } catch (e) {
+    $('#status').textContent = '刷新失败（' + e.message + '），稍后会自动重试';
+  } finally { loading = false; }
+}
+
+function render(rows){
+  const students = new Map();
+  for (const r of rows) {
+    if (!students.has(r.nickname)) students.set(r.nickname, []);
+    students.get(r.nickname).push(r);
+  }
+  const totalSolved = rows.reduce((n, r) => n + (r.solved || 0), 0);
+  const totalXP = rows.reduce((n, r) => n + (r.xp || 0), 0);
+  const finished = rows.filter(r => Array.isArray(r.cards) && r.cards.length && r.cards.every(c => c.status !== 'pending')).length;
+  const last = rows.length ? rows.map(r => r.created_at).sort().slice(-1)[0] : null;
+  $('#stats').innerHTML =
+    stat(students.size, '学生人数') + stat(rows.length, '关卡记录') +
+    stat(finished, '已完成关卡') + stat(totalSolved, '答对卡片总数') +
+    stat(totalXP, '总 XP') + stat(last ? relTime(last) : '—', '最近活跃');
+
+  if (!rows.length) {
+    $('#content').innerHTML = '<div class="empty">还没有学生数据。<br>学生在游戏里答对第一张卡后，这里就会出现。</div>';
+    return;
+  }
+  const sorted = [...students.entries()].map(([name, qs]) => ({
+      name, qs,
+      xp: qs.reduce((n, r) => n + (r.xp || 0), 0),
+      solved: qs.reduce((n, r) => n + (r.solved || 0), 0),
+      cards: qs.reduce((n, r) => n + (Array.isArray(r.cards) ? r.cards.length : 0), 0),
+      last: qs.map(r => r.created_at).sort().slice(-1)[0]
+    })).sort((a, b) => new Date(b.last) - new Date(a.last));
+  $('#content').innerHTML = sorted.map(studentHtml).join('');
+}
+function stat(num, lbl){ return '<div class="stat"><div class="num">' + esc(num) + '</div><div class="lbl">' + esc(lbl) + '</div></div>'; }
+
+function studentHtml(s){
+  const questRows = [...s.qs].sort((a, b) => a.week - b.week || a.difficulty.localeCompare(b.difficulty)).map(q => {
+    const cards = Array.isArray(q.cards) ? q.cards : [];
+    const doneAll = cards.length && cards.every(c => c.status !== 'pending');
+    const pct = cards.length ? Math.round(100 * (q.solved || 0) / cards.length) : 0;
+    const chips = cards.map(c => '<span class="chip ' + esc(c.status) + '" title="' + esc(c.id + ' · ' + c.status) + '">' +
+        esc(c.id.replace(/^W\d+-/, '')) + ' ' + (STATUS_ICON[c.status] || '') + '</span>').join('');
+    return '<tr>' +
+      '<td><b>Week ' + q.week + '</b> ' + esc(WEEK_TOPICS[q.week] || '') + '<br><span style="color:var(--muted);font-size:12px">' +
+        (q.week <= 4 ? 'Challenge 1' : 'Challenge 2') + '</span></td>' +
+      '<td>' + esc(DIFF_LABELS[q.difficulty] || q.difficulty) + (doneAll ? ' <span class="done">✓ 完成</span>' : '') + '</td>' +
+      '<td><span class="bar-wrap"><span class="bar-fill" style="width:' + pct + '%"></span></span> ' + (q.solved || 0) + '/' + cards.length + '</td>' +
+      '<td>' + (q.xp || 0) + '</td>' +
+      '<td><div class="chips">' + chips + '</div></td>' +
+      '<td class="hide-s" title="' + esc(absTime(q.created_at)) + '">' + esc(relTime(q.created_at)) + '</td>' +
+      '</tr>';
+  }).join('');
+  return '<section class="student"><div class="head">' +
+    '<span class="name">👤 ' + esc(s.name) + '</span>' +
+    '<span class="meta">总 XP <b>' + s.xp + '</b></span>' +
+    '<span class="meta">关卡 <b>' + s.qs.length + '</b></span>' +
+    '<span class="meta">答对 <b>' + s.solved + '/' + s.cards + '</b> 张卡</span>' +
+    '<span class="meta">最后活跃 <b>' + esc(relTime(s.last)) + '</b></span>' +
+    '</div><table><thead><tr><th>Week</th><th>Level</th><th>答对</th><th>XP</th><th>每张卡</th><th class="hide-s">更新</th></tr></thead>' +
+    '<tbody>' + questRows + '</tbody></table></section>';
+}
+
+$('#refresh').addEventListener('click', load);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
+load();
+setInterval(() => { if (!document.hidden) load(); }, REFRESH_MS);
+</script>
+</body>
+</html>

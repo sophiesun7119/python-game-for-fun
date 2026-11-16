@@ -103,7 +103,7 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 - In Review, navigate **Previous** / **Next** to see saved answers, correct answers and explanations. **Retry this card** temporarily hides the solution and lets the child practice again, with no score changes.
 - Review practice does not change the finished result. To increase the best XP, start a **new five-card quest** and solve the questions; correct answers after hints/retries still earn full points, whereas Show Answer ends that question without XP.
 - Only the **most recent completed attempt** of each difficulty is retained for review. The all-time best score is retained separately.
-- Game data lives in the same browser/profile — local storage is the source of truth. On the published GitHub Pages site, the game also sends a one-way copy of each quest snapshot to the teacher's Supabase project (anonymous, insert-only; nothing can be read back), so the teacher can follow along in the `progress_latest` view. Students need no password or account.
+- Game data lives in the same browser/profile — local storage is the source of truth. On the published GitHub Pages site, the game also sends a one-way copy of each quest snapshot to the teacher's Supabase project (anonymous, insert-only), so progress can be followed in the `progress_latest` view and on the public teacher dashboard (`teacher.html`, same site). Students need no password or account.
 
 ## What works
 
@@ -135,6 +135,7 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 
 ```
 index.html
+teacher.html
 styles.css
 src/app.js
 src/scoring.js
