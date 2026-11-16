@@ -186,3 +186,5 @@ main{max-width:1180px}
 
 /* Explain intermediate arithmetic without confusing it with function calls. */
 .trace-inline-calc{background:#d6edff;color:#15456f}
+
+.bonus-hint{margin:0 0 12px;padding:10px 12px;background:#fff7df;border:1px solid #fbe4a3;border-radius:10px;font-weight:650;color:#7a5a10}

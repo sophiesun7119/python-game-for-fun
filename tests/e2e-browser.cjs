@@ -274,6 +274,8 @@ async function main() {
   body = await ev('window.__qa.bodyText()');
   check('F3 review labels the card as Skipped', body.includes('⏭ Skipped'), body.slice(0, 300));
   await click('back'); // -> difficulty
+  body = await ev('window.__qa.bodyText()');
+  check('F14 difficulty page flags Hard and Extra Rock bonus challenges', body.includes('⭐ Bonus challenge · 2 per card') && body.includes('bug hunts'), body.slice(0, 300));
   // F2: bonus follow-ups on a Hard card (W4-H-01 has two).
   await startQuest(4, 'hard');
   const h1 = qById['W4-H-01'];
@@ -282,6 +284,8 @@ async function main() {
     else await ev(`window.__qa.setInput('#answer', ${JSON.stringify(q.answer)})`);
     await click('check');
   }
+  body = await ev('window.__qa.bodyText()');
+  check('F15 card start hints at 2 hidden bonus questions', body.includes('hides 2 bonus questions'), body.slice(0, 300));
   await answerMain(h1);
   check('F4 bonus offered after solving a Hard card', await ev(`window.__qa.actionExists('f-start')`));
   await click('f-start');
@@ -299,6 +303,7 @@ async function main() {
   await click('f-next'); // done with bonuses -> back to the solved card
   body = await ev('window.__qa.bodyText()');
   check('F8 after bonuses, back on the solved card', body.includes('Question 1 / 5') && body.includes('Correct!'), body.slice(0, 300));
+  check('F16 card shows all bonus questions done', body.includes('All 2 bonus questions done'), body.slice(0, 300));
   await click('next');
   // F3: skipping bonuses leaves the flow intact (W4-H-02 also has follow-ups).
   const h2 = qById['W4-H-02'];
@@ -319,6 +324,7 @@ async function main() {
   const x4 = qById['W4-X-04'];
   body = await ev('window.__qa.bodyText()');
   if (body.includes('Question 4 / 5')) {
+    check('F17 bug-hunt card hints at 3 bonus questions incl. a bug hunt', body.includes('hides 3 bonus questions') && body.includes('bug hunt'), body.slice(0, 300));
     await answerMain(x4);
     await click('f-start');
     await click('f-skip'); // skip the generated follow-up

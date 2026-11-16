@@ -56,7 +56,7 @@ function levels(){
 function difficultyView(){
  const w=weeks.find(x=>x.week===state.week);
  return `${header()}<div class="eyebrow">Challenge 1 · Week ${w.week}</div><h1>${w.emoji} ${w.title}</h1><p class="muted">${w.subtitle}. Pick any difficulty.</p><div class="difficulty-grid">
- ${diffs.map(d=>{const saved=getQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':d==='extra'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':d==='hard'?'Multi-step reasoning and debugging':'Ultimate cross-topic challenge'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${d==='extra'?'<span class="tag gold">🪨 Bonus challenge</span>':''}${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
+ ${diffs.map(d=>{const saved=getQuest(username,state.week,d);return `<article class="card week-card"><span class="tag ${d==='easy'?'green':d==='hard'?'red':d==='extra'?'red':'gold'}">${labels[d]}</span><h3>5 questions</h3><p class="muted small">${d==='easy'?'Understand the basics':d==='medium'?'Apply what you learned':d==='hard'?'Multi-step reasoning and debugging':'Ultimate cross-topic challenge'}</p><p>Best: <strong>${best(w.week,d)}/5</strong> · ${'⭐'.repeat(awardedStars(best(w.week,d))) || 'No stars yet'}</p><p class="muted small">${points[d]} XP per question solved</p>${d==='hard'?'<span class="tag gold">⭐ Bonus challenge · 2 per card</span>':d==='extra'?'<span class="tag gold">⭐ Bonus challenge · + 🐛 bug hunts</span>':''}${button(saved.active?'Continue / Start Over':'Start '+labels[d],'start:'+d,'primary block')}${saved.completed?button('📖 Review cards','review:'+d,'block'):''}</article>`;}).join('')}</div>`;
 }
 
 function getQuest(username,week,difficulty){
@@ -325,6 +325,15 @@ function followupState(item,k){
  return item.followups[k];
 }
 function followupsDone(item){return followupsOf(item).every((_,k)=>!!followupState(item,k).status);}
+function bonusHint(item,correct,revealed){
+ const list=followupsOf(item); if(!list.length)return '';
+ const done=list.filter((_,k)=>!!followupState(item,k).status).length;
+ const bug=list.some(f=>f.code);
+ const noun=list.length>1?'bonus questions':'bonus question';
+ if(done>=list.length)return `<div class="bonus-hint">⭐ All ${list.length} ${noun} done — great exploring!</div>`;
+ if(correct||revealed)return `<div class="bonus-hint">⭐ ${list.length} ${noun} unlocked${done?` · ${done} done`:''} — tap ⭐ Bonus question below!${bug?' Includes a 🐛 bug hunt.':''}</div>`;
+ return `<div class="bonus-hint">⭐ This card hides ${list.length} ${noun} — finish this question to unlock ${list.length>1?'them':'it'}!${bug?' One is a 🐛 bug hunt.':''}</div>`;
+}
 function openFollowup(item,k){state.fIndex=k;const saved=followupState(item,k);state.fDraft=saved.draft||'';state.fStatus=saved.status||'';resetTrace();}
 function closeFollowup(){state.fIndex=-1;state.fDraft='';state.fStatus='';resetTrace();}
 function followupView(){
@@ -358,7 +367,7 @@ function quiz(){
  if(correct||revealed) actions=(followupsOf(item).length&&!followupsDone(item)?button('⭐ Bonus question','f-start'):'' )+button(state.index===4?'See results →':'Next question →','next','primary');
  else if(wrong)actions=button('💡 Give me a hint','hint')+button('↻ Retry','retry','primary')+button('Show answer','reveal');
  else actions=button('💡 Give me a hint','hint')+button('Check answer','check','primary')+button('⏭ Skip question','skip');
- return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2>${tracePanel(q)}${opts}
+ return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2>${bonusHint(item,correct,revealed)}${tracePanel(q)}${opts}
  ${state.hint&&!revealed&&!correct?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
  ${state.checked?`<div class="feedback ${wrong?'wrong':''}" role="status"><strong>${correct?'✅ Correct!':revealed?'📖 Answer & explanation':'🔄 Not quite. Try again or see the answer.'}</strong>${correct||revealed?`<p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p><p style="margin-top:8px">${escapeHTML(q.explanation)}</p>`:`<p>You can ask for a hint, retry the question, or reveal the correct answer with an explanation.</p>`}</div>`:''}
  <div class="btn-row">${actions}</div></div><p class="footnote">Correct answers earn full XP, even after a hint or retry. Revealing the answer earns 0 XP for that question.</p></div>`;
