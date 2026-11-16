@@ -2,7 +2,7 @@
 // Drives the served site through the Technical Design section 9 regression
 // sequence (player flow, wrong answer -> hint -> retry -> correct, reveal,
 // results/XP, review, resume, player isolation, skip, bonus questions) and
-// then steps through ALL 80 walkthroughs, comparing every rendered step
+// then steps through ALL 160 walkthroughs, comparing every rendered step
 // (active line, cumulative Output, Explanation, step counter) with the
 // trace JSON. Exits non-zero if any check fails.
 //
@@ -19,7 +19,7 @@ const REPO = path.resolve(__dirname, '..');
 const BASE_URL = process.env.BASE_URL || 'http://localhost:8000/';
 const questions = JSON.parse(fs.readFileSync(path.join(REPO, 'data/questions.json'), 'utf8')).questions;
 const traces = {};
-for (const w of [1, 2, 3, 4]) Object.assign(traces, JSON.parse(fs.readFileSync(path.join(REPO, `data/traces-week${w}.json`), 'utf8')).traces);
+for (const w of [1, 2, 3, 4, 6, 7, 8, 9]) Object.assign(traces, JSON.parse(fs.readFileSync(path.join(REPO, `data/traces-week${w}.json`), 'utf8')).traces);
 const qById = Object.fromEntries(questions.map(q => [q.id, q]));
 
 const results = [];
@@ -110,12 +110,18 @@ async function navToLevels() {
   for (let i = 0; i < 8; i++) {
     const t = await ev('window.__qa.bodyText()');
     if (t.includes('Choose a Week')) return;
+    if (t.includes('Choose your challenge')) { await click('levels:1'); continue; }
     if (await ev(`window.__qa.actionExists('levels')`)) { await click('levels'); continue; }
     if (!await click('back')) break;
   }
 }
 async function startQuest(week, diff) {
   await navToLevels();
+  if (!await ev(`window.__qa.actionExists('week:${week}')`)) {
+    // The week list is showing the other challenge: go home and switch.
+    await click('back');
+    await click('levels:' + (week >= 6 ? 2 : 1));
+  }
   await click('week:' + week);
   await click('start:' + diff);
   const t = await ev('window.__qa.bodyText()');
@@ -135,7 +141,7 @@ async function main() {
   check('A0 welcome screen shows player form', await ev(`!!document.querySelector('#player-form')`));
   await ev(`window.__qa.submitPlayer('AuditKid')`); await sleep(200);
   check('A1 home shows Total XP 0', (await ev(`window.__qa.text('#total-xp')`)) === '0', await ev(`window.__qa.text('#total-xp')`));
-  await click('levels'); await click('week:1'); await click('start:easy');
+  await click('levels:1'); await click('week:1'); await click('start:easy');
   check('A2 quiz Q1 is W1-E-01 code', (await ev('window.__qa.bodyText()')).includes("print('Hello, Python!')"));
   await click('trace-open');
   let st = await traceState();
@@ -344,10 +350,10 @@ async function main() {
     check('F13 fix accepted', body.includes('Correct!'), body.slice(0, 300));
   }
 
-  // ---------- PART E: full sweep of all 80 walkthroughs ----------
+  // ---------- PART E: full sweep of all 160 walkthroughs ----------
   const diffs = ['easy', 'medium', 'hard', 'extra'];
   let swept = 0, sweepProblems = [];
-  for (const w of [1, 2, 3, 4]) {
+  for (const w of [1, 2, 3, 4, 6, 7, 8, 9]) {
     for (const d of diffs) {
       await startQuest(w, d);
       const qs = questions.filter(q => q.week === w && q.difficulty === d);

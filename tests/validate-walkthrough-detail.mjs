@@ -4,7 +4,7 @@ import {runInNewContext} from 'node:vm';
 
 const root=new URL('../',import.meta.url);
 const bank=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const traces=Object.assign({},...[1,2,3,4].map(week=>
+const traces=Object.assign({},...[1,2,3,4,6,7,8,9].map(week=>
  JSON.parse(readFileSync(new URL('data/traces-week'+week+'.json',root),'utf8')).traces));
 const enrichment=readFileSync(new URL('scripts/enrich-walkthroughs.js',root),'utf8');
 const enrichTrace=runInNewContext(enrichment+'\nenrichTrace',{});

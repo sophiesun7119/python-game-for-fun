@@ -34,7 +34,7 @@ QUESTIONS_PATH = ROOT / "data" / "questions.json"
 payload = json.loads(QUESTIONS_PATH.read_text(encoding="utf-8"))
 questions = payload["questions"]
 traces = {}
-for week in (1, 2, 3, 4):
+for week in (1, 2, 3, 4, 6, 7, 8, 9):
     data = json.loads((ROOT / "data" / f"traces-week{week}.json").read_text(encoding="utf-8"))
     traces.update(data["traces"])
 
@@ -52,6 +52,20 @@ def display(value):
     return str(value)
 
 
+def encode_value(value):
+    """Encode a runtime value the way trace snapshots store it, so real
+    finals can be compared with trace finals (sets use the __set__ form)."""
+    if isinstance(value, (list, tuple)):
+        return [encode_value(v) for v in value]
+    if isinstance(value, dict):
+        return {str(k): encode_value(v) for k, v in value.items()}
+    if isinstance(value, (set, frozenset)):
+        items = [encode_value(v) for v in value]
+        items.sort(key=lambda v: json.dumps(v, sort_keys=True))
+        return {"__set__": items}
+    return value
+
+
 def real_run(question):
     stdout = io.StringIO()
     globals_out = {}
@@ -59,8 +73,9 @@ def real_run(question):
         exec(compile(question["code"], "<followups>", "exec"), globals_out)
     text = stdout.getvalue()
     lines = text.split("\n")[:-1] if text else []
-    finals = {k: v for k, v in globals_out.items()
-              if not k.startswith("__") and isinstance(v, SCALARS)}
+    finals = {k: encode_value(v) for k, v in globals_out.items()
+              if not k.startswith("__")
+              and isinstance(v, SCALARS + (list, tuple, dict, set, frozenset))}
     return lines, finals
 
 
@@ -99,11 +114,34 @@ def pick_options(correct, distractors, rng):
     return options
 
 
+def py_repr(value):
+    """Python-style repr of an encoded snapshot value (collections)."""
+    if isinstance(value, str):
+        return repr(value)
+    if value is True:
+        return "True"
+    if value is False:
+        return "False"
+    if value is None:
+        return "None"
+    if isinstance(value, list):
+        return "[" + ", ".join(py_repr(v) for v in value) + "]"
+    if isinstance(value, dict) and list(value.keys()) == ["__set__"]:
+        if not value["__set__"]:
+            return "set()"
+        return "{" + ", ".join(py_repr(v) for v in value["__set__"]) + "}"
+    if isinstance(value, dict):
+        return "{" + ", ".join(py_repr(k) + ": " + py_repr(v) for k, v in value.items()) + "}"
+    return str(value)
+
+
 def display_state(value):
     """Format a variable's value the way the trace tags show it: strings
     keep their quotes so '3' (string) and 3 (int) stay distinguishable."""
     if isinstance(value, str):
         return '"' + value + '"'
+    if isinstance(value, (list, dict)):
+        return py_repr(value)
     return display(value)
 
 

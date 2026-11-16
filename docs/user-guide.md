@@ -1,6 +1,6 @@
 # Python Quest — User Guide
 
-> For students, parents, and teachers. Current scope: Challenge 1, Weeks 1–4, 80 cards (4 weeks × 4 difficulties × 5 questions). This guide reflects the current browser-based prototype.
+> For students, parents, and teachers. Current scope: Challenge 1 (Weeks 1–4) and Challenge 2 (Weeks 6–9), 160 cards (8 weeks × 4 difficulties × 5 questions). This guide reflects the current browser-based prototype.
 
 ## 1. Start the game
 
@@ -18,7 +18,7 @@ Use **Switch Player** in the top bar if another child uses the same browser. The
 
 ## 2. Pick a challenge
 
-Open **Challenge 1 — Python Explorer** and select a week and difficulty:
+Open **Challenge 1 — Python Explorer** or **Challenge 2 — Data Explorer** and select a week and difficulty:
 
 | Week | Topic | What you learn |
 |---|---|---|
@@ -26,6 +26,10 @@ Open **Challenge 1 — Python Explorer** and select a week and difficulty:
 | Week 2 | Logic & Decisions | `if`, `elif`, `else`, Boolean conditions |
 | Week 3 | Loop Master | `for`, `range()`, `while`, nested loops |
 | Week 4 | Function Builder | `def`, arguments, parameters, `return`, function composition |
+| Week 6 | List Builder | create, index, slice and change lists |
+| Week 7 | String Builder | slice, search and reformat text |
+| Week 8 | Set Builder | unique items, membership and set math |
+| Week 9 | Dictionary Builder | keys, values, `get()` and `update()` |
 
 Every week and difficulty is unlocked; the home page provides a recommended next quest. Each difficulty has **five questions**:
 
@@ -85,7 +89,9 @@ Only the **latest completed five-card attempt** per difficulty is retained for r
 
 ## 7. Where are scores stored?
 
-Progress is in the browser's **localStorage**, *not* in your project directory, Git repository, or a cloud database. The current player name for the browser tab/session is remembered with **sessionStorage**.
+Progress is in the browser's **localStorage**, *not* in your project directory or Git repository. The current player name for the browser tab/session is remembered with **sessionStorage**.
+
+**For the teacher (published site only):** when students play on the GitHub Pages site, the game also sends a copy of each quest snapshot (player name, week, difficulty, solved count, XP, per-card status) to the teacher's Supabase project. Open the Supabase dashboard and look at the **progress_latest** view to see each student's latest state per quest. Students cannot see each other's data — the connection is write-only for them — and playing locally never sends anything.
 
 - A normal `git pull` updates code but **does not overwrite browser progress**.
 - Using another browser, another device, or another origin (e.g., changing `localhost:8000` to `localhost:3000`) does not share progress.

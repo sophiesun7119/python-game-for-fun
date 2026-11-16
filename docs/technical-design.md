@@ -1,6 +1,6 @@
 # Python Quest — Technical Design & Implementation Guide
 
-> Maintainer/developer documentation for the current static browser-based Challenge 1 prototype (80 questions, 4 weeks). Keep this document updated with the implementation; historical changes live in [CHANGELOG](../CHANGELOG.md).
+> Maintainer/developer documentation for the current static browser-based game (Challenges 1–2, 160 questions, 8 weeks). Keep this document updated with the implementation; historical changes live in [CHANGELOG](../CHANGELOG.md).
 
 ## 1. Goals and non-goals
 
@@ -26,7 +26,7 @@ Browser Storage:
 No server processing during gameplay. A local HTTP server is used only to serve files.
 ```
 
-**Entry point:** `index.html` loads `src/app.js` as a JavaScript module. `init()` fetches the question JSON and four separate trace JSON files; the app expects 80 questions and fills `#app` via `render()`. The UI uses DOM event delegation on `#app` and a dedicated handler for the top-bar Switch Player control. No frontend framework or npm build step is required.
+**Entry point:** `index.html` loads `src/app.js` as a JavaScript module. `init()` fetches the question JSON and eight separate trace JSON files; the app expects 160 questions and fills `#app` via `render()`. The UI uses DOM event delegation on `#app` and a dedicated handler for the top-bar Switch Player control. No frontend framework or npm build step is required.
 
 ## 3. UI design and screens
 
@@ -48,7 +48,7 @@ The visual language is light, rounded challenge cards with a blue primary action
 
 ## 4. Question bank schema
 
-Source: `data/questions.json`. Each of the **80** question objects has fields such as:
+Source: `data/questions.json`. Each of the **160** question objects has fields such as:
 
 ```json
 {
@@ -72,7 +72,7 @@ Some questions use `short_answer` (no choices), and curriculum-aligned Hard/Extr
 
 A follow-up may also carry its own `code` field: a **bug-hunt variant** of the card's code with exactly one line broken. Selected Extra Rock cards carry a bug-hunt pair — "Which line is wrong?" (the buggy code's wrong output is stated in the prompt) followed by "How should that line be fixed?" — authored and verified by `scripts/add-debug-followups.py`, which runs every variant and rejects any bug or "wrong fix" that would still print the correct output. The follow-up view renders a `code` variant as a numbered static code block without a walkthrough.
 
-**Question-type policy:** all multiple choice is single-answer. Easy cards are all multiple choice; Medium is roughly half multiple choice (long, multi-line, or case-sensitive typed answers converted by `scripts/convert-to-multiple-choice.py`) and half typed; Hard and Extra Rock main cards stay typed, with multiple-choice follow-ups.
+**Question-type policy:** all multiple choice is single-answer. Easy cards are all multiple choice; Medium is roughly half multiple choice (long, multi-line, or case-sensitive typed answers converted by `scripts/convert-to-multiple-choice.py`) and half typed. Hard and Extra Rock main cards are typed when the correct answer is short and simple (a number, True/False, one simple word) and multiple choice whenever typing the answer would burden a young child — collection literals, brackets/quotes/commas, long or multi-line output — decided per card, with no fixed ratio. In Challenge 2 Hard/Extra cards the week's data structure is a tool inside bigger code (loops, conditions and functions from earlier weeks), so the asked result is usually derived: a count, a sum, whether something was found, or one looked-up value. Easy/Medium also include a few **concept questions** — scenario or definition multiple choice grounded in the week's QuickCheck/Homework (for example, which data structure fits a word→definition lookup) — whose answer is the concept, not the demo code's output; their IDs are excepted from the output-equality checks in the validators.
 
 **Skipping:** before submitting, a card offers **Skip question**, which marks the card skipped (stored as `skipped: true` alongside `revealed: true`, so it earns no XP and counts as not solved) and moves straight to the next card. Review labels such cards ⏭ Skipped.
 
@@ -89,7 +89,7 @@ Answer evaluation: the browser compares submitted text with the authored `answer
 | Hard | 20 | 100 |
 | Extra Rock | 25 | 125 |
 
-The current total maximum is **1,400 XP** across all 16 quests (12 original level quests + 4 optional Extra Rock quests). Stars: 0–2 solved → 0, 3 → 1, 4 → 2, 5 → 3. A topic badge requires at least three solved cards in each of Easy, Medium and Hard; Extra Rock is not required.
+The current total maximum is **2,800 XP** across all 32 quests (24 level quests + 8 optional Extra Rock quests). Stars: 0–2 solved → 0, 3 → 1, 4 → 2, 5 → 3. A topic badge requires at least three solved cards in each of Easy, Medium and Hard; Extra Rock is not required.
 
 `check()` marks a card `solved` if the student gets it correct *before revealing the answer*. Hints and wrong attempts do not prevent the student from earning full points on a later correct Retry. `Show Answer` sets `revealed` and bars XP for that card in the run. `countCorrect()` counts solved, non-revealed cards. `updateBest()` stores the maximum score for each `W<week>-<difficulty>` key; `totalXP()` derives XP from best scores rather than accumulating every attempt. The results screen shows newly gained XP from improvement over the old best.
 
@@ -114,13 +114,17 @@ At completion, `finishQuest()` writes the latest `completed` snapshot, clears on
 
 **Privacy/security:** Nickname is only a local profile selector, not identity authentication. No database, no teacher login and no access control are implemented. Sharing a browser profile allows others to choose the same nickname. Clearing site storage or changing origin/device may lose records; `git pull` does not touch browser storage.
 
-## 7. Walkthrough Contract — all 80 questions
+**Optional cloud sync (teacher view):** `src/sync.js` POSTs a quest snapshot (nickname, week, difficulty, solved count, XP, per-card statuses) to a Supabase `progress_events` table whenever a card is solved, revealed or skipped, and when a quest finishes. It is active only on the published Pages hostname (or with local storage `pqSync = "on"` for testing), uses the anonymous key under an insert-only row-level-security policy (no SELECT/UPDATE/DELETE for anonymous clients), and ignores all failures — local play never depends on it. The teacher reads the `progress_latest` view (latest snapshot per nickname/week/difficulty) in the Supabase dashboard. Events are append-only by design: under insert-only RLS an upsert is rejected, so each sync is a plain INSERT.
 
-**Normative specification, version 0.6.7.** These rules apply to *every* Challenge 1 question, regardless of week or difficulty. A change to this contract must change the **shared renderer**, relevant tests and documentation; no single-card UI overrides are permitted. Earlier v0.4–v0.6.5 rendering notes in CHANGELOG are historical and do not define current behavior.
+## 7. Walkthrough Contract — all 160 questions
+
+**Normative specification, version 0.6.7.** These rules apply to *every* question in both challenges, regardless of week or difficulty. A change to this contract must change the **shared renderer**, relevant tests and documentation; no single-card UI overrides are permitted. Earlier v0.4–v0.6.5 rendering notes in CHANGELOG are historical and do not define current behavior.
 
 ### 7.1 Source of truth and rendering architecture
 
-`data/questions.json` contains 80 questions with IDs and newline-separated `code`. Each ID has an ordered walkthrough in `data/traces-week1.json` through `data/traces-week4.json`. The browser reads these static JSON files. `src/app.js` exposes `tracePanel(q)`, which renders the same structural template for every question using the current `state.traceIndex`. `styles.css` defines presentation; no separate HTML templates are maintained for Easy, Medium, Hard or Extra Rock.
+`data/questions.json` contains 160 questions with IDs and newline-separated `code`. Each ID has an ordered walkthrough in `data/traces-week1.json` through `data/traces-week4.json` (Challenge 1) and `data/traces-week6.json` through `data/traces-week9.json` (Challenge 2). The browser reads these static JSON files. `src/app.js` exposes `tracePanel(q)`, which renders the same structural template for every question using the current `state.traceIndex`. `styles.css` defines presentation; no separate HTML templates are maintained for Easy, Medium, Hard or Extra Rock.
+
+**Trace generators.** Two offline generators produce the same trace JSON, and both pass their base steps through the shared enrichment (`scripts/enrich-walkthroughs.js`, §7.4) before storage. Weeks 1–4 traces come from `scripts/build-trace-runtime.js`, a JavaScript interpreter for the introductory subset those weeks use. Challenge 2 traces come from `scripts/generate-traces.py`: the JS interpreter has no collection methods, negative indexing or slicing, so the Python generator records a real CPython execution with `sys.settrace` and narrates the events in the same step voice (Define / Call / Enter / Return steps, loop and branch markers per §7.8). Snapshot values are JSON-encoded — lists as arrays, dicts as objects, and a set as `{"__set__": [sorted items]}` so the renderer can draw it with braces and tell it apart from a list. Use the JS generator only for code inside its subset; use the Python generator for anything involving lists, strings, sets or dictionaries. `tests/validate-walkthrough-detail.mjs` requires the stored traces of both challenges to equal the shared enrichment of each generator's base steps, and `tests/validate-trace-cpython.py` cross-checks every step of every question against a real CPython execution.
 
 Each trace step has the following fields:
 
@@ -189,7 +193,7 @@ A complex line has an **ordered sequence of teaching events**, rather than a sin
 
 Trace records for intermediate calculations have `phase: "calculate"` and an explicit `explanation`. Final printing records have `event: "print"`. On the calculation step, `line` matches the actual statement, but **no assignment or printing has happened yet**. `tracePersistentBindings()` deliberately ignores these calculation-only snapshots when deciding where to anchor values. `traceInlineDetails()` displays a blue calculation tag or a violet print-call tag; the dedicated Output panel still reads only the cumulative `step.output` array.
 
-**Single source of transformation:** `scripts/enrich-walkthroughs.js` enriches the fixed trusted teacher-authored trace files. It is idempotent, and the 80-question regression `tests/validate-walkthrough-detail.mjs` checks this property, correct arithmetic, unchanged state during calculation, correct source line for printing, and an explanation and visible badge for every print. The `W4-M-01` regression requires the exact order **return 16 → calculate 16 + 1 = 17 → print 17**. Complex Python syntax beyond basic numeric operations is **not** treated as a general executable trace engine; it needs explicitly authored and validated educational steps.
+**Single source of transformation:** `scripts/enrich-walkthroughs.js` enriches the fixed trusted teacher-authored trace files. It is idempotent, and the 160-question regression `tests/validate-walkthrough-detail.mjs` checks this property, correct arithmetic, unchanged state during calculation, correct source line for printing, and an explanation and visible badge for every print. The `W4-M-01` regression requires the exact order **return 16 → calculate 16 + 1 = 17 → print 17**. Complex Python syntax beyond basic numeric operations is **not** treated as a general executable trace engine; it needs explicitly authored and validated educational steps.
 
 ### 7.5 Function-scoped and global variable lifetimes
 
@@ -211,7 +215,7 @@ Closing or opening a walkthrough, navigating its steps, or reviewing a finished 
 
 ### 7.7 Content and CI quality gates
 
-Changes to question code/answers or walkthrough data require matching trace steps. The automated suite must test **all 80 questions**, and the renderer must work identically for all difficulties:
+Changes to question code/answers or walkthrough data require matching trace steps. The automated suite must test **all 160 questions**, and the renderer must work identically for all difficulties:
 
 ```bash
 python3 tests/validate_python.py
@@ -227,9 +231,9 @@ node tests/validate-walkthrough-layout.mjs
 node tests/validate-walkthrough-detail.mjs
 ```
 
-`validate-question-schema.mjs` checks the question bank itself (required fields, multiple-choice options contain the answer exactly once, no duplicate options, hints present and never containing the answer verbatim). `validate-trace-cpython.py` cross-checks every trace step against a real CPython `sys.settrace` execution (see §7.8). A separate browser end-to-end suite, `tests/e2e-browser.cjs`, drives the served site through the §9 manual regression sequence and steps through all 80 walkthroughs in a real browser; it runs as its own CI job because it needs Playwright (see §9).
+`validate-question-schema.mjs` checks the question bank itself (required fields, multiple-choice options contain the answer exactly once, no duplicate options, hints present and never containing the answer verbatim). `validate-trace-cpython.py` cross-checks every trace step against a real CPython `sys.settrace` execution (see §7.8). A separate browser end-to-end suite, `tests/e2e-browser.cjs`, drives the served site through the §9 manual regression sequence and steps through all 160 walkthroughs in a real browser; it runs as its own CI job because it needs Playwright (see §9).
 
-The layout test **renders all 1,103 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
+The layout test **renders all 1,912 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
 
 **Representative manual regressions:** `W4-E-01` (`greet()` prints `Hi`), `W4-M-01` (`square(4)` returns 16), `W4-H-01` (nested `total_cost` calls), `W4-X-01` (nested `message` and `xp_needed`), a Week 3 `for` and `while` loop, and `W2-M-03` (`else` then `print('Wait')`). Test first, middle and final steps including Previous/Restart.
 

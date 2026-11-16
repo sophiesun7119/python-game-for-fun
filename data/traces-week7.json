@@ -1,0 +1,2826 @@
+{
+  "version": "2.0.0",
+  "description": "Guided traces for Week 7 (Strings) including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
+  "traces": {
+    "W7-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Evaluate \"Py\" + \"thon\"; the result is \"Python\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "Python"
+          ],
+          "explanation": "Call print() to display \"Python\".",
+          "event": "print"
+        },
+        {
+          "line": 1,
+          "variables": {},
+          "output": [
+            "Python"
+          ],
+          "explanation": "Evaluate \"ab\" * 3; the result is \"ababab\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {},
+          "output": [
+            "Python",
+            "ababab"
+          ],
+          "explanation": "Call print() to display \"ababab\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "Programming"
+          },
+          "output": [],
+          "explanation": "Evaluate \"Programming\" and set s to 'Programming'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "Programming"
+          },
+          "output": [
+            "g"
+          ],
+          "explanation": "Call print() to display \"g\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "cat"
+          },
+          "output": [],
+          "explanation": "Evaluate \"cat\" and set s to 'cat'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "cat"
+          },
+          "output": [
+            "cat"
+          ],
+          "explanation": "Call print() to display \"cat\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "Programming"
+          },
+          "output": [],
+          "explanation": "Evaluate \"Programming\" and set s to 'Programming'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "Programming"
+          },
+          "output": [
+            "Prog"
+          ],
+          "explanation": "Call print() to display \"Prog\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "True"
+          ],
+          "explanation": "Call print() to display \"True\".",
+          "event": "print"
+        },
+        {
+          "line": 1,
+          "variables": {},
+          "output": [
+            "True",
+            "False"
+          ],
+          "explanation": "Call print() to display \"False\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "name": "   Bob   "
+          },
+          "output": [],
+          "explanation": "Evaluate \"   Bob   \" and set name to '   Bob   '."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "   Bob   ",
+            "clean": "Bob"
+          },
+          "output": [],
+          "explanation": "Evaluate name.strip() and set clean to 'Bob'."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "   Bob   ",
+            "clean": "Bob"
+          },
+          "output": [
+            "False"
+          ],
+          "explanation": "Call print() to display \"False\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "line": "Alice,95,A"
+          },
+          "output": [],
+          "explanation": "Evaluate \"Alice,95,A\" and set line to 'Alice,95,A'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "line": "Alice,95,A",
+            "parts": [
+              "Alice",
+              "95",
+              "A"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate line.split(\",\") and set parts to ['Alice', '95', 'A']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "line": "Alice,95,A",
+            "parts": [
+              "Alice",
+              "95",
+              "A"
+            ]
+          },
+          "output": [
+            "['Alice', '95', 'A']"
+          ],
+          "explanation": "Call print() to display \"['Alice', '95', 'A']\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "scoreboard"
+          },
+          "output": [],
+          "explanation": "Evaluate \"scoreboard\" and set s to 'scoreboard'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "scoreboard"
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [
+            "|    Hi|"
+          ],
+          "explanation": "Call print() to display \"|    Hi|\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "  hi  "
+          },
+          "output": [],
+          "explanation": "Evaluate \"  hi  \" and set s to '  hi  '."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "  hi  "
+          },
+          "output": [
+            "hi"
+          ],
+          "explanation": "Call print() to display \"hi\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "raw": "10 , 20 ,30"
+          },
+          "output": [],
+          "explanation": "Evaluate \"10 , 20 ,30\" and set raw to '10 , 20 ,30'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate raw.split(\",\") and set pieces to ['10 ', ' 20 ', '30']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set total to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 0,
+            "p": "10 "
+          },
+          "output": [],
+          "explanation": "for loop: p = 10 . Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 10,
+            "p": "10 "
+          },
+          "output": [],
+          "explanation": "Evaluate int(p.strip()) and update total to 10."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 10,
+            "p": " 20 "
+          },
+          "output": [],
+          "explanation": "for loop: p =  20 . Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 30,
+            "p": " 20 "
+          },
+          "output": [],
+          "explanation": "Evaluate int(p.strip()) and update total to 30."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 30,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "for loop: p = 30. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "Evaluate int(p.strip()) and update total to 60."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "raw": "10 , 20 ,30",
+            "pieces": [
+              "10 ",
+              " 20 ",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [
+            "60"
+          ],
+          "explanation": "Call print() to display \"60\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define count_vowels(). Its body does not run until the function is called."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [],
+          "explanation": "Call count_vowels(banana) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "word": "banana"
+          },
+          "output": [],
+          "explanation": "Enter count_vowels(): bind word = 'banana'. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "word": "banana",
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 0,
+            "ch": "b"
+          },
+          "output": [],
+          "explanation": "for loop: ch = b. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 0,
+            "ch": "b"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 0,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "for loop: ch = a. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 0,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "word": "banana",
+            "count": 1,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 1,
+            "ch": "n"
+          },
+          "output": [],
+          "explanation": "for loop: ch = n. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 1,
+            "ch": "n"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 1,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "for loop: ch = a. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 1,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "word": "banana",
+            "count": 2,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 2,
+            "ch": "n"
+          },
+          "output": [],
+          "explanation": "for loop: ch = n. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 2,
+            "ch": "n"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 2,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "for loop: ch = a. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "word": "banana",
+            "count": 2,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Check ch in \"aeiou\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "word": "banana",
+            "count": 3,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "word": "banana",
+            "count": 3,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "word": "banana",
+            "count": 3,
+            "ch": "a"
+          },
+          "output": [],
+          "explanation": "Return 3 to the calling line."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from count_vowels() to this calling line with value 3. Continue evaluating this statement."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define is_pal(). Its body does not run until the function is called."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"level\", \"hello\", \"radar\", \"python\"] and set words to ['level', 'hello', 'radar', 'python']."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level"
+          },
+          "output": [],
+          "explanation": "for loop: w = level. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level"
+          },
+          "output": [],
+          "explanation": "Call is_pal(level) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level",
+            "word": "level"
+          },
+          "output": [],
+          "explanation": "Enter is_pal(): bind word = 'level'. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level",
+            "word": "level"
+          },
+          "output": [],
+          "explanation": "Return True to the calling line."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level"
+          },
+          "output": [],
+          "explanation": "Return from is_pal() to this calling line with value True. Continue evaluating this statement."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 0,
+            "w": "level"
+          },
+          "output": [],
+          "explanation": "Check is_pal(w): True. Enter this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "level"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello"
+          },
+          "output": [],
+          "explanation": "for loop: w = hello. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello"
+          },
+          "output": [],
+          "explanation": "Call is_pal(hello) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello",
+            "word": "hello"
+          },
+          "output": [],
+          "explanation": "Enter is_pal(): bind word = 'hello'. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello",
+            "word": "hello"
+          },
+          "output": [],
+          "explanation": "Return False to the calling line."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello"
+          },
+          "output": [],
+          "explanation": "Return from is_pal() to this calling line with value False. Continue evaluating this statement."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "hello"
+          },
+          "output": [],
+          "explanation": "Check is_pal(w): False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar"
+          },
+          "output": [],
+          "explanation": "for loop: w = radar. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar"
+          },
+          "output": [],
+          "explanation": "Call is_pal(radar) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar",
+            "word": "radar"
+          },
+          "output": [],
+          "explanation": "Enter is_pal(): bind word = 'radar'. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar",
+            "word": "radar"
+          },
+          "output": [],
+          "explanation": "Return True to the calling line."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar"
+          },
+          "output": [],
+          "explanation": "Return from is_pal() to this calling line with value True. Continue evaluating this statement."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 1,
+            "w": "radar"
+          },
+          "output": [],
+          "explanation": "Check is_pal(w): True. Enter this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "radar"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [],
+          "explanation": "for loop: w = python. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [],
+          "explanation": "Call is_pal(python) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python",
+            "word": "python"
+          },
+          "output": [],
+          "explanation": "Enter is_pal(): bind word = 'python'. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python",
+            "word": "python"
+          },
+          "output": [],
+          "explanation": "Return False to the calling line."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [],
+          "explanation": "Return from is_pal() to this calling line with value False. Continue evaluating this statement."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [],
+          "explanation": "Check is_pal(w): False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "words": [
+              "level",
+              "hello",
+              "radar",
+              "python"
+            ],
+            "count": 2,
+            "w": "python"
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "rounds": 10
+          },
+          "output": [],
+          "explanation": "Evaluate 10 and set rounds to 10."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "rounds": 10,
+            "missed": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 2 and set missed to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "rounds": 10,
+            "missed": 2
+          },
+          "output": [],
+          "explanation": "Calculate 10 - 2 = 8.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "rounds": 10,
+            "missed": 2
+          },
+          "output": [],
+          "explanation": "Calculate 8 / 10 = 0.8.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "rounds": 10,
+            "missed": 2
+          },
+          "output": [],
+          "explanation": "Calculate 0.8 * 100 = 80.",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "rounds": 10,
+            "missed": 2,
+            "rate": 80
+          },
+          "output": [],
+          "explanation": "Evaluate (rounds - missed) / rounds * 100 and set rate to 80.0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "rounds": 10,
+            "missed": 2,
+            "rate": 80
+          },
+          "output": [],
+          "explanation": "Format the f-string with rate = 80; the printed/returned text is \"80.0%\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 3,
+          "variables": {
+            "rounds": 10,
+            "missed": 2,
+            "rate": 80
+          },
+          "output": [
+            "80.0%"
+          ],
+          "explanation": "Call print() to display \"80.0%\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate \"National Aeronautics Space Agency\".split() and set words to ['National', 'Aeronautics', 'Space', 'Agency']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": ""
+          },
+          "output": [],
+          "explanation": "Evaluate \"\" and set letters to ''."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "",
+            "w": "National"
+          },
+          "output": [],
+          "explanation": "for loop: w = National. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "N",
+            "w": "National"
+          },
+          "output": [],
+          "explanation": "Evaluate w[0] and update letters to 'N'."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "N",
+            "w": "Aeronautics"
+          },
+          "output": [],
+          "explanation": "for loop: w = Aeronautics. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NA",
+            "w": "Aeronautics"
+          },
+          "output": [],
+          "explanation": "Evaluate w[0] and update letters to 'NA'."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NA",
+            "w": "Space"
+          },
+          "output": [],
+          "explanation": "for loop: w = Space. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NAS",
+            "w": "Space"
+          },
+          "output": [],
+          "explanation": "Evaluate w[0] and update letters to 'NAS'."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NAS",
+            "w": "Agency"
+          },
+          "output": [],
+          "explanation": "for loop: w = Agency. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NASA",
+            "w": "Agency"
+          },
+          "output": [],
+          "explanation": "Evaluate w[0] and update letters to 'NASA'."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NASA",
+            "w": "Agency"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "words": [
+              "National",
+              "Aeronautics",
+              "Space",
+              "Agency"
+            ],
+            "letters": "NASA",
+            "w": "Agency"
+          },
+          "output": [
+            "NASA"
+          ],
+          "explanation": "Call print() to display \"NASA\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore"
+          },
+          "output": [],
+          "explanation": "Evaluate \"sam sells seashells by the seashore\" and set sentence to 'sam sells seashells by the seashore'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate sentence.split() and set words to ['sam', 'sells', 'seashells', 'by', 'the', 'seashore']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 0,
+            "w": "sam"
+          },
+          "output": [],
+          "explanation": "for loop: w = sam. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 0,
+            "w": "sam"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 0,
+            "w": "sells"
+          },
+          "output": [],
+          "explanation": "for loop: w = sells. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 0,
+            "w": "sells"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 1,
+            "w": "sells"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 1,
+            "w": "seashells"
+          },
+          "output": [],
+          "explanation": "for loop: w = seashells. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 1,
+            "w": "seashells"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "seashells"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "by"
+          },
+          "output": [],
+          "explanation": "for loop: w = by. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "by"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "for loop: w = the. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "seashore"
+          },
+          "output": [],
+          "explanation": "for loop: w = seashore. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 2,
+            "w": "seashore"
+          },
+          "output": [],
+          "explanation": "Check w.startswith(\"s\") and len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 3,
+            "w": "seashore"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 3,
+            "w": "seashore"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "sentence": "sam sells seashells by the seashore",
+            "words": [
+              "sam",
+              "sells",
+              "seashells",
+              "by",
+              "the",
+              "seashore"
+            ],
+            "count": 3,
+            "w": "seashore"
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"  Alice \", \"\", \" Bob\", \"   \", \"Cleo \"] and set raw_names to ['  Alice ', '', ' Bob', '   ', 'Cleo ']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": []
+          },
+          "output": [],
+          "explanation": "Evaluate [] and set clean to []."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [],
+            "n": "  Alice "
+          },
+          "output": [],
+          "explanation": "for loop: n =   Alice . Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [],
+            "n": "  Alice ",
+            "name": "Alice"
+          },
+          "output": [],
+          "explanation": "Evaluate n.strip() and set name to 'Alice'."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [],
+            "n": "  Alice ",
+            "name": "Alice"
+          },
+          "output": [],
+          "explanation": "Check len(name) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": "  Alice ",
+            "name": "Alice"
+          },
+          "output": [],
+          "explanation": "Call clean.append(name): clean becomes ['Alice']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": "",
+            "name": "Alice"
+          },
+          "output": [],
+          "explanation": "for loop: n = . Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": "",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "Evaluate n.strip() and set name to ''."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": "",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "Check len(name) > 0: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": " Bob",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "for loop: n =  Bob. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": " Bob",
+            "name": "Bob"
+          },
+          "output": [],
+          "explanation": "Evaluate n.strip() and set name to 'Bob'."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice"
+            ],
+            "n": " Bob",
+            "name": "Bob"
+          },
+          "output": [],
+          "explanation": "Check len(name) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": " Bob",
+            "name": "Bob"
+          },
+          "output": [],
+          "explanation": "Call clean.append(name): clean becomes ['Alice', 'Bob']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "   ",
+            "name": "Bob"
+          },
+          "output": [],
+          "explanation": "for loop: n =    . Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "   ",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "Evaluate n.strip() and set name to ''."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "   ",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "Check len(name) > 0: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "Cleo ",
+            "name": ""
+          },
+          "output": [],
+          "explanation": "for loop: n = Cleo . Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "Cleo ",
+            "name": "Cleo"
+          },
+          "output": [],
+          "explanation": "Evaluate n.strip() and set name to 'Cleo'."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob"
+            ],
+            "n": "Cleo ",
+            "name": "Cleo"
+          },
+          "output": [],
+          "explanation": "Check len(name) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "n": "Cleo ",
+            "name": "Cleo"
+          },
+          "output": [],
+          "explanation": "Call clean.append(name): clean becomes ['Alice', 'Bob', 'Cleo']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "n": "Cleo ",
+            "name": "Cleo"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "raw_names": [
+              "  Alice ",
+              "",
+              " Bob",
+              "   ",
+              "Cleo "
+            ],
+            "clean": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "n": "Cleo ",
+            "name": "Cleo"
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": "ababab"
+          },
+          "output": [],
+          "explanation": "Evaluate \"ababab\" and set s to 'ababab'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": "ababab",
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 0,
+            "i": 0
+          },
+          "output": [],
+          "explanation": "for loop: i = 0. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "ababab",
+            "count": 0,
+            "i": 0
+          },
+          "output": [],
+          "explanation": "Check s[i:i + 2] == \"ab\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "s": "ababab",
+            "count": 1,
+            "i": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 1,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "ababab",
+            "count": 1,
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Check s[i:i + 2] == \"ab\": False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "ababab",
+            "count": 1,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Check s[i:i + 2] == \"ab\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "s": "ababab",
+            "count": 2,
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 2,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "for loop: i = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "ababab",
+            "count": 2,
+            "i": 3
+          },
+          "output": [],
+          "explanation": "Check s[i:i + 2] == \"ab\": False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 2,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "for loop: i = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": "ababab",
+            "count": 2,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Check s[i:i + 2] == \"ab\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "s": "ababab",
+            "count": 3,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": "ababab",
+            "count": 3,
+            "i": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "s": "ababab",
+            "count": 3,
+            "i": 4
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "name": "Alice"
+          },
+          "output": [],
+          "explanation": "Evaluate \"Alice\" and set name to 'Alice'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "name": "Alice",
+            "score": 95
+          },
+          "output": [],
+          "explanation": "Evaluate 95 and set score to 95."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "name": "Alice",
+            "score": 95
+          },
+          "output": [
+            "Alice     95"
+          ],
+          "explanation": "Call print() to display \"Alice     95\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W7-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "sentence": "the quick brown fox jumps high"
+          },
+          "output": [],
+          "explanation": "Evaluate \"the quick brown fox jumps high\" and set sentence to 'the quick brown fox jumps high'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate sentence.split() and set words to ['the', 'quick', 'brown', 'fox', 'jumps', 'high']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": ""
+          },
+          "output": [],
+          "explanation": "Evaluate \"\" and set longest to ''."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "",
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "for loop: w = the. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "",
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "the",
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "Evaluate w and set longest to 'the'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "the",
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "for loop: w = quick. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "the",
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "Evaluate w and set longest to 'quick'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "brown"
+          },
+          "output": [],
+          "explanation": "for loop: w = brown. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "brown"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "fox"
+          },
+          "output": [],
+          "explanation": "for loop: w = fox. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "fox"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "for loop: w = jumps. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "high"
+          },
+          "output": [],
+          "explanation": "for loop: w = high. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "high"
+          },
+          "output": [],
+          "explanation": "Check len(w) > len(longest): False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "high"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "sentence": "the quick brown fox jumps high",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps",
+              "high"
+            ],
+            "longest": "quick",
+            "w": "high"
+          },
+          "output": [
+            "quick"
+          ],
+          "explanation": "Call print() to display \"quick\".",
+          "event": "print"
+        }
+      ]
+    }
+  }
+}

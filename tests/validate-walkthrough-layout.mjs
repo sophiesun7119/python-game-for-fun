@@ -5,7 +5,7 @@ import {runInNewContext} from 'node:vm';
 const root=new URL('../',import.meta.url);
 const app=readFileSync(new URL('src/app.js',root),'utf8');
 const bank=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const traces=Object.assign({},...[1,2,3,4].map(w=>
+const traces=Object.assign({},...[1,2,3,4,6,7,8,9].map(w=>
   JSON.parse(readFileSync(new URL('data/traces-week'+w+'.json',root),'utf8')).traces));
 const start=app.indexOf('function traceCondition(');
 const end=app.indexOf('function currentQuestion(){',start);
@@ -18,7 +18,7 @@ const harness=runInNewContext(
  helpers+'\n({allTraces,state,tracePanel})',{});
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-assert.equal(bank.length,80,'Expected all four weeks and four difficulties');
+assert.equal(bank.length,160,'Expected all eight weeks and four difficulties');
 let count=0,withOutput=0;
 for(const q of bank){
  const trace=traces[q.id];
@@ -53,4 +53,4 @@ const css=readFileSync(new URL('styles.css',root),'utf8');
 assert(css.includes('.trace-toolbar'),'Missing toolbar styling');
 assert(css.includes('.trace-output-content'),'Missing Output box styling');
 assert(css.includes('min-height:44px'),'Blank Output should still have visible area');
-console.log('PASS: '+count+' rendered steps across 80 cards; top controls, code, cumulative Output, and Explanation in one order ('+withOutput+' steps with output).');
+console.log('PASS: '+count+' rendered steps across 160 cards; top controls, code, cumulative Output, and Explanation in one order ('+withOutput+' steps with output).');

@@ -12,7 +12,7 @@ const api=runInNewContext(
  'function valueDisplay(v){return typeof v==="string"?JSON.stringify(v):String(v)}\n'+code+
  '\n({traceCondition,traceInlineDetails})',{});
 const bank=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const traces=Object.assign({},...[1,2,3,4].map(w=>
+const traces=Object.assign({},...[1,2,3,4,6,7,8,9].map(w=>
  JSON.parse(readFileSync(new URL('data/traces-week'+w+'.json',root),'utf8')).traces
 ));
 let checked=0,definitions=0,prints=0;

@@ -31,16 +31,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))["questions"]
 traces = {}
-for week in (1, 2, 3, 4):
+for week in (1, 2, 3, 4, 6, 7, 8, 9):
     payload = json.loads((ROOT / "data" / f"traces-week{week}.json").read_text(encoding="utf-8"))
     traces.update(payload["traces"])
 
 # W1-E-05 asks about the *type* of input()'s return value; it is a
 # conceptual question and is excepted here just as in validate_python.py
 # and validate-traces.mjs.
-SKIP = {"W1-E-05"}
+SKIP = {"W1-E-05", "W6-E-03", "W6-M-03", "W7-E-03", "W7-M-05", "W8-E-05", "W8-M-05", "W9-E-04", "W9-M-04"}
 SPECIAL_INPUT = {"W1-M-05": "7\n"}
 SCALARS = (int, float, str, bool, type(None))
+COLLECTIONS = (list, tuple, dict, set, frozenset)
+
+
+def encode(value):
+    """Encode a runtime value the way trace snapshots store it:
+    lists/tuples as arrays, dicts as objects, sets as {"__set__": [...]}
+    with sorted items so two encodings of the same set compare equal."""
+    if isinstance(value, (list, tuple)):
+        return [encode(v) for v in value]
+    if isinstance(value, dict):
+        return {str(k): encode(v) for k, v in value.items()}
+    if isinstance(value, (set, frozenset)):
+        items = [encode(v) for v in value]
+        items.sort(key=lambda v: json.dumps(v, sort_keys=True))
+        return {"__set__": items}
+    return value
 
 
 def runnable_code(question):
@@ -62,8 +78,8 @@ def real_execution(question):
         merged = {}
         for source in (frame.f_globals, frame.f_locals):
             for key, value in source.items():
-                if not key.startswith("__") and isinstance(value, SCALARS):
-                    merged[key] = value
+                if not key.startswith("_") and isinstance(value, SCALARS + COLLECTIONS):
+                    merged[key] = encode(value)
         return merged
 
     def tracer(frame, event, arg):

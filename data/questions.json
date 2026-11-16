@@ -2206,8 +2206,2193 @@
           "explanation": "Follow x to the end of the walkthrough: its last update is on line 11 (print(process(x), x)), leaving x = 3."
         }
       ]
+    },
+    {
+      "id": "W6-E-01",
+      "week": 6,
+      "difficulty": "easy",
+      "concept": "negative indexing",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "scores = [95, 82, 78, 91, 60]\nprint(scores[-1])",
+      "options": [
+        "78",
+        "95",
+        "60",
+        "IndexError"
+      ],
+      "answer": "60",
+      "explanation": "Index -1 means the last item, which is 60.",
+      "hint": "Negative indexes count backwards from the end of the list."
+    },
+    {
+      "id": "W6-E-02",
+      "week": 6,
+      "difficulty": "easy",
+      "concept": "slicing a list",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "scores = [95, 82, 78, 91, 60]\nprint(scores[1:3])",
+      "options": [
+        "[78, 91]",
+        "[95, 82]",
+        "[82, 78, 91]",
+        "[82, 78]"
+      ],
+      "answer": "[82, 78]",
+      "explanation": "The slice starts at index 1 and stops just before index 3, giving [82, 78].",
+      "hint": "A slice includes the start index but leaves out the stop index."
+    },
+    {
+      "id": "W6-E-03",
+      "week": 6,
+      "difficulty": "easy",
+      "concept": "indexing starts at 0",
+      "type": "multiple_choice",
+      "prompt": "Mia says: 'The first item in a list is at index 1.' Is she right?",
+      "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])",
+      "options": [
+        "Only when the list is backwards",
+        "Yes - indexing starts at index 1",
+        "No - indexing starts at index 0",
+        "Only for lists of numbers"
+      ],
+      "answer": "No - indexing starts at index 0",
+      "explanation": "Python counts list positions from 0, so fruits[0] is the first item, 'apple'.",
+      "hint": "Look at which fruit the code prints for index 0."
+    },
+    {
+      "id": "W6-E-04",
+      "week": 6,
+      "difficulty": "easy",
+      "concept": "len of a list",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "cart = [\"milk\", \"eggs\", \"bread\", \"rice\"]\nprint(len(cart))",
+      "options": [
+        "5",
+        "2",
+        "4",
+        "3"
+      ],
+      "answer": "4",
+      "explanation": "The list holds four items, so len(cart) is 4.",
+      "hint": "Count the items between the square brackets."
+    },
+    {
+      "id": "W6-E-05",
+      "week": 6,
+      "difficulty": "easy",
+      "concept": "append adds to the end",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "values = [1, 2]\nvalues.append(3)\nprint(values)",
+      "options": [
+        "[1, 2, 3, 3]",
+        "[3, 1, 2]",
+        "[1, 2]",
+        "[1, 2, 3]"
+      ],
+      "answer": "[1, 2, 3]",
+      "explanation": "append(3) puts 3 at the end of the list.",
+      "hint": "append always adds its item at the very end."
+    },
+    {
+      "id": "W6-M-01",
+      "week": 6,
+      "difficulty": "medium",
+      "concept": "sort() returns None",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "scores = [3, 1, 2]\nresult = scores.sort()\nprint(result)",
+      "options": null,
+      "answer": "None",
+      "explanation": "sort() rearranges the list itself and does not hand back a new list, so result is None.",
+      "hint": "sort() changes the list itself. Think about what the method hands back to store in result."
+    },
+    {
+      "id": "W6-M-02",
+      "week": 6,
+      "difficulty": "medium",
+      "concept": "building a list in a loop",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "values = []\nfor i in range(3):\n    values.append(i * 2)\nprint(values)",
+      "options": [
+        "[0, 2, 4, 6]",
+        "[2, 4, 6]",
+        "[0, 1, 2]",
+        "[0, 2, 4]"
+      ],
+      "answer": "[0, 2, 4]",
+      "explanation": "The loop appends 0 * 2, 1 * 2 and 2 * 2, building [0, 2, 4].",
+      "hint": "Follow i through 0, 1 and 2, doubling each one before appending."
+    },
+    {
+      "id": "W6-M-03",
+      "week": 6,
+      "difficulty": "medium",
+      "concept": "what append() does",
+      "type": "multiple_choice",
+      "prompt": "What does the append() method do to a list?",
+      "code": "nums = [1, 2]\nnums.append(3)\nprint(nums)",
+      "options": [
+        "Adds one item to the front of the list",
+        "Sorts the list",
+        "Adds one item to the end of the list",
+        "Removes the last item"
+      ],
+      "answer": "Adds one item to the end of the list",
+      "explanation": "append() always adds exactly one item at the end of the list.",
+      "hint": "Watch what the demo code does to nums."
+    },
+    {
+      "id": "W6-M-04",
+      "week": 6,
+      "difficulty": "medium",
+      "concept": "index expressions",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "names = [\"Amy\", \"Ben\", \"Cat\", \"Dan\"]\nprint(names[1 + 1])",
+      "options": null,
+      "answer": "Cat",
+      "explanation": "1 + 1 is 2, and the item at index 2 is 'Cat'.",
+      "hint": "Work out the index first, then find that item."
+    },
+    {
+      "id": "W6-M-05",
+      "week": 6,
+      "difficulty": "medium",
+      "concept": "slicing to the end",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "letters = [\"a\", \"b\", \"c\", \"d\", \"e\"]\nprint(letters[2:])",
+      "options": [
+        "['a', 'b', 'c']",
+        "['c', 'd']",
+        "['b', 'c', 'd']",
+        "['c', 'd', 'e']"
+      ],
+      "answer": "['c', 'd', 'e']",
+      "explanation": "Leaving out the stop index slices from index 2 all the way to the end.",
+      "hint": "An empty stop position means 'keep going until the list ends'."
+    },
+    {
+      "id": "W6-H-01",
+      "week": 6,
+      "difficulty": "hard",
+      "concept": "Counting with a function and a list",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def count_passing(scores):\n    count = 0\n    for s in scores:\n        if s >= 60:\n            count += 1\n    return count\n\nprint(count_passing([92, 55, 78, 40, 88]))",
+      "options": null,
+      "answer": "3",
+      "explanation": "92, 78 and 88 are at least 60, so the function counts 3 passing scores.",
+      "hint": "Go through the list one score at a time and count those reaching 60.",
+      "curriculumReference": "Week 6 Quick Check Q7",
+      "followups": [
+        {
+          "prompt": "What does count_passing([92, 55, 78, 40, 88]) return?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Step into count_passing([92, 55, 78, 40, 88]) in the walkthrough: it returns 3 to the calling line."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "5",
+            "4",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        }
+      ]
+    },
+    {
+      "id": "W6-H-02",
+      "week": 6,
+      "difficulty": "hard",
+      "concept": "Falling objects simulation",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "positions = [4, -1, 3, -1, 4]\nground = 5\nlanded = 0\nfor lane in range(len(positions)):\n    if positions[lane] != -1:\n        positions[lane] += 1\n        if positions[lane] == ground:\n            landed += 1\nprint(landed)",
+      "options": null,
+      "answer": "2",
+      "explanation": "Lane 0 falls from 4 to 5 and lane 4 falls from 4 to 5, so 2 objects land.",
+      "hint": "Only lanes that are not -1 fall. Check which lanes reach exactly 5.",
+      "curriculumReference": "Week 6 Homework - Falling Objects",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of landed?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "0",
+            "1",
+            "[5, -1, 4, -1, 5]"
+          ],
+          "answer": "2",
+          "explanation": "Follow landed to the end of the walkthrough: its last update is on line 8 (landed += 1), leaving landed = 2."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
+    },
+    {
+      "id": "W6-H-03",
+      "week": 6,
+      "difficulty": "hard",
+      "concept": "Finding the best with index and max",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "names = [\"Alice\", \"Bob\", \"Cleo\"]\nscores = [92, 75, 88]\nbest_idx = scores.index(max(scores))\nprint(names[best_idx])",
+      "options": null,
+      "answer": "Alice",
+      "explanation": "max(scores) is 92, its index is 0, and names[0] is 'Alice'.",
+      "hint": "First find the biggest score, then find where it sits, then use that position on the names list.",
+      "curriculumReference": "Week 6 Quick Check Q8",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of best_idx?",
+          "type": "multiple_choice",
+          "options": [
+            "['Alice', 'Bob', 'Cleo']",
+            "1",
+            "0",
+            "[92, 75, 88]"
+          ],
+          "answer": "0",
+          "explanation": "Follow best_idx to the end of the walkthrough: its last update is on line 3 (best_idx = scores.index(max(scores))), leaving best_idx = 0."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "Error",
+            "Alice",
+            "1",
+            "0"
+          ],
+          "answer": "Alice",
+          "explanation": "Run the walkthrough to the last step: the Output box shows Alice."
+        }
+      ]
+    },
+    {
+      "id": "W6-H-04",
+      "week": 6,
+      "difficulty": "hard",
+      "concept": "Building a list with a condition",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "evens = []\nfor n in range(1, 11):\n    if n % 2 == 0:\n        evens.append(n)\nprint(sum(evens))",
+      "options": null,
+      "answer": "30",
+      "explanation": "The list becomes [2, 4, 6, 8, 10], and 2 + 4 + 6 + 8 + 10 = 30.",
+      "hint": "Collect the even numbers first, then add them all up.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of evens?",
+          "type": "multiple_choice",
+          "options": [
+            "[2, 4, 6, 8]",
+            "[2, 4, 6, 8, 10]",
+            "[2, 4, 6]",
+            "[2, 4]"
+          ],
+          "answer": "[2, 4, 6, 8, 10]",
+          "explanation": "Follow evens to the end of the walkthrough: its last update is on line 4 (evens.append(n)), leaving evens = [2, 4, 6, 8, 10]."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "29",
+            "31",
+            "32",
+            "30"
+          ],
+          "answer": "30",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 30."
+        }
+      ]
+    },
+    {
+      "id": "W6-H-05",
+      "week": 6,
+      "difficulty": "hard",
+      "concept": "Splitting text into numbers",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "line = \"10,20,30\"\nparts = line.split(\",\")\ntotal = 0\nfor p in parts:\n    total += int(p)\nprint(total)",
+      "options": null,
+      "answer": "60",
+      "explanation": "split(',') gives ['10', '20', '30']; converting each to int and adding gives 60.",
+      "hint": "split() hands you text pieces - each piece needs int() before it can be added.",
+      "curriculumReference": "Week 6 Quick Check Q6",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "30",
+            "0",
+            "60",
+            "10"
+          ],
+          "answer": "60",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 5 (total += int(p)), leaving total = 60."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "62",
+            "60",
+            "61",
+            "59"
+          ],
+          "answer": "60",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 60."
+        }
+      ]
+    },
+    {
+      "id": "W6-X-01",
+      "week": 6,
+      "difficulty": "extra",
+      "concept": "Above-average count",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def average(nums):\n    return sum(nums) / len(nums)\n\nscores = [70, 85, 90, 60, 95, 80]\navg = average(scores)\ncount = 0\nfor s in scores:\n    if s > avg:\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "3",
+      "explanation": "The average is 80.0, and 85, 90 and 95 are above it, so the count is 3.",
+      "hint": "Find the average first (480 / 6), then count the scores strictly above it.",
+      "curriculumReference": "Week 6 Quick Check Q7",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "answer": "3",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 9 (count += 1), leaving count = 3."
+        }
+      ]
+    },
+    {
+      "id": "W6-X-02",
+      "week": 6,
+      "difficulty": "extra",
+      "concept": "Two rounds of falling objects",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "positions = [4, -1, 3, -1, 2]\nground = 5\nmissed = 0\nfor r in range(2):\n    for lane in range(len(positions)):\n        if positions[lane] != -1:\n            positions[lane] += 1\n            if positions[lane] == ground:\n                positions[lane] = -1\n                missed += 1\nprint(missed)",
+      "options": null,
+      "answer": "2",
+      "explanation": "In round 1 lane 0 lands; in round 2 lane 2 lands. Lane 4 only reaches 4, so missed is 2.",
+      "hint": "Run the board twice. A lane that lands goes back to -1 and stops falling.",
+      "curriculumReference": "Week 6 Homework - Falling Objects",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of missed?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "2",
+            "[-1, -1, -1, -1, 4]",
+            "1"
+          ],
+          "answer": "2",
+          "explanation": "Follow missed to the end of the walkthrough: its last update is on line 10 (missed += 1), leaving missed = 2."
+        }
+      ]
+    },
+    {
+      "id": "W6-X-03",
+      "week": 6,
+      "difficulty": "extra",
+      "concept": "Second biggest value",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def second_biggest(nums):\n    biggest = nums[0]\n    for n in nums:\n        if n > biggest:\n            biggest = n\n    second = nums[0]\n    for n in nums:\n        if n != biggest and n > second:\n            second = n\n    return second\n\nprint(second_biggest([4, 9, 7, 9, 5]))",
+      "options": null,
+      "answer": "7",
+      "explanation": "The biggest value is 9. Ignoring the 9s, the biggest remaining value is 7.",
+      "hint": "Find the maximum first. Then look for the biggest value that is not that maximum.",
+      "curriculumReference": "Week 6 Quick Check Q7",
+      "followups": [
+        {
+          "prompt": "What does second_biggest([4, 9, 7, 9, 5]) return?",
+          "type": "multiple_choice",
+          "options": [
+            "9",
+            "7",
+            "8",
+            "6"
+          ],
+          "answer": "7",
+          "explanation": "Step into second_biggest([4, 9, 7, 9, 5]) in the walkthrough: it returns 7 to the calling line."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 9 instead of 7. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "def second_biggest(nums):\n    biggest = nums[0]\n    for n in nums:\n        if n > biggest:\n            biggest = n\n    second = nums[0]\n    for n in nums:\n        if n > second:\n            second = n\n    return second\n\nprint(second_biggest([4, 9, 7, 9, 5]))",
+          "options": [
+            "second = n",
+            "if n > second:",
+            "for n in nums:",
+            "if n > biggest:"
+          ],
+          "answer": "if n > second:",
+          "explanation": "Without the 'n != biggest' check, the biggest value itself (9) is allowed to become 'second', so the code prints 9 instead of 7."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "def second_biggest(nums):\n    biggest = nums[0]\n    for n in nums:\n        if n > biggest:\n            biggest = n\n    second = nums[0]\n    for n in nums:\n        if n > second:\n            second = n\n    return second\n\nprint(second_biggest([4, 9, 7, 9, 5]))",
+          "options": [
+            "if n != biggest or n > second:",
+            "if n != biggest and n > second:",
+            "if n != biggest and n < second:"
+          ],
+          "answer": "if n != biggest and n > second:",
+          "explanation": "The second-biggest value must be a DIFFERENT number from the biggest, so the 'n != biggest' check has to stay."
+        }
+      ]
+    },
+    {
+      "id": "W6-X-04",
+      "week": 6,
+      "difficulty": "extra",
+      "concept": "Counting long words",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "sentence = \"the quick brown fox jumps\"\nwords = sentence.split()\ncount = 0\nfor w in words:\n    if len(w) > 3:\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "3",
+      "explanation": "'quick', 'brown' and 'jumps' have more than 3 letters; 'the' and 'fox' have exactly 3.",
+      "hint": "split() the sentence first, then check the length of each word.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 6 (count += 1), leaving count = 3."
+        }
+      ]
+    },
+    {
+      "id": "W6-X-05",
+      "week": 6,
+      "difficulty": "extra",
+      "concept": "Cumulative sum search",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "nums = [3, 5, 2, 8, 4]\ntarget = 10\ntotal = 0\nidx = 0\nwhile total <= target:\n    total += nums[idx]\n    idx += 1\nprint(idx - 1)",
+      "options": null,
+      "answer": "3",
+      "explanation": "The running total goes 3, 8, 10, 18. It passes 10 after adding nums[3], so the answer is index 3.",
+      "hint": "Keep a running total and stop as soon as it is bigger than the target. Which index was added last?",
+      "curriculumReference": "Week 6 Quick Check Q5",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of idx?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "answer": "4",
+          "explanation": "Follow idx to the end of the walkthrough: its last update is on line 7 (idx += 1), leaving idx = 4."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 2 instead of 3. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "nums = [3, 5, 2, 8, 4]\ntarget = 10\ntotal = 0\nidx = 0\nwhile total < target:\n    total += nums[idx]\n    idx += 1\nprint(idx - 1)",
+          "options": [
+            "total += nums[idx]",
+            "total = 0",
+            "while total < target:",
+            "idx += 1"
+          ],
+          "answer": "while total < target:",
+          "explanation": "total lands exactly on the target (10). With '<', the loop stops as soon as total EQUALS 10, one step early, so it prints 2 instead of 3."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "nums = [3, 5, 2, 8, 4]\ntarget = 10\ntotal = 0\nidx = 0\nwhile total < target:\n    total += nums[idx]\n    idx += 1\nprint(idx - 1)",
+          "options": [
+            "while total <= target - 1:",
+            "while total >= target:",
+            "while total <= target:"
+          ],
+          "answer": "while total <= target:",
+          "explanation": "'<=' includes the moment total equals the target, so the loop takes the final step the original counts."
+        }
+      ]
+    },
+    {
+      "id": "W7-E-01",
+      "week": 7,
+      "difficulty": "easy",
+      "concept": "string operators",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "print(\"Py\" + \"thon\")\nprint(\"ab\" * 3)",
+      "options": [
+        "Python\nab ab ab",
+        "Python\n333",
+        "Python\nababab",
+        "Py + thon\nababab"
+      ],
+      "answer": "Python\nababab",
+      "explanation": "+ joins strings end to end, and * repeats a string: 'ab' three times is 'ababab'.",
+      "hint": "One operator glues text together; the other repeats it."
+    },
+    {
+      "id": "W7-E-02",
+      "week": 7,
+      "difficulty": "easy",
+      "concept": "last character",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "s = \"Programming\"\nprint(s[-1])",
+      "options": [
+        "n",
+        "g",
+        "m",
+        "P"
+      ],
+      "answer": "g",
+      "explanation": "Index -1 is the last character of 'Programming', which is 'g'.",
+      "hint": "Negative indexes count from the end of the string."
+    },
+    {
+      "id": "W7-E-03",
+      "week": 7,
+      "difficulty": "easy",
+      "concept": "strings cannot be changed",
+      "type": "multiple_choice",
+      "prompt": "Sam writes s[0] = \"b\" to turn \"cat\" into \"bat\". What happens?",
+      "code": "s = \"cat\"\nprint(s)",
+      "options": [
+        "Only the first letter changes",
+        "It crashes - strings cannot be changed",
+        "s becomes \"bat\"",
+        "Nothing happens at all"
+      ],
+      "answer": "It crashes - strings cannot be changed",
+      "explanation": "Strings are immutable: you cannot replace one letter in place. Build a new string instead, like 'b' + s[1:].",
+      "hint": "Once a string is created, Python treats its letters as set in stone."
+    },
+    {
+      "id": "W7-E-04",
+      "week": 7,
+      "difficulty": "easy",
+      "concept": "slicing a string",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "s = \"Programming\"\nprint(s[0:4])",
+      "options": [
+        "gram",
+        "Prog",
+        "P",
+        "Progr"
+      ],
+      "answer": "Prog",
+      "explanation": "The slice takes indexes 0, 1, 2 and 3 - it stops just before index 4.",
+      "hint": "A slice includes the start index but not the stop index."
+    },
+    {
+      "id": "W7-E-05",
+      "week": 7,
+      "difficulty": "easy",
+      "concept": "membership with in",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "print(\"th\" in \"python\")\nprint(\"z\" in \"python\")",
+      "options": [
+        "True\nTrue",
+        "False\nTrue",
+        "True\nFalse",
+        "False\nFalse"
+      ],
+      "answer": "True\nFalse",
+      "explanation": "'th' appears inside 'python', but 'z' does not.",
+      "hint": "in asks whether the small text hides inside the big text."
+    },
+    {
+      "id": "W7-M-01",
+      "week": 7,
+      "difficulty": "medium",
+      "concept": "methods return new strings",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "name = \"   Bob   \"\nclean = name.strip()\nprint(name == clean)",
+      "options": null,
+      "answer": "False",
+      "explanation": "strip() returns a new string and leaves name untouched, so name (with its spaces) is not equal to clean.",
+      "hint": "strip() builds a brand-new string. Does name itself get rebuilt?"
+    },
+    {
+      "id": "W7-M-02",
+      "week": 7,
+      "difficulty": "medium",
+      "concept": "split with a separator",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "line = \"Alice,95,A\"\nparts = line.split(\",\")\nprint(parts)",
+      "options": [
+        "['Alice', '95', 'A']",
+        "['alice', '95', 'a']",
+        "['Alice,95,A']",
+        "['Alice', '95']"
+      ],
+      "answer": "['Alice', '95', 'A']",
+      "explanation": "split(',') cuts the text at every comma, giving three string pieces.",
+      "hint": "The separator is the comma - count the pieces between the commas."
+    },
+    {
+      "id": "W7-M-03",
+      "week": 7,
+      "difficulty": "medium",
+      "concept": "counting characters",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "s = \"scoreboard\"\nprint(s.count(\"o\"))",
+      "options": null,
+      "answer": "2",
+      "explanation": "The letter 'o' appears twice in 'scoreboard'.",
+      "hint": "Scan the word letter by letter and tally every 'o'."
+    },
+    {
+      "id": "W7-M-04",
+      "week": 7,
+      "difficulty": "medium",
+      "concept": "f-string alignment",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "print(f\"|{'Hi':>6}|\")",
+      "options": [
+        "|     Hi|",
+        "|Hi    |",
+        "|    Hi|",
+        "|   Hi|"
+      ],
+      "answer": "|    Hi|",
+      "explanation": "'>6' right-aligns 'Hi' in a space of width 6, adding 4 spaces before it.",
+      "hint": "The number after > is the total width, including the letters themselves."
+    },
+    {
+      "id": "W7-M-05",
+      "week": 7,
+      "difficulty": "medium",
+      "concept": "the strip() method",
+      "type": "multiple_choice",
+      "prompt": "Which method removes spaces from both ends of a string?",
+      "code": "s = \"  hi  \"\nprint(s.strip())",
+      "options": [
+        "count()",
+        "strip()",
+        "split()",
+        "join()"
+      ],
+      "answer": "strip()",
+      "explanation": "strip() removes whitespace from the start and end of a string, as the demo shows.",
+      "hint": "Watch what the demo code uses to clean up the string."
+    },
+    {
+      "id": "W7-H-01",
+      "week": 7,
+      "difficulty": "hard",
+      "concept": "Cleaning up split text",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "raw = \"10 , 20 ,30\"\npieces = raw.split(\",\")\ntotal = 0\nfor p in pieces:\n    total += int(p.strip())\nprint(total)",
+      "options": null,
+      "answer": "60",
+      "explanation": "Splitting gives ['10 ', ' 20 ', '30']; stripping and converting each gives 10 + 20 + 30 = 60.",
+      "hint": "Each piece still wears its spaces - clean it before turning it into a number.",
+      "curriculumReference": "Week 7 Quick Check Q8",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "10",
+            "30",
+            "60"
+          ],
+          "answer": "60",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 5 (total += int(p.strip())), leaving total = 60."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "62",
+            "61",
+            "60",
+            "59"
+          ],
+          "answer": "60",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 60."
+        }
+      ]
+    },
+    {
+      "id": "W7-H-02",
+      "week": 7,
+      "difficulty": "hard",
+      "concept": "Counting vowels in a function",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def count_vowels(word):\n    count = 0\n    for ch in word:\n        if ch in \"aeiou\":\n            count += 1\n    return count\n\nprint(count_vowels(\"banana\"))",
+      "options": null,
+      "answer": "3",
+      "explanation": "'banana' has three vowels: the three a's.",
+      "hint": "Walk through the word one character at a time and check membership in 'aeiou'.",
+      "followups": [
+        {
+          "prompt": "What does count_vowels(banana) return?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "3",
+            "5",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Step into count_vowels(banana) in the walkthrough: it returns 3 to the calling line."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "5",
+            "4",
+            "3",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        }
+      ]
+    },
+    {
+      "id": "W7-H-03",
+      "week": 7,
+      "difficulty": "hard",
+      "concept": "Palindromes in a list",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def is_pal(word):\n    return word == word[::-1]\n\nwords = [\"level\", \"hello\", \"radar\", \"python\"]\ncount = 0\nfor w in words:\n    if is_pal(w):\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "2",
+      "explanation": "'level' and 'radar' read the same backwards; 'hello' and 'python' do not.",
+      "hint": "A palindrome equals its own reverse, which [::-1] gives you.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "1",
+            "2",
+            "['level', 'hello', 'radar', 'python']",
+            "0"
+          ],
+          "answer": "2",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 8 (count += 1), leaving count = 2."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
+    },
+    {
+      "id": "W7-H-04",
+      "week": 7,
+      "difficulty": "hard",
+      "concept": "Formatting a percentage",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "rounds = 10\nmissed = 2\nrate = (rounds - missed) / rounds * 100\nprint(f\"{rate:.1f}%\")",
+      "options": [
+        "8.0%",
+        "20.0%",
+        "80%",
+        "80.0%"
+      ],
+      "answer": "80.0%",
+      "explanation": "(10 - 2) / 10 * 100 is 80.0, and :.1f keeps exactly one decimal place.",
+      "hint": ":.1f means one digit after the decimal point.",
+      "curriculumReference": "Week 7 Homework - Status Card",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of rate?",
+          "type": "multiple_choice",
+          "options": [
+            "10",
+            "80",
+            "81",
+            "2"
+          ],
+          "answer": "80",
+          "explanation": "Follow rate to the end of the walkthrough: its last update is on line 3 (rate = (rounds - missed) / rounds * 100), leaving rate = 80."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "82.0%",
+            "80.0%",
+            "79.0%",
+            "81.0%"
+          ],
+          "answer": "80.0%",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 80.0%."
+        }
+      ]
+    },
+    {
+      "id": "W7-H-05",
+      "week": 7,
+      "difficulty": "hard",
+      "concept": "Building an acronym",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "words = \"National Aeronautics Space Agency\".split()\nletters = \"\"\nfor w in words:\n    letters += w[0]\nprint(letters)",
+      "options": null,
+      "answer": "NASA",
+      "explanation": "Taking the first letter of each word spells N, A, S, A.",
+      "hint": "Collect index 0 of every word, in order.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of letters?",
+          "type": "multiple_choice",
+          "options": [
+            "\"NASA\"",
+            "\"N\"",
+            "\"NAS\"",
+            "\"NA\""
+          ],
+          "answer": "\"NASA\"",
+          "explanation": "Follow letters to the end of the walkthrough: its last update is on line 4 (letters += w[0]), leaving letters = \"NASA\"."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "NASA",
+            "1",
+            "Error"
+          ],
+          "answer": "NASA",
+          "explanation": "Run the walkthrough to the last step: the Output box shows NASA."
+        }
+      ]
+    },
+    {
+      "id": "W7-X-01",
+      "week": 7,
+      "difficulty": "extra",
+      "concept": "Words with two tests",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "sentence = \"sam sells seashells by the seashore\"\nwords = sentence.split()\ncount = 0\nfor w in words:\n    if w.startswith(\"s\") and len(w) > 3:\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "3",
+      "explanation": "'sells', 'seashells' and 'seashore' start with s and have more than 3 letters; 'sam' is too short.",
+      "hint": "Both tests must pass: the starting letter and the length.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "1",
+            "0",
+            "3",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 6 (count += 1), leaving count = 3."
+        }
+      ]
+    },
+    {
+      "id": "W7-X-02",
+      "week": 7,
+      "difficulty": "extra",
+      "concept": "Cleaning a list of names",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "raw_names = [\"  Alice \", \"\", \" Bob\", \"   \", \"Cleo \"]\nclean = []\nfor n in raw_names:\n    name = n.strip()\n    if len(name) > 0:\n        clean.append(name)\nprint(len(clean))",
+      "options": null,
+      "answer": "3",
+      "explanation": "After stripping, 'Alice', 'Bob' and 'Cleo' remain; the empty and spaces-only entries drop out.",
+      "hint": "A name made only of spaces becomes empty once stripped.",
+      "curriculumReference": "Week 7 Homework Part 2",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of clean?",
+          "type": "multiple_choice",
+          "options": [
+            "['Alice', 'Bob', 'Cleo']",
+            "[]",
+            "['Alice']",
+            "['Alice', 'Bob']"
+          ],
+          "answer": "['Alice', 'Bob', 'Cleo']",
+          "explanation": "Follow clean to the end of the walkthrough: its last update is on line 6 (clean.append(name)), leaving clean = ['Alice', 'Bob', 'Cleo']."
+        }
+      ]
+    },
+    {
+      "id": "W7-X-03",
+      "week": 7,
+      "difficulty": "extra",
+      "concept": "Counting a pattern with slices",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "s = \"ababab\"\ncount = 0\nfor i in range(len(s) - 1):\n    if s[i:i + 2] == \"ab\":\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "3",
+      "explanation": "The two-letter windows are ab, ba, ab, ba, ab - 'ab' appears 3 times.",
+      "hint": "Slide a two-letter window across the string and compare each window.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "0",
+            "1",
+            "3"
+          ],
+          "answer": "3",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 5 (count += 1), leaving count = 3."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 0 instead of 3. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "s = \"ababab\"\ncount = 0\nfor i in range(len(s) - 1):\n    if s[i:i + 1] == \"ab\":\n        count += 1\nprint(count)",
+          "options": [
+            "count += 1",
+            "if s[i:i + 1] == \"ab\":",
+            "for i in range(len(s) - 1):",
+            "s = \"ababab\""
+          ],
+          "answer": "if s[i:i + 1] == \"ab\":",
+          "explanation": "A slice of length 1 (s[i:i + 1]) is a single character, so it can never equal the two-character string 'ab' and the count stays 0."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "s = \"ababab\"\ncount = 0\nfor i in range(len(s) - 1):\n    if s[i:i + 1] == \"ab\":\n        count += 1\nprint(count)",
+          "options": [
+            "if s[i - 1:i + 1] == \"ab\":",
+            "if s[i:i + 3] == \"ab\":",
+            "if s[i:i + 2] == \"ab\":"
+          ],
+          "answer": "if s[i:i + 2] == \"ab\":",
+          "explanation": "The slice must take exactly two characters, s[i:i + 2], to compare with 'ab'."
+        }
+      ]
+    },
+    {
+      "id": "W7-X-04",
+      "week": 7,
+      "difficulty": "extra",
+      "concept": "Aligned status card row",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "name = \"Alice\"\nscore = 95\nprint(f\"{name:<8}{score:>4}\")",
+      "options": [
+        "Alice     95",
+        "Alice 95",
+        "Alice    95",
+        "Alice      95"
+      ],
+      "answer": "Alice     95",
+      "explanation": "'Alice' left-aligned in width 8 adds 3 spaces; 95 right-aligned in width 4 adds 2 spaces - 5 spaces in total.",
+      "hint": "Add the padding from both fields: (8 - 5) spaces after the name and (4 - 2) before the score.",
+      "curriculumReference": "Week 7 Homework - Status Card",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of score?",
+          "type": "multiple_choice",
+          "options": [
+            "94",
+            "\"Alice\"",
+            "95",
+            "96"
+          ],
+          "answer": "95",
+          "explanation": "Follow score to the end of the walkthrough: its last update is on line 2 (score = 95), leaving score = 95."
+        }
+      ]
+    },
+    {
+      "id": "W7-X-05",
+      "week": 7,
+      "difficulty": "extra",
+      "concept": "Longest word",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "sentence = \"the quick brown fox jumps high\"\nwords = sentence.split()\nlongest = \"\"\nfor w in words:\n    if len(w) > len(longest):\n        longest = w\nprint(longest)",
+      "options": null,
+      "answer": "quick",
+      "explanation": "'quick' reaches length 5 first; 'brown' and 'jumps' only tie it, and a tie does not replace it.",
+      "hint": "The champion only changes on a strictly longer word, so the first word of the best length wins.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of longest?",
+          "type": "multiple_choice",
+          "options": [
+            "\"the\"",
+            "\"quick\"",
+            "\"\"",
+            "\"the quick brown fox jumps high\""
+          ],
+          "answer": "\"quick\"",
+          "explanation": "Follow longest to the end of the walkthrough: its last update is on line 6 (longest = w), leaving longest = \"quick\"."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints jumps instead of quick. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "sentence = \"the quick brown fox jumps high\"\nwords = sentence.split()\nlongest = \"\"\nfor w in words:\n    if len(w) >= len(longest):\n        longest = w\nprint(longest)",
+          "options": [
+            "for w in words:",
+            "longest = w",
+            "if len(w) >= len(longest):",
+            "words = sentence.split()"
+          ],
+          "answer": "if len(w) >= len(longest):",
+          "explanation": "With '>=', a word that is only TIED for longest replaces the current champion, so the last 5-letter word ('jumps') wins instead of the first ('quick')."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "sentence = \"the quick brown fox jumps high\"\nwords = sentence.split()\nlongest = \"\"\nfor w in words:\n    if len(w) >= len(longest):\n        longest = w\nprint(longest)",
+          "options": [
+            "if len(w) < len(longest):",
+            "if len(w) >= len(longest) and len(w) > 0:",
+            "if len(w) > len(longest):"
+          ],
+          "answer": "if len(w) > len(longest):",
+          "explanation": "'>' keeps the FIRST word of the maximum length: a tie does not replace it."
+        }
+      ]
+    },
+    {
+      "id": "W8-E-01",
+      "week": 8,
+      "difficulty": "easy",
+      "concept": "sets remove duplicates",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "nums = [1, 2, 2, 3, 3, 3]\ns = set(nums)\nprint(len(s))",
+      "options": [
+        "2",
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "3",
+      "explanation": "Turning the list into a set keeps each value once: {1, 2, 3}, so the length is 3.",
+      "hint": "A set keeps only one copy of each value."
+    },
+    {
+      "id": "W8-E-02",
+      "week": 8,
+      "difficulty": "easy",
+      "concept": "set membership",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "lanes = {0, 2, 4}\nprint(3 in lanes)\nprint(3 not in lanes)",
+      "options": [
+        "True\nTrue",
+        "False\nTrue",
+        "False\nFalse",
+        "True\nFalse"
+      ],
+      "answer": "False\nTrue",
+      "explanation": "3 is not one of the lanes, so 'in' is False and 'not in' is True.",
+      "hint": "Check whether 3 is hiding among 0, 2 and 4."
+    },
+    {
+      "id": "W8-E-03",
+      "week": 8,
+      "difficulty": "easy",
+      "concept": "the {} trap",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "s = {}\nprint(type(s))",
+      "options": [
+        "<class 'dict'>",
+        "set",
+        "<class 'list'>",
+        "<class 'set'>"
+      ],
+      "answer": "<class 'dict'>",
+      "explanation": "Empty curly braces make a dictionary, not a set - an empty set needs set().",
+      "hint": "This is the famous trap from class: {} already belongs to another type."
+    },
+    {
+      "id": "W8-E-04",
+      "week": 8,
+      "difficulty": "easy",
+      "concept": "adding to a set",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "colors = {\"red\", \"blue\"}\ncolors.add(\"green\")\nprint(len(colors))",
+      "options": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "answer": "3",
+      "explanation": "add() puts 'green' into the set, which then holds three colors.",
+      "hint": "Count the colors after the new one joins."
+    },
+    {
+      "id": "W8-E-05",
+      "week": 8,
+      "difficulty": "easy",
+      "concept": "creating an empty set",
+      "type": "multiple_choice",
+      "prompt": "Which line of code creates an empty set?",
+      "code": "s = set()\nprint(len(s))",
+      "options": [
+        "s = []",
+        "s = set()",
+        "s = dict()",
+        "s = {}"
+      ],
+      "answer": "s = set()",
+      "explanation": "set() with nothing inside makes an empty set; {} would make a dictionary instead.",
+      "hint": "One of the options is the {} trap in disguise."
+    },
+    {
+      "id": "W8-M-01",
+      "week": 8,
+      "difficulty": "medium",
+      "concept": "union with sorted output",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(sorted(a | b))",
+      "options": [
+        "[2, 3]",
+        "[1, 4]",
+        "[4, 3, 2, 1]",
+        "[1, 2, 3, 4]"
+      ],
+      "answer": "[1, 2, 3, 4]",
+      "explanation": "The union holds every value from both sets - 1, 2, 3 and 4 - and sorted() lists them in order.",
+      "hint": "Union means 'everything from both sides, duplicates removed'."
+    },
+    {
+      "id": "W8-M-02",
+      "week": 8,
+      "difficulty": "medium",
+      "concept": "intersection size",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(len(a & b))",
+      "options": null,
+      "answer": "2",
+      "explanation": "The intersection is {2, 3} - the values in both sets - so its length is 2.",
+      "hint": "Only count the values that appear in both sets."
+    },
+    {
+      "id": "W8-M-03",
+      "week": 8,
+      "difficulty": "medium",
+      "concept": "remove vs discard",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "s = {1, 2, 3}\ns.discard(9)\ns.remove(1)\nprint(sorted(s))",
+      "options": [
+        "[1, 2, 3]",
+        "[2, 3]",
+        "[2, 3, 9]",
+        "[1, 3]"
+      ],
+      "answer": "[2, 3]",
+      "explanation": "discard(9) quietly does nothing because 9 is not in the set; remove(1) takes out the 1, leaving {2, 3}.",
+      "hint": "One of these two methods stays calm when the item is missing."
+    },
+    {
+      "id": "W8-M-04",
+      "week": 8,
+      "difficulty": "medium",
+      "concept": "difference size",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(len(b - a))",
+      "options": null,
+      "answer": "1",
+      "explanation": "b - a keeps only what is in b but not in a: just {4}, so the length is 1.",
+      "hint": "Start from b and cross out anything that also lives in a."
+    },
+    {
+      "id": "W8-M-05",
+      "week": 8,
+      "difficulty": "medium",
+      "concept": "sets have no order",
+      "type": "multiple_choice",
+      "prompt": "A student prints the same set twice and the items appear in a different order each time. Why?",
+      "code": "lanes = {0, 2, 4}\nprint(sorted(lanes))",
+      "options": [
+        "The student's computer is broken",
+        "Sets have no fixed order - use sorted() to print them in order",
+        "Python shuffles sets on purpose to test you",
+        "The set lost some of its items"
+      ],
+      "answer": "Sets have no fixed order - use sorted() to print them in order",
+      "explanation": "A set stores items without promising any order. sorted() turns it into an ordered list when you need one.",
+      "hint": "The demo shows the tool that gives a set a reliable order for printing."
+    },
+    {
+      "id": "W8-H-01",
+      "week": 8,
+      "difficulty": "hard",
+      "concept": "Building the occupied set",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "positions = [-1, 0, -1, 2, -1]\noccupied = set()\nfor lane in range(len(positions)):\n    if positions[lane] != -1:\n        occupied.add(lane)\nprint(len(occupied))",
+      "options": null,
+      "answer": "2",
+      "explanation": "Lanes 1 and 3 hold objects (their positions are not -1), so occupied ends with 2 lanes.",
+      "hint": "A lane joins the set only when its position is not -1.",
+      "curriculumReference": "Week 8 Quick Check Q8",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of occupied?",
+          "type": "multiple_choice",
+          "options": [
+            "[-1, 0, -1, 2, -1]",
+            "set()",
+            "{1}",
+            "{1, 3}"
+          ],
+          "answer": "{1, 3}",
+          "explanation": "Follow occupied to the end of the walkthrough: its last update is on line 5 (occupied.add(lane)), leaving occupied = {1, 3}."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
+    },
+    {
+      "id": "W8-H-02",
+      "week": 8,
+      "difficulty": "hard",
+      "concept": "Lanes both players kept safe",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "player1_safe = {0, 2, 3, 4}\nplayer2_safe = {1, 2, 3}\nboth = player1_safe & player2_safe\nprint(len(both))",
+      "options": null,
+      "answer": "2",
+      "explanation": "The lanes in both sets are {2, 3}, so the count is 2.",
+      "hint": "The & operator keeps only the overlap between the two sets.",
+      "curriculumReference": "Week 8 Homework Part 2",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        },
+        {
+          "prompt": "How many lines does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "answer": "1",
+          "explanation": "The Output box ends with 1 line(s): 2."
+        }
+      ]
+    },
+    {
+      "id": "W8-H-03",
+      "week": 8,
+      "difficulty": "hard",
+      "concept": "Detecting duplicates",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "def has_duplicates(nums):\n    return len(nums) != len(set(nums))\n\nprint(has_duplicates([4, 7, 4, 9]))",
+      "options": null,
+      "answer": "True",
+      "explanation": "The list has 4 items but only 3 unique values, so the lengths differ and the answer is True.",
+      "hint": "Compare the list's length with the count of its unique items.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "True",
+            "Error",
+            "1",
+            "0"
+          ],
+          "answer": "True",
+          "explanation": "Run the walkthrough to the last step: the Output box shows True."
+        },
+        {
+          "prompt": "How many lines does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "1",
+            "2",
+            "4"
+          ],
+          "answer": "1",
+          "explanation": "The Output box ends with 1 line(s): True."
+        }
+      ]
+    },
+    {
+      "id": "W8-H-04",
+      "week": 8,
+      "difficulty": "hard",
+      "concept": "Unique words in a sentence",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "sentence = \"the cat sat on the mat\"\nwords = sentence.split()\nunique = set(words)\nprint(len(unique))",
+      "options": null,
+      "answer": "5",
+      "explanation": "The words are the, cat, sat, on, the, mat - 'the' repeats, leaving 5 unique words.",
+      "hint": "split() first, then let the set throw away the repeats.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "6",
+            "5",
+            "7",
+            "4"
+          ],
+          "answer": "5",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 5."
+        },
+        {
+          "prompt": "How many lines does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "answer": "1",
+          "explanation": "The Output box ends with 1 line(s): 5."
+        }
+      ]
+    },
+    {
+      "id": "W8-H-05",
+      "week": 8,
+      "difficulty": "hard",
+      "concept": "Spawn requests and a set",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "occupied = {0, 2}\nrequests = [1, 2, 3, 0, 4]\nspawned = 0\nfor lane in requests:\n    if lane not in occupied:\n        occupied.add(lane)\n        spawned += 1\nprint(spawned)",
+      "options": null,
+      "answer": "3",
+      "explanation": "Lanes 1, 3 and 4 are free and spawn; lanes 2 and 0 are already taken, so 3 spawns succeed.",
+      "hint": "A spawn only counts when its lane is not already in the set - and the set grows as you go.",
+      "curriculumReference": "Week 8 Homework Part 1",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of spawned?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "answer": "3",
+          "explanation": "Follow spawned to the end of the walkthrough: its last update is on line 7 (spawned += 1), leaving spawned = 3."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "5",
+            "3",
+            "4"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        }
+      ]
+    },
+    {
+      "id": "W8-X-01",
+      "week": 8,
+      "difficulty": "extra",
+      "concept": "Safe for exactly one player",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "player1_safe = {0, 2, 3, 4}\nplayer2_safe = {1, 2, 3}\nonly_one = player1_safe ^ player2_safe\nprint(len(only_one))",
+      "options": null,
+      "answer": "3",
+      "explanation": "The symmetric difference is {0, 4, 1} - lanes kept safe by exactly one player - so the count is 3.",
+      "hint": "^ keeps the lanes that are in one set or the other, but not both.",
+      "curriculumReference": "Week 8 Homework Part 2",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "3",
+            "5"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        }
+      ]
+    },
+    {
+      "id": "W8-X-02",
+      "week": 8,
+      "difficulty": "extra",
+      "concept": "Every lane ever occupied",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "round1 = [0, 2, 4]\nround2 = [2, 3]\never = set()\nfor lane in round1:\n    ever.add(lane)\nfor lane in round2:\n    ever.add(lane)\nprint(len(ever))",
+      "options": null,
+      "answer": "4",
+      "explanation": "Across both rounds the lanes used are 0, 2, 4 and 3 - 4 different lanes (2 repeats and is stored once).",
+      "hint": "The set remembers every lane it has ever seen, duplicates included only once.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of ever?",
+          "type": "multiple_choice",
+          "options": [
+            "{0, 2}",
+            "{0}",
+            "{0, 2, 3, 4}",
+            "{0, 2, 4}"
+          ],
+          "answer": "{0, 2, 3, 4}",
+          "explanation": "Follow ever to the end of the walkthrough: its last update is on line 7 (ever.add(lane)), leaving ever = {0, 2, 3, 4}."
+        }
+      ]
+    },
+    {
+      "id": "W8-X-03",
+      "week": 8,
+      "difficulty": "extra",
+      "concept": "Common letters",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "a = set(\"banana\")\nb = set(\"band\")\ncommon = a & b\nprint(len(common))",
+      "options": null,
+      "answer": "3",
+      "explanation": "'banana' uses the letters {b, a, n} and 'band' uses {b, a, n, d}; the shared letters are b, a and n - 3 letters.",
+      "hint": "Turn each word into the set of its letters, then find the overlap.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "2",
+            "3",
+            "5"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 4 instead of 3. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "a = set(\"banana\")\nb = set(\"band\")\ncommon = a | b\nprint(len(common))",
+          "options": [
+            "b = set(\"band\")",
+            "common = a | b",
+            "print(len(common))",
+            "a = set(\"banana\")"
+          ],
+          "answer": "common = a | b",
+          "explanation": "'|' is union: it keeps letters from EITHER word (4 letters). The question asks for letters in both words, which is intersection."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "a = set(\"banana\")\nb = set(\"band\")\ncommon = a | b\nprint(len(common))",
+          "options": [
+            "common = a & b",
+            "common = b - a",
+            "common = a - b"
+          ],
+          "answer": "common = a & b",
+          "explanation": "'&' is intersection: only letters that appear in both sets survive."
+        }
+      ]
+    },
+    {
+      "id": "W8-X-04",
+      "week": 8,
+      "difficulty": "extra",
+      "concept": "Missing lane numbers",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "full = set(range(1, 6))\npresent = {2, 5}\nprint(sorted(full - present))",
+      "options": [
+        "[4, 3, 1]",
+        "[2, 5]",
+        "[1, 3, 4]",
+        "[1, 2, 3, 4, 5]"
+      ],
+      "answer": "[1, 3, 4]",
+      "explanation": "The full set is {1, 2, 3, 4, 5}; removing 2 and 5 leaves {1, 3, 4}.",
+      "hint": "Difference means 'start with the full set and take the present ones away'.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "[2, 3, 4]",
+            "[0, 3, 4]",
+            "[3, 3, 4]",
+            "[1, 3, 4]"
+          ],
+          "answer": "[1, 3, 4]",
+          "explanation": "Run the walkthrough to the last step: the Output box shows [1, 3, 4]."
+        }
+      ]
+    },
+    {
+      "id": "W8-X-05",
+      "week": 8,
+      "difficulty": "extra",
+      "concept": "Scores in both rounds",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "round1 = [10, 20, 30, 40]\nround2 = [30, 40, 50]\nboth = set(round1) & set(round2)\nprint(len(both))",
+      "options": null,
+      "answer": "2",
+      "explanation": "30 and 40 appear in both rounds, so the intersection has 2 scores.",
+      "hint": "Turn both lists into sets and count what they share.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
+    },
+    {
+      "id": "W9-E-01",
+      "week": 9,
+      "difficulty": "easy",
+      "concept": "reading a value by key",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "game_state = {\"score\": 120, \"lives\": 2, \"speed\": 3}\nprint(game_state[\"lives\"])",
+      "options": [
+        "2",
+        "3",
+        "120",
+        "lives"
+      ],
+      "answer": "2",
+      "explanation": "The key 'lives' is paired with the value 2.",
+      "hint": "Find the key in the dictionary and read the value paired with it."
+    },
+    {
+      "id": "W9-E-02",
+      "week": 9,
+      "difficulty": "easy",
+      "concept": "get with a default",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "coins = {\"gold\": 50}\nprint(coins.get(\"silver\", 0))",
+      "options": [
+        "0",
+        "50",
+        "None",
+        "KeyError"
+      ],
+      "answer": "0",
+      "explanation": "'silver' is missing, so get() hands back the default value 0 instead of crashing.",
+      "hint": "The second thing inside get() is the backup plan for a missing key."
+    },
+    {
+      "id": "W9-E-03",
+      "week": 9,
+      "difficulty": "easy",
+      "concept": "adding a key",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "game_state = {\"score\": 10}\ngame_state[\"lives\"] = 3\nprint(len(game_state))",
+      "options": [
+        "3",
+        "1",
+        "2",
+        "10"
+      ],
+      "answer": "2",
+      "explanation": "Assigning a brand-new key adds it, so the dictionary grows from 1 pair to 2.",
+      "hint": "One pair was already there; the assignment adds one more."
+    },
+    {
+      "id": "W9-E-04",
+      "week": 9,
+      "difficulty": "easy",
+      "concept": "choosing a data structure",
+      "type": "multiple_choice",
+      "prompt": "You need to look up a word and find its meaning - each word is paired with a definition. Which data structure fits best?",
+      "code": "book = {\"apple\": \"a fruit\"}\nprint(book[\"apple\"])",
+      "options": [
+        "set",
+        "string",
+        "dictionary",
+        "list"
+      ],
+      "answer": "dictionary",
+      "explanation": "A dictionary stores pairs: look up a key (the word) and get its value (the meaning).",
+      "hint": "Think of pairs: a word and the meaning attached to it."
+    },
+    {
+      "id": "W9-E-05",
+      "week": 9,
+      "difficulty": "easy",
+      "concept": "get without a default",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "coins = {\"gold\": 50}\nprint(coins.get(\"silver\"))",
+      "options": [
+        "0",
+        "None",
+        "silver",
+        "KeyError"
+      ],
+      "answer": "None",
+      "explanation": "With no default given, get() returns None for a missing key - it never crashes.",
+      "hint": "get() is the polite way to ask: it hands back a placeholder instead of crashing."
+    },
+    {
+      "id": "W9-M-01",
+      "week": 9,
+      "difficulty": "medium",
+      "concept": "update overwrites values",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "prices = {\"apple\": 1, \"banana\": 2}\nprices.update({\"banana\": 3, \"cherry\": 5})\nprint(prices[\"banana\"])",
+      "options": null,
+      "answer": "3",
+      "explanation": "update() overwrites 'banana' with 3 (and adds 'cherry'), so prices['banana'] is 3.",
+      "hint": "When a key already exists, update() replaces its value."
+    },
+    {
+      "id": "W9-M-02",
+      "week": 9,
+      "difficulty": "medium",
+      "concept": "pop returns the value",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\ntaken = d.pop(\"a\")\nprint(taken)",
+      "options": null,
+      "answer": "1",
+      "explanation": "pop('a') removes the pair and returns its value, which was 1.",
+      "hint": "pop does two jobs: it removes the pair and hands its value back."
+    },
+    {
+      "id": "W9-M-03",
+      "week": 9,
+      "difficulty": "medium",
+      "concept": "looping over keys",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "scores = {\"Amy\": 40, \"Ben\": 55, \"Cat\": 30}\nfor name in scores:\n    print(name, scores[name] + 10)",
+      "options": [
+        "Amy 40\nBen 55\nCat 30",
+        "Amy 50\nBen 65\nCat 40",
+        "Amy 50\nBen 65\nCat 41",
+        "40 50\n55 65\n30 40"
+      ],
+      "answer": "Amy 50\nBen 65\nCat 40",
+      "explanation": "Looping over a dictionary goes through its keys; each score is printed 10 higher: 50, 65 and 40.",
+      "hint": "The loop variable walks through the keys, one name at a time."
+    },
+    {
+      "id": "W9-M-04",
+      "week": 9,
+      "difficulty": "medium",
+      "concept": "get and missing keys",
+      "type": "multiple_choice",
+      "prompt": "What happens when you call coins.get(\"silver\") and \"silver\" is not in the dictionary?",
+      "code": "coins = {\"gold\": 50}\nprint(coins.get(\"gold\"))",
+      "options": [
+        "It returns None - no crash",
+        "It crashes with a KeyError",
+        "It adds \"silver\" to the dictionary",
+        "It returns 0"
+      ],
+      "answer": "It returns None - no crash",
+      "explanation": "get() is the safe way to look up a key: a missing key gives back None (or your default) instead of a KeyError.",
+      "hint": "get() was invented exactly for keys that might not be there."
+    },
+    {
+      "id": "W9-M-05",
+      "week": 9,
+      "difficulty": "medium",
+      "concept": "counting with items()",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "powerups = {\"shield\": 2, \"magnet\": 0, \"slow\": 1}\ncount = 0\nfor name, amount in powerups.items():\n    if amount > 0:\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "2",
+      "explanation": "'shield' (2) and 'slow' (1) have amounts above 0; 'magnet' has 0, so the count is 2.",
+      "hint": "items() hands you each key together with its value - check the value each time.",
+      "curriculumReference": "Week 9 Homework Paper B1"
+    },
+    {
+      "id": "W9-H-01",
+      "week": 9,
+      "difficulty": "hard",
+      "concept": "Counting with get and a default",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "words = [\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"]\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts[\"apple\"])",
+      "options": null,
+      "answer": "3",
+      "explanation": "Each 'apple' adds 1 to its counter (starting from the default 0), and 'apple' appears 3 times.",
+      "hint": "get(w, 0) means 'the count so far, or 0 if this word is new'.",
+      "curriculumReference": "Week 9 Quick Check Q4",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of counts?",
+          "type": "multiple_choice",
+          "options": [
+            "{'apple': 3, 'banana': 2, 'cherry': 1}",
+            "{'apple': 2, 'banana': 1, 'cherry': 1}",
+            "{'apple': 2, 'banana': 1}",
+            "{'apple': 2, 'banana': 2, 'cherry': 1}"
+          ],
+          "answer": "{'apple': 3, 'banana': 2, 'cherry': 1}",
+          "explanation": "Follow counts to the end of the walkthrough: its last update is on line 4 (counts[w] = counts.get(w, 0) + 1), leaving counts = {'apple': 3, 'banana': 2, 'cherry': 1}."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "5",
+            "3"
+          ],
+          "answer": "3",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3."
+        }
+      ]
+    },
+    {
+      "id": "W9-H-02",
+      "week": 9,
+      "difficulty": "hard",
+      "concept": "Counting top grades",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "grades = {\"Alice\": 95, \"Bob\": 82, \"Cleo\": 91, \"Dan\": 77}\ncount = 0\nfor name, score in grades.items():\n    if score >= 90:\n        count += 1\nprint(count)",
+      "options": null,
+      "answer": "2",
+      "explanation": "Alice (95) and Cleo (91) reach 90 or more, so the count is 2.",
+      "hint": "Visit every pair and test the score each time.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "2",
+            "{'Alice': 95, 'Bob': 82, 'Cleo': 91, 'Dan': 77}",
+            "1"
+          ],
+          "answer": "2",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 5 (count += 1), leaving count = 2."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
+    },
+    {
+      "id": "W9-H-03",
+      "week": 9,
+      "difficulty": "hard",
+      "concept": "pop, popitem and del",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nd.pop(\"a\")\nd.popitem()\ndel d[\"b\"]\nprint(len(d))",
+      "options": null,
+      "answer": "0",
+      "explanation": "pop removes 'a', popitem removes the last pair added ('c'), and del removes 'b' - nothing is left.",
+      "hint": "Remove one pair at a time and keep track of what remains. popitem takes the most recently added pair.",
+      "curriculumReference": "Week 9 Quick Check Q6",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of d?",
+          "type": "multiple_choice",
+          "options": [
+            "{'a': 1, 'b': 2, 'c': 3}",
+            "{'b': 2, 'c': 3}",
+            "{}",
+            "{'b': 2}"
+          ],
+          "answer": "{}",
+          "explanation": "Follow d to the end of the walkthrough: its last update is on line 4 (del d[\"b\"]), leaving d = {}."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "-1"
+          ],
+          "answer": "0",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 0."
+        }
+      ]
+    },
+    {
+      "id": "W9-H-04",
+      "week": 9,
+      "difficulty": "hard",
+      "concept": "Game state events",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "state = {\"gold\": 0, \"lives\": 3}\nevents = [\"coin\", \"coin\", \"hit\", \"coin\", \"hit\"]\nfor e in events:\n    if e == \"coin\":\n        state[\"gold\"] = state[\"gold\"] + 10\n    else:\n        state[\"lives\"] = state[\"lives\"] - 1\nprint(state[\"lives\"])",
+      "options": null,
+      "answer": "1",
+      "explanation": "Two 'hit' events each take one life away: 3 - 2 = 1.",
+      "hint": "Only the 'hit' events touch lives; count them.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of state?",
+          "type": "multiple_choice",
+          "options": [
+            "{'gold': 20, 'lives': 2}",
+            "{'gold': 30, 'lives': 2}",
+            "{'gold': 30, 'lives': 1}",
+            "{'gold': 20, 'lives': 3}"
+          ],
+          "answer": "{'gold': 30, 'lives': 1}",
+          "explanation": "Follow state to the end of the walkthrough: its last update is on line 7 (state[\"lives\"] = state[\"lives\"] - 1), leaving state = {'gold': 30, 'lives': 1}."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "1",
+            "0",
+            "2"
+          ],
+          "answer": "1",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 1."
+        }
+      ]
+    },
+    {
+      "id": "W9-H-05",
+      "week": 9,
+      "difficulty": "hard",
+      "concept": "Finding the best score",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "scores = {\"Amy\": 40, \"Ben\": 55, \"Cat\": 30}\nbest_name = \"\"\nbest_score = -1\nfor name, score in scores.items():\n    if score > best_score:\n        best_score = score\n        best_name = name\nprint(best_name)",
+      "options": null,
+      "answer": "Ben",
+      "explanation": "Ben's 55 is the highest score, so best_name ends as 'Ben'.",
+      "hint": "Keep a champion name and score, and replace them whenever a bigger score shows up.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of best_name?",
+          "type": "multiple_choice",
+          "options": [
+            "\"Ben\"",
+            "\"\"",
+            "\"Amy\"",
+            "{'Amy': 40, 'Ben': 55, 'Cat': 30}"
+          ],
+          "answer": "\"Ben\"",
+          "explanation": "Follow best_name to the end of the walkthrough: its last update is on line 7 (best_name = name), leaving best_name = \"Ben\"."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "Error",
+            "Ben",
+            "0",
+            "1"
+          ],
+          "answer": "Ben",
+          "explanation": "Run the walkthrough to the last step: the Output box shows Ben."
+        }
+      ]
+    },
+    {
+      "id": "W9-X-01",
+      "week": 9,
+      "difficulty": "extra",
+      "concept": "Merging bags with update",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "bag1 = {\"apple\": 2, \"banana\": 1}\nbag2 = {\"banana\": 3, \"cherry\": 4}\nbag1.update(bag2)\ntotal = 0\nfor item, n in bag1.items():\n    total += n\nprint(total)",
+      "options": null,
+      "answer": "9",
+      "explanation": "After update, bag1 is apple 2, banana 3 (overwritten), cherry 4 - a total of 9 items.",
+      "hint": "update() overwrites shared keys instead of adding them together.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "5",
+            "0",
+            "2",
+            "9"
+          ],
+          "answer": "9",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 6 (total += n), leaving total = 9."
+        }
+      ]
+    },
+    {
+      "id": "W9-X-02",
+      "week": 9,
+      "difficulty": "extra",
+      "concept": "Inventory with get",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "inventory = {\"shield\": 2, \"magnet\": 0, \"slow\": 1}\nwants = [\"shield\", \"magnet\", \"shield\", \"slow\", \"shield\"]\ngot = 0\nfor item in wants:\n    if inventory.get(item, 0) > 0:\n        inventory[item] -= 1\n        got += 1\nprint(got)",
+      "options": null,
+      "answer": "3",
+      "explanation": "Shield, shield and slow are in stock when asked for; magnet is at 0 and the third shield request finds an empty shelf - 3 succeed.",
+      "hint": "Each success uses one up, so later requests may find nothing left.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of got?",
+          "type": "multiple_choice",
+          "options": [
+            "1",
+            "0",
+            "3",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Follow got to the end of the walkthrough: its last update is on line 7 (got += 1), leaving got = 3."
+        }
+      ]
+    },
+    {
+      "id": "W9-X-03",
+      "week": 9,
+      "difficulty": "extra",
+      "concept": "Word frequency",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "sentence = \"go go go stop go\"\ncounts = {}\nfor w in sentence.split():\n    counts[w] = counts.get(w, 0) + 1\nprint(counts[\"go\"])",
+      "options": null,
+      "answer": "4",
+      "explanation": "The word 'go' appears 4 times in the sentence.",
+      "hint": "Split the sentence into words, then count one word at a time with get(w, 0) + 1.",
+      "curriculumReference": "Week 9 Homework Paper C1",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of counts?",
+          "type": "multiple_choice",
+          "options": [
+            "{'go': 3}",
+            "{'go': 2}",
+            "{'go': 3, 'stop': 1}",
+            "{'go': 4, 'stop': 1}"
+          ],
+          "answer": "{'go': 4, 'stop': 1}",
+          "explanation": "Follow counts to the end of the walkthrough: its last update is on line 4 (counts[w] = counts.get(w, 0) + 1), leaving counts = {'go': 4, 'stop': 1}."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 5 instead of 4. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "sentence = \"go go go stop go\"\ncounts = {}\nfor w in sentence.split():\n    counts[w] = counts.get(w, 1) + 1\nprint(counts[\"go\"])",
+          "options": [
+            "for w in sentence.split():",
+            "counts = {}",
+            "print(counts[\"go\"])",
+            "counts[w] = counts.get(w, 1) + 1"
+          ],
+          "answer": "counts[w] = counts.get(w, 1) + 1",
+          "explanation": "Starting a brand-new word at 1 instead of 0 adds a phantom extra count to every word, so 'go' ends at 5 instead of 4."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "sentence = \"go go go stop go\"\ncounts = {}\nfor w in sentence.split():\n    counts[w] = counts.get(w, 1) + 1\nprint(counts[\"go\"])",
+          "options": [
+            "counts[w] = counts.get(w, -1) + 1",
+            "counts[w] = counts.get(w, 0) + 1",
+            "counts[w] = counts.get(w, 0) + 2"
+          ],
+          "answer": "counts[w] = counts.get(w, 0) + 1",
+          "explanation": "A word seen for the first time must start from 0, then add 1 for this sighting: counts.get(w, 0) + 1."
+        }
+      ]
+    },
+    {
+      "id": "W9-X-04",
+      "week": 9,
+      "difficulty": "extra",
+      "concept": "Building a dictionary from two lists",
+      "type": "multiple_choice",
+      "prompt": "What prints?",
+      "code": "names = [\"Amy\", \"Ben\"]\nscores = [40, 55]\nboard = {}\nfor i in range(len(names)):\n    board[names[i]] = scores[i]\nprint(board)",
+      "options": [
+        "{'Amy': 40, 'Ben': 55}",
+        "['Amy', 'Ben']",
+        "{40: 'Amy', 55: 'Ben'}",
+        "{'Ben': 55, 'Amy': 40}"
+      ],
+      "answer": "{'Amy': 40, 'Ben': 55}",
+      "explanation": "Each name becomes a key paired with the score at the same index, in the order they were added.",
+      "hint": "Pair index 0 with index 0 and index 1 with index 1. Dictionaries remember the order pairs were added.",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of board?",
+          "type": "multiple_choice",
+          "options": [
+            "{'Amy': 40, 'Ben': 55}",
+            "{'Amy': 40}",
+            "['Amy', 'Ben']",
+            "{}"
+          ],
+          "answer": "{'Amy': 40, 'Ben': 55}",
+          "explanation": "Follow board to the end of the walkthrough: its last update is on line 5 (board[names[i]] = scores[i]), leaving board = {'Amy': 40, 'Ben': 55}."
+        }
+      ]
+    },
+    {
+      "id": "W9-X-05",
+      "week": 9,
+      "difficulty": "extra",
+      "concept": "Unique score values",
+      "type": "short_answer",
+      "prompt": "What prints?",
+      "code": "scores = {\"Amy\": 40, \"Ben\": 55, \"Cat\": 40, \"Dan\": 55}\nvalues = set(scores.values())\nprint(len(values))",
+      "options": null,
+      "answer": "2",
+      "explanation": "The values are 40, 55, 40, 55 - as a set they shrink to {40, 55}, so the length is 2.",
+      "hint": "values() collects every score; the set then removes the repeats.",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "answer": "2",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 2."
+        }
+      ]
     }
   ],
   "revision": "curriculum-v2",
-  "description": "80 question bank aligned with Weeks 1–4 homework, practice and QuickChecks; Hard recalibrated and Extra Rock added."
+  "description": "160 question bank: Challenge 1 (Weeks 1–4) aligned with homework, practice and QuickChecks, Hard recalibrated and Extra Rock added; Challenge 2 (Weeks 6–9) adds lists, strings, sets and dictionaries from the Week 6–9 QuickChecks and homework."
 }

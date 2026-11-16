@@ -1,0 +1,2428 @@
+{
+  "version": "2.0.0",
+  "description": "Guided traces for Week 8 (Sets) including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
+  "traces": {
+    "W8-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "nums": [
+              1,
+              2,
+              2,
+              3,
+              3,
+              3
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [1, 2, 2, 3, 3, 3] and set nums to [1, 2, 2, 3, 3, 3]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "nums": [
+              1,
+              2,
+              2,
+              3,
+              3,
+              3
+            ],
+            "s": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(nums) and set s to {1, 2, 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              1,
+              2,
+              2,
+              3,
+              3,
+              3
+            ],
+            "s": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "lanes": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {0, 2, 4} and set lanes to {0, 2, 4}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "lanes": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            }
+          },
+          "output": [
+            "False"
+          ],
+          "explanation": "Call print() to display \"False\".",
+          "event": "print"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "lanes": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            }
+          },
+          "output": [
+            "False",
+            "True"
+          ],
+          "explanation": "Call print() to display \"True\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": {}
+          },
+          "output": [],
+          "explanation": "Evaluate {} and set s to {}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": {}
+          },
+          "output": [
+            "<class 'dict'>"
+          ],
+          "explanation": "Call print() to display \"<class 'dict'>\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "colors": {
+              "__set__": [
+                "blue",
+                "red"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"red\", \"blue\"} and set colors to {'blue', 'red'}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "colors": {
+              "__set__": [
+                "blue",
+                "green",
+                "red"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Call colors.add(\"green\"): colors becomes {'blue', 'green', 'red'}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "colors": {
+              "__set__": [
+                "blue",
+                "green",
+                "red"
+              ]
+            }
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": {
+              "__set__": []
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set() and set s to set()."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": {
+              "__set__": []
+            }
+          },
+          "output": [
+            "0"
+          ],
+          "explanation": "Call print() to display \"0\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set a to {1, 2, 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {2, 3, 4} and set b to {2, 3, 4}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [
+            "[1, 2, 3, 4]"
+          ],
+          "explanation": "Call print() to display \"[1, 2, 3, 4]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set a to {1, 2, 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {2, 3, 4} and set b to {2, 3, 4}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "s": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set s to {1, 2, 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "s": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Call s.discard(9): s stays {1, 2, 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "s": {
+              "__set__": [
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Call s.remove(1): s becomes {2, 3}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "s": {
+              "__set__": [
+                2,
+                3
+              ]
+            }
+          },
+          "output": [
+            "[2, 3]"
+          ],
+          "explanation": "Call print() to display \"[2, 3]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set a to {1, 2, 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {2, 3, 4} and set b to {2, 3, 4}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate len(b - a) using a = [object Object], b = [object Object]; the result is \"1\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "b": {
+              "__set__": [
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [
+            "1"
+          ],
+          "explanation": "Call print() to display \"1\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "lanes": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {0, 2, 4} and set lanes to {0, 2, 4}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "lanes": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            }
+          },
+          "output": [
+            "[0, 2, 4]"
+          ],
+          "explanation": "Call print() to display \"[0, 2, 4]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [-1, 0, -1, 2, -1] and set positions to [-1, 0, -1, 2, -1]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": []
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set() and set occupied to set()."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": []
+            },
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": []
+            },
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": []
+            },
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "for loop: lane = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": []
+            },
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1
+              ]
+            },
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Call occupied.add(lane): occupied becomes {1}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1,
+                3
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Call occupied.add(lane): occupied becomes {1, 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1,
+                3
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1,
+                3
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1,
+                3
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              0,
+              -1,
+              2,
+              -1
+            ],
+            "occupied": {
+              "__set__": [
+                1,
+                3
+              ]
+            },
+            "lane": 4
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {0, 2, 3, 4} and set player1_safe to {0, 2, 3, 4}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set player2_safe to {1, 2, 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "both": {
+              "__set__": [
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate player1_safe & player2_safe and set both to {2, 3}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "both": {
+              "__set__": [
+                2,
+                3
+              ]
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define has_duplicates(). Its body does not run until the function is called."
+        },
+        {
+          "line": 3,
+          "variables": {},
+          "output": [],
+          "explanation": "Call has_duplicates([4, 7, 4, 9]) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "nums": [
+              4,
+              7,
+              4,
+              9
+            ]
+          },
+          "output": [],
+          "explanation": "Enter has_duplicates(): bind nums = [4, 7, 4, 9]. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "nums": [
+              4,
+              7,
+              4,
+              9
+            ]
+          },
+          "output": [],
+          "explanation": "Return True to the calling line."
+        },
+        {
+          "line": 3,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from has_duplicates() to this calling line with value True. Continue evaluating this statement."
+        },
+        {
+          "line": 3,
+          "variables": {},
+          "output": [
+            "True"
+          ],
+          "explanation": "Call print() to display \"True\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "sentence": "the cat sat on the mat"
+          },
+          "output": [],
+          "explanation": "Evaluate \"the cat sat on the mat\" and set sentence to 'the cat sat on the mat'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "sentence": "the cat sat on the mat",
+            "words": [
+              "the",
+              "cat",
+              "sat",
+              "on",
+              "the",
+              "mat"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate sentence.split() and set words to ['the', 'cat', 'sat', 'on', 'the', 'mat']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "the cat sat on the mat",
+            "words": [
+              "the",
+              "cat",
+              "sat",
+              "on",
+              "the",
+              "mat"
+            ],
+            "unique": {
+              "__set__": [
+                "cat",
+                "mat",
+                "on",
+                "sat",
+                "the"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(words) and set unique to {'cat', 'mat', 'on', 'sat', 'the'}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the cat sat on the mat",
+            "words": [
+              "the",
+              "cat",
+              "sat",
+              "on",
+              "the",
+              "mat"
+            ],
+            "unique": {
+              "__set__": [
+                "cat",
+                "mat",
+                "on",
+                "sat",
+                "the"
+              ]
+            }
+          },
+          "output": [
+            "5"
+          ],
+          "explanation": "Call print() to display \"5\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                2
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {0, 2} and set occupied to {0, 2}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [1, 2, 3, 0, 4] and set requests to [1, 2, 3, 0, 4]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set spawned to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 0,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "for loop: lane = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 0,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Check lane not in occupied: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 0,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Call occupied.add(lane): occupied becomes {0, 1, 2}."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update spawned to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check lane not in occupied: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Check lane not in occupied: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Call occupied.add(lane): occupied becomes {0, 1, 2, 3}."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update spawned to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check lane not in occupied: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check lane not in occupied: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 2,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Call occupied.add(lane): occupied becomes {0, 1, 2, 3, 4}."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 3,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update spawned to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 3,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "occupied": {
+              "__set__": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "requests": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "spawned": 3,
+            "lane": 4
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {0, 2, 3, 4} and set player1_safe to {0, 2, 3, 4}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {1, 2, 3} and set player2_safe to {1, 2, 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "only_one": {
+              "__set__": [
+                0,
+                1,
+                4
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate player1_safe ^ player2_safe and set only_one to {0, 1, 4}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "player1_safe": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "player2_safe": {
+              "__set__": [
+                1,
+                2,
+                3
+              ]
+            },
+            "only_one": {
+              "__set__": [
+                0,
+                1,
+                4
+              ]
+            }
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [0, 2, 4] and set round1 to [0, 2, 4]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [2, 3] and set round2 to [2, 3]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": []
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set() and set ever to set()."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": []
+            },
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0
+              ]
+            },
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Call ever.add(lane): ever becomes {0}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Call ever.add(lane): ever becomes {0, 2}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Call ever.add(lane): ever becomes {0, 2, 4}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            },
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            },
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Call ever.add(lane): ever stays {0, 2, 4}."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                4
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Call ever.add(lane): ever becomes {0, 2, 3, 4}."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "round1": [
+              0,
+              2,
+              4
+            ],
+            "round2": [
+              2,
+              3
+            ],
+            "ever": {
+              "__set__": [
+                0,
+                2,
+                3,
+                4
+              ]
+            },
+            "lane": 3
+          },
+          "output": [
+            "4"
+          ],
+          "explanation": "Call print() to display \"4\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "a": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(\"banana\") and set a to {'a', 'b', 'n'}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "a": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            },
+            "b": {
+              "__set__": [
+                "a",
+                "b",
+                "d",
+                "n"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(\"band\") and set b to {'a', 'b', 'd', 'n'}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "a": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            },
+            "b": {
+              "__set__": [
+                "a",
+                "b",
+                "d",
+                "n"
+              ]
+            },
+            "common": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate a & b and set common to {'a', 'b', 'n'}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "a": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            },
+            "b": {
+              "__set__": [
+                "a",
+                "b",
+                "d",
+                "n"
+              ]
+            },
+            "common": {
+              "__set__": [
+                "a",
+                "b",
+                "n"
+              ]
+            }
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "full": {
+              "__set__": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(range(1, 6)) and set full to {1, 2, 3, 4, 5}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "full": {
+              "__set__": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            "present": {
+              "__set__": [
+                2,
+                5
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {2, 5} and set present to {2, 5}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "full": {
+              "__set__": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            "present": {
+              "__set__": [
+                2,
+                5
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate sorted(full - present) using full = [object Object], present = [object Object]; the result is \"[1, 3, 4]\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "full": {
+              "__set__": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            "present": {
+              "__set__": [
+                2,
+                5
+              ]
+            }
+          },
+          "output": [
+            "[1, 3, 4]"
+          ],
+          "explanation": "Call print() to display \"[1, 3, 4]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W8-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "round1": [
+              10,
+              20,
+              30,
+              40
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [10, 20, 30, 40] and set round1 to [10, 20, 30, 40]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "round1": [
+              10,
+              20,
+              30,
+              40
+            ],
+            "round2": [
+              30,
+              40,
+              50
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [30, 40, 50] and set round2 to [30, 40, 50]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "round1": [
+              10,
+              20,
+              30,
+              40
+            ],
+            "round2": [
+              30,
+              40,
+              50
+            ],
+            "both": {
+              "__set__": [
+                30,
+                40
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(round1) & set(round2) and set both to {30, 40}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "round1": [
+              10,
+              20,
+              30,
+              40
+            ],
+            "round2": [
+              30,
+              40,
+              50
+            ],
+            "both": {
+              "__set__": [
+                30,
+                40
+              ]
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    }
+  }
+}

@@ -4,7 +4,7 @@ import {runInNewContext} from 'node:vm';
 
 const root=new URL('../',import.meta.url);
 const questions=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const saved=Object.assign({},...[1,2,3,4].map(week=>
+const saved=Object.assign({},...[1,2,3,4,6,7,8,9].map(week=>
  JSON.parse(readFileSync(new URL('data/traces-week'+week+'.json',root),'utf8')).traces));
 const buildCode=readFileSync(new URL('scripts/build-trace-runtime.js',root),'utf8');
 const enrichCode=readFileSync(new URL('scripts/enrich-walkthroughs.js',root),'utf8');
@@ -13,7 +13,12 @@ const tools=runInNewContext(buildCode+'\n'+enrichCode+
 const curatedFloat=new Map([['W4-H-04','55.0'],['W4-X-03','36.0']]);
 let verified=0;
 
-for(const question of questions.filter(q=>['hard','extra'].includes(q.difficulty))){
+// The JS generator covers only the Weeks 1-4 subset (no collection
+// methods, negative indexing or slicing), so this equality check is
+// scoped to those weeks. Challenge 2 traces come from
+// scripts/generate-traces.py and are cross-checked against CPython by
+// validate-trace-cpython.py and validate-walkthrough-detail.mjs.
+for(const question of questions.filter(q=>['hard','extra'].includes(q.difficulty)&&q.week<=4)){
  const trace=tools.buildTrace(question);
  if(curatedFloat.has(question.id)){
   // Python correctly preserves .0 where JavaScript Number does not.

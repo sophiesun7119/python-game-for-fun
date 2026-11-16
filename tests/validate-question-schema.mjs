@@ -12,9 +12,9 @@ const DIFFICULTIES = ['easy', 'medium', 'hard', 'extra'];
 const ID_DIFF = { easy: 'E', medium: 'M', hard: 'H', extra: 'X' };
 const REQUIRED_STRINGS = ['prompt', 'code', 'answer', 'explanation', 'hint', 'concept'];
 
-assert.equal(questions.length, 80, 'Expected 80 questions');
+assert.equal(questions.length, 160, 'Expected 160 questions');
 const seen = new Set();
-for (const week of [1, 2, 3, 4]) {
+for (const week of [1, 2, 3, 4, 6, 7, 8, 9]) {
   for (const difficulty of DIFFICULTIES) {
     const actual = questions.filter(q => q.week === week && q.difficulty === difficulty);
     assert.equal(actual.length, 5, `Expected five ${difficulty} questions for Week ${week}`);
@@ -25,7 +25,7 @@ for (const q of questions) {
   assert(q.id, 'Question is missing an id');
   assert(!seen.has(q.id), `Duplicate question id: ${q.id}`);
   seen.add(q.id);
-  const m = /^W([1-4])-([EMHX])-(\d{2})$/.exec(q.id);
+  const m = /^W(\d)-([EMHX])-(\d{2})$/.exec(q.id);
   assert(m, `${q.id}: id does not match W<week>-<E|M|H|X>-<nn>`);
   assert.equal(Number(m[1]), q.week, `${q.id}: id week does not match week field`);
   assert.equal(ID_DIFF[q.difficulty], m[2], `${q.id}: id difficulty letter does not match difficulty field`);

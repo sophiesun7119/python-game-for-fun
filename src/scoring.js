@@ -10,7 +10,7 @@ export function countCorrect(attempt){return attempt.filter(a=>a.solved && !a.re
 export function levelXP(n,d){return (POINTS[d]||0)*n;}
 export function totalXP(best){return Object.entries(best).reduce((sum,[key,n])=>sum+levelXP(n,key.split('-')[1]),0);}
 export function updateBest(progress,week,difficulty,score){const key='W'+week+'-'+difficulty;return {...progress,best:{...progress.best,[key]:Math.max(progress.best[key]||0,score)}};}
-export function recommendedQuest(best){for(const week of [1,2,3,4])for(const difficulty of ['easy','medium','hard'])if((best['W'+week+'-'+difficulty]||0)<3)return {week,difficulty};for(const week of [1,2,3,4])if((best['W'+week+'-extra']||0)<3)return {week,difficulty:'extra'};return {week:1,difficulty:'easy'};}
+export function recommendedQuest(best){for(const week of [1,2,3,4,6,7,8,9])for(const difficulty of ['easy','medium','hard'])if((best['W'+week+'-'+difficulty]||0)<3)return {week,difficulty};for(const week of [1,2,3,4,6,7,8,9])if((best['W'+week+'-extra']||0)<3)return {week,difficulty:'extra'};return {week:1,difficulty:'easy'};}
 function readPlayers(){
  try{const p=JSON.parse(localStorage.getItem(PLAYERS_KEY));if(p&&typeof p==='object'&&!Array.isArray(p))return p;}catch{}
  return {};

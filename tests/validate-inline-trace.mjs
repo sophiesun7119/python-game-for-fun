@@ -10,7 +10,7 @@ const funcs=runInNewContext(app.slice(start,end)+
   '\nfunction valueDisplay(v){return typeof v==="string"?JSON.stringify(v):String(v)}'+
   '\nthis.result={traceCondition,traceInlineValues,traceInlineDetails};this.result',{});
 const questions=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const traces=Object.assign({},...[1,2,3,4].map(w=>
+const traces=Object.assign({},...[1,2,3,4,6,7,8,9].map(w=>
  JSON.parse(readFileSync(new URL('data/traces-week'+w+'.json',root),'utf8')).traces));
 let counted=0;
 for(const q of questions){

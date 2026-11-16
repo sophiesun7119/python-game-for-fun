@@ -10,7 +10,7 @@ assert(start>=0&&end>start,'Inline Trace helpers not found');
 const state=runInNewContext(app.slice(start,end)+
   '\nthis.tracePersistentBindings=tracePersistentBindings;this.tracePersistentBindings', {});
 const bank=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const all=Object.assign({},...[1,2,3,4].map(w=>
+const all=Object.assign({},...[1,2,3,4,6,7,8,9].map(w=>
  JSON.parse(readFileSync(new URL('data/traces-week'+w+'.json',root),'utf8')).traces));
 const at=(id,index)=> {
  const item=bank.find(q=>q.id===id);
@@ -73,4 +73,4 @@ const css=readFileSync(new URL('styles.css',root),'utf8');
 assert(css.includes('max-width:1180px'),'Main area should be wider');
 assert(css.includes('max-width:1100px'),'Question card should be wider');
 assert(css.includes('flex-wrap:wrap'),'Trace line annotations should wrap');
-console.log('PASS: '+checked+' scoped trace steps across 80 questions, nested function lifetime, reassignment, global persistence and responsive widths.');
+console.log('PASS: '+checked+' scoped trace steps across 160 questions, nested function lifetime, reassignment, global persistence and responsive widths.');

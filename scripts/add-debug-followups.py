@@ -85,6 +85,48 @@ SPECS = [
         "why": "range(1, i) stops before j reaches i, so the pairs where j == i are never counted.",
         "fix_why": "range(1, i + 1) includes j == i, which is the last pair of each row.",
     },
+    {
+        "id": "W6-X-03", "line": 7, "buggy": "if n > second:",
+        "q1_distractor_lines": [6, 8, 3],
+        "fix_distractors": ["if n != biggest or n > second:", "if n != biggest and n < second:"],
+        "why": "Without the 'n != biggest' check, the biggest value itself (9) is allowed to become 'second', so the code prints 9 instead of 7.",
+        "fix_why": "The second-biggest value must be a DIFFERENT number from the biggest, so the 'n != biggest' check has to stay.",
+    },
+    {
+        "id": "W6-X-05", "line": 4, "buggy": "while total < target:",
+        "q1_distractor_lines": [2, 5, 6],
+        "fix_distractors": ["while total <= target - 1:", "while total >= target:"],
+        "why": "total lands exactly on the target (10). With '<', the loop stops as soon as total EQUALS 10, one step early, so it prints 2 instead of 3.",
+        "fix_why": "'<=' includes the moment total equals the target, so the loop takes the final step the original counts.",
+    },
+    {
+        "id": "W7-X-03", "line": 3, "buggy": "if s[i:i + 1] == \"ab\":",
+        "q1_distractor_lines": [2, 4, 0],
+        "fix_distractors": ["if s[i:i + 3] == \"ab\":", "if s[i - 1:i + 1] == \"ab\":"],
+        "why": "A slice of length 1 (s[i:i + 1]) is a single character, so it can never equal the two-character string 'ab' and the count stays 0.",
+        "fix_why": "The slice must take exactly two characters, s[i:i + 2], to compare with 'ab'.",
+    },
+    {
+        "id": "W7-X-05", "line": 4, "buggy": "if len(w) >= len(longest):",
+        "q1_distractor_lines": [3, 5, 1],
+        "fix_distractors": ["if len(w) < len(longest):", "if len(w) >= len(longest) and len(w) > 0:"],
+        "why": "With '>=', a word that is only TIED for longest replaces the current champion, so the last 5-letter word ('jumps') wins instead of the first ('quick').",
+        "fix_why": "'>' keeps the FIRST word of the maximum length: a tie does not replace it.",
+    },
+    {
+        "id": "W8-X-03", "line": 2, "buggy": "common = a | b",
+        "q1_distractor_lines": [0, 1, 3],
+        "fix_distractors": ["common = a - b", "common = b - a"],
+        "why": "'|' is union: it keeps letters from EITHER word (4 letters). The question asks for letters in both words, which is intersection.",
+        "fix_why": "'&' is intersection: only letters that appear in both sets survive.",
+    },
+    {
+        "id": "W9-X-03", "line": 3, "buggy": "counts[w] = counts.get(w, 1) + 1",
+        "q1_distractor_lines": [2, 4, 1],
+        "fix_distractors": ["counts[w] = counts.get(w, 0) + 2", "counts[w] = counts.get(w, -1) + 1"],
+        "why": "Starting a brand-new word at 1 instead of 0 adds a phantom extra count to every word, so 'go' ends at 5 instead of 4.",
+        "fix_why": "A word seen for the first time must start from 0, then add 1 for this sighting: counts.get(w, 0) + 1.",
+    },
 ]
 
 

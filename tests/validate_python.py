@@ -16,8 +16,9 @@ for q in questions:
     code = q["code"]
     expected = q["answer"]
     sample_input = ""
-    if q["id"] == "W1-E-05":
-        # This question asks for the *type* of input(), not printed output.
+    if q["id"] in {"W1-E-05", "W6-E-03", "W6-M-03", "W7-E-03", "W7-M-05", "W8-E-05", "W8-M-05", "W9-E-04", "W9-M-04"}:
+        # Concept questions ask about the *type* of input() or which
+        # data structure / method fits a job, not printed output.
         continue
     if q["id"] == "W1-M-05":
         sample_input = "7\n"

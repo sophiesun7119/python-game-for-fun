@@ -1,0 +1,4206 @@
+{
+  "version": "2.0.0",
+  "description": "Guided traces for Week 6 (Lists) including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
+  "traces": {
+    "W6-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": [
+              95,
+              82,
+              78,
+              91,
+              60
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [95, 82, 78, 91, 60] and set scores to [95, 82, 78, 91, 60]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              95,
+              82,
+              78,
+              91,
+              60
+            ]
+          },
+          "output": [
+            "60"
+          ],
+          "explanation": "Call print() to display \"60\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": [
+              95,
+              82,
+              78,
+              91,
+              60
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [95, 82, 78, 91, 60] and set scores to [95, 82, 78, 91, 60]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              95,
+              82,
+              78,
+              91,
+              60
+            ]
+          },
+          "output": [
+            "[82, 78]"
+          ],
+          "explanation": "Call print() to display \"[82, 78]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "fruits": [
+              "apple",
+              "banana",
+              "cherry"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"apple\", \"banana\", \"cherry\"] and set fruits to ['apple', 'banana', 'cherry']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "fruits": [
+              "apple",
+              "banana",
+              "cherry"
+            ]
+          },
+          "output": [
+            "apple"
+          ],
+          "explanation": "Call print() to display \"apple\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "cart": [
+              "milk",
+              "eggs",
+              "bread",
+              "rice"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"milk\", \"eggs\", \"bread\", \"rice\"] and set cart to ['milk', 'eggs', 'bread', 'rice']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "cart": [
+              "milk",
+              "eggs",
+              "bread",
+              "rice"
+            ]
+          },
+          "output": [
+            "4"
+          ],
+          "explanation": "Call print() to display \"4\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "values": [
+              1,
+              2
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [1, 2] and set values to [1, 2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [],
+          "explanation": "Call values.append(3): values becomes [1, 2, 3]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [
+            "[1, 2, 3]"
+          ],
+          "explanation": "Call print() to display \"[1, 2, 3]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": [
+              3,
+              1,
+              2
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [3, 1, 2] and set scores to [3, 1, 2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              1,
+              2,
+              3
+            ],
+            "result": null
+          },
+          "output": [],
+          "explanation": "Evaluate scores.sort() and set result to None."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              1,
+              2,
+              3
+            ],
+            "result": null
+          },
+          "output": [
+            "None"
+          ],
+          "explanation": "Call print() to display \"None\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "values": []
+          },
+          "output": [],
+          "explanation": "Evaluate [] and set values to []."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "values": [],
+            "i": 0
+          },
+          "output": [],
+          "explanation": "for loop: i = 0. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "values": [
+              0
+            ],
+            "i": 0
+          },
+          "output": [],
+          "explanation": "Call values.append(i * 2): values becomes [0]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "values": [
+              0
+            ],
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "values": [
+              0,
+              2
+            ],
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Call values.append(i * 2): values becomes [0, 2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "values": [
+              0,
+              2
+            ],
+            "i": 2
+          },
+          "output": [],
+          "explanation": "for loop: i = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "values": [
+              0,
+              2,
+              4
+            ],
+            "i": 2
+          },
+          "output": [],
+          "explanation": "Call values.append(i * 2): values becomes [0, 2, 4]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "values": [
+              0,
+              2,
+              4
+            ],
+            "i": 2
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "values": [
+              0,
+              2,
+              4
+            ],
+            "i": 2
+          },
+          "output": [
+            "[0, 2, 4]"
+          ],
+          "explanation": "Call print() to display \"[0, 2, 4]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "nums": [
+              1,
+              2
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [1, 2] and set nums to [1, 2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "nums": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [],
+          "explanation": "Call nums.append(3): nums becomes [1, 2, 3]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": [
+            "[1, 2, 3]"
+          ],
+          "explanation": "Call print() to display \"[1, 2, 3]\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben",
+              "Cat",
+              "Dan"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"Amy\", \"Ben\", \"Cat\", \"Dan\"] and set names to ['Amy', 'Ben', 'Cat', 'Dan']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben",
+              "Cat",
+              "Dan"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate names[1 + 1] using names = Amy,Ben,Cat,Dan; the result is \"Cat\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben",
+              "Cat",
+              "Dan"
+            ]
+          },
+          "output": [
+            "Cat"
+          ],
+          "explanation": "Call print() to display \"Cat\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "letters": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"a\", \"b\", \"c\", \"d\", \"e\"] and set letters to ['a', 'b', 'c', 'd', 'e']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "letters": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          },
+          "output": [
+            "['c', 'd', 'e']"
+          ],
+          "explanation": "Call print() to display \"['c', 'd', 'e']\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define count_passing(). Its body does not run until the function is called."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [],
+          "explanation": "Call count_passing([92, 55, 78, 40, 88]) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ]
+          },
+          "output": [],
+          "explanation": "Enter count_passing(): bind scores = [92, 55, 78, 40, 88]. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 0,
+            "s": 92
+          },
+          "output": [],
+          "explanation": "for loop: s = 92. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 0,
+            "s": 92
+          },
+          "output": [],
+          "explanation": "Check s >= 60: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 1,
+            "s": 92
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 1,
+            "s": 55
+          },
+          "output": [],
+          "explanation": "for loop: s = 55. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 1,
+            "s": 55
+          },
+          "output": [],
+          "explanation": "Check s >= 60: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 1,
+            "s": 78
+          },
+          "output": [],
+          "explanation": "for loop: s = 78. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 1,
+            "s": 78
+          },
+          "output": [],
+          "explanation": "Check s >= 60: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 2,
+            "s": 78
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 2,
+            "s": 40
+          },
+          "output": [],
+          "explanation": "for loop: s = 40. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 2,
+            "s": 40
+          },
+          "output": [],
+          "explanation": "Check s >= 60: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 2,
+            "s": 88
+          },
+          "output": [],
+          "explanation": "for loop: s = 88. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 2,
+            "s": 88
+          },
+          "output": [],
+          "explanation": "Check s >= 60: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 3,
+            "s": 88
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 3,
+            "s": 88
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "scores": [
+              92,
+              55,
+              78,
+              40,
+              88
+            ],
+            "count": 3,
+            "s": 88
+          },
+          "output": [],
+          "explanation": "Return 3 to the calling line."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from count_passing() to this calling line with value 3. Continue evaluating this statement."
+        },
+        {
+          "line": 7,
+          "variables": {},
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              4
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [4, -1, 3, -1, 4] and set positions to [4, -1, 3, -1, 4]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 5 and set ground to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set landed to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 5."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: True. Enter this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update landed to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "for loop: lane = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 4."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              5
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 5."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              5
+            ],
+            "ground": 5,
+            "landed": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: True. Enter this branch."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              5
+            ],
+            "ground": 5,
+            "landed": 2,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update landed to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              5
+            ],
+            "ground": 5,
+            "landed": 2,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              4,
+              -1,
+              5
+            ],
+            "ground": 5,
+            "landed": 2,
+            "lane": 4
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "names": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"Alice\", \"Bob\", \"Cleo\"] and set names to ['Alice', 'Bob', 'Cleo']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "names": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "scores": [
+              92,
+              75,
+              88
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [92, 75, 88] and set scores to [92, 75, 88]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "names": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "scores": [
+              92,
+              75,
+              88
+            ],
+            "best_idx": 0
+          },
+          "output": [],
+          "explanation": "Evaluate scores.index(max(scores)) and set best_idx to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "names": [
+              "Alice",
+              "Bob",
+              "Cleo"
+            ],
+            "scores": [
+              92,
+              75,
+              88
+            ],
+            "best_idx": 0
+          },
+          "output": [
+            "Alice"
+          ],
+          "explanation": "Call print() to display \"Alice\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "evens": []
+          },
+          "output": [],
+          "explanation": "Evaluate [] and set evens to []."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [],
+            "n": 1
+          },
+          "output": [],
+          "explanation": "for loop: n = 1. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [],
+            "n": 1
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [],
+            "n": 2
+          },
+          "output": [],
+          "explanation": "for loop: n = 2. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [],
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "evens": [
+              2
+            ],
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Call evens.append(n): evens becomes [2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2
+            ],
+            "n": 3
+          },
+          "output": [],
+          "explanation": "for loop: n = 3. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2
+            ],
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2
+            ],
+            "n": 4
+          },
+          "output": [],
+          "explanation": "for loop: n = 4. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2
+            ],
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "evens": [
+              2,
+              4
+            ],
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Call evens.append(n): evens becomes [2, 4]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4
+            ],
+            "n": 5
+          },
+          "output": [],
+          "explanation": "for loop: n = 5. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4
+            ],
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4
+            ],
+            "n": 6
+          },
+          "output": [],
+          "explanation": "for loop: n = 6. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4
+            ],
+            "n": 6
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6
+            ],
+            "n": 6
+          },
+          "output": [],
+          "explanation": "Call evens.append(n): evens becomes [2, 4, 6]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6
+            ],
+            "n": 7
+          },
+          "output": [],
+          "explanation": "for loop: n = 7. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6
+            ],
+            "n": 7
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6
+            ],
+            "n": 8
+          },
+          "output": [],
+          "explanation": "for loop: n = 8. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6
+            ],
+            "n": 8
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "n": 8
+          },
+          "output": [],
+          "explanation": "Call evens.append(n): evens becomes [2, 4, 6, 8]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "n": 9
+          },
+          "output": [],
+          "explanation": "for loop: n = 9. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "n": 9
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: False. Skip this branch."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "n": 10
+          },
+          "output": [],
+          "explanation": "for loop: n = 10. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "n": 10
+          },
+          "output": [],
+          "explanation": "Check n % 2 == 0: True. Enter this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "n": 10
+          },
+          "output": [],
+          "explanation": "Call evens.append(n): evens becomes [2, 4, 6, 8, 10]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "n": 10
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "evens": [
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "n": 10
+          },
+          "output": [
+            "30"
+          ],
+          "explanation": "Call print() to display \"30\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "line": "10,20,30"
+          },
+          "output": [],
+          "explanation": "Evaluate \"10,20,30\" and set line to '10,20,30'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate line.split(\",\") and set parts to ['10', '20', '30']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set total to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 0,
+            "p": "10"
+          },
+          "output": [],
+          "explanation": "for loop: p = 10. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 10,
+            "p": "10"
+          },
+          "output": [],
+          "explanation": "Evaluate int(p) and update total to 10."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 10,
+            "p": "20"
+          },
+          "output": [],
+          "explanation": "for loop: p = 20. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 30,
+            "p": "20"
+          },
+          "output": [],
+          "explanation": "Evaluate int(p) and update total to 30."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 30,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "for loop: p = 30. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "Evaluate int(p) and update total to 60."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "line": "10,20,30",
+            "parts": [
+              "10",
+              "20",
+              "30"
+            ],
+            "total": 60,
+            "p": "30"
+          },
+          "output": [
+            "60"
+          ],
+          "explanation": "Call print() to display \"60\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define average(). Its body does not run until the function is called."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [70, 85, 90, 60, 95, 80] and set scores to [70, 85, 90, 60, 95, 80]."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Call average([70, 85, 90, 60, 95, 80]) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "nums": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Enter average(): bind nums = [70, 85, 90, 60, 95, 80]. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "nums": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate sum(nums) / len(nums) using nums = 70,85,90,60,95,80; the result is \"80.0\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "nums": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Return 80.0 to the calling line."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ]
+          },
+          "output": [],
+          "explanation": "Return from average() to this calling line with value 80.0. Continue evaluating this statement."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80
+          },
+          "output": [],
+          "explanation": "Evaluate average(scores) and set avg to 80.0."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 0,
+            "s": 70
+          },
+          "output": [],
+          "explanation": "for loop: s = 70. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 0,
+            "s": 70
+          },
+          "output": [],
+          "explanation": "Check s > avg: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 0,
+            "s": 85
+          },
+          "output": [],
+          "explanation": "for loop: s = 85. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 0,
+            "s": 85
+          },
+          "output": [],
+          "explanation": "Check s > avg: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 1,
+            "s": 85
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 1,
+            "s": 90
+          },
+          "output": [],
+          "explanation": "for loop: s = 90. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 1,
+            "s": 90
+          },
+          "output": [],
+          "explanation": "Check s > avg: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 2,
+            "s": 90
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 2,
+            "s": 60
+          },
+          "output": [],
+          "explanation": "for loop: s = 60. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 2,
+            "s": 60
+          },
+          "output": [],
+          "explanation": "Check s > avg: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 2,
+            "s": 95
+          },
+          "output": [],
+          "explanation": "for loop: s = 95. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 2,
+            "s": 95
+          },
+          "output": [],
+          "explanation": "Check s > avg: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 3,
+            "s": 95
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 3,
+            "s": 80
+          },
+          "output": [],
+          "explanation": "for loop: s = 80. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 3,
+            "s": 80
+          },
+          "output": [],
+          "explanation": "Check s > avg: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 3,
+            "s": 80
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "scores": [
+              70,
+              85,
+              90,
+              60,
+              95,
+              80
+            ],
+            "avg": 80,
+            "count": 3,
+            "s": 80
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [4, -1, 3, -1, 2] and set positions to [4, -1, 3, -1, 2]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5
+          },
+          "output": [],
+          "explanation": "Evaluate 5 and set ground to 5."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set missed to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0
+          },
+          "output": [],
+          "explanation": "for loop: r = 0. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              4,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 5."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              5,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 0,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Evaluate -1 and set positions[lane] to -1."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update missed to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "for loop: lane = 1. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              3,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 4."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              2
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 3."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 0,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: r = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "for loop: lane = 0. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 0
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "for loop: lane = 1. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 1
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "for loop: lane = 2. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              4,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              5,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 5."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              5,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 1,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Evaluate -1 and set positions[lane] to -1."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update missed to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "for loop: lane = 3. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 3
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "for loop: lane = 4. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              3
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] != -1: True. Enter this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update positions[lane] to 4."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "Check positions[lane] == ground: False. Skip this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 10,
+          "variables": {
+            "positions": [
+              -1,
+              -1,
+              -1,
+              -1,
+              4
+            ],
+            "ground": 5,
+            "missed": 2,
+            "r": 1,
+            "lane": 4
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {},
+          "output": [],
+          "explanation": "Define second_biggest(). Its body does not run until the function is called."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [],
+          "explanation": "Call second_biggest([4, 9, 7, 9, 5]) from this line."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ]
+          },
+          "output": [],
+          "explanation": "Enter second_biggest(): bind nums = [4, 9, 7, 9, 5]. Parameters are ready; the function body runs next."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 4
+          },
+          "output": [],
+          "explanation": "Evaluate nums[0] and set biggest to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 4,
+            "n": 4
+          },
+          "output": [],
+          "explanation": "for loop: n = 4. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 4,
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Check n > biggest: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 4,
+            "n": 9
+          },
+          "output": [],
+          "explanation": "for loop: n = 9. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 4,
+            "n": 9
+          },
+          "output": [],
+          "explanation": "Check n > biggest: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9
+          },
+          "output": [],
+          "explanation": "Evaluate n and set biggest to 9."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 7
+          },
+          "output": [],
+          "explanation": "for loop: n = 7. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 7
+          },
+          "output": [],
+          "explanation": "Check n > biggest: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9
+          },
+          "output": [],
+          "explanation": "for loop: n = 9. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9
+          },
+          "output": [],
+          "explanation": "Check n > biggest: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "for loop: n = 5. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "Check n > biggest: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "Evaluate nums[0] and set second to 4."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 4,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "for loop: n = 4. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 4,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "Check n != biggest and n > second: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "for loop: n = 9. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "Check n != biggest and n > second: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 7,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "for loop: n = 7. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 7,
+            "second": 4
+          },
+          "output": [],
+          "explanation": "Check n != biggest and n > second: True. Enter this branch."
+        },
+        {
+          "line": 8,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 7,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "Evaluate n and set second to 7."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "for loop: n = 9. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 9,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "Check n != biggest and n > second: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "for loop: n = 5. Enter the loop body."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "Check n != biggest and n > second: False. Skip this branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 9,
+          "variables": {
+            "nums": [
+              4,
+              9,
+              7,
+              9,
+              5
+            ],
+            "biggest": 9,
+            "n": 5,
+            "second": 7
+          },
+          "output": [],
+          "explanation": "Return 7 to the calling line."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [],
+          "explanation": "Return from second_biggest() to this calling line with value 7. Continue evaluating this statement."
+        },
+        {
+          "line": 11,
+          "variables": {},
+          "output": [
+            "7"
+          ],
+          "explanation": "Call print() to display \"7\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "sentence": "the quick brown fox jumps"
+          },
+          "output": [],
+          "explanation": "Evaluate \"the quick brown fox jumps\" and set sentence to 'the quick brown fox jumps'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate sentence.split() and set words to ['the', 'quick', 'brown', 'fox', 'jumps']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 0,
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "for loop: w = the. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 0,
+            "w": "the"
+          },
+          "output": [],
+          "explanation": "Check len(w) > 3: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 0,
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "for loop: w = quick. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 0,
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "Check len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 1,
+            "w": "quick"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 1,
+            "w": "brown"
+          },
+          "output": [],
+          "explanation": "for loop: w = brown. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 1,
+            "w": "brown"
+          },
+          "output": [],
+          "explanation": "Check len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 2,
+            "w": "brown"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 2,
+            "w": "fox"
+          },
+          "output": [],
+          "explanation": "for loop: w = fox. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 2,
+            "w": "fox"
+          },
+          "output": [],
+          "explanation": "Check len(w) > 3: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 2,
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "for loop: w = jumps. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 2,
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "Check len(w) > 3: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 3,
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 3,
+            "w": "jumps"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "sentence": "the quick brown fox jumps",
+            "words": [
+              "the",
+              "quick",
+              "brown",
+              "fox",
+              "jumps"
+            ],
+            "count": 3,
+            "w": "jumps"
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W6-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [3, 5, 2, 8, 4] and set nums to [3, 5, 2, 8, 4]."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10
+          },
+          "output": [],
+          "explanation": "Evaluate 10 and set target to 10."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set total to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 0,
+            "idx": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set idx to 0."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 0,
+            "idx": 0
+          },
+          "output": [],
+          "explanation": "Check while total <= target: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 3,
+            "idx": 0
+          },
+          "output": [],
+          "explanation": "Evaluate nums[idx] and update total to 3."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 3,
+            "idx": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update idx to 1."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 3,
+            "idx": 1
+          },
+          "output": [],
+          "explanation": "Check while total <= target: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 8,
+            "idx": 1
+          },
+          "output": [],
+          "explanation": "Evaluate nums[idx] and update total to 8."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 8,
+            "idx": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update idx to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 8,
+            "idx": 2
+          },
+          "output": [],
+          "explanation": "Check while total <= target: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 10,
+            "idx": 2
+          },
+          "output": [],
+          "explanation": "Evaluate nums[idx] and update total to 10."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 10,
+            "idx": 3
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update idx to 3."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 10,
+            "idx": 3
+          },
+          "output": [],
+          "explanation": "Check while total <= target: True. Run the body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 18,
+            "idx": 3
+          },
+          "output": [],
+          "explanation": "Evaluate nums[idx] and update total to 18."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 18,
+            "idx": 4
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update idx to 4."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 18,
+            "idx": 4
+          },
+          "output": [],
+          "explanation": "Check while total <= target: False. Exit the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 18,
+            "idx": 4
+          },
+          "output": [],
+          "explanation": "Calculate 4 - 1 = 3.",
+          "phase": "calculate"
+        },
+        {
+          "line": 7,
+          "variables": {
+            "nums": [
+              3,
+              5,
+              2,
+              8,
+              4
+            ],
+            "target": 10,
+            "total": 18,
+            "idx": 4
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    }
+  }
+}

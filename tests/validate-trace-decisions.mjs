@@ -9,7 +9,7 @@ const end=appSource.indexOf('function tracePanel(',start);
 assert(start>=0&&end>start,'traceCondition() must precede tracePanel()');
 const traceCondition=runInNewContext(appSource.slice(start,end)+'\ntraceCondition', {});
 const questions=JSON.parse(readFileSync(new URL('data/questions.json',root),'utf8')).questions;
-const traces=Object.assign({},...[1,2,3,4].map(w=>JSON.parse(
+const traces=Object.assign({},...[1,2,3,4,6,7,8,9].map(w=>JSON.parse(
   readFileSync(new URL(`data/traces-week${w}.json`,root),'utf8')).traces
 ));
 let verdicts=0;

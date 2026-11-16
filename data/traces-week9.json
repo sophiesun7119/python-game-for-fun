@@ -1,0 +1,3030 @@
+{
+  "version": "2.0.0",
+  "description": "Guided traces for Week 9 (Dictionaries) including curriculum-calibrated Hard and Extra Rock levels; all snapshots are precomputed. Explicit arithmetic evaluation and print-call narration for every applicable walkthrough.",
+  "traces": {
+    "W9-E-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "game_state": {
+              "score": 120,
+              "lives": 2,
+              "speed": 3
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"score\": 120, \"lives\": 2, \"speed\": 3} and set game_state to {'score': 120, 'lives': 2, 'speed': 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "game_state": {
+              "score": 120,
+              "lives": 2,
+              "speed": 3
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-E-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"gold\": 50} and set coins to {'gold': 50}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [
+            "0"
+          ],
+          "explanation": "Call print() to display \"0\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-E-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "game_state": {
+              "score": 10
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"score\": 10} and set game_state to {'score': 10}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "game_state": {
+              "score": 10,
+              "lives": 3
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate 3 and set game_state[\"lives\"] to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "game_state": {
+              "score": 10,
+              "lives": 3
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-E-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "book": {
+              "apple": "a fruit"
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"apple\": \"a fruit\"} and set book to {'apple': 'a fruit'}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "book": {
+              "apple": "a fruit"
+            }
+          },
+          "output": [
+            "a fruit"
+          ],
+          "explanation": "Call print() to display \"a fruit\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-E-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"gold\": 50} and set coins to {'gold': 50}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [
+            "None"
+          ],
+          "explanation": "Call print() to display \"None\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-M-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "prices": {
+              "apple": 1,
+              "banana": 2
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"apple\": 1, \"banana\": 2} and set prices to {'apple': 1, 'banana': 2}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "prices": {
+              "apple": 1,
+              "banana": 3,
+              "cherry": 5
+            }
+          },
+          "output": [],
+          "explanation": "Call prices.update({\"banana\": 3, \"cherry\": 5}): prices becomes {'apple': 1, 'banana': 3, 'cherry': 5}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "prices": {
+              "apple": 1,
+              "banana": 3,
+              "cherry": 5
+            }
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-M-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "d": {
+              "a": 1,
+              "b": 2,
+              "c": 3
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"a\": 1, \"b\": 2, \"c\": 3} and set d to {'a': 1, 'b': 2, 'c': 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "d": {
+              "b": 2,
+              "c": 3
+            },
+            "taken": 1
+          },
+          "output": [],
+          "explanation": "Evaluate d.pop(\"a\") and set taken to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "d": {
+              "b": 2,
+              "c": 3
+            },
+            "taken": 1
+          },
+          "output": [
+            "1"
+          ],
+          "explanation": "Call print() to display \"1\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-M-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"Amy\": 40, \"Ben\": 55, \"Cat\": 30} and set scores to {'Amy': 40, 'Ben': 55, 'Cat': 30}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Amy"
+          },
+          "output": [],
+          "explanation": "for loop: name = Amy. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Amy"
+          },
+          "output": [],
+          "explanation": "Evaluate name, scores[name] + 10 using scores = [object Object], name = \"Amy\"; the result is \"Amy 50\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Amy"
+          },
+          "output": [
+            "Amy 50"
+          ],
+          "explanation": "Call print() to display \"Amy 50\".",
+          "event": "print"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Ben"
+          },
+          "output": [
+            "Amy 50"
+          ],
+          "explanation": "for loop: name = Ben. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Ben"
+          },
+          "output": [
+            "Amy 50"
+          ],
+          "explanation": "Evaluate name, scores[name] + 10 using scores = [object Object], name = \"Ben\"; the result is \"Ben 65\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Ben"
+          },
+          "output": [
+            "Amy 50",
+            "Ben 65"
+          ],
+          "explanation": "Call print() to display \"Ben 65\".",
+          "event": "print"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Cat"
+          },
+          "output": [
+            "Amy 50",
+            "Ben 65"
+          ],
+          "explanation": "for loop: name = Cat. Enter the loop body."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Cat"
+          },
+          "output": [
+            "Amy 50",
+            "Ben 65"
+          ],
+          "explanation": "Evaluate name, scores[name] + 10 using scores = [object Object], name = \"Cat\"; the result is \"Cat 40\".",
+          "phase": "calculate"
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Cat"
+          },
+          "output": [
+            "Amy 50",
+            "Ben 65",
+            "Cat 40"
+          ],
+          "explanation": "Call print() to display \"Cat 40\".",
+          "event": "print"
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "name": "Cat"
+          },
+          "output": [
+            "Amy 50",
+            "Ben 65",
+            "Cat 40"
+          ],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        }
+      ]
+    },
+    "W9-M-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"gold\": 50} and set coins to {'gold': 50}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "coins": {
+              "gold": 50
+            }
+          },
+          "output": [
+            "50"
+          ],
+          "explanation": "Call print() to display \"50\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-M-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"shield\": 2, \"magnet\": 0, \"slow\": 1} and set powerups to {'shield': 2, 'magnet': 0, 'slow': 1}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 0,
+            "name": "shield",
+            "amount": 2
+          },
+          "output": [],
+          "explanation": "for loop: name = shield, amount = 2. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 0,
+            "name": "shield",
+            "amount": 2
+          },
+          "output": [],
+          "explanation": "Check amount > 0: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 1,
+            "name": "shield",
+            "amount": 2
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 1,
+            "name": "magnet",
+            "amount": 0
+          },
+          "output": [],
+          "explanation": "for loop: name = magnet, amount = 0. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 1,
+            "name": "magnet",
+            "amount": 0
+          },
+          "output": [],
+          "explanation": "Check amount > 0: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 1,
+            "name": "slow",
+            "amount": 1
+          },
+          "output": [],
+          "explanation": "for loop: name = slow, amount = 1. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 1,
+            "name": "slow",
+            "amount": 1
+          },
+          "output": [],
+          "explanation": "Check amount > 0: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 2,
+            "name": "slow",
+            "amount": 1
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 2,
+            "name": "slow",
+            "amount": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "powerups": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "count": 2,
+            "name": "slow",
+            "amount": 1
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-H-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"] and set words to ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {}
+          },
+          "output": [],
+          "explanation": "Evaluate {} and set counts to {}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {},
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "for loop: w = apple. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 1
+            },
+            "w": "banana"
+          },
+          "output": [],
+          "explanation": "for loop: w = banana. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 1,
+              "banana": 1
+            },
+            "w": "banana"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 1,
+              "banana": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "for loop: w = apple. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 1
+            },
+            "w": "cherry"
+          },
+          "output": [],
+          "explanation": "for loop: w = cherry. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 1,
+              "cherry": 1
+            },
+            "w": "cherry"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 1,
+              "cherry": 1
+            },
+            "w": "banana"
+          },
+          "output": [],
+          "explanation": "for loop: w = banana. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 2,
+              "cherry": 1
+            },
+            "w": "banana"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 2,
+              "banana": 2,
+              "cherry": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "for loop: w = apple. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 3,
+              "banana": 2,
+              "cherry": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 3,
+              "banana": 2,
+              "cherry": 1
+            },
+            "w": "apple"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "words": [
+              "apple",
+              "banana",
+              "apple",
+              "cherry",
+              "banana",
+              "apple"
+            ],
+            "counts": {
+              "apple": 3,
+              "banana": 2,
+              "cherry": 1
+            },
+            "w": "apple"
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-H-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"Alice\": 95, \"Bob\": 82, \"Cleo\": 91, \"Dan\": 77} and set grades to {'Alice': 95, 'Bob': 82, 'Cleo': 91, 'Dan': 77}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set count to 0."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 0,
+            "name": "Alice",
+            "score": 95
+          },
+          "output": [],
+          "explanation": "for loop: name = Alice, score = 95. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 0,
+            "name": "Alice",
+            "score": 95
+          },
+          "output": [],
+          "explanation": "Check score >= 90: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 1,
+            "name": "Alice",
+            "score": 95
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 1,
+            "name": "Bob",
+            "score": 82
+          },
+          "output": [],
+          "explanation": "for loop: name = Bob, score = 82. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 1,
+            "name": "Bob",
+            "score": 82
+          },
+          "output": [],
+          "explanation": "Check score >= 90: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 1,
+            "name": "Cleo",
+            "score": 91
+          },
+          "output": [],
+          "explanation": "for loop: name = Cleo, score = 91. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 1,
+            "name": "Cleo",
+            "score": 91
+          },
+          "output": [],
+          "explanation": "Check score >= 90: True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 2,
+            "name": "Cleo",
+            "score": 91
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update count to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 2,
+            "name": "Dan",
+            "score": 77
+          },
+          "output": [],
+          "explanation": "for loop: name = Dan, score = 77. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 2,
+            "name": "Dan",
+            "score": 77
+          },
+          "output": [],
+          "explanation": "Check score >= 90: False. Skip this branch."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 2,
+            "name": "Dan",
+            "score": 77
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "grades": {
+              "Alice": 95,
+              "Bob": 82,
+              "Cleo": 91,
+              "Dan": 77
+            },
+            "count": 2,
+            "name": "Dan",
+            "score": 77
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-H-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "d": {
+              "a": 1,
+              "b": 2,
+              "c": 3
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"a\": 1, \"b\": 2, \"c\": 3} and set d to {'a': 1, 'b': 2, 'c': 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "d": {
+              "b": 2,
+              "c": 3
+            }
+          },
+          "output": [],
+          "explanation": "Call d.pop(\"a\"): d becomes {'b': 2, 'c': 3}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "d": {
+              "b": 2
+            }
+          },
+          "output": [],
+          "explanation": "Call d.popitem(): d becomes {'b': 2}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "d": {}
+          },
+          "output": [],
+          "explanation": "Delete d[\"b\"]: d is now {}."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "d": {}
+          },
+          "output": [
+            "0"
+          ],
+          "explanation": "Call print() to display \"0\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-H-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "state": {
+              "gold": 0,
+              "lives": 3
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"gold\": 0, \"lives\": 3} and set state to {'gold': 0, 'lives': 3}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "state": {
+              "gold": 0,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"coin\", \"coin\", \"hit\", \"coin\", \"hit\"] and set events to ['coin', 'coin', 'hit', 'coin', 'hit']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 0,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "for loop: e = coin. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "state": {
+              "gold": 0,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Check e == \"coin\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "state": {
+              "gold": 10,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Evaluate state[\"gold\"] + 10 and set state[\"gold\"] to 10."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 10,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "for loop: e = coin. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "state": {
+              "gold": 10,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Check e == \"coin\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Evaluate state[\"gold\"] + 10 and set state[\"gold\"] to 20."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "for loop: e = hit. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Check e == \"coin\": False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 3
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Evaluate state[\"lives\"] - 1 and set state[\"lives\"] to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "for loop: e = coin. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "state": {
+              "gold": 20,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Check e == \"coin\": True. Enter this branch."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "coin"
+          },
+          "output": [],
+          "explanation": "Evaluate state[\"gold\"] + 10 and set state[\"gold\"] to 30."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "for loop: e = hit. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Check e == \"coin\": False. Skip this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 2
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Take the else branch."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 1
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "Evaluate state[\"lives\"] - 1 and set state[\"lives\"] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 1
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "state": {
+              "gold": 30,
+              "lives": 1
+            },
+            "events": [
+              "coin",
+              "coin",
+              "hit",
+              "coin",
+              "hit"
+            ],
+            "e": "hit"
+          },
+          "output": [
+            "1"
+          ],
+          "explanation": "Call print() to display \"1\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-H-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"Amy\": 40, \"Ben\": 55, \"Cat\": 30} and set scores to {'Amy': 40, 'Ben': 55, 'Cat': 30}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": ""
+          },
+          "output": [],
+          "explanation": "Evaluate \"\" and set best_name to ''."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "",
+            "best_score": -1
+          },
+          "output": [],
+          "explanation": "Evaluate -1 and set best_score to -1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "",
+            "best_score": -1,
+            "name": "Amy",
+            "score": 40
+          },
+          "output": [],
+          "explanation": "for loop: name = Amy, score = 40. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "",
+            "best_score": -1,
+            "name": "Amy",
+            "score": 40
+          },
+          "output": [],
+          "explanation": "Check score > best_score: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "",
+            "best_score": 40,
+            "name": "Amy",
+            "score": 40
+          },
+          "output": [],
+          "explanation": "Evaluate score and set best_score to 40."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Amy",
+            "best_score": 40,
+            "name": "Amy",
+            "score": 40
+          },
+          "output": [],
+          "explanation": "Evaluate name and set best_name to 'Amy'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Amy",
+            "best_score": 40,
+            "name": "Ben",
+            "score": 55
+          },
+          "output": [],
+          "explanation": "for loop: name = Ben, score = 55. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Amy",
+            "best_score": 40,
+            "name": "Ben",
+            "score": 55
+          },
+          "output": [],
+          "explanation": "Check score > best_score: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Amy",
+            "best_score": 55,
+            "name": "Ben",
+            "score": 55
+          },
+          "output": [],
+          "explanation": "Evaluate score and set best_score to 55."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Ben",
+            "best_score": 55,
+            "name": "Ben",
+            "score": 55
+          },
+          "output": [],
+          "explanation": "Evaluate name and set best_name to 'Ben'."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Ben",
+            "best_score": 55,
+            "name": "Cat",
+            "score": 30
+          },
+          "output": [],
+          "explanation": "for loop: name = Cat, score = 30. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Ben",
+            "best_score": 55,
+            "name": "Cat",
+            "score": 30
+          },
+          "output": [],
+          "explanation": "Check score > best_score: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Ben",
+            "best_score": 55,
+            "name": "Cat",
+            "score": 30
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 30
+            },
+            "best_name": "Ben",
+            "best_score": 55,
+            "name": "Cat",
+            "score": 30
+          },
+          "output": [
+            "Ben"
+          ],
+          "explanation": "Call print() to display \"Ben\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-X-01": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 1
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"apple\": 2, \"banana\": 1} and set bag1 to {'apple': 2, 'banana': 1}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 1
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"banana\": 3, \"cherry\": 4} and set bag2 to {'banana': 3, 'cherry': 4}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            }
+          },
+          "output": [],
+          "explanation": "Call bag1.update(bag2): bag1 becomes {'apple': 2, 'banana': 3, 'cherry': 4}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set total to 0."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 0,
+            "item": "apple",
+            "n": 2
+          },
+          "output": [],
+          "explanation": "for loop: item = apple, n = 2. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 2,
+            "item": "apple",
+            "n": 2
+          },
+          "output": [],
+          "explanation": "Evaluate n and update total to 2."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 2,
+            "item": "banana",
+            "n": 3
+          },
+          "output": [],
+          "explanation": "for loop: item = banana, n = 3. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 5,
+            "item": "banana",
+            "n": 3
+          },
+          "output": [],
+          "explanation": "Evaluate n and update total to 5."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 5,
+            "item": "cherry",
+            "n": 4
+          },
+          "output": [],
+          "explanation": "for loop: item = cherry, n = 4. Enter the loop body."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 9,
+            "item": "cherry",
+            "n": 4
+          },
+          "output": [],
+          "explanation": "Evaluate n and update total to 9."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 9,
+            "item": "cherry",
+            "n": 4
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "bag1": {
+              "apple": 2,
+              "banana": 3,
+              "cherry": 4
+            },
+            "bag2": {
+              "banana": 3,
+              "cherry": 4
+            },
+            "total": 9,
+            "item": "cherry",
+            "n": 4
+          },
+          "output": [
+            "9"
+          ],
+          "explanation": "Call print() to display \"9\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-X-02": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "inventory": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"shield\": 2, \"magnet\": 0, \"slow\": 1} and set inventory to {'shield': 2, 'magnet': 0, 'slow': 1}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "inventory": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"shield\", \"magnet\", \"shield\", \"slow\", \"shield\"] and set wants to ['shield', 'magnet', 'shield', 'slow', 'shield']."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "inventory": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 0
+          },
+          "output": [],
+          "explanation": "Evaluate 0 and set got to 0."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 0,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "for loop: item = shield. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "inventory": {
+              "shield": 2,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 0,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Check inventory.get(item, 0) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 0,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update inventory[item] to 1."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update got to 1."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "magnet"
+          },
+          "output": [],
+          "explanation": "for loop: item = magnet. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "magnet"
+          },
+          "output": [],
+          "explanation": "Check inventory.get(item, 0) > 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "for loop: item = shield. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "inventory": {
+              "shield": 1,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Check inventory.get(item, 0) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 1,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update inventory[item] to 0."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 2,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update got to 2."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 2,
+            "item": "slow"
+          },
+          "output": [],
+          "explanation": "for loop: item = slow. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 1
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 2,
+            "item": "slow"
+          },
+          "output": [],
+          "explanation": "Check inventory.get(item, 0) > 0: True. Enter this branch."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 2,
+            "item": "slow"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update inventory[item] to 0."
+        },
+        {
+          "line": 6,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 3,
+            "item": "slow"
+          },
+          "output": [],
+          "explanation": "Evaluate 1 and update got to 3."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 3,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "for loop: item = shield. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 3,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "Check inventory.get(item, 0) > 0: False. Skip this branch."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 3,
+            "item": "shield"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 7,
+          "variables": {
+            "inventory": {
+              "shield": 0,
+              "magnet": 0,
+              "slow": 0
+            },
+            "wants": [
+              "shield",
+              "magnet",
+              "shield",
+              "slow",
+              "shield"
+            ],
+            "got": 3,
+            "item": "shield"
+          },
+          "output": [
+            "3"
+          ],
+          "explanation": "Call print() to display \"3\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-X-03": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "sentence": "go go go stop go"
+          },
+          "output": [],
+          "explanation": "Evaluate \"go go go stop go\" and set sentence to 'go go go stop go'."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {}
+          },
+          "output": [],
+          "explanation": "Evaluate {} and set counts to {}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {},
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "for loop: w = go. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 1
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 1
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "for loop: w = go. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 2
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 2."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 2
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "for loop: w = go. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 3
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 3."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 3
+            },
+            "w": "stop"
+          },
+          "output": [],
+          "explanation": "for loop: w = stop. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 3,
+              "stop": 1
+            },
+            "w": "stop"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 1."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 3,
+              "stop": 1
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "for loop: w = go. Enter the loop body."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 4,
+              "stop": 1
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "Evaluate counts.get(w, 0) + 1 and set counts[w] to 4."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 4,
+              "stop": 1
+            },
+            "w": "go"
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "sentence": "go go go stop go",
+            "counts": {
+              "go": 4,
+              "stop": 1
+            },
+            "w": "go"
+          },
+          "output": [
+            "4"
+          ],
+          "explanation": "Call print() to display \"4\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-X-04": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [\"Amy\", \"Ben\"] and set names to ['Amy', 'Ben']."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ]
+          },
+          "output": [],
+          "explanation": "Evaluate [40, 55] and set scores to [40, 55]."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {}
+          },
+          "output": [],
+          "explanation": "Evaluate {} and set board to {}."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {},
+            "i": 0
+          },
+          "output": [],
+          "explanation": "for loop: i = 0. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {
+              "Amy": 40
+            },
+            "i": 0
+          },
+          "output": [],
+          "explanation": "Evaluate scores[i] and set board[names[i]] to 40."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {
+              "Amy": 40
+            },
+            "i": 1
+          },
+          "output": [],
+          "explanation": "for loop: i = 1. Enter the loop body."
+        },
+        {
+          "line": 4,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {
+              "Amy": 40,
+              "Ben": 55
+            },
+            "i": 1
+          },
+          "output": [],
+          "explanation": "Evaluate scores[i] and set board[names[i]] to 55."
+        },
+        {
+          "line": 3,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {
+              "Amy": 40,
+              "Ben": 55
+            },
+            "i": 1
+          },
+          "output": [],
+          "explanation": "The for loop has finished or exited. Continue after the loop."
+        },
+        {
+          "line": 5,
+          "variables": {
+            "names": [
+              "Amy",
+              "Ben"
+            ],
+            "scores": [
+              40,
+              55
+            ],
+            "board": {
+              "Amy": 40,
+              "Ben": 55
+            },
+            "i": 1
+          },
+          "output": [
+            "{'Amy': 40, 'Ben': 55}"
+          ],
+          "explanation": "Call print() to display \"{'Amy': 40, 'Ben': 55}\".",
+          "event": "print"
+        }
+      ]
+    },
+    "W9-X-05": {
+      "steps": [
+        {
+          "line": -1,
+          "variables": {},
+          "output": [],
+          "explanation": "Ready! Press Next Step to run the example. No variables exist yet."
+        },
+        {
+          "line": 0,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 40,
+              "Dan": 55
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate {\"Amy\": 40, \"Ben\": 55, \"Cat\": 40, \"Dan\": 55} and set scores to {'Amy': 40, 'Ben': 55, 'Cat': 40, 'Dan': 55}."
+        },
+        {
+          "line": 1,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 40,
+              "Dan": 55
+            },
+            "values": {
+              "__set__": [
+                40,
+                55
+              ]
+            }
+          },
+          "output": [],
+          "explanation": "Evaluate set(scores.values()) and set values to {40, 55}."
+        },
+        {
+          "line": 2,
+          "variables": {
+            "scores": {
+              "Amy": 40,
+              "Ben": 55,
+              "Cat": 40,
+              "Dan": 55
+            },
+            "values": {
+              "__set__": [
+                40,
+                55
+              ]
+            }
+          },
+          "output": [
+            "2"
+          ],
+          "explanation": "Call print() to display \"2\".",
+          "event": "print"
+        }
+      ]
+    }
+  }
+}

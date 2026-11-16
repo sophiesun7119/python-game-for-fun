@@ -4,11 +4,11 @@
 
 - **[User Guide — for students, parents and teachers](docs/user-guide.md):** how to start, pick a week, solve and retry questions, use Watch How the Code Works, resume progress, review cards and understand local storage.
 - **[Technical Design — for developers and maintainers](docs/technical-design.md):** architecture, UI view flow, question and trace formats, inline annotations, scoring, user storage, curriculum migration, testing and maintenance.
-- [Difficulty Framework](docs/difficulty-framework.md): how the 80 questions and four difficulty tiers align with the course.
+- [Difficulty Framework](docs/difficulty-framework.md): how the 160 questions and four difficulty tiers align with the course.
 - [Changelog](CHANGELOG.md): feature and fix history.
 
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is public.** The V0.6 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 4 difficulties × 5 questions = **80 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is public.** Challenge 1 (Weeks 1–4) covers basic syntax, logic, loops and functions; **Challenge 2 — Data Explorer** (Weeks 6–9) covers lists, strings, sets and dictionaries. Each challenge is 4 weeks × 4 difficulties × 5 questions = 80 questions, for **160 questions** in total.
 
 ## Run locally
 
@@ -38,7 +38,7 @@ On first opening the page, students may enter a nickname; submitting an empty na
 
 ## Detailed execution walkthroughs (v0.6.7)
 
-**All 80 cards** use one validated walkthrough contract. The code arrow, variables, function events and cumulative Output still follow [Technical Design §7](docs/technical-design.md#7-walkthrough-contract--all-80-questions). The new educational rule is that **calculating an expression and executing its final statement are separate steps**:
+**All 80 cards** use one validated walkthrough contract. The code arrow, variables, function events and cumulative Output still follow [Technical Design §7](docs/technical-design.md#7-walkthrough-contract--all-160-questions). The new educational rule is that **calculating an expression and executing its final statement are separate steps**:
 
 - `print('Hi')`: highlight the print statement, show **Call print()**, explain it, then display **Hi** in Output. A simple literal print needs no invented arithmetic step.
 - `print(square(4) + 1)`: `square(4)` returns **16** → evaluate **16 + 1 = 17** on the caller line → call `print()` → Output becomes **17**, and not before.
@@ -61,7 +61,7 @@ The audit covers **80 questions, 1,103 trace states, 125 explicit calculation st
 
 Function entry is shown at the `def` line with parameters; only the next step executes the first body statement. All quiz/review progress, scoring, hints and retries remain unchanged. Trace data is precomputed; student code is not executed in the browser.
 
-The **single normative design specification** is [Technical Design §7 — Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-80-questions). This replaces the previous fragmented v0.6.1–v0.6.5 layout notes; historical revisions remain in [CHANGELOG](CHANGELOG.md). Automated CI validates all questions and renders every step using the same shared component: `node tests/validate-walkthrough-layout.mjs`.
+The **single normative design specification** is [Technical Design §7 — Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-160-questions). This replaces the previous fragmented v0.6.1–v0.6.5 layout notes; historical revisions remain in [CHANGELOG](CHANGELOG.md). Automated CI validates all questions and renders every step using the same shared component: `node tests/validate-walkthrough-layout.mjs`.
 
 ## Difficulty rebalancing — Extra Rock (v0.6.0)
 
@@ -76,15 +76,23 @@ The learning path is cumulative: Week 2 combines arithmetic and if/else; Week 3 
 | Hard (recalibrated) | 20 | 100 |
 | **Extra Rock** | **25** | **125** |
 
-Base path max **900 XP**; four optional Extra Rock quests add **500 XP**; overall max **1,400 XP**. Extra Rock is not required for the original topic badges.
+Base path max **1,800 XP** across both challenges; eight optional Extra Rock quests add **1,000 XP**; overall max **2,800 XP**. Extra Rock is not required for the topic badges.
 
 **Progress migration:** The old Hard questions are replaced, so on first opening curriculum v2 the earlier Hard best scores are archived (viewable under My Progress), not counted as achievements for unseen new Hard questions. Easy and Medium scores are preserved. Older Hard in-progress/review snapshots will not be attached to new code.
 
 Run the full validation suite listed in [Technical Design §9](docs/technical-design.md#9-how-to-test-and-make-changes) to check the teacher-authored examples, question schema, traces and browser behavior. The CI workflow runs the same checks on push if GitHub Actions is enabled.
 
+## Challenge 2 — Data Explorer (Weeks 6–9)
+
+Challenge 2 adds 80 questions on the course's data-structure weeks: **Week 6 Lists** (indexing, negative indexing, slicing, `append`/`sort`, parallel lists), **Week 7 Strings** (slicing, immutability, `split`/`join`, string methods, f-string formatting), **Week 8 Sets** (deduplication, membership, `add`/`remove`/`discard`, union/intersection/difference) and **Week 9 Dictionaries** (lookup, `.get()` with defaults, `update()`, `pop()`, counting patterns). Easy/Medium test the week's own skills directly and include a few concept questions (which structure or method fits a job); Hard/Extra Rock use the data structure as a tool inside bigger code — loops, conditions and functions from earlier weeks — and ask for derived results such as a count, a sum, or one looked-up value.
+
+Question-type policy follows the typing burden for young children: Easy is all multiple choice, Medium is half multiple choice / half typed, and Hard/Extra Rock cards are typed only when the answer is short and simple — a card whose answer is a collection literal or other punctuation-heavy output is multiple choice instead. Hard cards carry two bonus follow-ups and Extra Rock cards one, plus execution-verified 🐛 bug-hunt pairs on selected Extra Rock cards, exactly as in Challenge 1.
+
+The Challenge 2 walkthroughs are generated by `scripts/generate-traces.py`, which records a real CPython execution (`sys.settrace`) and narrates it in the same step voice as the Weeks 1–4 generator; both generators feed the shared enrichment in `scripts/enrich-walkthroughs.js`, and every step is cross-checked against CPython by the test suite (see [Technical Design §7.1](docs/technical-design.md)).
+
 ## Walkthrough history
 
-Earlier pilot designs (including the old two-column Variables/Output layout) are superseded by the [current Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-80-questions). See [CHANGELOG](CHANGELOG.md) for historical v0.4–v0.5 changes.
+Earlier pilot designs (including the old two-column Variables/Output layout) are superseded by the [current Walkthrough Contract](docs/technical-design.md#7-walkthrough-contract--all-160-questions). See [CHANGELOG](CHANGELOG.md) for historical v0.4–v0.5 changes.
 
 ## Auto-save, Resume and Review (v0.3.0)
 
@@ -95,11 +103,11 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 - In Review, navigate **Previous** / **Next** to see saved answers, correct answers and explanations. **Retry this card** temporarily hides the solution and lets the child practice again, with no score changes.
 - Review practice does not change the finished result. To increase the best XP, start a **new five-card quest** and solve the questions; correct answers after hints/retries still earn full points, whereas Show Answer ends that question without XP.
 - Only the **most recent completed attempt** of each difficulty is retained for review. The all-time best score is retained separately.
-- All data remains only in the same browser/profile; no cloud sync, password or database is involved.
+- Game data lives in the same browser/profile — local storage is the source of truth. On the published GitHub Pages site, the game also sends a one-way copy of each quest snapshot to the teacher's Supabase project (anonymous, insert-only; nothing can be read back), so the teacher can follow along in the `progress_latest` view. Students need no password or account.
 
 ## What works
 
-- Choose Weeks 1–4 and any difficulty, with suggested next step but no locked levels
+- Choose Weeks 1–4 (Challenge 1) or Weeks 6–9 (Challenge 2) and any difficulty, with suggested next step but no locked levels
 - Five questions per quest; multiple choice where defined and short-answer elsewhere
 - Hints, answer feedback, explanations, next question, and result summary
 - **Skip question** on any card before answering (counts as not solved), plus optional unscored **Bonus questions** on Hard and Extra Rock cards
@@ -110,17 +118,17 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 
 ## Important limitations
 
-- The 80 questions are curriculum-calibrated teaching drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
+- The 160 questions are curriculum-calibrated teaching drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
 - This repository is public, and a public deployment is visible to anyone who knows the URL. Do not put private student information in this app.
 - Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
-- Challenge 2 (Weeks 6–9) is not included in v0.6.
+- Challenge 2 questions test the data-structure topics as taught in the Week 6–9 QuickChecks and homework; set questions avoid relying on set print order (results are asked via `sorted()`, `len()`, membership or single values).
 
 ## Source documents
 
 - [Product plan](https://docs.google.com/document/d/1IYkMOB8pIzhWOEliFy93fHoET743fQ-XUvbNTVC-5hs/edit)
 - [Original 60-question draft (historical teacher document)](https://docs.google.com/document/d/1pqRtD9Ld6HCrGVvDk9NnOj3mxXhMBnl0HLFOE_LY3-A/edit)
-- [Current 80-question source of truth](data/questions.json)
+- [Current 160-question source of truth](data/questions.json)
 - [Class-aligned difficulty framework](docs/difficulty-framework.md)
 
 ## Files
@@ -130,15 +138,21 @@ index.html
 styles.css
 src/app.js
 src/scoring.js
+src/sync.js
 data/questions.json
 data/traces-week1.json
 data/traces-week2.json
 data/traces-week3.json
 data/traces-week4.json
+data/traces-week6.json
+data/traces-week7.json
+data/traces-week8.json
+data/traces-week9.json
 docs/user-guide.md
 docs/technical-design.md
 docs/difficulty-framework.md
 scripts/build-trace-runtime.js
+scripts/generate-traces.py
 scripts/enrich-walkthroughs.js
 scripts/generate-followups.py
 scripts/convert-to-multiple-choice.py
