@@ -79,7 +79,7 @@ Your in-progress work is autosaved **in the same browser** by player, week, and 
 - **Continue Quest** to return to your saved question and answer state.
 - **Start Over** to reset that unfinished attempt without deleting your best score.
 
-The home page also shows shortcuts to unfinished quests.
+The home page also shows shortcuts to unfinished quests. **My Progress** works as a launchpad too: under Best scores, every week × level is a button — ▶ starts it, ⏩ continues an unfinished quest, ↻ plays a finished one again.
 
 ## 6. Review finished cards
 

@@ -197,3 +197,6 @@ main{max-width:1180px}
 .lb-name{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lb-xp{font-weight:700;color:#b8860b;white-space:nowrap}
 .lb-me{background:#fff7e0;border-radius:10px}
+
+.badge-card{cursor:pointer}
+.badge-card:hover{border-color:#b9c8e8}
