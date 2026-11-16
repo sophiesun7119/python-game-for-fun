@@ -8,17 +8,18 @@
 - [Changelog](CHANGELOG.md): feature and fix history.
 
 
-A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is private.** The V0.6 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 4 difficulties × 5 questions = **80 questions**.
+A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is public.** The V0.6 prototype contains Challenge 1 only (Weeks 1–4): 4 weeks × 4 difficulties × 5 questions = **80 questions**.
 
 ## Run locally
 
-Do not double-click `index.html` (browser security prevents loading local JSON by `fetch`). Instead, run a simple local web server:
+Do not double-click `index.html` (browser security prevents loading local JSON by `fetch`). Instead, run a simple local web server **from inside the cloned project folder**:
 
 ```bash
+cd python-game-for-fun
 python3 -m http.server 8000
 ```
 
-Then open **http://localhost:8000**. Alternatively deploy the static directory to any static hosting provider. No backend or Python runtime is needed for children visiting a hosted site; Python above is only a convenient local development server.
+Then open **http://localhost:8000**. Keep that terminal running while you play; closing it stops the server. Alternatively deploy the static directory to any static hosting provider. No backend or Python runtime is needed for children visiting a hosted site; Python above is only a convenient local development server.
 
 ## Player names and local save (v0.2.0)
 
@@ -30,8 +31,10 @@ On first opening the page, students may enter a nickname; submitting an empty na
 
 - First submission correct: show confirmation, explanation, and **Next question**.
 - First submission wrong: do **not** immediately show answer. Offer **Give me a hint**, **Retry**, and **Show answer**.
+- Before submitting, **Skip question** moves straight to the next card; the card counts as not solved (no XP) and is labeled ⏭ Skipped in Review.
 - Hint displays guidance and preserves the option to retry or reveal. Retry clears the input/selection for another submission. Show answer displays correct answer with explanation, then Next question.
 - **Correct answers earn full XP even after hints or retries.** If the student chooses Show answer, the question earns no XP. Completing all five saves the user's best score.
+- After a card is solved or revealed, Hard and Extra Rock cards offer optional **Bonus questions** about the same code (multiple choice; unscored practice, one attempt each, skippable). See [Technical Design §4](docs/technical-design.md#4-question-bank-schema).
 
 ## Detailed execution walkthroughs (v0.6.7)
 
@@ -77,7 +80,7 @@ Base path max **900 XP**; four optional Extra Rock quests add **500 XP**; overal
 
 **Progress migration:** The old Hard questions are replaced, so on first opening curriculum v2 the earlier Hard best scores are archived (viewable under My Progress), not counted as achievements for unseen new Hard questions. Easy and Medium scores are preserved. Older Hard in-progress/review snapshots will not be attached to new code.
 
-Run `python3 tests/validate_python.py` and `node tests/validate-traces.mjs` to check the fixed teacher-authored examples. The CI workflow also runs these checks on push if GitHub Actions is enabled.
+Run the full validation suite listed in [Technical Design §9](docs/technical-design.md#9-how-to-test-and-make-changes) to check the teacher-authored examples, question schema, traces and browser behavior. The CI workflow runs the same checks on push if GitHub Actions is enabled.
 
 ## Walkthrough history
 
@@ -99,6 +102,7 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 - Choose Weeks 1–4 and any difficulty, with suggested next step but no locked levels
 - Five questions per quest; multiple choice where defined and short-answer elsewhere
 - Hints, answer feedback, explanations, next question, and result summary
+- **Skip question** on any card before answering (counts as not solved), plus optional unscored **Bonus questions** on Hard and Extra Rock cards
 - Mastery-based scoring, including successful retries; Easy 10, Medium 15, Hard 20, Extra Rock 25 XP per solved question
 - Best result per quest is saved per nickname in the **same browser** using localStorage
 - 3/5 = one star, 4/5 = two, 5/5 = three; pass Easy/Medium/Hard for a topic badge; Extra Rock is optional
@@ -108,7 +112,7 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 
 - The 80 questions are curriculum-calibrated teaching drafts, not classroom-tested. Short-answer responses are compared as strings after trimming outer whitespace; exact line breaks matter. Review the wording and formatting before sharing with students.
 - All question answers are in client-side JSON, so this is a learning aid, **not** a secure assessment.
-- A public deployment is visible to anyone who knows the URL even if the GitHub repository is private. Do not put private student information in this app.
+- This repository is public, and a public deployment is visible to anyone who knows the URL. Do not put private student information in this app.
 - Clearing browser storage or using another browser/device loses progress; **in-progress questions are now saved as the child works**, and latest completed cards can be revisited.
 - Challenge 2 (Weeks 6–9) is not included in v0.6.
 
@@ -131,10 +135,27 @@ data/traces-week1.json
 data/traces-week2.json
 data/traces-week3.json
 data/traces-week4.json
+docs/user-guide.md
+docs/technical-design.md
 docs/difficulty-framework.md
-tests/validate-traces.mjs
-tests/validate_python.py
 scripts/build-trace-runtime.js
+scripts/enrich-walkthroughs.js
+scripts/generate-followups.py
+scripts/convert-to-multiple-choice.py
+scripts/add-debug-followups.py
+tests/validate_python.py
+tests/validate-trace-cpython.py
+tests/validate-question-schema.mjs
+tests/validate-traces.mjs
+tests/validate-trace-control-flow.mjs
+tests/validate-trace-decisions.mjs
+tests/validate-inline-trace.mjs
+tests/validate-trace-scopes.mjs
+tests/validate-trace-events.mjs
+tests/validate-walkthrough-layout.mjs
+tests/validate-walkthrough-detail.mjs
+tests/e2e-browser.cjs
+.github/workflows/validate-questions.yml
 README.md
 CHANGELOG.md
 ```

@@ -1,5 +1,16 @@
 # Changelog
 
+## Audit follow-up — 2026-11-15
+- Completed the browser visual QA left pending by v0.6.3/v0.6.6: a full headless-Chromium pass over the served site (player flow, hints/retries, XP, resume, player isolation, review) plus a step-by-step rendering check of all 80 walkthroughs against the trace data — 42 checks, all passing, no console errors.
+- Fixed README: the repository is public (was described as private), the Files list now matches the actual tree, and Run locally says to `cd` into the cloned folder and keep the terminal running.
+- Technical Design §9 now lists the complete validation suite (it previously omitted the walkthrough layout/detail tests); §7.7 lists the same suite.
+- Added Technical Design §7.8 defining **pedagogical marker steps** (branch markers on `else:`/`elif` lines, same-line call/return sub-steps, loop check/finished markers, return-to-caller completion steps) and their truthfulness invariants.
+- Added three tests, all wired into GitHub Actions: `tests/validate-question-schema.mjs` (question fields, multiple-choice option validity, hint presence and no answer leakage), `tests/validate-trace-cpython.py` (every trace step cross-checked against a real CPython `sys.settrace` execution; marker steps per §7.8 are allow-listed by form), and `tests/e2e-browser.cjs` (Playwright end-to-end run of the §9 regression sequence and all 80 walkthroughs, as a separate CI job).
+- New **Skip question** action: before submitting, a child can move straight to the next card; the card counts as not solved, earns no XP, and is labeled ⏭ Skipped in Review.
+- New **Bonus questions**: Hard cards carry two and Extra Rock cards one extra multiple-choice question about the same code (variable state, a specific call's return value, output detail), offered after the card is solved or revealed. They are unscored one-attempt practice with the walkthrough as the hint, and can be skipped. Derived from the verified traces by `scripts/generate-followups.py` (every derived answer re-checked against a real CPython run); documented in Technical Design §4 and the User Guide.
+- **Question-type rebalancing** (all multiple choice is single-answer): every Easy card is now multiple choice, and Medium is half multiple choice / half typed — the converted cards are the ones whose typed answers were long, multi-line, or case-sensitive words (`scripts/convert-to-multiple-choice.py`, distractors grounded in each card's own code and trace). Hard and Extra Rock main cards stay typed. Multi-line options now render with line breaks (`.choice-text` pre-wrap).
+- **Bug-hunt follow-ups** on seven Extra Rock cards (W1-X-03, W2-X-02, W2-X-05, W3-X-03, W3-X-04, W4-X-03, W4-X-04): a variant of the card's code with one line broken — first "Which line is wrong?", then "How should that line be fixed?" Authored and execution-verified by `scripts/add-debug-followups.py`; the follow-up view renders the buggy code as a numbered block.
+
 ## v0.6.7 — 2026-11-15
 - Re-audited all 80 question walkthroughs and inserted explicit intermediate steps for arithmetic, function-return expressions, and formatted output where appropriate.
 - Separated `print(square(4) + 1)` into return 16, calculate 16 + 1 = 17, then Call print() with Output 17.

@@ -68,6 +68,14 @@ Source: `data/questions.json`. Each of the **80** question objects has fields su
 
 Some questions use `short_answer` (no choices), and curriculum-aligned Hard/Extra questions may also include `curriculumReference`. The bank has five cards for each (week, difficulty) pair, and its current curriculum revision is `curriculum-v2`.
 
+**Optional `followups`:** a question may carry a `followups` array of extra questions about the *same* code (`prompt`, `type`, `options` when multiple-choice, `answer`, `explanation`). After the main card is solved or revealed, the quiz offers them as **Bonus questions**: unscored practice, one attempt each with the answer and explanation shown afterwards, skippable individually or as a set (the normal Next button remains available). Hard cards currently carry two follow-ups and Extra Rock cards one; they were derived from the verified traces by `scripts/generate-followups.py`, which re-checks every derived answer against a real CPython run before writing. `tests/validate-question-schema.mjs` validates follow-ups to the same standard as main cards.
+
+A follow-up may also carry its own `code` field: a **bug-hunt variant** of the card's code with exactly one line broken. Selected Extra Rock cards carry a bug-hunt pair — "Which line is wrong?" (the buggy code's wrong output is stated in the prompt) followed by "How should that line be fixed?" — authored and verified by `scripts/add-debug-followups.py`, which runs every variant and rejects any bug or "wrong fix" that would still print the correct output. The follow-up view renders a `code` variant as a numbered static code block without a walkthrough.
+
+**Question-type policy:** all multiple choice is single-answer. Easy cards are all multiple choice; Medium is roughly half multiple choice (long, multi-line, or case-sensitive typed answers converted by `scripts/convert-to-multiple-choice.py`) and half typed; Hard and Extra Rock main cards stay typed, with multiple-choice follow-ups.
+
+**Skipping:** before submitting, a card offers **Skip question**, which marks the card skipped (stored as `skipped: true` alongside `revealed: true`, so it earns no XP and counts as not solved) and moves straight to the next card. Review labels such cards ⏭ Skipped.
+
 Answer evaluation: the browser compares submitted text with the authored `answer` using `normalize()`, which normalizes Windows newlines, interprets literal `\\n`, and trims the surrounding whitespace. **It is not semantic Python evaluation**, so equivalent-looking answers may not all match. Treat educator review and answer formatting as part of content QA.
 
 ## 5. Scoring and progression
@@ -207,6 +215,8 @@ Changes to question code/answers or walkthrough data require matching trace step
 
 ```bash
 python3 tests/validate_python.py
+python3 tests/validate-trace-cpython.py
+node tests/validate-question-schema.mjs
 node tests/validate-traces.mjs
 node tests/validate-trace-control-flow.mjs
 node tests/validate-trace-decisions.mjs
@@ -217,9 +227,22 @@ node tests/validate-walkthrough-layout.mjs
 node tests/validate-walkthrough-detail.mjs
 ```
 
+`validate-question-schema.mjs` checks the question bank itself (required fields, multiple-choice options contain the answer exactly once, no duplicate options, hints present and never containing the answer verbatim). `validate-trace-cpython.py` cross-checks every trace step against a real CPython `sys.settrace` execution (see §7.8). A separate browser end-to-end suite, `tests/e2e-browser.cjs`, drives the served site through the §9 manual regression sequence and steps through all 80 walkthroughs in a real browser; it runs as its own CI job because it needs Playwright (see §9).
+
 The layout test **renders all 1,103 trace snapshots**, checks top-controls → code → Output → Explanation order, confirms the Output section is empty at step 0, verifies *exact* cumulative output at every step, and rejects old inline Output badges. The event tests verify that new stdout occurs on actual `print()` lines, and the scoped-binding tests verify nested-call local-variable lifetimes. The generated Hard/Extra traces also undergo exact step-by-step arrow/variable/narration checks. Manual desktop/mobile visual QA remains necessary for wrapping and accessibility.
 
 **Representative manual regressions:** `W4-E-01` (`greet()` prints `Hi`), `W4-M-01` (`square(4)` returns 16), `W4-H-01` (nested `total_cost` calls), `W4-X-01` (nested `message` and `xp_needed`), a Week 3 `for` and `while` loop, and `W2-M-03` (`else` then `print('Wait')`). Test first, middle and final steps including Previous/Restart.
+
+### 7.8 Pedagogical marker steps
+
+Most trace steps correspond one-to-one to a real CPython execution event on their line. A small number of steps are **pedagogical marker steps**: they exist to teach a transition that CPython does not surface as its own line event. Only these forms are allowed:
+
+1. **Branch markers** on an `else:` / `elif` line, explaining that the condition was False/checked and which branch runs next (CPython never executes the `else:` line itself).
+2. **Same-line sub-steps** that decompose one statement into call → enter → calculate → return → assign → print (see §7.4), staying on that statement's line.
+3. **Loop markers** on a `for` / `while` header line: the per-iteration check and the loop-finished step (including after `break`).
+4. **Call-boundary steps** on a line that calls a function defined in the snippet: the *Call* step shown with the caller's variables just before the callee's entry step, and the *Return from fn()* step on the same call-site line after the callee's last body step, showing the returned value being bound or used. No single CPython event on that line carries the caller's frame at those moments.
+
+Marker steps obey the same truthfulness invariants as execution steps: their variable snapshot and cumulative Output must equal a state the real execution actually reaches — values are never invented, Output grows only on real `print()` steps, and the next non-marker step resumes the real execution order. `tests/validate-trace-cpython.py` enforces this by replaying every question under `sys.settrace`: each non-calculation step must either match a real execution event in order or match one of the four marker forms above with a genuine execution snapshot.
 
 
 ## 8. Styling, accessibility, and responsive behavior
@@ -244,15 +267,25 @@ python3 -m http.server 8000
 
 # In another terminal, run data/logic checks:
 python3 tests/validate_python.py
+python3 tests/validate-trace-cpython.py
+node tests/validate-question-schema.mjs
 node tests/validate-traces.mjs
 node tests/validate-trace-control-flow.mjs
 node tests/validate-trace-decisions.mjs
 node tests/validate-inline-trace.mjs
 node tests/validate-trace-scopes.mjs
 node tests/validate-trace-events.mjs
+node tests/validate-walkthrough-layout.mjs
+node tests/validate-walkthrough-detail.mjs
+
+# Browser end-to-end (drives the served site in headless Chromium;
+# Playwright is installed outside the repo tree):
+mkdir -p /tmp/pw && cd /tmp/pw && npm init -y >/dev/null && npm install playwright-core
+/tmp/pw/node_modules/.bin/playwright-core install chromium-headless-shell
+NODE_PATH=/tmp/pw/node_modules node tests/e2e-browser.cjs
 ```
 
-The GitHub Actions workflow `.github/workflows/validate-questions.yml` runs these validations after pushes/PRs (when enabled). These tests check static question/answer pairing, generated call/return sequencing, arrow-line compatibility, decision badges, and inline annotation behavior; they do **not** replace browser visual QA.
+The GitHub Actions workflow `.github/workflows/validate-questions.yml` runs the data/logic validations after pushes/PRs (when enabled), plus the browser end-to-end suite as a separate job. These tests check static question/answer pairing, generated call/return sequencing, arrow-line compatibility, decision badges, inline annotation behavior, question-schema hygiene, agreement with real CPython execution, and the interactive flows below; they do **not** replace human visual QA for wrapping and accessibility.
 
 **Recommended manual regression sequence:**
 

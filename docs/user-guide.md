@@ -45,6 +45,9 @@ A child's learning can combine topics from earlier weeks, especially at Hard and
 3. Click **Check Answer**.
 4. If correct, read the explanation and choose **Next Question**.
 5. If incorrect, choose **Give Me a Hint**, **Retry**, or **Show Answer**.
+6. Stuck and want to move on? Click **Skip Question** before answering. The card counts as not solved (no points), and Review will label it ⏭ Skipped — you can study its answer and explanation there later.
+
+**Bonus questions ⭐:** Hard and Extra Rock cards have extra questions about the same code. After you finish a card, choose **Bonus question** to try them, or just go to the next question. Bonuses are practice only — they never change your score. Each bonus allows one try, then shows the answer and why; the walkthrough on the same screen is your hint. You can also skip a bonus. Some Extra Rock cards have a **🐛 Bug hunt** pair instead: the same code with one line broken — first find the wrong line, then choose how to fix it.
 
 **Scoring encourages learning:** even after a hint or several retries, getting the correct answer **without revealing it** earns full points for that question. **Show Answer** reveals the solution and explanation but gives zero points for that card in that run. Replaying a quest does not endlessly add XP: the game awards only the difference when a player's personal best improves.
 
