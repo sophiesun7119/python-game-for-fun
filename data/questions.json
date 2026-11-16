@@ -123,10 +123,15 @@
       "week": 1,
       "difficulty": "medium",
       "concept": "string vs int",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "age = '12'\nprint(age + '3')",
-      "options": null,
+      "options": [
+        "123",
+        "122",
+        "12",
+        "124"
+      ],
       "answer": "123",
       "explanation": "Both operands are strings, so + concatenates them.",
       "hint": "The quotes matter."
@@ -136,10 +141,15 @@
       "week": 1,
       "difficulty": "medium",
       "concept": "f-string",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "name = 'Mia'\npoints = 8\nprint(f'{name}: {points + 2}')",
-      "options": null,
+      "options": [
+        "Mia: 10",
+        "Mia: 9",
+        "Mia",
+        "Mia: 11"
+      ],
       "answer": "Mia: 10",
       "explanation": "The expression inside the f-string braces is evaluated.",
       "hint": "Compute points + 2."
@@ -169,7 +179,33 @@
       "answer": "$12.68",
       "explanation": "Subtotal 11.74 plus 8% tax is 12.6792, formatted as $12.68.",
       "hint": "Calculate subtotal and tax before rounding.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of tax?",
+          "type": "multiple_choice",
+          "options": [
+            "6.99",
+            "1.5",
+            "0.9392",
+            "3.25"
+          ],
+          "answer": "0.9392",
+          "explanation": "Follow tax to the end of the walkthrough: its last update is on line 5 (tax = subtotal * 0.08), leaving tax = 0.9392."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "$13.68",
+            "$11.68",
+            "$12.68",
+            "$14.68"
+          ],
+          "answer": "$12.68",
+          "explanation": "Run the walkthrough to the last step: the Output box shows $12.68."
+        }
+      ]
     },
     {
       "id": "W1-H-02",
@@ -183,7 +219,33 @@
       "answer": "7.60",
       "explanation": "Fuel cost is 30.390625; divided by four is 7.59765625, formatted to two decimals.",
       "hint": "Keep full precision until print.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of people?",
+          "type": "multiple_choice",
+          "options": [
+            "3.89",
+            "250",
+            "4",
+            "32"
+          ],
+          "answer": "4",
+          "explanation": "Follow people to the end of the walkthrough: its last update is on line 4 (people = 4), leaving people = 4."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "9.60",
+            "7.60",
+            "6.60",
+            "8.60"
+          ],
+          "answer": "7.60",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 7.60."
+        }
+      ]
     },
     {
       "id": "W1-H-03",
@@ -197,7 +259,33 @@
       "answer": "3 21",
       "explanation": "b becomes 7; a becomes 3; b becomes 21.",
       "hint": "Track both variables after every line.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of b?",
+          "type": "multiple_choice",
+          "options": [
+            "21",
+            "22",
+            "7",
+            "3"
+          ],
+          "answer": "21",
+          "explanation": "Follow b to the end of the walkthrough: its last update is on line 4 (b = a * b), leaving b = 21."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "5 21",
+            "2 21",
+            "3 21",
+            "4 21"
+          ],
+          "answer": "3 21",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3 21."
+        }
+      ]
     },
     {
       "id": "W1-H-04",
@@ -211,7 +299,33 @@
       "answer": "33333-5",
       "explanation": "b becomes 5; string a repeats five times.",
       "hint": "Calling int(a) does not modify a.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of c?",
+          "type": "multiple_choice",
+          "options": [
+            "\"33333\"",
+            "5",
+            "\"33334\"",
+            "\"3\""
+          ],
+          "answer": "\"33333\"",
+          "explanation": "Follow c to the end of the walkthrough: its last update is on line 3 (c = a * b), leaving c = \"33333\"."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "33332-5",
+            "33334-5",
+            "33335-5",
+            "33333-5"
+          ],
+          "answer": "33333-5",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 33333-5."
+        }
+      ]
     },
     {
       "id": "W1-H-05",
@@ -225,7 +339,33 @@
       "answer": "0010",
       "explanation": "Quotient 4 plus remainder 3 yields z=7; result 10 is formatted to four digits.",
       "hint": "Compute // and % first; then read :04d.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of z?",
+          "type": "multiple_choice",
+          "options": [
+            "7",
+            "19",
+            "8",
+            "4"
+          ],
+          "answer": "7",
+          "explanation": "Follow z to the end of the walkthrough: its last update is on line 3 (z = x // y + x % y), leaving z = 7."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "9",
+            "12",
+            "0010",
+            "11"
+          ],
+          "answer": "0010",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 0010."
+        }
+      ]
     },
     {
       "id": "W1-X-01",
@@ -239,7 +379,21 @@
       "answer": "3 2",
       "explanation": "(a,b) becomes (5,3), then (5,2), then (3,2).",
       "hint": "Each assignment changes future calculations.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of a?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "3",
+            "5"
+          ],
+          "answer": "3",
+          "explanation": "Follow a to the end of the walkthrough: its last update is on line 5 (a = a - b), leaving a = 3."
+        }
+      ]
     },
     {
       "id": "W1-X-02",
@@ -253,7 +407,21 @@
       "answer": "3.69|11.06",
       "explanation": "Total is 11.0592, and each share 3.6864; two-decimal formatting gives 11.06 and 3.69.",
       "hint": "Round only for display.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of people?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "6.99",
+            "3.25",
+            "0.08"
+          ],
+          "answer": "3",
+          "explanation": "Follow people to the end of the walkthrough: its last update is on line 6 (people = 3), leaving people = 3."
+        }
+      ]
     },
     {
       "id": "W1-X-03",
@@ -267,7 +435,46 @@
       "answer": "0412 16",
       "explanation": "n starts 12; s becomes 0412 with length four; n becomes 16.",
       "hint": "s remains a string.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of n?",
+          "type": "multiple_choice",
+          "options": [
+            "\"0412\"",
+            "17",
+            "12",
+            "16"
+          ],
+          "answer": "16",
+          "explanation": "Follow n to the end of the walkthrough: its last update is on line 4 (n = n + len(s)), leaving n = 16."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 1204 16 instead of 0412 16. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "s = '04'\nn = int(s) * 3\ns = str(n) + s\nn = n + len(s)\nprint(s, n)",
+          "options": [
+            "n = n + len(s)",
+            "n = int(s) * 3",
+            "print(s, n)",
+            "s = str(n) + s"
+          ],
+          "answer": "s = str(n) + s",
+          "explanation": "The original adds n to the END of s ('04' + '12' = '0412'). The buggy line puts n first ('12' + '04' = '1204'), so the printed string is backwards."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "s = '04'\nn = int(s) * 3\ns = str(n) + s\nn = n + len(s)\nprint(s, n)",
+          "options": [
+            "s = s + str(n)",
+            "s = s + n",
+            "s = str(n) + str(n)"
+          ],
+          "answer": "s = s + str(n)",
+          "explanation": "String addition keeps order: s + str(n) appends the digits of n after the original text."
+        }
+      ]
     },
     {
       "id": "W1-X-04",
@@ -281,7 +488,21 @@
       "answer": "5 15 5",
       "explanation": "c first 2; a becomes 5; b becomes 15; c becomes 15//3=5.",
       "hint": "Use updated values for each new line.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of c?",
+          "type": "multiple_choice",
+          "options": [
+            "15",
+            "2",
+            "6",
+            "5"
+          ],
+          "answer": "5",
+          "explanation": "Follow c to the end of the walkthrough: its last update is on line 6 (c = b // (a - c)), leaving c = 5."
+        }
+      ]
     },
     {
       "id": "W1-X-05",
@@ -295,7 +516,21 @@
       "answer": "Ana  |$024.30",
       "explanation": "Name has two trailing spaces; price plus tax is 24.30, zero padded to width six.",
       "hint": "Count spaces and leading zeros precisely.",
-      "curriculumReference": "Week 1 Receipt / Trip Cost"
+      "curriculumReference": "Week 1 Receipt / Trip Cost",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of tax?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "7.5",
+            "1.8",
+            "\"Ana\""
+          ],
+          "answer": "1.8",
+          "explanation": "Follow tax to the end of the walkthrough: its last update is on line 5 (tax = subtotal * 0.08), leaving tax = 1.8."
+        }
+      ]
     },
     {
       "id": "W2-E-01",
@@ -320,10 +555,15 @@
       "week": 2,
       "difficulty": "easy",
       "concept": "equality",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "x = 4\nprint(x == 5)",
-      "options": null,
+      "options": [
+        "False",
+        "Error",
+        "True",
+        "None"
+      ],
       "answer": "False",
       "explanation": "== checks equality rather than assigning.",
       "hint": "Is 4 equal to 5?"
@@ -333,10 +573,15 @@
       "week": 2,
       "difficulty": "easy",
       "concept": "if else",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "score = 70\nif score >= 60:\n    print('Pass')\nelse:\n    print('Fail')",
-      "options": null,
+      "options": [
+        "70",
+        "Pass",
+        "60",
+        "Fail"
+      ],
       "answer": "Pass",
       "explanation": "70 satisfies the condition, so the if block runs.",
       "hint": "Check 70 >= 60."
@@ -346,10 +591,15 @@
       "week": 2,
       "difficulty": "easy",
       "concept": "not",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "is_raining = False\nprint(not is_raining)",
-      "options": null,
+      "options": [
+        "False",
+        "Error",
+        "None",
+        "True"
+      ],
       "answer": "True",
       "explanation": "not reverses the Boolean value.",
       "hint": "Reverse False."
@@ -359,10 +609,15 @@
       "week": 2,
       "difficulty": "easy",
       "concept": "and",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "print(True and False)",
-      "options": null,
+      "options": [
+        "Error",
+        "False",
+        "None",
+        "True"
+      ],
       "answer": "False",
       "explanation": "and is True only when both conditions are True.",
       "hint": "Both sides must be True."
@@ -385,10 +640,15 @@
       "week": 2,
       "difficulty": "medium",
       "concept": "or",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "age = 9\nif age < 10 or age > 65:\n    print('Discount')\nelse:\n    print('Regular')",
-      "options": null,
+      "options": [
+        "10",
+        "Regular",
+        "9",
+        "Discount"
+      ],
       "answer": "Discount",
       "explanation": "At least one side of or is true: 9 < 10.",
       "hint": "Only one side must match."
@@ -398,10 +658,15 @@
       "week": 2,
       "difficulty": "medium",
       "concept": "and condition",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "age = 13\nhas_ticket = 'no'\nif age >= 13 and has_ticket == 'yes':\n    print('Enter')\nelse:\n    print('Wait')",
-      "options": null,
+      "options": [
+        "yes",
+        "Wait",
+        "Enter",
+        "no"
+      ],
       "answer": "Wait",
       "explanation": "Both conditions must be true; ticket check is false.",
       "hint": "Evaluate both parts."
@@ -411,10 +676,15 @@
       "week": 2,
       "difficulty": "medium",
       "concept": "boundary",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "weight = 5\nif weight <= 5:\n    print('Small')\nelse:\n    print('Large')",
-      "options": null,
+      "options": [
+        "Large",
+        "Small",
+        "5",
+        "Error"
+      ],
       "answer": "Small",
       "explanation": "<= includes the boundary value 5.",
       "hint": "Does <= include equality?"
@@ -444,7 +714,33 @@
       "answer": "53.99",
       "explanation": "Order is below $50 and weight exactly 5 matches fee 4.99.",
       "hint": "Check membership and total before weight.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of fee?",
+          "type": "multiple_choice",
+          "options": [
+            "4.99",
+            "49",
+            "\"standard\"",
+            "5"
+          ],
+          "answer": "4.99",
+          "explanation": "Follow fee to the end of the walkthrough: its last update is on line 7 (fee = 4.99), leaving fee = 4.99."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "53.99",
+            "54.99",
+            "55.99",
+            "52.99"
+          ],
+          "answer": "53.99",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 53.99."
+        }
+      ]
     },
     {
       "id": "W2-H-02",
@@ -458,7 +754,33 @@
       "answer": "S 12.00",
       "explanation": "Zero deaths uses kills+assists=12; KDA qualifies for S.",
       "hint": "Avoid division when deaths=0.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of rank?",
+          "type": "multiple_choice",
+          "options": [
+            "8",
+            "\"S\"",
+            "0",
+            "4"
+          ],
+          "answer": "\"S\"",
+          "explanation": "Follow rank to the end of the walkthrough: its last update is on line 9 (rank = 'S'), leaving rank = \"S\"."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "S 12.00",
+            "S 13.00",
+            "S 14.00",
+            "S 11.00"
+          ],
+          "answer": "S 12.00",
+          "explanation": "Run the walkthrough to the last step: the Output box shows S 12.00."
+        }
+      ]
     },
     {
       "id": "W2-H-03",
@@ -472,7 +794,33 @@
       "answer": "14",
       "explanation": "The first if changes x to 7; the next if doubles it.",
       "hint": "The second if uses the updated value.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of x?",
+          "type": "multiple_choice",
+          "options": [
+            "14",
+            "7",
+            "4",
+            "15"
+          ],
+          "answer": "14",
+          "explanation": "Follow x to the end of the walkthrough: its last update is on line 5 (x = x * 2), leaving x = 14."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "16",
+            "15",
+            "13",
+            "14"
+          ],
+          "answer": "14",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 14."
+        }
+      ]
     },
     {
       "id": "W2-H-04",
@@ -486,7 +834,33 @@
       "answer": "Go",
       "explanation": "not b is True; a and True is True; True or False is True.",
       "hint": "Apply not, then and, then or.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "Stop",
+            "1",
+            "0",
+            "Go"
+          ],
+          "answer": "Go",
+          "explanation": "Run the walkthrough to the last step: the Output box shows Go."
+        },
+        {
+          "prompt": "How many lines does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "3",
+            "1",
+            "4"
+          ],
+          "answer": "1",
+          "explanation": "The Output box ends with 1 line(s): Go."
+        }
+      ]
     },
     {
       "id": "W2-H-05",
@@ -500,7 +874,33 @@
       "answer": "Silver",
       "explanation": "Total 95 misses Gold; Silver condition is true, so later elif is skipped.",
       "hint": "The first true branch wins.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of bonus?",
+          "type": "multiple_choice",
+          "options": [
+            "7",
+            "88",
+            "6",
+            "8"
+          ],
+          "answer": "7",
+          "explanation": "Follow bonus to the end of the walkthrough: its last update is on line 2 (bonus = 7), leaving bonus = 7."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "Silver",
+            "Gold",
+            "Try",
+            "Bronze"
+          ],
+          "answer": "Silver",
+          "explanation": "Run the walkthrough to the last step: the Output box shows Silver."
+        }
+      ]
     },
     {
       "id": "W2-X-01",
@@ -514,7 +914,21 @@
       "answer": "51.39",
       "explanation": "Discount makes subtotal 41.4. Shipping 9.99 brings final total to 51.39.",
       "hint": "The second if sees discounted subtotal.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of shipping?",
+          "type": "multiple_choice",
+          "options": [
+            "9.99",
+            "True",
+            "41.4",
+            "8"
+          ],
+          "answer": "9.99",
+          "explanation": "Follow shipping to the end of the walkthrough: its last update is on line 11 (shipping = 9.99), leaving shipping = 9.99."
+        }
+      ]
     },
     {
       "id": "W2-X-02",
@@ -528,7 +942,46 @@
       "answer": "24",
       "explanation": "Coins become 6; inner or is true, level becomes 4, final condition prints 4×6.",
       "hint": "Update coins before evaluating inner condition.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of level?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "4",
+            "6",
+            "5"
+          ],
+          "answer": "4",
+          "explanation": "Follow level to the end of the walkthrough: its last update is on line 6 (level = level + 2), leaving level = 4."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 6 instead of 24. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "coins = 10\nlevel = 2\nif coins >= 10:\n    coins = coins - 4\n    if level >= 3 and coins > 5:\n        level = level + 2\n    else:\n        level = level + 1\nif level >= 4 and coins <= 6:\n    print(level * coins)\nelse:\n    print(coins)",
+          "options": [
+            "if coins >= 10:",
+            "coins = coins - 4",
+            "if level >= 4 and coins <= 6:",
+            "if level >= 3 and coins > 5:"
+          ],
+          "answer": "if level >= 3 and coins > 5:",
+          "explanation": "With 'and', BOTH sides must be true. level is 2, so the whole condition fails and the code takes the else branch (level + 1) instead of level + 2."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "coins = 10\nlevel = 2\nif coins >= 10:\n    coins = coins - 4\n    if level >= 3 and coins > 5:\n        level = level + 2\n    else:\n        level = level + 1\nif level >= 4 and coins <= 6:\n    print(level * coins)\nelse:\n    print(coins)",
+          "options": [
+            "if level > 3 and coins > 5:",
+            "if level >= 3 or coins > 5:",
+            "if level >= 3 and coins > 5:"
+          ],
+          "answer": "if level >= 3 or coins > 5:",
+          "explanation": "The original uses 'or': coins > 5 alone is true (coins is 6), so level grows by 2 and reaches 4."
+        }
+      ]
     },
     {
       "id": "W2-X-03",
@@ -542,7 +995,21 @@
       "answer": "A 4.2",
       "explanation": "KDA starts 7.0, is reduced to 4.2, then is rated A.",
       "hint": "The second ranking check sees the changed KDA.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of rank?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "9",
+            "\"A\"",
+            "5"
+          ],
+          "answer": "\"A\"",
+          "explanation": "Follow rank to the end of the walkthrough: its last update is on line 10 (rank = 'A'), leaving rank = \"A\"."
+        }
+      ]
     },
     {
       "id": "W2-X-04",
@@ -556,7 +1023,21 @@
       "answer": "8",
       "explanation": "First condition is true from 6>=5, b becomes 3, and second condition is true.",
       "hint": "Recalculate the second if after b changes.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of b?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "2",
+            "5",
+            "3"
+          ],
+          "answer": "3",
+          "explanation": "Follow b to the end of the walkthrough: its last update is on line 4 (b = a - b), leaving b = 3."
+        }
+      ]
     },
     {
       "id": "W2-X-05",
@@ -570,17 +1051,61 @@
       "answer": "59.98",
       "explanation": "Weight 20 matches <=20 and adds 9.99.",
       "hint": "Differentiate < and <=.",
-      "curriculumReference": "Week 2 Shipping / Game Stats"
+      "curriculumReference": "Week 2 Shipping / Game Stats",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of fee?",
+          "type": "multiple_choice",
+          "options": [
+            "9.99",
+            "59.980000000000004",
+            "20",
+            "False"
+          ],
+          "answer": "9.99",
+          "explanation": "Follow fee to the end of the walkthrough: its last update is on line 11 (fee = 9.99), leaving fee = 9.99."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 69.98 instead of 59.98. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "weight = 20\ntotal = 49.99\npremium = False\nif premium:\n    fee = 0\nelif total >= 50:\n    fee = 0\nelif weight < 5:\n    fee = 4.99\nelif weight < 20:\n    fee = 9.99\nelse:\n    fee = 19.99\ntotal = total + fee\nprint(f'{total:.2f}')",
+          "options": [
+            "elif total >= 50:",
+            "total = total + fee",
+            "elif weight < 20:",
+            "elif weight < 5:"
+          ],
+          "answer": "elif weight < 20:",
+          "explanation": "weight is exactly 20. With '< 20' the branch is skipped and the fee falls through to 19.99 instead of 9.99. Boundary values are where '<' and '<=' differ."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "weight = 20\ntotal = 49.99\npremium = False\nif premium:\n    fee = 0\nelif total >= 50:\n    fee = 0\nelif weight < 5:\n    fee = 4.99\nelif weight < 20:\n    fee = 9.99\nelse:\n    fee = 19.99\ntotal = total + fee\nprint(f'{total:.2f}')",
+          "options": [
+            "elif weight <= 20:",
+            "elif weight > 20:",
+            "elif weight <= 19:"
+          ],
+          "answer": "elif weight <= 20:",
+          "explanation": "'<= 20' includes the boundary value 20 itself, so the 9.99 fee applies."
+        }
+      ]
     },
     {
       "id": "W3-E-01",
       "week": 3,
       "difficulty": "easy",
       "concept": "range zero",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "for i in range(3):\n    print(i)",
-      "options": null,
+      "options": [
+        "0\n1\n2",
+        "0",
+        "0\n1",
+        "0\n1\n2\n2"
+      ],
       "answer": "0\n1\n2",
       "explanation": "range(3) produces 0, 1, 2; print runs on separate lines.",
       "hint": "The stop value is excluded."
@@ -590,10 +1115,15 @@
       "week": 3,
       "difficulty": "easy",
       "concept": "range count",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "How many iterations run?",
       "code": "for i in range(5):\n    print('Go')",
-      "options": null,
+      "options": [
+        "7",
+        "6",
+        "4",
+        "5"
+      ],
       "answer": "5",
       "explanation": "range(5) contains five values, from 0 through 4.",
       "hint": "Count 0,1,2,3,4."
@@ -603,10 +1133,15 @@
       "week": 3,
       "difficulty": "easy",
       "concept": "range start stop",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "for i in range(2, 5):\n    print(i)",
-      "options": null,
+      "options": [
+        "2",
+        "2\n3\n4\n4",
+        "2\n3",
+        "2\n3\n4"
+      ],
       "answer": "2\n3\n4",
       "explanation": "range starts at 2 and stops before 5.",
       "hint": "Do not include 5."
@@ -616,10 +1151,15 @@
       "week": 3,
       "difficulty": "easy",
       "concept": "accumulator",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "total = 0\nfor i in range(3):\n    total += 1\nprint(total)",
-      "options": null,
+      "options": [
+        "5",
+        "4",
+        "2",
+        "3"
+      ],
       "answer": "3",
       "explanation": "The loop increments the total three times.",
       "hint": "Trace total: 0 → 1 → 2 → 3."
@@ -629,10 +1169,15 @@
       "week": 3,
       "difficulty": "easy",
       "concept": "while",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "x = 1\nwhile x < 3:\n    print(x)\n    x += 1",
-      "options": null,
+      "options": [
+        "1",
+        "1\n1\n2",
+        "1\n2",
+        "1\n2\n2"
+      ],
       "answer": "1\n2",
       "explanation": "The loop executes while x is less than 3.",
       "hint": "x increases each time."
@@ -642,10 +1187,15 @@
       "week": 3,
       "difficulty": "medium",
       "concept": "range step",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "for i in range(1, 8, 3):\n    print(i)",
-      "options": null,
+      "options": [
+        "1\n4",
+        "1\n4\n7",
+        "1\n4\n7\n7",
+        "1"
+      ],
       "answer": "1\n4\n7",
       "explanation": "The sequence starts at 1, adds 3, and stops before 8.",
       "hint": "Add 3 to each value."
@@ -668,10 +1218,15 @@
       "week": 3,
       "difficulty": "medium",
       "concept": "break",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "for i in range(6):\n    if i == 3:\n        break\n    print(i)",
-      "options": null,
+      "options": [
+        "0",
+        "0\n1",
+        "0\n1\n2",
+        "0\n1\n2\n2"
+      ],
       "answer": "0\n1\n2",
       "explanation": "break exits the loop before printing 3.",
       "hint": "When does break run?"
@@ -681,10 +1236,15 @@
       "week": 3,
       "difficulty": "medium",
       "concept": "continue",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "for i in range(1, 6):\n    if i % 2 == 0:\n        continue\n    print(i)",
-      "options": null,
+      "options": [
+        "1\n3\n5\n5",
+        "1",
+        "1\n3\n5",
+        "1\n3"
+      ],
       "answer": "1\n3\n5",
       "explanation": "continue skips even values, leaving odd values.",
       "hint": "Which values have remainder zero when divided by 2?"
@@ -714,7 +1274,33 @@
       "answer": "21",
       "explanation": "Even contributions 4+8+12=24; three odd iterations subtract 3.",
       "hint": "Track a running total.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "9",
+            "21",
+            "2",
+            "10"
+          ],
+          "answer": "21",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 4 (total += n * 2), leaving total = 21."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "23",
+            "22",
+            "20",
+            "21"
+          ],
+          "answer": "21",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 21."
+        }
+      ]
     },
     {
       "id": "W3-H-02",
@@ -728,7 +1314,33 @@
       "answer": "24",
       "explanation": "Six off-diagonal pairs contribute 24.",
       "hint": "Make a 3×3 table of pairs.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "10",
+            "15",
+            "19",
+            "24"
+          ],
+          "answer": "24",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 6 (total += i + j), leaving total = 24."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "25",
+            "24",
+            "23",
+            "26"
+          ],
+          "answer": "24",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 24."
+        }
+      ]
     },
     {
       "id": "W3-H-03",
@@ -742,7 +1354,33 @@
       "answer": "9",
       "explanation": "Even rounds skip the addition; 1+3+5=9.",
       "hint": "n increments before continue.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "1",
+            "9",
+            "4"
+          ],
+          "answer": "9",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 7 (total += n), leaving total = 9."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "9",
+            "10",
+            "8",
+            "11"
+          ],
+          "answer": "9",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 9."
+        }
+      ]
     },
     {
       "id": "W3-H-04",
@@ -756,7 +1394,33 @@
       "answer": "6",
       "explanation": "The three outer rounds add 1, 2, and 3 before breaking.",
       "hint": "Count valid inner-loop iterations separately.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of count?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "6",
+            "5",
+            "3"
+          ],
+          "answer": "6",
+          "explanation": "Follow count to the end of the walkthrough: its last update is on line 6 (count += 1), leaving count = 6."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "7",
+            "6",
+            "5",
+            "8"
+          ],
+          "answer": "6",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 6."
+        }
+      ]
     },
     {
       "id": "W3-H-05",
@@ -770,7 +1434,33 @@
       "answer": "3 5",
       "explanation": "2 does not divide 15; 3 does; the matching factor is 5.",
       "hint": "Test divisors from 2 upward.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of divisor?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "15",
+            "4",
+            "2"
+          ],
+          "answer": "3",
+          "explanation": "Follow divisor to the end of the walkthrough: its last update is on line 6 (divisor += 1), leaving divisor = 3."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "4 5",
+            "5 5",
+            "2 5",
+            "3 5"
+          ],
+          "answer": "3 5",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 3 5."
+        }
+      ]
     },
     {
       "id": "W3-X-01",
@@ -784,7 +1474,21 @@
       "answer": "11",
       "explanation": "10 is composite; 11 has no smaller factor, so the outer loop prints 11.",
       "hint": "Differentiate inner break from outer break.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of n?",
+          "type": "multiple_choice",
+          "options": [
+            "11",
+            "12",
+            "10",
+            "True"
+          ],
+          "answer": "11",
+          "explanation": "Follow n to the end of the walkthrough: its last update is on line 11 (n += 1), leaving n = 11."
+        }
+      ]
     },
     {
       "id": "W3-X-02",
@@ -798,7 +1502,21 @@
       "answer": "3 17",
       "explanation": "2 + 18 fails because 18 is not prime; 3 + 17 succeeds because both 3 and 17 are prime.",
       "hint": "Check both the candidate a and the matching b=n-a before printing.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of b?",
+          "type": "multiple_choice",
+          "options": [
+            "18",
+            "17",
+            "3",
+            "20"
+          ],
+          "answer": "17",
+          "explanation": "Follow b to the end of the walkthrough: its last update is on line 8 (b = n - a), leaving b = 17."
+        }
+      ]
     },
     {
       "id": "W3-X-03",
@@ -812,7 +1530,46 @@
       "answer": "25",
       "explanation": "Outer groups contribute 1, 6 and 18; total is 25.",
       "hint": "j restarts at 1 on every outer round.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of total?",
+          "type": "multiple_choice",
+          "options": [
+            "16",
+            "7",
+            "10",
+            "25"
+          ],
+          "answer": "25",
+          "explanation": "Follow total to the end of the walkthrough: its last update is on line 6 (total += i * j), leaving total = 25."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 11 instead of 25. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "i = 1\ntotal = 0\nwhile i <= 3:\n    j = 1\n    while j < i:\n        total += i * j\n        j += 1\n    i += 1\nprint(total)",
+          "options": [
+            "while j < i:",
+            "i += 1",
+            "total += i * j",
+            "while i <= 3:"
+          ],
+          "answer": "while j < i:",
+          "explanation": "With 'j < i' the inner loop stops one round early every time, so the last i * i term of each row is never added."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "i = 1\ntotal = 0\nwhile i <= 3:\n    j = 1\n    while j < i:\n        total += i * j\n        j += 1\n    i += 1\nprint(total)",
+          "options": [
+            "while j <= i:",
+            "while j <= i + 1:",
+            "while j <= 3:"
+          ],
+          "answer": "while j <= i:",
+          "explanation": "'j <= i' lets j reach i, which adds the final i * i term of each row."
+        }
+      ]
     },
     {
       "id": "W3-X-04",
@@ -826,7 +1583,46 @@
       "answer": "26",
       "explanation": "Contributions per outer i are 7, 6, 9, 4, totaling 26.",
       "hint": "continue at j=3 skips the later break test.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of score?",
+          "type": "multiple_choice",
+          "options": [
+            "22",
+            "26",
+            "13",
+            "16"
+          ],
+          "answer": "26",
+          "explanation": "Follow score to the end of the walkthrough: its last update is on line 8 (score += i * j), leaving score = 26."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 42 instead of 26. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "score = 0\nfor i in range(1, 5):\n    for j in range(1, 5):\n        if j == 3:\n            continue\n        if i + j > 6:\n            break\n        score += i * j\nprint(score)",
+          "options": [
+            "score += i * j",
+            "if j == 3:",
+            "if i + j > 6:",
+            "for i in range(1, 5):"
+          ],
+          "answer": "if i + j > 6:",
+          "explanation": "Raising the limit to 6 lets one extra pair per row slip past the break, so score grows too big (42 instead of 26)."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "score = 0\nfor i in range(1, 5):\n    for j in range(1, 5):\n        if j == 3:\n            continue\n        if i + j > 6:\n            break\n        score += i * j\nprint(score)",
+          "options": [
+            "if i + j >= 5:",
+            "if i + j > 4:",
+            "if i + j > 5:"
+          ],
+          "answer": "if i + j > 5:",
+          "explanation": "The break must trigger as soon as i + j passes 5, exactly as the original '> 5' does."
+        }
+      ]
     },
     {
       "id": "W3-X-05",
@@ -840,17 +1636,36 @@
       "answer": "5 -3 0",
       "explanation": "Values are -3,-1,1,3,5. Maximum 5, minimum -3, and none is even.",
       "hint": "Pay attention to negative numbers and range step 2.",
-      "curriculumReference": "Week 3 Number Analysis / Prime Checker"
+      "curriculumReference": "Week 3 Number Analysis / Prime Checker",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of smallest?",
+          "type": "multiple_choice",
+          "options": [
+            "0",
+            "-3",
+            "5",
+            "100"
+          ],
+          "answer": "-3",
+          "explanation": "Follow smallest to the end of the walkthrough: its last update is on line 8 (smallest = n), leaving smallest = -3."
+        }
+      ]
     },
     {
       "id": "W4-E-01",
       "week": 4,
       "difficulty": "easy",
       "concept": "function call",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def greet():\n    print('Hi')\ngreet()",
-      "options": null,
+      "options": [
+        "Error",
+        "None",
+        "Hi",
+        "0"
+      ],
       "answer": "Hi",
       "explanation": "The call executes the function body.",
       "hint": "Find the line that calls the function."
@@ -860,10 +1675,15 @@
       "week": 4,
       "difficulty": "easy",
       "concept": "parameter",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def double(n):\n    return n * 2\nprint(double(3))",
-      "options": null,
+      "options": [
+        "8",
+        "7",
+        "6",
+        "5"
+      ],
       "answer": "6",
       "explanation": "The argument 3 becomes n; double returns 6.",
       "hint": "Substitute n = 3."
@@ -873,10 +1693,15 @@
       "week": 4,
       "difficulty": "easy",
       "concept": "return value",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def square(n):\n    return n * n\nprint(square(4))",
-      "options": null,
+      "options": [
+        "16",
+        "17",
+        "15",
+        "18"
+      ],
       "answer": "16",
       "explanation": "The function returns 4 × 4.",
       "hint": "What is 4 squared?"
@@ -886,10 +1711,15 @@
       "week": 4,
       "difficulty": "easy",
       "concept": "multiple parameters",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def add(a, b):\n    return a + b\nprint(add(2, 5))",
-      "options": null,
+      "options": [
+        "8",
+        "9",
+        "7",
+        "6"
+      ],
       "answer": "7",
       "explanation": "The two positional inputs are added.",
       "hint": "a = 2 and b = 5."
@@ -899,10 +1729,15 @@
       "week": 4,
       "difficulty": "easy",
       "concept": "definition only",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def hello():\n    print('Hello')\nprint('Done')",
-      "options": null,
+      "options": [
+        "Hello",
+        "Error",
+        "None",
+        "Done"
+      ],
       "answer": "Done",
       "explanation": "Defining a function does not execute its body; only print('Done') runs.",
       "hint": "Was hello() called?"
@@ -938,10 +1773,15 @@
       "week": 4,
       "difficulty": "medium",
       "concept": "none return",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints on the second line of output?",
       "code": "def greet(name):\n    print('Hello ' + name)\nresult = greet('Mia')\nprint(result)",
-      "options": null,
+      "options": [
+        "Hello Mia",
+        "None",
+        "Hello Mia\nNone",
+        "Error"
+      ],
       "answer": "None",
       "explanation": "The function prints a greeting but returns nothing explicitly, so result is None.",
       "hint": "print is not the same as return."
@@ -964,10 +1804,15 @@
       "week": 4,
       "difficulty": "medium",
       "concept": "return early",
-      "type": "short_answer",
+      "type": "multiple_choice",
       "prompt": "What prints?",
       "code": "def check(n):\n    if n > 0:\n        return 'Yes'\n    return 'No'\nprint(check(5))",
-      "options": null,
+      "options": [
+        "Yes",
+        "0",
+        "No",
+        "5"
+      ],
       "answer": "Yes",
       "explanation": "The first return exits the function when n > 0.",
       "hint": "Does execution reach return 'No'?"
@@ -984,7 +1829,33 @@
       "answer": "25",
       "explanation": "The base rate at weight 5 is 10; rush adds 15.",
       "hint": "Trace base_rate and rush_fee separately.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does base_rate(5) return?",
+          "type": "multiple_choice",
+          "options": [
+            "9",
+            "11",
+            "15",
+            "10"
+          ],
+          "answer": "10",
+          "explanation": "Step into base_rate(5) in the walkthrough: it returns 10 to the calling line."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "25",
+            "27",
+            "24",
+            "26"
+          ],
+          "answer": "25",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 25."
+        }
+      ]
     },
     {
       "id": "W4-H-02",
@@ -998,7 +1869,33 @@
       "answer": "16",
       "explanation": "1+4+3+8=16.",
       "hint": "Trace each i and update result.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does total(4) return?",
+          "type": "multiple_choice",
+          "options": [
+            "15",
+            "18",
+            "17",
+            "16"
+          ],
+          "answer": "16",
+          "explanation": "Step into total(4) in the walkthrough: it returns 16 to the calling line."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "15",
+            "17",
+            "18",
+            "16"
+          ],
+          "answer": "16",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 16."
+        }
+      ]
     },
     {
       "id": "W4-H-03",
@@ -1012,7 +1909,33 @@
       "answer": "6\nNone",
       "explanation": "show prints 6 but implicitly returns None; use returns None; final print shows None.",
       "hint": "Two print statements create two lines of output.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What is the first line of output?",
+          "type": "multiple_choice",
+          "options": [
+            "5",
+            "6",
+            "None",
+            "7"
+          ],
+          "answer": "6",
+          "explanation": "The code prints 2 lines: 6 / None."
+        },
+        {
+          "prompt": "How many lines does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "5",
+            "3",
+            "2"
+          ],
+          "answer": "2",
+          "explanation": "The Output box ends with 2 line(s): 6 / None."
+        }
+      ]
     },
     {
       "id": "W4-H-04",
@@ -1026,7 +1949,33 @@
       "answer": "55.0",
       "explanation": "Member price is 45.0 and shipping is 10.",
       "hint": "Follow each function's return value.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of price?",
+          "type": "multiple_choice",
+          "options": [
+            "46",
+            "47",
+            "45",
+            "44"
+          ],
+          "answer": "45",
+          "explanation": "Follow price to the end of the walkthrough: its last update is on line 9 (price = adjust(50, True)), leaving price = 45."
+        },
+        {
+          "prompt": "What does adjust(50, True) return?",
+          "type": "multiple_choice",
+          "options": [
+            "44",
+            "46",
+            "10",
+            "45"
+          ],
+          "answer": "45",
+          "explanation": "Step into adjust(50, True) in the walkthrough: it returns 45 to the calling line."
+        }
+      ]
     },
     {
       "id": "W4-H-05",
@@ -1040,7 +1989,33 @@
       "answer": "10",
       "explanation": "bonus(3) returns 5 twice, final result is 10.",
       "hint": "bonus is called twice.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does bonus(3) return?",
+          "type": "multiple_choice",
+          "options": [
+            "4",
+            "7",
+            "6",
+            "5"
+          ],
+          "answer": "5",
+          "explanation": "Step into bonus(3) in the walkthrough: it returns 5 to the calling line."
+        },
+        {
+          "prompt": "What does the code print?",
+          "type": "multiple_choice",
+          "options": [
+            "10",
+            "11",
+            "9",
+            "12"
+          ],
+          "answer": "10",
+          "explanation": "Run the walkthrough to the last step: the Output box shows 10."
+        }
+      ]
     },
     {
       "id": "W4-X-01",
@@ -1054,7 +2029,21 @@
       "answer": "Need 170",
       "explanation": "At level 6 required XP is 900; the shortfall is 170.",
       "hint": "Level 6 is in the second tier.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does xp_needed(6) return?",
+          "type": "multiple_choice",
+          "options": [
+            "899",
+            "902",
+            "900",
+            "901"
+          ],
+          "answer": "900",
+          "explanation": "Step into xp_needed(6) in the walkthrough: it returns 900 to the calling line."
+        }
+      ]
     },
     {
       "id": "W4-X-02",
@@ -1068,7 +2057,21 @@
       "answer": "2",
       "explanation": "Spend 200 (450 left), then 300 (150 left); next requirement 400 is not met.",
       "hint": "The level changes after each successful upgrade.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does needed(2) return?",
+          "type": "multiple_choice",
+          "options": [
+            "300",
+            "400",
+            "201",
+            "200"
+          ],
+          "answer": "200",
+          "explanation": "Step into needed(2) in the walkthrough: it returns 200 to the calling line."
+        }
+      ]
     },
     {
       "id": "W4-X-03",
@@ -1082,7 +2085,46 @@
       "answer": "36.0",
       "explanation": "Base costs are 10+20+10=40, discounted by 10% to 36.0.",
       "hint": "Call base three times before discount.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does base(2) return?",
+          "type": "multiple_choice",
+          "options": [
+            "10",
+            "36",
+            "11",
+            "20"
+          ],
+          "answer": "10",
+          "explanation": "Step into base(2) in the walkthrough: it returns 10 to the calling line."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 45.0 instead of 36.0. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "def base(weight):\n    if weight < 5:\n        return 10\n    return 20\ndef discount(total, member):\n    if member and total >= 20:\n        return total * 0.9\n    return total\ndef checkout(a, b, c, member):\n    total = base(a) + base(b) + base(c)\n    return discount(total, member)\nprint(checkout(2, 7, 5, True))",
+          "options": [
+            "if weight < 5:",
+            "return total * 0.9",
+            "total = base(a) + base(b) + base(c)",
+            "if member and total >= 20:"
+          ],
+          "answer": "if weight < 5:",
+          "explanation": "One parcel weighs exactly 5. With '< 5', base(5) returns 20 instead of 10, so the total (and the discount) come out too high."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "def base(weight):\n    if weight < 5:\n        return 10\n    return 20\ndef discount(total, member):\n    if member and total >= 20:\n        return total * 0.9\n    return total\ndef checkout(a, b, c, member):\n    total = base(a) + base(b) + base(c)\n    return discount(total, member)\nprint(checkout(2, 7, 5, True))",
+          "options": [
+            "if weight <= 5:",
+            "if weight <= 4:",
+            "if weight < 5:"
+          ],
+          "answer": "if weight <= 5:",
+          "explanation": "'weight <= 5' includes a parcel of exactly 5 in the cheaper rate, as the original does."
+        }
+      ]
     },
     {
       "id": "W4-X-04",
@@ -1096,7 +2138,46 @@
       "answer": "4",
       "explanation": "The outer rounds add 1, 2, 1, and 0 pairs before each inner break.",
       "hint": "For i=4, j=1 already exceeds the limit.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "What does pairs(4) return?",
+          "type": "multiple_choice",
+          "options": [
+            "3",
+            "6",
+            "5",
+            "4"
+          ],
+          "answer": "4",
+          "explanation": "Step into pairs(4) in the walkthrough: it returns 4 to the calling line."
+        },
+        {
+          "prompt": "🐛 Bug hunt! Someone changed ONE line of this code. Now it prints 2 instead of 4. Which line is wrong?",
+          "type": "multiple_choice",
+          "code": "def pairs(n):\n    count = 0\n    for i in range(1, n + 1):\n        for j in range(1, i):\n            if i + j > 4:\n                break\n            count += 1\n    return count\nprint(pairs(4))",
+          "options": [
+            "if i + j > 4:",
+            "for j in range(1, i):",
+            "for i in range(1, n + 1):",
+            "count += 1"
+          ],
+          "answer": "for j in range(1, i):",
+          "explanation": "range(1, i) stops before j reaches i, so the pairs where j == i are never counted."
+        },
+        {
+          "prompt": "How should that line be fixed?",
+          "type": "multiple_choice",
+          "code": "def pairs(n):\n    count = 0\n    for i in range(1, n + 1):\n        for j in range(1, i):\n            if i + j > 4:\n                break\n            count += 1\n    return count\nprint(pairs(4))",
+          "options": [
+            "for j in range(1, i + 2):",
+            "for j in range(0, i + 1):",
+            "for j in range(1, i + 1):"
+          ],
+          "answer": "for j in range(1, i + 1):",
+          "explanation": "range(1, i + 1) includes j == i, which is the last pair of each row."
+        }
+      ]
     },
     {
       "id": "W4-X-05",
@@ -1110,7 +2191,21 @@
       "answer": "11 3",
       "explanation": "bump(3) returns 5; local x becomes 6; process returns 11; global x stays 3.",
       "hint": "Local function parameters are not the global x.",
-      "curriculumReference": "Week 4 Function Composition / Level-Up"
+      "curriculumReference": "Week 4 Function Composition / Level-Up",
+      "followups": [
+        {
+          "prompt": "After the code finishes, what is the value of x?",
+          "type": "multiple_choice",
+          "options": [
+            "5",
+            "4",
+            "2",
+            "3"
+          ],
+          "answer": "3",
+          "explanation": "Follow x to the end of the walkthrough: its last update is on line 11 (print(process(x), x)), leaving x = 3."
+        }
+      ]
     }
   ],
   "revision": "curriculum-v2",

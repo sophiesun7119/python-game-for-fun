@@ -14,7 +14,7 @@ let allQuestions = [];
 let allTraces = {};
 let username = activeUsername();
 let progress = username ? loadProgress(username) : {best:{}};
-let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:'',reviewPractice:false,reviewDraft:'',reviewFeedback:null,traceOpen:false,traceIndex:0};
+let state = {view:username ? 'home' : 'welcome',week:1,difficulty:'easy',index:0,attempt:[],draft:'',checked:false,feedback:null,hint:false,answered:false,loginDraft:'',reviewPractice:false,reviewDraft:'',reviewFeedback:null,traceOpen:false,traceIndex:0,fIndex:-1,fDraft:'',fStatus:''};
 const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
 const scoreKey=(w,d)=>`W${w}-${d}`;
@@ -72,9 +72,11 @@ function saveActive(){
  if(!username||state.view!=='quiz')return;
  const active={
   revision:'curriculum-v2',index:state.index,draft:state.draft,checked:state.checked,feedback:state.feedback,hint:state.hint,
+  fIndex:state.fIndex,fDraft:state.fDraft,fStatus:state.fStatus,
   attempt:state.attempt.map(a=>({
-   id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,
-   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
+   id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,skipped:!!a.skipped,
+   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed,
+   followups:(a.followups||[]).map(f=>({draft:f.draft??'',status:f.status??''}))
   }))
  };
  writeQuest(username,state.week,state.difficulty,{active});
@@ -83,13 +85,15 @@ function hydrateRun(saved){
  if(!saved||!Array.isArray(saved.attempt)||saved.attempt.length!==5)return false;
  const attempt=saved.attempt.map(a=>{
   const question=allQuestions.find(q=>q.id===a.id);
-  return question?{question,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,
-   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed}:null;
+  return question?{question,solved:!!a.solved,revealed:!!a.revealed,submitted:!!a.submitted,skipped:!!a.skipped,
+   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed,
+   followups:Array.isArray(a.followups)?a.followups.map(f=>({draft:f?.draft??'',status:f?.status??''})):[]}:null;
  });
  if(attempt.some(a=>!a))return false;
  state={...state,view:'quiz',index:Math.min(4,Math.max(0,Number(saved.index)||0)),
   attempt,draft:saved.draft||'',checked:!!saved.checked,feedback:saved.feedback||null,
-  hint:!!saved.hint,oldBest:best(state.week,state.difficulty)};
+  hint:!!saved.hint,oldBest:best(state.week,state.difficulty),
+  fIndex:Number.isInteger(saved.fIndex)?saved.fIndex:-1,fDraft:saved.fDraft||'',fStatus:saved.fStatus||''};
  return true;
 }
 function resumeView(){
@@ -106,7 +110,7 @@ function reviewView(){
  const editable=practice?(q.options?.length
  ?`<div role="group" aria-label="Practice answers">${q.options.map((o,i)=>`<button class="option" data-review-choice="${i}" aria-pressed="${state.reviewDraft===o}"><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`
  :`<label for="review-answer">Try it again</label><textarea id="review-answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" placeholder="Your answer...">${escapeHTML(state.reviewDraft)}</textarea>`):'';
- const status=item.solved?'✅ Solved':item.revealed?'📖 Answer viewed':'💡 Not solved';
+ const status=item.skipped?'⏭ Skipped':item.solved?'✅ Solved':item.revealed?'📖 Answer viewed':'💡 Not solved';
  return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Review · Week ${state.week} · ${labels[state.difficulty]}</span><strong>Card ${state.index+1} / 5</strong></div>
  <div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:18px">
  <span class="tag ${item.solved?'green':'gold'}">${status}</span><h2 style="margin-top:12px">${escapeHTML(q.prompt)}</h2>${tracePanel(q)}
@@ -122,7 +126,7 @@ function reviewView(){
 function finishQuest(){
  const n=countCorrect(state.attempt);
  const completed={revision:'curriculum-v2',completedAt:new Date().toISOString(),score:n,attempt:state.attempt.map(a=>({
-  id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,
+  id:a.question.id,solved:!!a.solved,revealed:!!a.revealed,skipped:!!a.skipped,
   lastAnswer:a.lastAnswer??'',lastWasCorrect:!!a.lastWasCorrect,hintUsed:!!a.hintUsed
  }))};
  writeQuest(username,state.week,state.difficulty,{active:null,completed});
@@ -314,8 +318,36 @@ function tracePanel(q){
 
 function currentQuestion(){return state.attempt[state.index];}
 function normalize(x){return String(x).replace(/\\n/g,'\n').replace(/\r\n/g,'\n').trim();}
+function followupsOf(item){return item.question.followups||[];}
+function followupState(item,k){
+ if(!Array.isArray(item.followups))item.followups=[];
+ if(!item.followups[k])item.followups[k]={draft:'',status:''};
+ return item.followups[k];
+}
+function followupsDone(item){return followupsOf(item).every((_,k)=>!!followupState(item,k).status);}
+function openFollowup(item,k){state.fIndex=k;const saved=followupState(item,k);state.fDraft=saved.draft||'';state.fStatus=saved.status||'';resetTrace();}
+function closeFollowup(){state.fIndex=-1;state.fDraft='';state.fStatus='';resetTrace();}
+function followupView(){
+ const item=currentQuestion(); const q=item.question;
+ const list=followupsOf(item); const f=list[state.fIndex]; const saved=followupState(item,state.fIndex);
+ const locked=!!state.fStatus;
+ const codeBlock=f.code
+  ?'<div class="trace-code-panel trace-code-full"><div class="trace-panel-title">Python Code · 🐛 Buggy version</div><div class="trace-code">'
+   +f.code.split('\n').map((line,i)=>'<div class="trace-line"><span class="trace-arrow" aria-hidden="true"></span><span class="trace-lineno">'+(i+1)+'</span><span class="trace-source">'+escapeHTML(line)+'</span><span class="trace-inline-annotations"></span></div>').join('')
+   +'</div></div>'
+  :tracePanel(q);
+ const opts=f.options?.length ? `<div role="group" aria-label="Bonus answer options">${f.options.map((o,i)=>`<button class="option" data-choice="${i}" aria-pressed="${state.fDraft===o}" ${locked?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`:`<label for="answer" class="small muted">Type your answer below.</label><textarea id="answer" class="answer-input" rows="2" ${locked?'disabled':''} placeholder="Your answer...">${escapeHTML(state.fDraft)}</textarea>`;
+ const hasMore=list.some((_,k)=>k>state.fIndex&&!followupState(item,k).status);
+ let actions;
+ if(locked)actions=button(hasMore?'Next bonus question →':'Done with bonuses →','f-next','primary');
+ else actions=button('Check answer','check','primary')+button('⏭ Skip bonus','f-skip');
+ return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag gold">⭐ Bonus · Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5 · Bonus ${state.fIndex+1} / ${list.length}</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(f.prompt)}</h2>${codeBlock}${opts}
+ ${locked?`<div class="feedback ${state.fStatus==='correct'?'':'wrong'}" role="status"><strong>${state.fStatus==='correct'?'✅ Correct!':'❌ Not quite.'}</strong><p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(f.answer)}</span></p><p style="margin-top:8px">${escapeHTML(f.explanation)}</p></div>`:''}
+ <div class="btn-row">${actions}</div></div><p class="footnote">${f.code?'This buggy version has no walkthrough — compare it line by line with the correct code from the card and think about which single line changed the result.':'Bonus questions are extra practice on the same code. They never change your XP. The walkthrough above is your hint — step through the code to figure it out.'}</p></div>`;
+}
 function quiz(){
  const item=currentQuestion(); const q=item.question;
+ if(state.fIndex>=0&&followupsOf(item).length)return followupView();
  const locked=state.checked;
  const opts=q.options?.length ? `<div role="group" aria-label="Answer options">${q.options.map((o,i)=>`<button class="option" data-choice="${i}" aria-pressed="${state.draft===o}" ${locked?'disabled':''}><span class="letter">${'ABCD'[i]}</span><span class="choice-text">${escapeHTML(o)}</span></button>`).join('')}</div>`:`<label for="answer" class="small muted">Type your answer below. For multiple lines, use the Enter key.</label><textarea id="answer" class="answer-input" rows="${q.answer.includes('\n')?4:2}" ${locked?'disabled':''} placeholder="Your answer...">${escapeHTML(state.draft)}</textarea>`;
  const f=state.feedback;
@@ -323,9 +355,9 @@ function quiz(){
  const revealed=state.checked&&f?.revealed;
  const wrong=state.checked&&!correct&&!revealed;
  let actions;
- if(correct||revealed) actions=button(state.index===4?'See results →':'Next question →','next','primary');
+ if(correct||revealed) actions=(followupsOf(item).length&&!followupsDone(item)?button('⭐ Bonus question','f-start'):'' )+button(state.index===4?'See results →':'Next question →','next','primary');
  else if(wrong)actions=button('💡 Give me a hint','hint')+button('↻ Retry','retry','primary')+button('Show answer','reveal');
- else actions=button('💡 Give me a hint','hint')+button('Check answer','check','primary');
+ else actions=button('💡 Give me a hint','hint')+button('Check answer','check','primary')+button('⏭ Skip question','skip');
  return `<div class="question-panel">${header()}<div class="question-meta"><span class="tag">Week ${state.week} · ${labels[state.difficulty]}</span><strong>Question ${state.index+1} / 5</strong></div><div class="progress"><div style="width:${(state.index+1)*20}%"></div></div><div class="card" style="margin-top:22px"><h2>${escapeHTML(q.prompt)}</h2>${tracePanel(q)}${opts}
  ${state.hint&&!revealed&&!correct?`<div class="hint">💡 ${escapeHTML(q.hint)}</div>`:''}
  ${state.checked?`<div class="feedback ${wrong?'wrong':''}" role="status"><strong>${correct?'✅ Correct!':revealed?'📖 Answer & explanation':'🔄 Not quite. Try again or see the answer.'}</strong>${correct||revealed?`<p><strong>Correct answer:</strong> <span style="white-space:pre-wrap">${escapeHTML(q.answer)}</span></p><p style="margin-top:8px">${escapeHTML(q.explanation)}</p>`:`<p>You can ask for a hint, retry the question, or reveal the correct answer with an explanation.</p>`}</div>`:''}
@@ -348,10 +380,11 @@ function start(d){
 function startFresh(d){
  const qs=allQuestions.filter(q=>q.week===state.week&&q.difficulty===d);
  if(qs.length!==5){app.innerHTML='<div class="card empty">This quest is missing questions. Please report this to your teacher.</div>';return;}
- state={...state,view:'quiz',difficulty:d,index:0,attempt:qs.map(question=>({question,solved:false,submitted:false,revealed:false,lastAnswer:'',lastWasCorrect:false,hintUsed:false})),draft:'',checked:false,feedback:null,hint:false,oldBest:best(state.week,d)};
+ state={...state,view:'quiz',difficulty:d,index:0,attempt:qs.map(question=>({question,solved:false,submitted:false,revealed:false,lastAnswer:'',lastWasCorrect:false,hintUsed:false})),draft:'',checked:false,feedback:null,hint:false,oldBest:best(state.week,d),fIndex:-1,fDraft:'',fStatus:''};
  render();saveActive();window.scrollTo(0,0);
 }
 function check(){
+ if(state.fIndex>=0){checkFollowup();return;}
  if(state.checked||!state.draft.trim())return;
  const item=currentQuestion(); const q=item.question;
  const correct=normalize(state.draft)===normalize(q.answer);
@@ -359,13 +392,29 @@ function check(){
  item.submitted=true;item.lastAnswer=state.draft;item.lastWasCorrect=correct;
  state.checked=true;state.feedback={correct,revealed:false};render();saveActive();
 }
+function checkFollowup(){
+ if(state.fStatus||!state.fDraft.trim())return;
+ const item=currentQuestion(); const f=followupsOf(item)[state.fIndex];
+ const correct=normalize(state.fDraft)===normalize(f.answer);
+ state.fStatus=correct?'correct':'wrong';
+ const saved=followupState(item,state.fIndex);saved.draft=state.fDraft;saved.status=state.fStatus;
+ render();saveActive();
+}
+function advanceFollowup(){
+ const item=currentQuestion(); const list=followupsOf(item);
+ const nextOpen=list.findIndex((_,k)=>k>state.fIndex&&!followupState(item,k).status);
+ if(nextOpen>=0)openFollowup(item,nextOpen);else closeFollowup();
+ render();saveActive();
+}
 function next(){
+ closeFollowup();
  if(state.index===4){finishQuest();return;}
  state.index++;resetTrace();state.draft='';state.checked=false;state.feedback=null;state.hint=false;render();saveActive();
 }
 document.getElementById('player-switch').addEventListener('click',()=>{state.loginDraft='';navigate('welcome');});
 app.addEventListener('click',event=>{
  const choice=event.target.closest('[data-choice]');
+ if(choice&&state.fIndex>=0&&!state.fStatus){state.fDraft=followupsOf(currentQuestion())[state.fIndex].options[Number(choice.dataset.choice)];const saved=followupState(currentQuestion(),state.fIndex);saved.draft=state.fDraft;render();saveActive();return;}
  if(choice&&!state.checked){state.draft=currentQuestion().question.options[Number(choice.dataset.choice)];render();saveActive();return;}
  const reviewChoice=event.target.closest('[data-review-choice]');if(reviewChoice&&state.view==='review'){const snapshot=getQuest(username,state.week,state.difficulty).completed;const item=snapshot.attempt[state.index];const question=allQuestions.find(x=>x.id===item.id);state.reviewDraft=question.options[Number(reviewChoice.dataset.reviewChoice)];state.reviewFeedback=null;render();return;}
  const btn=event.target.closest('[data-action]');if(!btn)return;
@@ -396,9 +445,13 @@ app.addEventListener('click',event=>{
  if(action==='retry'){state.checked=false;state.draft='';state.feedback=null;render();saveActive();return;}
  if(action==='reveal'){const item=currentQuestion();item.revealed=true;item.lastAnswer=state.draft;state.checked=true;state.feedback={correct:false,revealed:true};render();saveActive();return;}
  if(action==='check'){check();return;}
+ if(action==='skip'){const item=currentQuestion();item.skipped=true;item.revealed=true;item.submitted=true;item.lastAnswer=state.draft;next();return;}
+ if(action==='f-start'){const item=currentQuestion();const first=followupsOf(item).findIndex((_,k)=>!followupState(item,k).status);if(first>=0){openFollowup(item,first);render();saveActive();}return;}
+ if(action==='f-next'){advanceFollowup();return;}
+ if(action==='f-skip'){const item=currentQuestion();const saved=followupState(item,state.fIndex);saved.draft=state.fDraft;saved.status='skipped';advanceFollowup();return;}
  if(action==='next'){next();return;}
 });
-app.addEventListener('input',event=>{if(event.target.id==='answer'){state.draft=event.target.value;saveActive();}if(event.target.id==='review-answer'){state.reviewDraft=event.target.value;state.reviewFeedback=null;}if(event.target.id==='player-name')state.loginDraft=event.target.value;});
+app.addEventListener('input',event=>{if(event.target.id==='answer'&&state.fIndex>=0){state.fDraft=event.target.value;const saved=followupState(currentQuestion(),state.fIndex);saved.draft=state.fDraft;saveActive();return;}if(event.target.id==='answer'){state.draft=event.target.value;saveActive();}if(event.target.id==='review-answer'){state.reviewDraft=event.target.value;state.reviewFeedback=null;}if(event.target.id==='player-name')state.loginDraft=event.target.value;});
 app.addEventListener('submit',event=>{if(event.target.id!=='player-form')return;event.preventDefault();username=selectUsername(state.loginDraft);progress=loadProgress(username);state.loginDraft='';navigate('home');});
 async function init(){
  try{
