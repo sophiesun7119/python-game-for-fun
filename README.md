@@ -10,6 +10,13 @@
 
 A static, child-friendly Python practice game based on the Huaxia Chinese School Python Programming L1 curriculum. **This repository is public.** Challenge 1 (Weeks 1–4) covers basic syntax, logic, loops and functions; **Challenge 2 — Data Explorer** (Weeks 6–9) covers lists, strings, sets and dictionaries. Each challenge is 4 weeks × 4 difficulties × 5 questions = 80 questions, for **160 questions** in total.
 
+## Live site and how it fits together
+
+- **Game:** https://sophiesun7119.github.io/python-game-for-fun/ — hosted by **GitHub Pages** from this repository (`main` branch, root folder). Every push to `main` republishes the site automatically within a minute or two.
+- **Teacher dashboard:** https://sophiesun7119.github.io/python-game-for-fun/teacher.html — per-student, per-quest, per-card progress detail; auto-refreshes every 5 seconds while open.
+- **How progress flows:** gameplay is fully client-side and saves to the browser's localStorage first. On the published site only, the game also sends a one-way snapshot of each quest to a **Supabase** project (`progress_events`, anonymous insert-only) whenever a card is solved, revealed or skipped and when a quest finishes. The `progress_latest` view keeps the newest snapshot per player/week/difficulty; the teacher dashboard and the in-game **leaderboard** (home screen, total XP, top 10) read that view with the anonymous key. Nicknames and game progress only — no real names, no accounts, no passwords.
+- **To retire the public views:** delete `teacher.html` and/or drop the anonymous SELECT policy in Supabase; the game and the stored data are unaffected. To take the whole site offline, disable GitHub Pages in the repository settings.
+
 ## Run locally
 
 Do not double-click `index.html` (browser security prevents loading local JSON by `fetch`). Instead, run a simple local web server **from inside the cloned project folder**:
@@ -38,7 +45,7 @@ On first opening the page, students may enter a nickname; submitting an empty na
 
 ## Detailed execution walkthroughs (v0.6.7)
 
-**All 80 cards** use one validated walkthrough contract. The code arrow, variables, function events and cumulative Output still follow [Technical Design §7](docs/technical-design.md#7-walkthrough-contract--all-160-questions). The new educational rule is that **calculating an expression and executing its final statement are separate steps**:
+**All 160 cards** use one validated walkthrough contract. The code arrow, variables, function events and cumulative Output still follow [Technical Design §7](docs/technical-design.md#7-walkthrough-contract--all-160-questions). The new educational rule is that **calculating an expression and executing its final statement are separate steps**:
 
 - `print('Hi')`: highlight the print statement, show **Call print()**, explain it, then display **Hi** in Output. A simple literal print needs no invented arithmetic step.
 - `print(square(4) + 1)`: `square(4)` returns **16** → evaluate **16 + 1 = 17** on the caller line → call `print()` → Output becomes **17**, and not before.
@@ -47,11 +54,11 @@ On first opening the page, students may enter a nickname; submitting an empty na
 - Each calculation step has the **same code line**, explanatory text and a distinct blue calculation tag. It does **not** prematurely mutate variables or append Output. Variables change on the actual assignment step; Output changes only on the actual `print()` step.
 - This rule is applied offline to the curated trace JSON by `scripts/enrich-walkthroughs.js`, not by executing students' code in the browser. Currently supported arithmetic operators are `+`, `-`, `*`, `/`, `//`, `%` and parentheses for numeric expressions. Other introductory expressions retain explicit factual explanations without guessing unsupported evaluation.
 
-The audit covers **80 questions, 1,103 trace states, 125 explicit calculation steps and 96 explained print events**. `tests/validate-walkthrough-detail.mjs` checks all 80, including arithmetic consistency and the square() return→add→print regression. Automated tests do not substitute for teacher review of the wording or manual browser QA.
+The audit covers **160 questions, 1,912 teaching steps, 139 explicit calculation steps and 181 explained print events**. `tests/validate-walkthrough-detail.mjs` checks all 160, including arithmetic consistency and the square() return→add→print regression. Automated tests do not substitute for teacher review of the wording or manual browser QA.
 
 ## Walkthrough — unified design (v0.6.6)
 
-**One rendering rule for all 80 questions:** Easy, Medium, Hard, and Extra Rock read the same static `data/traces-week*.json` format and use the same `tracePanel()` UI. Nothing in the layout is hardcoded per question or difficulty.
+**One rendering rule for all 160 questions:** Easy, Medium, Hard, and Extra Rock read the same static `data/traces-week*.json` format and use the same `tracePanel()` UI. Nothing in the layout is hardcoded per question or difficulty.
 
 **Visual order, from top to bottom:**
 1. **Step counter + Previous / Next Step / Restart controls** above the code, so varying Explanation length never moves the buttons.
@@ -114,7 +121,8 @@ Earlier pilot designs (including the old two-column Variables/Output layout) are
 - Mastery-based scoring, including successful retries; Easy 10, Medium 15, Hard 20, Extra Rock 25 XP per solved question
 - Best result per quest is saved per nickname in the **same browser** using localStorage
 - 3/5 = one star, 4/5 = two, 5/5 = three; pass Easy/Medium/Hard for a topic badge; Extra Rock is optional
-- No passwords, no email, no timers, no leaderboard
+- No passwords, no email, no timers
+- On the published site: a public **total-XP leaderboard** on the home screen (top 10, refreshed every 5 seconds while open) and a public **teacher dashboard** (`teacher.html`) with per-student detail — both read the Supabase `progress_latest` view; see "Live site and how it fits together" above
 
 ## Important limitations
 

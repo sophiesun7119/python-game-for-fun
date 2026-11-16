@@ -4,26 +4,36 @@
 
 ## 1. Goals and non-goals
 
-**Goals:** kid-friendly Python practice; choice of week/difficulty; hints, retries and review; XP, stars and badges; local username-separated progress; deterministic step-by-step code traces showing execution order and inline state changes.
+**Goals:** kid-friendly Python practice; choice of week/difficulty; hints, retries and review; XP, stars and badges; local username-separated progress; deterministic step-by-step code traces showing execution order and inline state changes; an optional one-way progress copy to Supabase so the teacher can follow along (dashboard + public leaderboard).
 
-**Current non-goals:** backend, hosted accounts, email/password authentication, cross-device sync, server database, student-code execution, a live Python interpreter, timed exams, leaderboard and access-controlled grade reporting.
+**Current non-goals:** hosted accounts, email/password authentication, cross-device sync of the local save (the cloud copy is one-way and read-only for viewers), student-code execution, a live Python interpreter, timed exams, and access-controlled grade reporting — the teacher dashboard and leaderboard are public by the teacher's choice and show nicknames only.
 
 ## 2. System overview
 
 ```text
+Hosting: GitHub Pages serves this repository (main branch, root); pushes to main republish automatically.
+
 Browser (static HTML/CSS/ES modules)
-  index.html
+  index.html                    the game
     ├─ styles.css               visual design and responsive layouts
     └─ src/app.js               UI state, navigation, quiz and trace rendering
           ├─ src/scoring.js     pure scoring utilities + browser persistence
+          ├─ src/sync.js        optional Supabase sync + leaderboard reads
           ├─ data/questions.json
-          └─ data/traces-week1..4.json
+          └─ data/traces-week1..4.json, traces-week6..9.json
+  teacher.html                  standalone teacher dashboard (own inline CSS/JS)
 
 Browser Storage:
   sessionStorage → active nickname for this session
   localStorage   → player best scores + unfinished and completed quest snapshots
 
-No server processing during gameplay. A local HTTP server is used only to serve files.
+Cloud copy (published site only):
+  src/sync.js ──POST snapshot──▶ Supabase progress_events (anon INSERT only)
+                                      │  progress_latest view (latest per player/week/difficulty)
+                                      ├─▶ teacher.html (detail, 5 s refresh while open)
+                                      └─▶ home-screen leaderboard (total XP, 5 s refresh while open)
+
+Gameplay itself is fully client-side; the sync POSTs are fire-and-forget and never block play. A local HTTP server is used only to serve files in development.
 ```
 
 **Entry point:** `index.html` loads `src/app.js` as a JavaScript module. `init()` fetches the question JSON and eight separate trace JSON files; the app expects 160 questions and fills `#app` via `render()`. The UI uses DOM event delegation on `#app` and a dedicated handler for the top-bar Switch Player control. No frontend framework or npm build step is required.
@@ -115,6 +125,8 @@ At completion, `finishQuest()` writes the latest `completed` snapshot, clears on
 **Privacy/security:** Nickname is only a local profile selector, not identity authentication. No database, no teacher login and no access control are implemented. Sharing a browser profile allows others to choose the same nickname. Clearing site storage or changing origin/device may lose records; `git pull` does not touch browser storage.
 
 **Optional cloud sync (teacher view):** `src/sync.js` POSTs a quest snapshot (nickname, week, difficulty, solved count, XP, per-card statuses) to a Supabase `progress_events` table whenever a card is solved, revealed or skipped, and when a quest finishes. It is active only on the published Pages hostname (or with local storage `pqSync = "on"` for testing), uses the anonymous key under an insert-only row-level-security policy (no SELECT/UPDATE/DELETE for anonymous clients), and ignores all failures — local play never depends on it. The teacher reads the `progress_latest` view (latest snapshot per nickname/week/difficulty) in the Supabase dashboard. Events are append-only by design: under insert-only RLS an upsert is rejected, so each sync is a plain INSERT.
+
+**Leaderboard:** on the published site, the home screen renders a public total-XP leaderboard (`fetchLeaderboard()` in `src/sync.js` aggregates `progress_latest` by nickname; XP > 0 only; top 10; current player highlighted) and re-reads it every 5 seconds while the home screen is open.
 
 **Teacher dashboard:** `teacher.html` (same Pages site, not linked from the game) is a static page that queries `progress_latest` with the anonymous key when opened and re-queries every 5 seconds while visible. This works because the teacher opted for public visibility (nicknames only, no real names): a separate RLS policy allows anonymous SELECT on `progress_events`. Writes remain insert-only for anonymous clients. To retire the dashboard, delete `teacher.html` and/or drop the SELECT policy; the game and stored data are unaffected.
 

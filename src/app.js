@@ -1,5 +1,5 @@
-import { countCorrect, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress, selectUsername, activeUsername, playerDisplayName, readQuest, writeQuest, listQuestStates } from './scoring.js';
-import { syncProgress } from './sync.js';
+import { countCorrect, awardedStars, levelXP, totalXP, recommendedQuest, updateBest, loadProgress, saveProgress, selectUsername, activeUsername, playerDisplayName, readQuest, writeQuest, listQuestStates, normalizeUsername } from './scoring.js';
+import { syncProgress, syncEnabled, fetchLeaderboard } from './sync.js';
 const app = document.getElementById('app');
 const weeks = [
  {week:1,challenge:1,title:'Output & Variables',emoji:'🖨️',subtitle:'print(), input(), variables and arithmetic'},
@@ -24,6 +24,28 @@ const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 const button = (label,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${label}</button>`;
 const scoreKey=(w,d)=>`W${w}-${d}`;
 const best=(w,d)=>progress.best[scoreKey(w,d)] || 0;
+let leaderboard=null;
+let leaderboardTimer=null;
+async function refreshLeaderboard(){
+ const data=await fetchLeaderboard();
+ if(data){leaderboard=data;if(state.view==='home')render();}
+}
+function manageLeaderboardTimer(){
+ if(state.view==='home'&&syncEnabled()){
+  if(!leaderboardTimer){refreshLeaderboard();leaderboardTimer=setInterval(()=>{if(!document.hidden)refreshLeaderboard();},5000);}
+ }else if(leaderboardTimer){clearInterval(leaderboardTimer);leaderboardTimer=null;}
+}
+function leaderboardSection(){
+ if(!syncEnabled())return '';
+ if(!leaderboard)return `<h2 class="section-title">🏆 Leaderboard</h2><div class="card leaderboard"><p class="muted">Loading the latest scores…</p></div>`;
+ const medals=['🥇','🥈','🥉'];
+ const me=normalizeUsername(username);
+ const rows=leaderboard.slice(0,10).map((e,i)=>{
+  const mine=normalizeUsername(e.nickname)===me;
+  return `<div class="lb-row${mine?' lb-me':''}"><span class="lb-rank">${medals[i]||(i+1)+'.'}</span><span class="lb-name">${escapeHTML(e.nickname)}${mine?' (you)':''}</span><span class="lb-xp">⭐ ${e.xp} XP</span></div>`;
+ }).join('');
+ return `<h2 class="section-title">🏆 Leaderboard</h2><div class="card leaderboard"><p class="muted small">Total XP across all quests · updates every 5 seconds · ${leaderboard.length} player${leaderboard.length===1?'':'s'} on the board</p>${rows||'<p class="muted">No scores yet — be the first to earn XP!</p>'}</div>`;
+}
 function render(){
  document.getElementById('total-xp').textContent=totalXP(progress.best).toLocaleString();
  const playerEl=document.getElementById('player-switch');
@@ -39,6 +61,7 @@ function render(){
  else if(state.view==='results')content=results();
  else if(state.view==='progress')content=progressView();
  app.innerHTML=content;
+ manageLeaderboardTimer();
 }
 function welcome(){return `<section class="welcome card"><div class="big-emoji">🐍</div><div class="eyebrow">Python Quest</div><h1>Welcome, Python Explorer!</h1><p class="muted">Enter a player name to keep your stars and scores on this browser. Leave it blank to play as <strong>username</strong>.</p><form id="player-form"><label for="player-name">Player name (optional)</label><input id="player-name" class="answer-input" type="text" maxlength="32" autocomplete="off" placeholder="e.g. CodingDragon" value="${escapeHTML(state.loginDraft||'')}"><button class="btn primary block" type="submit">Start Playing →</button></form><p class="footnote">No password or account needed. Each name has separate progress on this computer. Names are not private or secure.</p></section>`;}
 function header(){return `<button class="back" data-action="back">← Back</button>`;}
@@ -51,7 +74,8 @@ function home(){
  <div class="kpi-row"><div class="kpi"><b>${totalXP(progress.best)}</b><span class="muted small">Total XP</span></div><div class="kpi"><b>${completed}/${weeks.length*diffs.length}</b><span class="muted small">Quests passed</span></div><div class="kpi"><b>${weeks.filter(w=>coreDiffs.every(d=>best(w.week,d)>=3)).length}/${weeks.length}</b><span class="muted small">Topic badges</span></div></div>
  <h2 class="section-title">Choose your challenge</h2><div class="cards">
  <article class="card week-card"><div class="big-emoji">🚀</div><h3>Challenge 1 — Python Explorer</h3><p class="muted">Weeks 1–4: basic syntax, logic, loops and functions.</p><span class="tag green">4 weeks · 80 questions</span>${button('Explore levels →','levels:1','primary block')}</article>
- <article class="card week-card"><div class="big-emoji">💎</div><h3>Challenge 2 — Data Explorer</h3><p class="muted">Weeks 6–9: lists, strings, sets and dictionaries.</p><span class="tag green">4 weeks · 80 questions</span>${button('Explore levels →','levels:2','primary block')}</article></div>`;
+ <article class="card week-card"><div class="big-emoji">💎</div><h3>Challenge 2 — Data Explorer</h3><p class="muted">Weeks 6–9: lists, strings, sets and dictionaries.</p><span class="tag green">4 weeks · 80 questions</span>${button('Explore levels →','levels:2','primary block')}</article></div>
+ ${leaderboardSection()}`;
 }
 function levels(){
  const recommended=recommendedQuest(progress.best);

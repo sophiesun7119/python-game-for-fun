@@ -19,6 +19,38 @@ export function syncEnabled() {
   }
 }
 
+// Reads the latest quest snapshots and aggregates the public total-XP
+// leaderboard (used on the game's home screen). Returns null when sync
+// is disabled or the read fails.
+export async function fetchLeaderboard() {
+  if (!syncEnabled()) return null;
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/progress_latest?select=nickname,xp,solved', {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: 'Bearer ' + SUPABASE_ANON_KEY,
+      },
+    });
+    if (!res.ok) return null;
+    const rows = await res.json();
+    const byName = new Map();
+    for (const r of rows) {
+      const key = String(r.nickname || '').trim();
+      if (!key) continue;
+      const e = byName.get(key) || { nickname: key, xp: 0, solved: 0, quests: 0 };
+      e.xp += r.xp || 0;
+      e.solved += r.solved || 0;
+      e.quests += 1;
+      byName.set(key, e);
+    }
+    return [...byName.values()]
+      .filter(e => e.xp > 0)
+      .sort((a, b) => b.xp - a.xp || b.solved - a.solved || a.nickname.localeCompare(b.nickname));
+  } catch {
+    return null;
+  }
+}
+
 export function syncProgress(event) {
   if (!syncEnabled()) return;
   try {

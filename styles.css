@@ -188,3 +188,12 @@ main{max-width:1180px}
 .trace-inline-calc{background:#d6edff;color:#15456f}
 
 .bonus-hint{margin:0 0 12px;padding:10px 12px;background:#fff7df;border:1px solid #fbe4a3;border-radius:10px;font-weight:650;color:#7a5a10}
+
+/* Public total-XP leaderboard (home screen, published site only) */
+.leaderboard{padding:18px 20px}
+.lb-row{display:flex;align-items:center;gap:12px;padding:8px 10px;border-bottom:1px solid #edf1f6;font-size:16px}
+.lb-row:last-child{border-bottom:0}
+.lb-rank{width:34px;text-align:center;font-size:18px;font-weight:700}
+.lb-name{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-xp{font-weight:700;color:#b8860b;white-space:nowrap}
+.lb-me{background:#fff7e0;border-radius:10px}
