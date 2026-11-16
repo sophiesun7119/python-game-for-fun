@@ -16,6 +16,10 @@ jobs:
           python-version: '3.11'
       - name: Verify runnable question outputs with CPython
         run: python3 tests/validate_python.py
+      - name: Verify traces against real CPython execution
+        run: python3 tests/validate-trace-cpython.py
+      - name: Verify question schema, options and hint hygiene
+        run: node tests/validate-question-schema.mjs
       - name: Verify all trace snapshots and answers
         run: node tests/validate-traces.mjs
       - name: Verify walkthrough arrows follow actual function calls and returns
@@ -32,3 +36,21 @@ jobs:
         run: node tests/validate-walkthrough-layout.mjs
       - name: Verify detailed arithmetic and explained print calls for all questions
         run: node tests/validate-walkthrough-detail.mjs
+
+  browser-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Playwright outside the repo tree
+        run: |
+          mkdir -p /tmp/pw
+          cd /tmp/pw
+          npm init -y >/dev/null
+          npm install playwright-core
+          /tmp/pw/node_modules/.bin/playwright-core install --with-deps chromium-headless-shell
+      - name: Serve the site
+        run: |
+          python3 -m http.server 8000 &
+          for i in $(seq 1 20); do curl -sf http://localhost:8000/ >/dev/null && break; sleep 0.5; done
+      - name: Run browser end-to-end suite
+        run: NODE_PATH=/tmp/pw/node_modules node tests/e2e-browser.cjs
