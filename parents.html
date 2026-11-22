@@ -49,19 +49,28 @@
   .dots { display: flex; gap: 6px; justify-content: center; margin-top: 14px; }
   .dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; background: #E3D9BE; cursor: pointer; padding: 0; }
   .dots button.on { background: #E8A100; }
-  /* Flash card B — walkthrough demo */
-  .codecard { background: #14213D; border-radius: 14px; padding: 16px 16px 13px; color: #DCE6F5; font-family: "JetBrains Mono", monospace; font-size: 14.5px; }
-  .codecard .ln { padding: 2.5px 9px; border-radius: 7px; white-space: pre; transition: background .25s; }
-  .codecard .ln.on { background: rgba(255, 212, 59, .20); box-shadow: inset 3px 0 0 #FFD43B; }
+  /* Flash card B — walkthrough demo (mirrors the game's real trace player) */
+  .codecard { background: #14213D; border-radius: 14px; padding: 14px 14px 12px; color: #DCE6F5; font-family: "JetBrains Mono", monospace; font-size: 14px; }
+  .cc-head { display: flex; justify-content: space-between; align-items: baseline; font-family: "Nunito", sans-serif; margin-bottom: 9px; }
+  .cc-head b { font-size: 14.5px; color: #fff; }
+  .cc-head .cc-step { font-size: 12.5px; color: #93A1B3; font-weight: 700; }
+  .cc-q { font-family: "Nunito", sans-serif; font-size: 13.5px; color: #B9C8DE; margin-bottom: 8px; }
+  .codecard .ln { display: flex; align-items: baseline; gap: 7px; padding: 2.5px 8px; border-radius: 7px; transition: background .2s; }
+  .codecard .ln.on { background: rgba(255, 212, 59, .16); }
+  .codecard .arr { width: 15px; flex: none; color: #FFD43B; font-weight: 700; }
+  .codecard .no { width: 13px; flex: none; color: #5E7292; font-size: 12px; text-align: right; }
+  .codecard .src { white-space: pre; }
   .codecard .kw { color: #7FB2F0; } .codecard .num { color: #FFD43B; } .codecard .fn { color: #8FE3B0; }
-  .watch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 13.5px; }
-  .watch .var { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); padding: 3px 10px; border-radius: 8px; }
-  .watch .var b { color: #FFD43B; }
-  .watch .out { background: rgba(47,158,110,.18); border-color: rgba(47,158,110,.5); }
-  .watch .out b { color: #8FE3B0; }
+  .tagchip { margin-left: auto; flex: none; font-size: 12px; font-weight: 700; background: #FFD43B; color: #4A3800; padding: 1.5px 9px; border-radius: 999px; opacity: 0; transform: translateX(6px); transition: all .22s; }
+  .tagchip.show { opacity: 1; transform: none; }
+  .tagchip.end { background: #3A4E73; color: #B9C8DE; }
+  .cc-out { margin-top: 11px; font-family: "Nunito", sans-serif; }
+  .cc-out .lbl { font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #7E93B3; }
+  .cc-out .box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13); border-radius: 8px; min-height: 32px; padding: 4px 10px; font-family: "JetBrains Mono", monospace; color: #8FE3B0; }
+  .cc-expl { margin-top: 11px; background: rgba(255,255,255,.07); border-left: 3.5px solid #FFD43B; border-radius: 0 8px 8px 0; padding: 8px 11px; font-family: "Nunito", sans-serif; font-size: 14px; color: #E8EEF7; min-height: 42px; }
+  .cc-expl b { color: #FFD43B; }
   .stamp { display: inline-block; margin-top: 11px; background: #2F9E6E; color: #fff; font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 15px; padding: 4px 14px; border-radius: 999px; opacity: 0; transform: scale(.85); transition: all .3s; }
   .stamp.show { opacity: 1; transform: none; }
-  .step-note { color: #93A1B3; font-size: 13px; margin-top: 9px; min-height: 20px; font-family: "Nunito", sans-serif; }
   /* Two ways */
   .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .way { border: 1.5px solid #EEF0E6; border-radius: 12px; padding: 14px; background: #FFFDF6; }
@@ -122,19 +131,17 @@
 
   <div class="card">
     <h2>🔍 Our secret weapon: the walkthrough</h2>
-    <p class="lead">Stuck? Every question can <em>play itself out</em>, one step at a time, so kids watch the code think. Here's a real one, playing right now:</p>
+    <p class="lead">Stuck? Every question can <em>play itself out</em>. The arrow follows the running line, new values pop in beside the code, and every step explains itself. This is a <strong>real question from the game</strong> (Week 3 · Easy) — watch:</p>
     <div class="codecard" id="codecard">
-      <div class="ln" data-l="1">total = <span class="num">0</span></div>
-      <div class="ln" data-l="2"><span class="kw">for</span> n <span class="kw">in</span> [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]:</div>
-      <div class="ln" data-l="3">    total = total + n</div>
-      <div class="ln" data-l="4"><span class="fn">print</span>(total)</div>
-      <div class="watch">
-        <span class="var">total = <b id="w-total">?</b></span>
-        <span class="var">n = <b id="w-n">?</b></span>
-        <span class="var out">output: <b id="w-out"></b></span>
-      </div>
-      <div class="step-note" id="step-note">Watch each line light up…</div>
-      <span class="stamp" id="stamp">✓ Answer: 6</span>
+      <div class="cc-head"><b>👀 Watch How the Code Works</b><span class="cc-step" id="cc-step">Step 0 / 9</span></div>
+      <div class="cc-q">Question: What prints?</div>
+      <div class="ln" data-l="0"><span class="arr"></span><span class="no">1</span><span class="src">total = <span class="num">0</span></span><span class="tagchip" id="chip-0"></span></div>
+      <div class="ln" data-l="1"><span class="arr"></span><span class="no">2</span><span class="src"><span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):</span><span class="tagchip" id="chip-1"></span></div>
+      <div class="ln" data-l="2"><span class="arr"></span><span class="no">3</span><span class="src">    total += <span class="num">1</span></span><span class="tagchip" id="chip-2"></span></div>
+      <div class="ln" data-l="3"><span class="arr"></span><span class="no">4</span><span class="src"><span class="fn">print</span>(total)</span><span class="tagchip" id="chip-3"></span></div>
+      <div class="cc-out"><div class="lbl">Output</div><div class="box" id="cc-out"></div></div>
+      <div class="cc-expl" id="cc-expl"><b>Explanation:</b> <span id="cc-expl-text"></span></div>
+      <span class="stamp" id="stamp">✓ Answer: 3</span>
     </div>
   </div>
 
@@ -241,25 +248,41 @@
   car.addEventListener('mouseleave', restartCar);
   restartCar();
 
-  /* ---------- Flash card B: walkthrough demo (real trace, verified) ---------- */
+  /* ---------- Flash card B: the game's REAL walkthrough for question W3-E-04 ----------
+     Steps, explanations and outputs below are copied verbatim from the game's own
+     trace data (data/traces-week3.json), so this demo shows the feature as it is. */
   var STEPS = [
-    { l: 1, total: '0', n: '?', out: '', note: 'Start: total begins at 0.' },
-    { l: 2, total: '0', n: '1', out: '', note: 'The loop hands us the first number: n = 1.' },
-    { l: 3, total: '1', n: '1', out: '', note: 'total = 0 + 1 → total becomes 1.' },
-    { l: 2, total: '1', n: '2', out: '', note: 'Next number: n = 2.' },
-    { l: 3, total: '3', n: '2', out: '', note: 'total = 1 + 2 → total becomes 3.' },
-    { l: 2, total: '3', n: '3', out: '', note: 'Last number: n = 3.' },
-    { l: 3, total: '6', n: '3', out: '', note: 'total = 3 + 3 → total becomes 6.' },
-    { l: 4, total: '6', n: '3', out: '6', note: 'Print the result — done!' }
+    { l: -1, chip: null, out: '', expl: 'Ready! Press Next Step to see each line run.' },
+    { l: 0, chip: 'total = 0', out: '', expl: 'Create total = 0.' },
+    { l: 1, chip: 'i = 0', out: '', expl: 'for loop gives i = 0.' },
+    { l: 2, chip: 'total = 1', out: '', expl: 'Add 1: total becomes 1.' },
+    { l: 1, chip: 'i = 1', out: '', expl: 'for loop gives i = 1.' },
+    { l: 2, chip: 'total = 2', out: '', expl: 'Add 1: total becomes 2.' },
+    { l: 1, chip: 'i = 2', out: '', expl: 'for loop gives i = 2.' },
+    { l: 2, chip: 'total = 3', out: '', expl: 'Add 1: total becomes 3.' },
+    { l: 1, chip: 'loop ends', end: true, out: '', expl: 'There are no more range(3) values; exit loop.' },
+    { l: 3, chip: null, out: '3', expl: 'Call print() to display "3".' }
   ];
   var lines = document.querySelectorAll('#codecard .ln'), si = 0, wtTimer = null;
-  var wTotal = document.getElementById('w-total'), wN = document.getElementById('w-n'),
-      wOut = document.getElementById('w-out'), note = document.getElementById('step-note'),
-      stamp = document.getElementById('stamp');
+  var ccStep = document.getElementById('cc-step'), ccOut = document.getElementById('cc-out'),
+      ccExpl = document.getElementById('cc-expl-text'), stamp = document.getElementById('stamp');
+  var chips = [0, 1, 2, 3].map(function (i) { return document.getElementById('chip-' + i); });
   function applyStep(s) {
-    lines.forEach(function (el) { el.classList.toggle('on', +el.dataset.l === s.l); });
-    wTotal.textContent = s.total; wN.textContent = s.n; wOut.textContent = s.out;
-    note.textContent = s.note;
+    lines.forEach(function (el) {
+      var on = +el.dataset.l === s.l;
+      el.classList.toggle('on', on);
+      el.querySelector('.arr').textContent = on ? '➜' : '';
+    });
+    chips.forEach(function (c) { c.classList.remove('show'); });
+    if (s.chip && s.l >= 0) {
+      var c = chips[s.l];
+      c.textContent = s.chip;
+      c.classList.toggle('end', !!s.end);
+      c.classList.add('show');
+    }
+    ccOut.textContent = s.out;
+    ccExpl.textContent = s.expl;
+    ccStep.textContent = 'Step ' + si + ' / ' + (STEPS.length - 1);
     stamp.classList.toggle('show', si === STEPS.length - 1);
   }
   function wtLoop() {
@@ -267,9 +290,9 @@
     if (reduced) { si = STEPS.length - 1; applyStep(STEPS[si]); return; }
     wtTimer = setInterval(function () {
       si++;
-      if (si >= STEPS.length) { clearInterval(wtTimer); setTimeout(function () { si = 0; applyStep(STEPS[0]); wtLoop(); }, 2600); return; }
+      if (si >= STEPS.length) { clearInterval(wtTimer); setTimeout(function () { si = 0; applyStep(STEPS[0]); wtLoop(); }, 1500); return; }
       applyStep(STEPS[si]);
-    }, 950);
+    }, 620);
   }
   var cc = document.getElementById('codecard');
   cc.addEventListener('mouseenter', function () { if (wtTimer) clearInterval(wtTimer); });
