@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Quest for Parents — a free Python game for kids 8–14</title>
+<meta name="description" content="Python Quest is a free browser game that teaches kids real Python with step-by-step walkthroughs. Get the game link plus a free weekly Python puzzle by email.">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #f6f8fc; color: #1c2733; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 18px 48px; }
+  .hero { text-align: center; padding: 18px 0 6px; }
+  .hero .snake { font-size: 44px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 8px 0 10px; }
+  h1 .accent { color: #2563eb; }
+  .sub { color: #5b6b7f; font-size: 16px; line-height: 1.55; margin: 0 auto; max-width: 560px; }
+  .card { background: #fff; border: 1px solid #e2e8f2; border-radius: 14px; padding: 20px; margin-top: 20px; box-shadow: 0 1px 3px rgba(20,40,80,.05); }
+  .card h2 { font-size: 19px; margin: 0 0 12px; }
+  ul.points { margin: 0; padding-left: 20px; line-height: 1.75; color: #33475e; font-size: 15px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: #5b6b7f; margin: 14px 0 6px; }
+  input, select { width: 100%; padding: 11px 12px; font-size: 15px; border: 1px solid #c9d5e6; border-radius: 9px; background: #fff; color: #1c2733; }
+  input:focus, select:focus { outline: 2px solid #2563eb; outline-offset: 1px; }
+  .btn { display: inline-block; border: 0; cursor: pointer; background: #2563eb; color: #fff; font-size: 16px; font-weight: 700; padding: 13px 22px; border-radius: 10px; width: 100%; margin-top: 18px; text-decoration: none; text-align: center; }
+  .btn:hover { background: #1d4fd0; }
+  .btn.green { background: #1f9d63; }
+  .btn.green:hover { background: #178550; }
+  .micro { font-size: 12.5px; color: #8496ad; line-height: 1.5; margin-top: 12px; text-align: center; }
+  .just-play { text-align: center; margin-top: 14px; font-size: 14.5px; }
+  .just-play a { color: #2563eb; font-weight: 600; }
+  .hidden { display: none; }
+  .ok-icon { font-size: 38px; text-align: center; }
+  footer { text-align: center; color: #8496ad; font-size: 13px; margin-top: 28px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="snake">🐍</div>
+    <h1>Python Quest — a <span class="accent">free</span> Python game for kids 8–14</h1>
+    <p class="sub">Real Python, taught one tiny quest at a time — with step-by-step walkthroughs that show exactly how the code runs. No downloads, no installs, plays right in the browser.</p>
+  </div>
+
+  <div class="card">
+    <h2>What kids get</h2>
+    <ul class="points">
+      <li><strong>160 questions</strong> across 8 topics — printing, logic, loops, functions, lists, strings, sets and dictionaries</li>
+      <li><strong>"Watch how the code works"</strong> — every question can play out step by step, so kids see <em>why</em> the answer is right</li>
+      <li>XP, badges and a friendly leaderboard to keep them coming back</li>
+      <li>Made by a software engineer &amp; mom who teaches Python classes for kids in Houston</li>
+    </ul>
+  </div>
+
+  <div class="card" id="form-card">
+    <h2>Get the game link + a free weekly Python puzzle</h2>
+    <p style="color:#5b6b7f;font-size:14.5px;line-height:1.55;margin:0">Leave your email and we'll send the game link, one fun Python puzzle each week, and first dibs on free trial-class invitations.</p>
+    <form id="lead-form">
+      <label for="email">Parent email</label>
+      <input id="email" type="email" required autocomplete="email" placeholder="you@example.com">
+      <label for="grade">Your child's grade <span style="font-weight:400">(optional)</span></label>
+      <select id="grade">
+        <option value="">Prefer not to say</option>
+        <option>Grade 3–4</option>
+        <option>Grade 5–6</option>
+        <option>Grade 7–8</option>
+        <option>Grade 9+</option>
+      </select>
+      <button class="btn" type="submit" id="submit-btn">Send me the game 🎮</button>
+      <p class="micro">One short email a week. No spam, ever. Unsubscribe anytime.</p>
+    </form>
+  </div>
+
+  <div class="card hidden" id="done-card">
+    <div class="ok-icon">🎉</div>
+    <h2 style="text-align:center">You're in!</h2>
+    <p style="color:#5b6b7f;font-size:15px;line-height:1.55;text-align:center;margin:0">Here's the game — your child can start playing right now:</p>
+    <a class="btn green" href="./index.html">▶ Play Python Quest</a>
+    <p class="micro">Your first weekly puzzle is on its way to your inbox soon.</p>
+  </div>
+
+  <p class="just-play">Just want to play? <a href="./index.html">Open Python Quest →</a></p>
+
+  <footer>
+    Sophie · CS Lifelong Learning · Houston, TX<br>
+    Live online Python classes for grades 3–9 — trial-class invitations go to this email list first.
+  </footer>
+</div>
+
+<script>
+  var SUPABASE_URL = 'https://delpcanykrobigufyomd.supabase.co';
+  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbHBjYW55a3JvYmlndWZ5b21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3OTc4ODQsImV4cCI6MjExMDM3Mzg4NH0.d6wZSQH0LZ8Z85FPKrtRumEmh5C0pgQSI8S8ET7znF4';
+  var source = new URLSearchParams(location.search).get('src') || 'direct';
+  document.getElementById('lead-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = 'One moment…';
+    var payload = {
+      email: document.getElementById('email').value.trim(),
+      kid_grade: document.getElementById('grade').value || null,
+      source: source
+    };
+    function done() {
+      document.getElementById('form-card').classList.add('hidden');
+      document.getElementById('done-card').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    fetch(SUPABASE_URL + '/rest/v1/parent_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': ANON_KEY,
+        'Authorization': 'Bearer ' + ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    }).then(done).catch(done);
+  });
+</script>
+</body>
+</html>
