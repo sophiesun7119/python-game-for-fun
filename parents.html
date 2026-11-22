@@ -3,56 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python Quest for Parents — a free Python game for kids 8–14</title>
-<meta name="description" content="Python Quest is a free browser game that teaches kids real Python with step-by-step walkthroughs. Get the game link plus a free weekly Python puzzle by email.">
+<title>Python Quest for Parents — real Python, learned the happy way</title>
+<meta name="description" content="Python Quest is a free practice adventure that shows kids ages 8–14 how Python really works — step by step. 2 challenges, 160 questions, 4 levels. Get the free link plus news about new projects and info sessions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #f6f8fc; color: #1c2733; }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 18px 48px; }
-  .hero { text-align: center; padding: 18px 0 6px; }
-  .hero .snake { font-size: 44px; }
-  h1 { font-size: 30px; line-height: 1.2; margin: 8px 0 10px; }
-  h1 .accent { color: #2563eb; }
-  .sub { color: #5b6b7f; font-size: 16px; line-height: 1.55; margin: 0 auto; max-width: 560px; }
-  .card { background: #fff; border: 1px solid #e2e8f2; border-radius: 14px; padding: 20px; margin-top: 20px; box-shadow: 0 1px 3px rgba(20,40,80,.05); }
-  .card h2 { font-size: 19px; margin: 0 0 12px; }
-  ul.points { margin: 0; padding-left: 20px; line-height: 1.75; color: #33475e; font-size: 15px; }
-  label { display: block; font-size: 13px; font-weight: 600; color: #5b6b7f; margin: 14px 0 6px; }
-  input, select { width: 100%; padding: 11px 12px; font-size: 15px; border: 1px solid #c9d5e6; border-radius: 9px; background: #fff; color: #1c2733; }
-  input:focus, select:focus { outline: 2px solid #2563eb; outline-offset: 1px; }
-  .btn { display: inline-block; border: 0; cursor: pointer; background: #2563eb; color: #fff; font-size: 16px; font-weight: 700; padding: 13px 22px; border-radius: 10px; width: 100%; margin-top: 18px; text-decoration: none; text-align: center; }
-  .btn:hover { background: #1d4fd0; }
-  .btn.green { background: #1f9d63; }
-  .btn.green:hover { background: #178550; }
-  .micro { font-size: 12.5px; color: #8496ad; line-height: 1.5; margin-top: 12px; text-align: center; }
+  body { margin: 0; font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; background: #FFF9F0; color: #1E2A3A; font-size: 16.5px; line-height: 1.6; }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 26px 18px 52px; }
+  h1, h2, .display { font-family: "Baloo 2", "Nunito", system-ui, sans-serif; }
+  .hero { text-align: center; padding: 14px 0 4px; }
+  .hero .snake { font-size: 46px; }
+  h1 { font-size: 37px; line-height: 1.15; margin: 6px 0 10px; font-weight: 800; }
+  h1 .accent { color: #2B6CB0; }
+  h1 .happy { color: #E8A100; }
+  .sub { color: #4A5B70; font-size: 16.5px; margin: 0 auto; max-width: 580px; }
+  .trust { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+  .trust span { background: #fff; border: 1.5px solid #F0D48A; color: #6B5310; font-size: 13px; font-weight: 700; padding: 4px 11px; border-radius: 999px; }
+  .card { background: #fff; border: 1px solid #F1E4C8; border-radius: 16px; padding: 20px; margin-top: 20px; box-shadow: 0 2px 8px rgba(120, 84, 10, .06); }
+  .card h2 { font-size: 21px; margin: 0 0 8px; font-weight: 700; }
+  .card p.lead { color: #4A5B70; margin: 0 0 6px; font-size: 15.5px; }
+  label { display: block; font-size: 13px; font-weight: 700; color: #5B6B7F; margin: 14px 0 6px; }
+  input, select { width: 100%; padding: 11px 12px; font-size: 15.5px; border: 1.5px solid #D8CFAF; border-radius: 10px; background: #fff; color: #1E2A3A; font-family: inherit; }
+  input:focus, select:focus { outline: 2px solid #2B6CB0; outline-offset: 1px; }
+  .btn { display: inline-block; border: 0; cursor: pointer; background: #FFD43B; color: #4A3800; font-family: "Baloo 2", sans-serif; font-size: 17.5px; font-weight: 700; padding: 13px 22px; border-radius: 12px; width: 100%; margin-top: 18px; text-decoration: none; text-align: center; }
+  .btn:hover { background: #F5C61D; }
+  .btn.play { background: #2F9E6E; color: #fff; }
+  .btn.play:hover { background: #278A5D; }
+  .micro { font-size: 12.5px; color: #93A1B3; line-height: 1.5; margin-top: 12px; text-align: center; }
   .just-play { text-align: center; margin-top: 14px; font-size: 14.5px; }
-  .just-play a { color: #2563eb; font-weight: 600; }
+  .just-play a { color: #2B6CB0; font-weight: 700; }
   .hidden { display: none; }
   .ok-icon { font-size: 38px; text-align: center; }
-  footer { text-align: center; color: #8496ad; font-size: 13px; margin-top: 28px; line-height: 1.6; }
+  /* Flash card A — curriculum carousel */
+  .carousel { position: relative; min-height: 196px; }
+  .frame { position: absolute; inset: 0; opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+  .frame.active { opacity: 1; transform: none; pointer-events: auto; }
+  .frame .ch { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #2B6CB0; }
+  .frame .topic { font-family: "Baloo 2", sans-serif; font-size: 27px; font-weight: 700; margin: 2px 0 4px; }
+  .frame .desc { color: #4A5B70; font-size: 14.5px; margin: 0 0 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chips span { font-size: 13px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: #EEF4FB; color: #2B6CB0; border: 1.5px solid #CFE0F2; }
+  .chips span.x { background: #FFF3D6; color: #8A6100; border-color: #F0D48A; }
+  .dots { display: flex; gap: 6px; justify-content: center; margin-top: 14px; }
+  .dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; background: #E3D9BE; cursor: pointer; padding: 0; }
+  .dots button.on { background: #E8A100; }
+  /* Flash card B — walkthrough demo */
+  .codecard { background: #14213D; border-radius: 14px; padding: 16px 16px 13px; color: #DCE6F5; font-family: "JetBrains Mono", monospace; font-size: 14.5px; }
+  .codecard .ln { padding: 2.5px 9px; border-radius: 7px; white-space: pre; transition: background .25s; }
+  .codecard .ln.on { background: rgba(255, 212, 59, .20); box-shadow: inset 3px 0 0 #FFD43B; }
+  .codecard .kw { color: #7FB2F0; } .codecard .num { color: #FFD43B; } .codecard .fn { color: #8FE3B0; }
+  .watch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 13.5px; }
+  .watch .var { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); padding: 3px 10px; border-radius: 8px; }
+  .watch .var b { color: #FFD43B; }
+  .watch .out { background: rgba(47,158,110,.18); border-color: rgba(47,158,110,.5); }
+  .watch .out b { color: #8FE3B0; }
+  .stamp { display: inline-block; margin-top: 11px; background: #2F9E6E; color: #fff; font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 15px; padding: 4px 14px; border-radius: 999px; opacity: 0; transform: scale(.85); transition: all .3s; }
+  .stamp.show { opacity: 1; transform: none; }
+  .step-note { color: #93A1B3; font-size: 13px; margin-top: 9px; min-height: 20px; font-family: "Nunito", sans-serif; }
+  /* Two ways */
+  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .way { border: 1.5px solid #EEF0E6; border-radius: 12px; padding: 14px; background: #FFFDF6; }
+  .way h3 { font-family: "Baloo 2", sans-serif; margin: 0 0 6px; font-size: 17px; }
+  .way p { margin: 0; font-size: 14.5px; color: #4A5B70; }
+  @media (max-width: 560px) { .ways { grid-template-columns: 1fr; } h1 { font-size: 31px; } }
+  .faq dt { font-weight: 700; margin-top: 13px; }
+  .faq dd { margin: 3px 0 0; color: #4A5B70; font-size: 15px; }
+  footer { text-align: center; color: #93A1B3; font-size: 13px; margin-top: 30px; line-height: 1.65; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="top">
   <div class="hero">
     <div class="snake">🐍</div>
-    <h1>Python Quest — a <span class="accent">free</span> Python game for kids 8–14</h1>
-    <p class="sub">Real Python, taught one tiny quest at a time — with step-by-step walkthroughs that show exactly how the code runs. No downloads, no installs, plays right in the browser.</p>
-  </div>
-
-  <div class="card">
-    <h2>What kids get</h2>
-    <ul class="points">
-      <li><strong>160 questions</strong> across 8 topics — printing, logic, loops, functions, lists, strings, sets and dictionaries</li>
-      <li><strong>"Watch how the code works"</strong> — every question can play out step by step, so kids see <em>why</em> the answer is right</li>
-      <li>XP, badges and a friendly leaderboard to keep them coming back</li>
-      <li>Made by a software engineer &amp; mom who teaches Python classes for kids in Houston</li>
-    </ul>
+    <h1>Real Python, learned<br>the <span class="happy">happy</span> <span class="accent">way</span>.</h1>
+    <p class="sub">Python Quest is a <strong>free practice adventure</strong> that shows kids exactly how code works — step by step, like a story unfolding. Not just a game: it's the kind of practice that makes coding click, built for happy learning — learning by playing, playing while learning.</p>
+    <div class="trust">
+      <span>160 questions</span><span>Grades 3–9</span><span>100% free</span><span>No downloads</span><span>Made by a software engineer &amp; mom in Houston</span>
+    </div>
   </div>
 
   <div class="card" id="form-card">
-    <h2>Get the game link + a free weekly Python puzzle</h2>
-    <p style="color:#5b6b7f;font-size:14.5px;line-height:1.55;margin:0">Leave your email and we'll send the game link, one fun Python puzzle each week, and first dibs on free trial-class invitations.</p>
+    <h2>Get the free game + hear what's new first</h2>
+    <p class="lead">Leave your email and we'll send the game link — plus first news when new challenges, games &amp; projects and free parent info sessions launch.</p>
     <form id="lead-form">
       <label for="email">Parent email</label>
       <input id="email" type="email" required autocomplete="email" placeholder="you@example.com">
@@ -64,28 +98,84 @@
         <option>Grade 7–8</option>
         <option>Grade 9+</option>
       </select>
-      <button class="btn" type="submit" id="submit-btn">Send me the game 🎮</button>
-      <p class="micro">One short email a week. No spam, ever. Unsubscribe anytime.</p>
+      <button class="btn" type="submit" id="submit-btn">Send me the free game 🎮</button>
+      <p class="micro">We never ask for your child's name. One short email now and then — no spam, unsubscribe anytime.</p>
     </form>
   </div>
 
   <div class="card hidden" id="done-card">
     <div class="ok-icon">🎉</div>
     <h2 style="text-align:center">You're in!</h2>
-    <p style="color:#5b6b7f;font-size:15px;line-height:1.55;text-align:center;margin:0">Here's the game — your child can start playing right now:</p>
-    <a class="btn green" href="./index.html">▶ Play Python Quest</a>
-    <p class="micro">Your first weekly puzzle is on its way to your inbox soon.</p>
+    <p class="lead" style="text-align:center">Here's the game — your child can start exploring right now:</p>
+    <a class="btn play" href="./index.html">▶ Play Python Quest</a>
+    <p class="micro">We'll email you when new challenges, projects and info sessions launch.</p>
   </div>
 
   <p class="just-play">Just want to play? <a href="./index.html">Open Python Quest →</a></p>
 
+  <div class="card">
+    <h2>📚 Two challenges, eight topics</h2>
+    <p class="lead">Every topic has 4 levels — Easy, Medium, Hard and Extra Rock — 20 questions each. Watch them go by:</p>
+    <div class="carousel" id="carousel"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <div class="card">
+    <h2>🔍 Our secret weapon: the walkthrough</h2>
+    <p class="lead">Stuck? Every question can <em>play itself out</em>, one step at a time, so kids watch the code think. Here's a real one, playing right now:</p>
+    <div class="codecard" id="codecard">
+      <div class="ln" data-l="1">total = <span class="num">0</span></div>
+      <div class="ln" data-l="2"><span class="kw">for</span> n <span class="kw">in</span> [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]:</div>
+      <div class="ln" data-l="3">    total = total + n</div>
+      <div class="ln" data-l="4"><span class="fn">print</span>(total)</div>
+      <div class="watch">
+        <span class="var">total = <b id="w-total">?</b></span>
+        <span class="var">n = <b id="w-n">?</b></span>
+        <span class="var out">output: <b id="w-out"></b></span>
+      </div>
+      <div class="step-note" id="step-note">Watch each line light up…</div>
+      <span class="stamp" id="stamp">✓ Answer: 6</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🌱 Two ways to learn — both welcome</h2>
+    <div class="ways">
+      <div class="way">
+        <h3>🧭 Explore on your own</h3>
+        <p>The game is free and self-paced. Walkthroughs and hints teach as kids go — no parent coding knowledge needed.</p>
+      </div>
+      <div class="way">
+        <h3>👩‍🏫 Learn with a teacher</h3>
+        <p>We also run live online Python classes for grades 3–9, taught by working software engineers. Email-list families hear about trial classes and info sessions first.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💬 Parents ask us…</h2>
+    <dl class="faq">
+      <dt>Does my child need any coding experience?</dt>
+      <dd>None at all. Challenge 1 starts from the very first line of code.</dd>
+      <dt>Is the game really free?</dt>
+      <dd>Yes — the full game, all 160 questions. Live classes are separate and always optional.</dd>
+      <dt>What will you email me?</dt>
+      <dd>The game link, then occasional news: new challenges, games &amp; projects, and invitations to free info sessions and trial classes. Unsubscribe anytime.</dd>
+      <dt>Why no name field for my child?</dt>
+      <dd>We don't need it. An email and a grade range are plenty until a family chooses to join a class.</dd>
+    </dl>
+  </div>
+
+  <a class="btn" href="#top" style="margin-top:22px">Get the free game ↑</a>
+
   <footer>
     Sophie · CS Lifelong Learning · Houston, TX<br>
-    Live online Python classes for grades 3–9 — trial-class invitations go to this email list first.
+    Happy learning with Python — and computer science for life.
   </footer>
 </div>
 
 <script>
+  /* ---------- Lead form (unchanged plumbing) ---------- */
   var SUPABASE_URL = 'https://delpcanykrobigufyomd.supabase.co';
   var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbHBjYW55a3JvYmlndWZ5b21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3OTc4ODQsImV4cCI6MjExMDM3Mzg4NH0.d6wZSQH0LZ8Z85FPKrtRumEmh5C0pgQSI8S8ET7znF4';
   var source = new URLSearchParams(location.search).get('src') || 'direct';
@@ -100,20 +190,91 @@
     };
     function done() {
       document.getElementById('form-card').classList.add('hidden');
-      document.getElementById('done-card').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var d = document.getElementById('done-card');
+      d.classList.remove('hidden');
+      d.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     fetch(SUPABASE_URL + '/rest/v1/parent_leads', {
       method: 'POST',
-      headers: {
-        'apikey': ANON_KEY,
-        'Authorization': 'Bearer ' + ANON_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
+      headers: { 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + ANON_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify(payload)
     }).then(done).catch(done);
   });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Flash card A: curriculum carousel ---------- */
+  var TOPICS = [
+    { ch: 'Challenge 1 · Python Basics', topic: '🖨️ Printing & Variables', desc: 'Say hello to Python — print messages and store things in variables.' },
+    { ch: 'Challenge 1 · Python Basics', topic: '🔀 Logic & Decisions', desc: 'Teach the computer to choose — if, elif and else.' },
+    { ch: 'Challenge 1 · Python Basics', topic: '🔁 Loops', desc: 'Make Python repeat itself — for loops and while loops.' },
+    { ch: 'Challenge 1 · Python Basics', topic: '🧩 Functions', desc: 'Package code into reusable building blocks.' },
+    { ch: 'Challenge 2 · Data Explorer', topic: '📋 Lists', desc: 'Collect many things in one place — and slice, sort and search them.' },
+    { ch: 'Challenge 2 · Data Explorer', topic: '🔤 Strings', desc: 'Play with text — slice it, search it, rebuild it.' },
+    { ch: 'Challenge 2 · Data Explorer', topic: '🎲 Sets', desc: 'Collections with no duplicates — and clever set math.' },
+    { ch: 'Challenge 2 · Data Explorer', topic: '🗂️ Dictionaries', desc: 'Look things up by name with key–value pairs.' }
+  ];
+  var car = document.getElementById('carousel'), dots = document.getElementById('dots'), cur = 0, carTimer = null;
+  TOPICS.forEach(function (t, i) {
+    var f = document.createElement('div');
+    f.className = 'frame' + (i === 0 ? ' active' : '');
+    f.innerHTML = '<div class="ch">' + t.ch + ' — Topic ' + (i % 4 + 1) + ' of 4</div>' +
+      '<div class="topic">' + t.topic + '</div><p class="desc">' + t.desc + '</p>' +
+      '<div class="chips"><span>Easy · 5</span><span>Medium · 5</span><span>Hard · 5</span><span class="x">Extra Rock · 5</span></div>';
+    car.appendChild(f);
+    var d = document.createElement('button');
+    if (i === 0) d.className = 'on';
+    d.setAttribute('aria-label', 'Show topic ' + (i + 1));
+    d.addEventListener('click', function () { showFrame(i); restartCar(); });
+    dots.appendChild(d);
+  });
+  function showFrame(i) {
+    car.children[cur].classList.remove('active'); dots.children[cur].classList.remove('on');
+    cur = i;
+    car.children[cur].classList.add('active'); dots.children[cur].classList.add('on');
+  }
+  function restartCar() {
+    if (carTimer) clearInterval(carTimer);
+    if (!reduced) carTimer = setInterval(function () { showFrame((cur + 1) % TOPICS.length); }, 2400);
+  }
+  car.addEventListener('mouseenter', function () { if (carTimer) clearInterval(carTimer); });
+  car.addEventListener('mouseleave', restartCar);
+  restartCar();
+
+  /* ---------- Flash card B: walkthrough demo (real trace, verified) ---------- */
+  var STEPS = [
+    { l: 1, total: '0', n: '?', out: '', note: 'Start: total begins at 0.' },
+    { l: 2, total: '0', n: '1', out: '', note: 'The loop hands us the first number: n = 1.' },
+    { l: 3, total: '1', n: '1', out: '', note: 'total = 0 + 1 → total becomes 1.' },
+    { l: 2, total: '1', n: '2', out: '', note: 'Next number: n = 2.' },
+    { l: 3, total: '3', n: '2', out: '', note: 'total = 1 + 2 → total becomes 3.' },
+    { l: 2, total: '3', n: '3', out: '', note: 'Last number: n = 3.' },
+    { l: 3, total: '6', n: '3', out: '', note: 'total = 3 + 3 → total becomes 6.' },
+    { l: 4, total: '6', n: '3', out: '6', note: 'Print the result — done!' }
+  ];
+  var lines = document.querySelectorAll('#codecard .ln'), si = 0, wtTimer = null;
+  var wTotal = document.getElementById('w-total'), wN = document.getElementById('w-n'),
+      wOut = document.getElementById('w-out'), note = document.getElementById('step-note'),
+      stamp = document.getElementById('stamp');
+  function applyStep(s) {
+    lines.forEach(function (el) { el.classList.toggle('on', +el.dataset.l === s.l); });
+    wTotal.textContent = s.total; wN.textContent = s.n; wOut.textContent = s.out;
+    note.textContent = s.note;
+    stamp.classList.toggle('show', si === STEPS.length - 1);
+  }
+  function wtLoop() {
+    if (wtTimer) clearInterval(wtTimer);
+    if (reduced) { si = STEPS.length - 1; applyStep(STEPS[si]); return; }
+    wtTimer = setInterval(function () {
+      si++;
+      if (si >= STEPS.length) { clearInterval(wtTimer); setTimeout(function () { si = 0; applyStep(STEPS[0]); wtLoop(); }, 2600); return; }
+      applyStep(STEPS[si]);
+    }, 950);
+  }
+  var cc = document.getElementById('codecard');
+  cc.addEventListener('mouseenter', function () { if (wtTimer) clearInterval(wtTimer); });
+  cc.addEventListener('mouseleave', wtLoop);
+  applyStep(STEPS[0]); wtLoop();
 </script>
 </body>
 </html>
