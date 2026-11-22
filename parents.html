@@ -77,6 +77,13 @@
   .way h3 { font-family: "Baloo 2", sans-serif; margin: 0 0 6px; font-size: 17px; }
   .way p { margin: 0; font-size: 14.5px; color: #4A5B70; }
   @media (max-width: 560px) { .ways { grid-template-columns: 1fr; } h1 { font-size: 31px; } }
+  .social { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .social a { display: block; text-decoration: none; border: 1.5px solid #F1E4C8; border-radius: 12px; padding: 13px 15px; color: #1E2A3A; background: #FFFDF8; }
+  .social a:hover { border-color: #FFD43B; }
+  .social .plat { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 16.5px; }
+  .social .handle { color: #2B6CB0; font-weight: 700; font-size: 14.5px; }
+  .social .what { color: #4A5B70; font-size: 13.5px; margin-top: 2px; line-height: 1.45; }
+  @media (max-width: 560px) { .social { grid-template-columns: 1fr; } }
   .faq dt { font-weight: 700; margin-top: 13px; }
   .faq dd { margin: 3px 0 0; color: #4A5B70; font-size: 15px; }
   footer { text-align: center; color: #93A1B3; font-size: 13px; margin-top: 30px; line-height: 1.65; }
@@ -173,10 +180,28 @@
     </dl>
   </div>
 
+  <div class="card">
+    <h2>📺 Follow the same Sophie, in video</h2>
+    <p class="sub">Not ready to sign up? Follow along instead. The Sophie behind this game posts bite-size Python videos and one-question puzzles every week — and teaches the live classes, too. One person, one mission: CS lifelong learning.</p>
+    <div class="social">
+      <a href="https://www.instagram.com/sophiesun7119/" target="_blank" rel="noopener">
+        <div class="plat">Instagram</div>
+        <div class="handle">@sophiesun7119</div>
+        <div class="what">Short Python videos, puzzle cards &amp; class moments</div>
+      </a>
+      <a href="https://www.youtube.com/@Sophie-life-long-learner" target="_blank" rel="noopener">
+        <div class="plat">YouTube</div>
+        <div class="handle">@Sophie-life-long-learner</div>
+        <div class="what">The same videos as Shorts, in playlists by series</div>
+      </a>
+    </div>
+  </div>
+
   <a class="btn" href="#top" style="margin-top:22px">Get the free game ↑</a>
 
   <footer>
     Sophie · CS Lifelong Learning · Houston, TX<br>
+    <a href="https://www.instagram.com/sophiesun7119/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@Sophie-life-long-learner" target="_blank" rel="noopener">YouTube</a><br>
     Happy learning with Python — and computer science for life.
   </footer>
 </div>
