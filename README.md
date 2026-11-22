@@ -1,6 +1,6 @@
 # Python Quest 🐍
 
-A free, child-friendly way to practice real Python — built by a software-engineer mom for her Huaxia Chinese School Python class, and open to any kid who wants to learn how code actually runs.
+A free, child-friendly way to practice real Python — built by a software engineer mom in Houston, and open to any kid who wants to learn how code actually runs.
 
 **▶ Play now: https://sophiesun7119.github.io/python-game-for-fun/** — no downloads, no accounts, no passwords. Pick a nickname and start.
 
