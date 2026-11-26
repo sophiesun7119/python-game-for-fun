@@ -96,7 +96,7 @@
     <h1>Real Python, learned<br>the <span class="happy">happy</span> <span class="accent">way</span>.</h1>
     <p class="sub">Python Quest is a <strong>free practice adventure</strong> that shows kids exactly how code works — step by step, like a story unfolding. Not just a game: it's the kind of practice that makes coding click, built for happy learning — learning by playing, playing while learning.</p>
     <div class="trust">
-      <span>160 questions</span><span>Grades 3–9</span><span>100% free</span><span>No downloads</span><span>Made by a software engineer &amp; mom in Houston</span>
+      <span>160 questions</span><span>Grades 3–12</span><span>100% free</span><span>No downloads</span><span>Made by a software engineer &amp; mom in Houston</span>
     </div>
   </div>
 
@@ -161,7 +161,7 @@
       </div>
       <div class="way">
         <h3>👩‍🏫 Learn with a teacher</h3>
-        <p>We also run live online Python classes for grades 3–9, taught by working software engineers. Email-list families hear about trial classes and info sessions first.</p>
+        <p>We also run live online Python classes for grades 3–12, taught by working software engineers. Email-list families hear about trial classes and info sessions first.</p>
       </div>
     </div>
   </div>
@@ -214,6 +214,17 @@
   var SUPABASE_URL = 'https://delpcanykrobigufyomd.supabase.co';
   var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbHBjYW55a3JvYmlndWZ5b21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3OTc4ODQsImV4cCI6MjExMDM3Mzg4NH0.d6wZSQH0LZ8Z85FPKrtRumEmh5C0pgQSI8S8ET7znF4';
   var source = new URLSearchParams(location.search).get('src') || 'direct';
+
+  /* ---------- Visit tracking (write-only, fail-silent) ---------- */
+  try {
+    fetch(SUPABASE_URL + '/rest/v1/page_views', {
+      method: 'POST',
+      headers: { 'apikey': ANON_KEY, 'Authorization': 'Bearer ' + ANON_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ source: source, page: 'parents', referrer: document.referrer || null }),
+      keepalive: true
+    }).catch(function () {});
+  } catch (e) {}
+
   document.getElementById('lead-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = document.getElementById('submit-btn');
